@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { HomePage } from "../components/pages";
+import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages";
 
 const AppMenus: NavigationMenu[] = [
     {
@@ -11,6 +11,51 @@ const AppMenus: NavigationMenu[] = [
         to: '/',
         path: '/',
         component: HomePage,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "about-us",
+        i18nKey: 'About Us',
+        visible: false,
+        to: '/about-us',
+        path: '/about-us',
+        component: AboutUs,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "faqs",
+        i18nKey: "FAQ's",
+        visible: false,
+        to: '/faqs',
+        path: '/faqs',
+        component: Faqs,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "contact-us",
+        i18nKey: "Contact Us",
+        visible: false,
+        to: '/contact-us',
+        path: '/contact-us',
+        component: ContactUs,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "login",
+        i18nKey: "Login",
+        visible: false,
+        to: '/login',
+        path: '/login',
+        component: Login,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "sign-up",
+        i18nKey: "Sign Up",
+        visible: false,
+        to: '/sign-up',
+        path: '/sign-up',
+        component: SignUp,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     }
 ]

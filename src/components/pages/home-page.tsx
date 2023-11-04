@@ -66,7 +66,7 @@ export const HomePage = () => {
             </div>
             <div>
               <h1 className="text-white fw-600 display-5 mb-3 mb-md-4">
-                Invest and earn assured Monthly Income
+                Invest and earn assured Monthly Income &nbsp;
                 <span className="text-main-green pe-2">
                   <svg
                     stroke="currentColor"

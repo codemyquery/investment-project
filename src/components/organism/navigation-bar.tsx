@@ -1,9 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 
 export const NavigationBar = () => {
-    const zcAction = (type: string) => {
-
-    }
+    const navigate = useNavigate();
     return (
         <nav className="py-2 sticky-top overflow-hidden top-0 mb-3 navbar navbar-expand-lg navbar-light">
             <div className="container">
@@ -14,7 +13,7 @@ export const NavigationBar = () => {
                         className="img-fluid"
                         style={{ width: "12rem" }}
                     /> */}
-                    <b style={{ color:"white", fontWeight: "50px"}}>Virtual Property</b>
+                    <b style={{ color: "white", fontWeight: "50px" }}>Virtual Property</b>
                 </a>
                 <button
                     aria-controls="basic-navbar-nav"
@@ -33,40 +32,40 @@ export const NavigationBar = () => {
                     />
                 </a>
                 <div className="navbar-collapse collapse" id="basic-navbar-nav">
-                    <div className="m-auto navbar-nav">
-                        <a
-                            href="./index.html"
+                    <ul className="m-auto navbar-nav">
+                        <li
                             data-rr-ui-event-key="default"
-                            className="nav-link active nav-link"
+                            className="nav-link active"
+                            onClick={() => { navigate('../../') }}
                         >
                             Home
                             <title>Growpital : Invest and earn assured Tax Free returns</title>
-                        </a>
-                        <a
-                            href="./about-us.html"
+                        </li>
+                        <li
                             data-rr-ui-event-key="link-1"
-                            className="nav-link nav-link"
+                            className="nav-link"
+                            onClick={() => { navigate('./about-us') }}
                         >
                             About
                             <title>About us : Growpital</title>
-                        </a>
-                        <a
-                            href="./faq.html"
+                        </li>
+                        <li
                             data-rr-ui-event-key="link-3"
-                            className="nav-link nav-link"
+                            className="nav-link"
+                            onClick={() => { navigate('./faqs') }}
                         >
                             FAQs
                             <title>FAQ | Growpital</title>
-                        </a>
-                        <a
-                            href="./contact-us.html"
+                        </li>
+                        <li
                             data-rr-ui-event-key="link-4"
-                            className="nav-link nav-link"
+                            className="nav-link"
+                            onClick={() => { navigate('./contact-us') }}
                         >
                             Contact Us
                             <title>Help &amp; Support | Growpital</title>
-                        </a>
-                    </div>
+                        </li>
+                    </ul>
                     <div className="d-flex d-none d-md-block">
                         <a
                             href="https://growpital.zohobookings.in/#/customer/growpital"
@@ -75,36 +74,32 @@ export const NavigationBar = () => {
                             <button
                                 type="button"
                                 className="main-btn-nav mb-2 fs-11 register_AMA btn btn-primary"
-                                onClick={() => {
-                                    zcAction("Sign Up");
-                                }}
                             >
                                 Get a Callback
                             </button>
                         </a>
                     </div>
                     <div className="d-flex d-none d-md-block">
-                        <a href="./signup.html">
-                            <button
-                                type="button"
-                                className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
-                                onClick={() => {
-                                    zcAction("Sign Up");
-                                }}
-                            >
-                                Sign up
-                            </button>
-                        </a>
+                        <button
+                            type="button"
+                            className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
+                            onClick={() => {
+                                navigate('./sign-up');
+                            }}
+                        >
+                            Sign up
+                        </button>
                     </div>
                     <div className="d-flex d-none d-md-block">
-                        <a href="./login.html">
-                            <button
-                                type="button"
-                                className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
-                            >
-                                Login
-                            </button>
-                        </a>
+                        <button
+                            type="button"
+                            className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
+                            onClick={() => {
+                                navigate('./login');
+                            }}
+                        >
+                            Login
+                        </button>
                     </div>
                 </div>
             </div>
