@@ -15393,6 +15393,7 @@ footer .nav .foot-icon .nav-link:hover {
 
 .swiper-virtual .swiper-slide {
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }

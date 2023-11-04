@@ -4,8 +4,7 @@ interface AuthState {
     idToken: string;
     userInfo: any;
     homeURL: string;
-    status: "idle" | "signOut" | "signIn" | "signUp",
-    openDrawer: boolean;
+    status: "idle" | "signOut" | "signIn" | "signUp"
 }
 
 interface AuthContextAction {
@@ -19,7 +18,6 @@ interface AuthContextAction {
         mobile: number
     ) => void;
     signOut: () => void;
-    changeDrawer: (openDrawer: boolean) => void;
 }
 
 interface AuthContextType extends AuthState, AuthContextAction { }
@@ -30,10 +28,8 @@ const AuthContext = createContext<AuthContextType>({
     userInfo: {},
     idToken: "",
     homeURL: "",
-    openDrawer: true,
     signIn: () => { },
     signOut: () => { },
-    changeDrawer: () => { },
     signUp: () => { }
 });
 
@@ -44,11 +40,6 @@ type AuthAction =
     |
     {
         type: "SIGN_OUT"
-    }
-    |
-    {
-        type: "CHANGE_DRAWER",
-        openDrawer: boolean
     }
     |
     {
@@ -68,8 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             roles: ['ADMIN']
         },
         homeURL: routeToNavigate,
-        status: 'idle',
-        openDrawer: false
+        status: 'idle'
     });
 
     const AuthAction: AuthContextAction = useMemo(() => ({
@@ -84,12 +74,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         signOut: () => {
             dispatch({
                 type: "SIGN_OUT"
-            });
-        },
-        changeDrawer: (openDrawer: boolean) => {
-            dispatch({
-                type: "CHANGE_DRAWER",
-                openDrawer: openDrawer
             });
         },
         signUp: (email: string, password: string, mobile: number) => {
@@ -110,11 +94,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 const AuthReducer = (prevState: AuthState, action: AuthAction): AuthState => {
     switch (action.type) {
         case 'SIGN_IN':
-            return {
-                ...prevState,
-                ...action
-            }
-        case 'CHANGE_DRAWER':
             return {
                 ...prevState,
                 ...action

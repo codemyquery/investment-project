@@ -1,8 +1,44 @@
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
+import { useState } from 'react';
+
+interface ActiveNavbar {
+    home: string | "active",
+    about: string | "active",
+    faqs: string | "active",
+    contactUs: string | "active"
+}
+const defaultActiveNavbar: ActiveNavbar = {
+    about: '',
+    contactUs: '',
+    faqs: '',
+    home: ''
+}
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
+    const [active, setActive] = useState<ActiveNavbar>(defaultActiveNavbar)
+    const [showHeader, setShowHeader] = useState('')
+    const navBarClick = (navbar: "home" | "aboutus" | "faqs" | "contactus")=>{
+        switch (navbar) {
+            case "home":
+                navigate('')
+                setActive({...defaultActiveNavbar, home: 'active'})
+                break;
+            case "aboutus":
+                navigate('./about-us')
+                setActive({...defaultActiveNavbar, about: 'active'})
+                break;
+            case "faqs":
+                navigate('./faqs')
+                setActive({...defaultActiveNavbar, faqs: 'active'})
+                break;
+            case "contactus":
+                navigate('./contact-us')
+                setActive({...defaultActiveNavbar, contactUs: 'active'})
+                break;
+        }
+    }
     return (
         <nav className="py-2 sticky-top overflow-hidden top-0 mb-3 navbar navbar-expand-lg navbar-light">
             <div className="container">
@@ -20,6 +56,8 @@ export const NavigationBar = () => {
                     type="button"
                     aria-label="Toggle navigation"
                     className="navbar-toggler collapsed"
+                    onClick={() => { setShowHeader(prev => prev ? '' : 'show') }}
+
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -31,36 +69,36 @@ export const NavigationBar = () => {
                         style={{ width: "12rem" }}
                     />
                 </a>
-                <div className="navbar-collapse collapse" id="basic-navbar-nav">
+                <div className={`navbar-collapse collapse ${showHeader}`} id="basic-navbar-nav">
                     <ul className="m-auto navbar-nav">
                         <li
                             data-rr-ui-event-key="default"
-                            className="nav-link active"
-                            onClick={() => { navigate('../../') }}
+                            className={`nav-link ${active.home}`}
+                            onClick={() => { navBarClick('home') }}
                         >
                             Home
                             <title>Growpital : Invest and earn assured Tax Free returns</title>
                         </li>
                         <li
                             data-rr-ui-event-key="link-1"
-                            className="nav-link"
-                            onClick={() => { navigate('./about-us') }}
+                            className={`nav-link ${active.about}`}
+                            onClick={() => { navBarClick('aboutus') }}
                         >
                             About
                             <title>About us : Growpital</title>
                         </li>
                         <li
                             data-rr-ui-event-key="link-3"
-                            className="nav-link"
-                            onClick={() => { navigate('./faqs') }}
+                            className={`nav-link ${active.faqs}`}
+                            onClick={() => { navBarClick('faqs') }}
                         >
                             FAQs
                             <title>FAQ | Growpital</title>
                         </li>
                         <li
                             data-rr-ui-event-key="link-4"
-                            className="nav-link"
-                            onClick={() => { navigate('./contact-us') }}
+                            className={`nav-link ${active.contactUs}`}
+                            onClick={() => { navBarClick('contactus') }}
                         >
                             Contact Us
                             <title>Help &amp; Support | Growpital</title>

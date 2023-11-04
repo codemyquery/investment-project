@@ -1,8 +1,5 @@
 import virtualProperty from '../../assets/images/VirtualProperty.png'
 export const HomePage = () => {
-  const zcAction = (type: string) => {
-
-  }
   return (<>
     <section className="signup-page signup-trans">
       <div className="fixed-bottom bottom-0 d-block d-sm-none container">
@@ -173,9 +170,6 @@ export const HomePage = () => {
                 <a href="https://app.growpital.com/signup">
                   <button
                     className="main-btn maincolor mb-2"
-                    onClick={() => {
-                      zcAction("Invest Now Button 1 ");
-                    }}
                   >
                     Invest Now
                   </button>
