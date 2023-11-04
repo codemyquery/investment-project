@@ -1885,7 +1885,7 @@ export const HomePage = () => {
         </div>
       </div>
     </section>
-    <section className="py-5" id="calci">
+    <section className="py-5" id="calci" style={{overflow: "hidden"}}>
       <div className="container">
         <div className="d-flex justify-content-center align-items-center row">
           <div
