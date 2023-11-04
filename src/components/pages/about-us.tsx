@@ -78,24 +78,25 @@ export const AboutUs = () => {
                                 className="fw-bold fs-48 text-center content-text pb-3 mt-0 aos-init"
                                 data-aos="fade-up"
                             >
-                                What do we do?
+                                Concept of Virtual Property? 
                             </p>
                             <p
                                 className="text-center d-flex align-items-center justify-content-center ms-1 aos-init"
                                 data-aos="fade-up"
                             >
-                                We open up tax free passive earning avenues for you while increasing
-                                income and productivity of agriculture sector. Investments in
-                                Alternative asset classes was previously reserved only for
-                                institutions and the ultra-wealthy. Sub-segmenting it to
-                                Agriculture, it is pretty niche and popular as an investment class.
-                                We want to provide opportunity to own fraction of Agriculture asset
-                                classes and participate in passive income generation for yourself
-                                that were typically off-limits. Think of us a fund, but for agri
-                                projects where the allocation is done on the basis of parameters
-                                which fits to agriculture like crop tenure, harvest cycles,
-                                insurance, Government MSP, crop segment, crop type etc.
+                                Virtual Property is a comparative concept promoted by us for helping one plan their investments and cash flow prudently. The last decades have witness fraudulent activities of builder in India where either they have not able to fulfill their promise or have done a third class construction which has eventually devalued over time instead of growing. We come across so many people among our society who got into trap of some builder and lost all his hard earned money as well as dreams and stability of their and their family lives. Virtual Property is way to explain how you can have a better passive income over a general rental income which may or may not come from buying a property. We have discussed pros and cons of different aspects in our presentation.
                             </p>
+                            <p
+                                className="fw-bold fs-48 text-center content-text pb-3 mt-0 aos-init"
+                                data-aos="fade-up"
+                            >
+                               Who are the Guarantor of Money?
+                            </p>
+                            <p
+                                className="text-center d-flex align-items-center justify-content-center ms-1 aos-init"
+                                data-aos="fade-up"
+                            >
+                                The national level houses like Birla, TATA, HDFC, ICICI are the one who guarantees your income and principal. So you don’t need to worry about a single penny. All the cash flows are fully secured. As soon as you pay your first booking amount, these nation level houses has to back it by having 15 times the booking amount as guaranteed towards that virtual property. For example, let say one books a Virtual Property of 1 Crore by paying booking amount of 10% of 1 Cores i.e. 10 Lacs. Now in order to accept this Rs. 10 Lacs, these companies has to have a asset of Rs. 150 Lacs. This is how safe and secure the cash flow and capital.                            </p>
                         </div>
                     </div>
                 </div>
