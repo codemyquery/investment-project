@@ -1,56 +1,39 @@
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import { useState } from 'react';
+import { Logo } from '../molecules';
 
-interface ActiveNavbar {
-    home: string | "active",
-    about: string | "active",
-    faqs: string | "active",
-    contactUs: string | "active"
-}
-const defaultActiveNavbar: ActiveNavbar = {
-    about: '',
-    contactUs: '',
-    faqs: '',
-    home: ''
-}
+type MenusType = 'Home' | 'About' | 'FAQs' | 'Contact Us';
+const Menus: MenusType[] = ['Home', 'About', 'FAQs', 'Contact Us'];
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
-    const [active, setActive] = useState<ActiveNavbar>(defaultActiveNavbar)
+    const [active, setActive] = useState<MenusType>('Home')
     const [showHeader, setShowHeader] = useState('')
-    const navBarClick = (navbar: "home" | "aboutus" | "faqs" | "contactus")=>{
+    const navBarClick = (navbar: MenusType) => {
         switch (navbar) {
-            case "home":
+            case "Home":
                 navigate('')
-                setActive({...defaultActiveNavbar, home: 'active'})
+                setActive(navbar)
                 break;
-            case "aboutus":
+            case "About":
                 navigate('./about-us')
-                setActive({...defaultActiveNavbar, about: 'active'})
+                setActive(navbar)
                 break;
-            case "faqs":
+            case "FAQs":
                 navigate('./faqs')
-                setActive({...defaultActiveNavbar, faqs: 'active'})
+                setActive(navbar)
                 break;
-            case "contactus":
+            case "Contact Us":
                 navigate('./contact-us')
-                setActive({...defaultActiveNavbar, contactUs: 'active'})
+                setActive(navbar)
                 break;
         }
     }
     return (
         <nav className="py-2 sticky-top overflow-hidden top-0 mb-3 navbar navbar-expand-lg navbar-light">
             <div className="container">
-                <a href="/" className="d-none d-lg-block navbar-brand">
-                    {/* <img
-                        src={logo}
-                        alt="logo"
-                        className="img-fluid"
-                        style={{ width: "12rem" }}
-                    /> */}
-                    <b style={{ color: "white", fontWeight: "50px" }}>Virtual Property</b>
-                </a>
+                <Logo className='d-none d-lg-block navbar-brand' />
                 <button
                     aria-controls="basic-navbar-nav"
                     type="button"
@@ -61,48 +44,18 @@ export const NavigationBar = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <a href="/" className="d-lg-none mx-auto navbar-brand">
-                    <img
-                        src={logo}
-                        alt="logo"
-                        className="logo-img"
-                        style={{ width: "12rem" }}
-                    />
-                </a>
+                <Logo className='d-lg-none mx-auto navbar-brand' />
                 <div className={`navbar-collapse collapse ${showHeader}`} id="basic-navbar-nav">
                     <ul className="m-auto navbar-nav">
-                        <li
-                            data-rr-ui-event-key="default"
-                            className={`nav-link ${active.home}`}
-                            onClick={() => { navBarClick('home') }}
-                        >
-                            Home
-                            <title>Growpital : Invest and earn assured Tax Free returns</title>
-                        </li>
-                        <li
-                            data-rr-ui-event-key="link-1"
-                            className={`nav-link ${active.about}`}
-                            onClick={() => { navBarClick('aboutus') }}
-                        >
-                            About
-                            <title>About us : Growpital</title>
-                        </li>
-                        <li
-                            data-rr-ui-event-key="link-3"
-                            className={`nav-link ${active.faqs}`}
-                            onClick={() => { navBarClick('faqs') }}
-                        >
-                            FAQs
-                            <title>FAQ | Growpital</title>
-                        </li>
-                        <li
-                            data-rr-ui-event-key="link-4"
-                            className={`nav-link ${active.contactUs}`}
-                            onClick={() => { navBarClick('contactus') }}
-                        >
-                            Contact Us
-                            <title>Help &amp; Support | Growpital</title>
-                        </li>
+                        {
+                            Menus.map(menu => {
+                                return <>
+                                    <li className={`nav-link ${active === menu ? 'active' : ''}`} onClick={() => { navBarClick(menu) }}>
+                                        {menu}
+                                    </li>
+                                </>
+                            })
+                        }
                     </ul>
                     <div className="d-flex d-none d-md-block">
                         <a
