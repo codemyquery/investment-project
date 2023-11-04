@@ -21,14 +21,16 @@ export const NavigationBar = () => {
                     aria-label="Toggle navigation"
                     className="navbar-toggler collapsed"
                 >
-                    <span className="navbar-toggler-icon"></span></button
-                ><a href="/" className="d-lg-none mx-auto navbar-brand"
-                ><img
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <a href="/" className="d-lg-none mx-auto navbar-brand">
+                    <img
                         src={logo}
                         alt="logo"
                         className="logo-img"
                         style={{ width: "12rem" }}
-                    /></a>
+                    />
+                </a>
                 <div className="navbar-collapse collapse" id="basic-navbar-nav">
                     <div className="m-auto navbar-nav">
                         <a
@@ -37,9 +39,7 @@ export const NavigationBar = () => {
                             className="nav-link active nav-link"
                         >
                             Home
-                            <title>
-                                Growpital : Invest and earn assured Tax Free returns
-                            </title>
+                            <title>Growpital : Invest and earn assured Tax Free returns</title>
                         </a>
                         <a
                             href="./about-us.html"
@@ -74,22 +74,26 @@ export const NavigationBar = () => {
                             <button
                                 type="button"
                                 className="main-btn-nav mb-2 fs-11 register_AMA btn btn-primary"
-                                onClick={() => { zcAction('Sign Up') }}
+                                onClick={() => {
+                                    zcAction("Sign Up");
+                                }}
                             >
                                 Get a Callback
-                            </button></a
-                        >
+                            </button>
+                        </a>
                     </div>
                     <div className="d-flex d-none d-md-block">
                         <a href="./signup.html">
                             <button
                                 type="button"
                                 className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
-                                onClick={() => { zcAction('Sign Up') }}
+                                onClick={() => {
+                                    zcAction("Sign Up");
+                                }}
                             >
                                 Sign up
-                            </button></a
-                        >
+                            </button>
+                        </a>
                     </div>
                     <div className="d-flex d-none d-md-block">
                         <a href="./login.html">

@@ -8,22 +8,34 @@ export const HomePage = () => {
         <div className="row">
           <div className="d-flex align-items-center signBtn mb-0 col">
             <div className="mx-2 registerForAMA-page registerAMA-trans">
-              <a href="https://growpital.zohobookings.in/#/customer/growpital" target="#">
-                <button type="button" className="main-btn-registerAMA fs-11 fs-sm-8 btn btn-primary">
+              <a
+                href="https://growpital.zohobookings.in/#/customer/growpital"
+                target="#"
+              >
+                <button
+                  type="button"
+                  className="main-btn-registerAMA fs-11 fs-sm-8 btn btn-primary"
+                >
                   Get a Callback
                 </button>
               </a>
             </div>
             <div className="mx-2">
               <a href="https://app.growpital.com/signup">
-                <button type="button" className="main-btn-sign maincolor fs-11 fs-sm-8 btn btn-primary">
+                <button
+                  type="button"
+                  className="main-btn-sign maincolor fs-11 fs-sm-8 btn btn-primary"
+                >
                   Sign up
                 </button>
               </a>
             </div>
             <div className="mx-2 login-page login-trans">
               <a href="https://app.growpital.com/login">
-                <button type="button" className="main-btn-login maincolor fs-11 fs-sm-8 btn btn-primary">
+                <button
+                  type="button"
+                  className="main-btn-login maincolor fs-11 fs-sm-8 btn btn-primary"
+                >
                   Login
                 </button>
               </a>
@@ -55,7 +67,15 @@ export const HomePage = () => {
               <h1 className="text-white fw-600 display-5 mb-3 mb-md-4">
                 Invest and earn assured profits
                 <span className="text-main-green pe-2">
-                  <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth={0}
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       fillRule="evenodd"
                       d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
@@ -64,7 +84,10 @@ export const HomePage = () => {
                 </span>
                 <span className="text-main-green">
                   <span> Sure Thing</span>
-                  <span className="styles-module_blinkingCursor__yugAC" style={{ color: "inherit" }}>
+                  <span
+                    className="styles-module_blinkingCursor__yugAC"
+                    style={{ color: "inherit" }}
+                  >
                     |
                   </span>
                 </span>
@@ -148,7 +171,9 @@ export const HomePage = () => {
                 <a href="https://app.growpital.com/signup">
                   <button
                     className="main-btn maincolor mb-2"
-                    onClick={() => { zcAction('Invest Now Button 1 ') }}
+                    onClick={() => {
+                      zcAction("Invest Now Button 1 ");
+                    }}
                   >
                     Invest Now
                   </button>
@@ -572,7 +597,11 @@ export const HomePage = () => {
               <div className="home-accordian accordion">
                 <div className="mb-3 bg-transparent accordion-item">
                   <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button type="button" aria-expanded="true" className="accordion-button">
+                    <button
+                      type="button"
+                      aria-expanded="true"
+                      className="accordion-button"
+                    >
                       <span className="pe-2">01 </span>Create account and complete
                       KYC
                     </button>
@@ -586,7 +615,11 @@ export const HomePage = () => {
                 </div>
                 <div className="mb-3 bg-transparent accordion-item">
                   <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button type="button" aria-expanded="false" className="accordion-button collapsed">
+                    <button
+                      type="button"
+                      aria-expanded="false"
+                      className="accordion-button collapsed"
+                    >
                       <span className="pe-2">02 </span>Choose investment option
                     </button>
                   </h2>
@@ -599,7 +632,11 @@ export const HomePage = () => {
                 </div>
                 <div className="mb-3 bg-transparent accordion-item">
                   <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button type="button" aria-expanded="false" className="accordion-button collapsed">
+                    <button
+                      type="button"
+                      aria-expanded="false"
+                      className="accordion-button collapsed"
+                    >
                       <span className="pe-2">03 </span> Add money and invest
                     </button>
                   </h2>
@@ -612,7 +649,11 @@ export const HomePage = () => {
                 </div>
                 <div className="mb-3 bg-transparent accordion-item">
                   <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button type="button" aria-expanded="false" className="accordion-button collapsed">
+                    <button
+                      type="button"
+                      aria-expanded="false"
+                      className="accordion-button collapsed"
+                    >
                       <span className="pe-2">04 </span>Harvest your earnings
                     </button>
                   </h2>
@@ -637,7 +678,10 @@ export const HomePage = () => {
     <section className="py-3">
       <div className="container">
         <div className="d-flex justify-content-center align-items-center row">
-          <div data-aos="fade-up" className="text-center col aos-init aos-animate">
+          <div
+            data-aos="fade-up"
+            className="text-center col aos-init aos-animate"
+          >
             <p className="text-uppercase fs-18 fw-500 text-main-green">
               <svg
                 stroke="currentColor"
@@ -666,7 +710,10 @@ export const HomePage = () => {
                 data-aos="fade-up"
                 className="d-flex justify-content-center align-items-center mb-5 col-lg-6 aos-init aos-animate"
               >
-                <div className="mb-2 bg-dark-gradient text-white position-relative card" style={{ width: "25rem" }}>
+                <div
+                  className="mb-2 bg-dark-gradient text-white position-relative card"
+                  style={{ width: "25rem" }}
+                >
                   <div className="d-inline-flex align-items-center py-3 fw-bold fs-4 card-header">
                     <p className="colan-icon text-center d-inline-block mb-0 d-flex justify-content-center align-items-center me-4 p-2">
                       <img
@@ -2017,7 +2064,7 @@ export const HomePage = () => {
                                 position: "absolute",
                                 whiteSpace: "nowrap",
                                 width: "100%",
-                                direction: "ltr"
+                                direction: "ltr",
                               }}
                             />
                             <span
@@ -2113,7 +2160,7 @@ export const HomePage = () => {
                     display: "block",
                     boxSizing: "border-box",
                     height: 500,
-                    width: 636
+                    width: 636,
                   }}
                 />
               </div>
@@ -2130,7 +2177,7 @@ export const HomePage = () => {
                     display: "block",
                     boxSizing: "border-box",
                     height: 0,
-                    width: 0
+                    width: 0,
                   }}
                 />
               </div>
@@ -2336,7 +2383,7 @@ export const HomePage = () => {
             style={{
               cursor: "grab",
               transitionDuration: "0ms",
-              transform: "translate3d(-8478px, 0px, 0px)"
+              transform: "translate3d(-8478px, 0px, 0px)",
             }}
           >
             <div
@@ -3023,7 +3070,7 @@ export const HomePage = () => {
                       style={{
                         width: 6720,
                         opacity: 1,
-                        transform: "translate3d(-3360px, 0px, 0px)"
+                        transform: "translate3d(-3360px, 0px, 0px)",
                       }}
                     >
                       <div
@@ -6748,7 +6795,7 @@ export const HomePage = () => {
                           opacity: 1,
                           transform: "translate3d(-2800px, 0px, 0px)",
                           width: 8960,
-                          transition: "-webkit-transform 3000ms linear 0s"
+                          transition: "-webkit-transform 3000ms linear 0s",
                         }}
                       >
                         <div
