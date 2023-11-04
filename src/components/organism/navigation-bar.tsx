@@ -8,12 +8,13 @@ export const NavigationBar = () => {
         <nav className="py-2 sticky-top overflow-hidden top-0 mb-3 navbar navbar-expand-lg navbar-light">
             <div className="container">
                 <a href="/" className="d-none d-lg-block navbar-brand">
-                    <img
+                    {/* <img
                         src={logo}
                         alt="logo"
                         className="img-fluid"
                         style={{ width: "12rem" }}
-                    />
+                    /> */}
+                    <b style={{ color:"white", fontWeight: "50px"}}>Virtual Property</b>
                 </a>
                 <button
                     aria-controls="basic-navbar-nav"

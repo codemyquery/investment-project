@@ -1,3 +1,4 @@
+import virtualProperty from '../../assets/images/VirtualProperty.png'
 export const HomePage = () => {
   const zcAction = (type: string) => {
 
@@ -55,7 +56,7 @@ export const HomePage = () => {
                   alt=""
                   className="img-fluid me-2"
                 />
-                Agriculture Investments
+                Virtual Property is the New Trend
                 <img
                   src="/static/media/TopIcon1.dcb427bef4e564145cec68daa97262db.svg"
                   alt=""
@@ -65,7 +66,7 @@ export const HomePage = () => {
             </div>
             <div>
               <h1 className="text-white fw-600 display-5 mb-3 mb-md-4">
-                Invest and earn assured profits
+                Invest and earn assured Monthly Income
                 <span className="text-main-green pe-2">
                   <svg
                     stroke="currentColor"
@@ -112,8 +113,8 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                        Grow your
-                        <span className="fw-600 text-main-gold">capital</span>
+                        Guaranteed
+                        <span className="fw-600 text-main-gold">Monthly Income from Day 1</span>
                       </div>
                     </div>
                   </div>
@@ -132,9 +133,10 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                        <span className="fw-600 text-main-gold"> 11% </span> to
-                        <span className="fw-600 text-main-gold"> 14% </span>
-                        returns of profit
+                      Booking Amount
+                        <span className="fw-600 text-main-gold"> 10% </span>
+                        
+                        
                       </div>
                     </div>
                   </div>
@@ -153,9 +155,9 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                        Managed
-                        <span className="fw-600 text-main-gold">farm</span>
-                        projects
+                        Assured
+                        <span className="fw-600 text-main-gold">Buy</span>
+                        Back
                       </div>
                     </div>
                   </div>
@@ -256,7 +258,7 @@ export const HomePage = () => {
             className="text-center text-lg-end mt-lg-0 mt-md-5 mt-5 p-3 mb-4 col-lg-5 col-md-12 col-12 aos-init aos-animate"
           >
             <img
-              src="https://cms.growpital.com/uploads/Home_Page_img_2_1_f2ce875d5b.jpg"
+              src={virtualProperty}
               alt=""
               className="img-fluid rounded-4"
             />
@@ -292,7 +294,7 @@ export const HomePage = () => {
             >
               Its like a
               <span className="text-main-green">
-                <span> Mutual Fund</span>
+                <span> Property</span>
                 <span
                   className="styles-module_blinkingCursor__yugAC"
                   style={{ color: "inherit" }}
@@ -313,13 +315,25 @@ export const HomePage = () => {
               />
               <div className="text-start">
                 <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-5">
-                  Exit Fee
+                  Stamp Duty
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white ms-4 mb-5">
-                  Delay
+                  Registration Charges
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
-                  Brokerage
+                  EMI
+                </p>
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                  Maintenance Cost
+                </p>
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                  Vacant Period
+                </p>
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                  Delay In Rentals
+                </p>
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                  Interior Cost
                 </p>
               </div>
             </div>
@@ -388,8 +402,8 @@ export const HomePage = () => {
                       Consistent Returns
                     </div>
                     <p className="fw-400 fs-17 lh-24 card-text">
-                      Free from Stock market volatality. Quaterly payouts in your
-                      wallet.
+                      Free from Stock market volatality. Monthly payouts in your
+                      Bank Account.
                     </p>
                   </div>
                 </div>
