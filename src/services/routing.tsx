@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AiFillDashboard } from "react-icons/ai";
+import { HomePage } from "../components/pages";
 
-const HomeInvoiceTemplate = () => {
-    return <>dashboardpage</>
-}
 const AppMenus: NavigationMenu[] = [
     {
         id: "dashboard",
         i18nKey: 'Dashboard',
         visible: false,
-        to: '/dashboard',
-        path: '/dashboard',
-        component: HomeInvoiceTemplate,
+        to: '/',
+        path: '/',
+        component: HomePage,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     }
 ]

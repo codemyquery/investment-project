@@ -1,5 +1,5 @@
-import { TemplateHome } from "./home";
+import { HomePageTemplate } from "./home-page-template";
 
 export {
-    TemplateHome
+    HomePageTemplate
 }
