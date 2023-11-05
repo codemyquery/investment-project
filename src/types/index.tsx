@@ -1,5 +1,16 @@
 import { ActionMenu, NavigationMenu, MainPageProps, RoutingURL } from "./routing";
 import { ServerResponse, Service, ServiceStatus, WebserviceApiError } from "./service";
+import {
+    DisplayTableAction,
+    DisplayTableColumnControllerHandler,
+    DisplayTableColumnControllerProps,
+    DisplayTableColumnDefinition,
+    DisplayTablePaginationController,
+    DisplayTablePayload,
+    DisplayTableRowActionDefinition,
+    DisplayTableSelectionMode,
+    Row
+} from "./table";
 
 export type {
     ActionMenu,
@@ -7,7 +18,16 @@ export type {
     MainPageProps,
     ServerResponse,
     WebserviceApiError,
-    Service
+    Service,
+    DisplayTableAction,
+    DisplayTableColumnControllerHandler,
+    DisplayTableColumnControllerProps,
+    DisplayTableColumnDefinition,
+    DisplayTablePaginationController,
+    DisplayTablePayload,
+    DisplayTableRowActionDefinition,
+    DisplayTableSelectionMode,
+    Row
 }
 
 export {

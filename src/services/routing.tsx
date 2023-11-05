@@ -3,40 +3,49 @@ import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
 import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages/public";
 import HomeIcon from '@mui/icons-material/Home';
-import { AdminDashboardPage } from "../components/pages/admin";
 import { LoginPage } from "../components/pages/admin/login";
-import { PlanDetails } from "../components/pages/admin/plan-details";
+import GroupIcon from '@mui/icons-material/Group';
+import { DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages/admin";
 
 const AppMenus: NavigationMenu[] = [
-    //** Navigation Items for the Admin Panel */
     {
-        id: "admin-dashboard",
+        id: "dashboard-plan-details",
         i18nKey: 'Dashboard',
-        visible: true,
-        to: '/admin',
-        path: 'admin',
-        Icon: HomeIcon,
-        component: AdminDashboardPage,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
-    },
-    {
-        id: "admin-login",
-        i18nKey: 'Login',
-        visible: false,
-        to: '/admin/login',
-        path: 'admin/login',
-        Icon: HomeIcon,
-        component: LoginPage,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
-    },
-    {
-        id: "plan-details",
-        i18nKey: 'Plan Detail',
         visible: true,
         to: '/admin/plan-details',
         path: 'admin/plan-details',
         Icon: HomeIcon,
-        component: PlanDetails,
+        component: DashboardPlanDetails,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "edit-plan-details",
+        i18nKey: 'Plan Detail',
+        visible: false,
+        to: '/admin/edit-plan-details',
+        path: 'admin/edit-plan-details',
+        Icon: HomeIcon,
+        component: EditPlanDetails,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "dashboard-customers",
+        i18nKey: 'Customer',
+        visible: true,
+        to: '/admin/customers',
+        path: 'admin/customers',
+        Icon: GroupIcon,
+        component: DashboardCustomers,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "edit-customers",
+        i18nKey: 'Customer',
+        visible: false,
+        to: '/admin/edit-customers',
+        path: 'admin/edit-customers',
+        Icon: GroupIcon,
+        component: EditCustomers,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
     {
@@ -98,7 +107,17 @@ const AppMenus: NavigationMenu[] = [
         Icon: HomeIcon,
         component: SignUp,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
-    }
+    },
+    {
+        id: "admin-login",
+        i18nKey: 'Login',
+        visible: false,
+        to: '/admin/login',
+        path: 'admin/login',
+        Icon: HomeIcon,
+        component: LoginPage,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
 ]
 
 export const getMenuList = (

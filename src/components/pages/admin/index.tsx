@@ -1,5 +1,11 @@
-import { AdminDashboardPage } from "./admin-dashboard-page";
+import { DashboardCustomers } from "./dashboard-customer";
+import { DashboardPlanDetails } from "./dashboard-plan-details";
+import { EditCustomers } from "./edit-customer";
+import { EditPlanDetails } from "./edit-plan-details";
 
 export {
-    AdminDashboardPage
+    DashboardPlanDetails,
+    EditPlanDetails,
+    EditCustomers,
+    DashboardCustomers
 }
