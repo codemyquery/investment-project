@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages";
+import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages/public";
+import HomeIcon from '@mui/icons-material/Home';
+import { AdminDashboardPage } from "../components/pages/admin";
 
 const AppMenus: NavigationMenu[] = [
+    //** Navigation Items for the Admin Panel */
+    {
+        id: "dashboard",
+        i18nKey: 'Dashboard',
+        visible: true,
+        to: '/admin',
+        path: 'admin',
+        Icon: HomeIcon,
+        component: AdminDashboardPage,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
     {
         id: "dashboard",
         i18nKey: 'Dashboard',
         visible: false,
         to: '/',
         path: '/',
+        Icon: HomeIcon,
         component: HomePage,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
@@ -19,6 +33,7 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/about-us',
         path: '/about-us',
+        Icon: HomeIcon,
         component: AboutUs,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
@@ -28,6 +43,7 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/faqs',
         path: '/faqs',
+        Icon: HomeIcon,
         component: Faqs,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
@@ -37,6 +53,7 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/contact-us',
         path: '/contact-us',
+        Icon: HomeIcon,
         component: ContactUs,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
@@ -46,6 +63,7 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/login',
         path: '/login',
+        Icon: HomeIcon,
         component: Login,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
@@ -55,6 +73,7 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/sign-up',
         path: '/sign-up',
+        Icon: HomeIcon,
         component: SignUp,
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     }

@@ -6,7 +6,7 @@ interface HomeProps {
     routingService: Service<NavigationMenu[]>;
 }
 
-export const HomePageTemplate = ({
+export const PublicPageTemplate = ({
     routingService
 }: HomeProps) => {
 

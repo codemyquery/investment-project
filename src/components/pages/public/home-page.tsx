@@ -1,4 +1,4 @@
-import virtualProperty from '../../assets/images/VirtualProperty.png'
+import virtualProperty from '../../../assets/images/VirtualProperty.png'
 export const HomePage = () => {
   return (<>
     <section className="signup-page signup-trans">

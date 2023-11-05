@@ -3,14 +3,14 @@ import { Suspense } from "react";
 import './App.css';
 import { AuthProvider, useAuth } from './providers/auth';
 import { BrowserRouter as Router, useNavigate } from "react-router-dom";
-import { HomePageTemplate } from "./components/templates";
 import { RightsMenuService } from "./services";
 import { ServiceStatus } from "./types";
+import { AdminPageTemplate, PublicPageTemplate } from "./components/templates";
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const { homeURL } = useAuth();
     const service = RightsMenuService.useMainRouting();
-    let navigate = useNavigate();
 
     useEffect(() => {
         async function init() {
@@ -22,7 +22,7 @@ const HomePage = () => {
         return () => { console.log("unmount homepage") }
     }, [service.result.status]);
 
-    return <HomePageTemplate routingService={service.result} />;
+    return homeURL.indexOf('/admin') === 0 ? <AdminPageTemplate routingService={service.result} /> : <PublicPageTemplate routingService={service.result} /> 
 }
 
 const Main = () => {

@@ -1,10 +1,13 @@
+import { useMediaQuery } from "@mui/material";
 import React, { createContext, useContext, useMemo, useReducer } from "react"
 interface AuthState {
     userToken: string | null;
     idToken: string;
     userInfo: any;
     homeURL: string;
-    status: "idle" | "signOut" | "signIn" | "signUp"
+    status: "idle" | "signOut" | "signIn" | "signUp",
+    isDark: boolean,
+    openDrawer: boolean;
 }
 
 interface AuthContextAction {
@@ -18,6 +21,8 @@ interface AuthContextAction {
         mobile: number
     ) => void;
     signOut: () => void;
+    changeTheme: (isDark: boolean) => void;
+    changeDrawer: (openDrawer: boolean) => void;
 }
 
 interface AuthContextType extends AuthState, AuthContextAction { }
@@ -28,8 +33,12 @@ const AuthContext = createContext<AuthContextType>({
     userInfo: {},
     idToken: "",
     homeURL: "",
+    isDark: false,
+    openDrawer: true,
     signIn: () => { },
     signOut: () => { },
+    changeTheme: () => { },
+    changeDrawer: () => { },
     signUp: () => { }
 });
 
@@ -43,12 +52,25 @@ type AuthAction =
     }
     |
     {
+        type: "CHANGE_THEME",
+        isDark: boolean
+    }
+    |
+    {
+        type: "CHANGE_DRAWER",
+        openDrawer: boolean
+    }
+    |
+    {
         type: "SIGN_UP"
     }
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+    const preferDarkModes = useMediaQuery("(prefer-color-scheme: dark)");
     const hash = window.location.hash;
-    const routeToNavigate = `${(window.location.pathname !== "/" ? window.location.pathname : '')}${hash}`;
+    const routeToNavigate = `${window.location.pathname}${hash}`;
+    console.log(routeToNavigate)
+    debugger
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',
@@ -59,7 +81,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             roles: ['ADMIN']
         },
         homeURL: routeToNavigate,
-        status: 'idle'
+        status: 'idle',
+        isDark: false,
+        openDrawer: false
     });
 
     const AuthAction: AuthContextAction = useMemo(() => ({
@@ -76,13 +100,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 type: "SIGN_OUT"
             });
         },
+        changeTheme: (isDark: boolean) => {
+            dispatch({
+                type: "CHANGE_THEME",
+                isDark: isDark
+            });
+        },
+        changeDrawer: (openDrawer: boolean) => {
+            dispatch({
+                type: "CHANGE_DRAWER",
+                openDrawer: openDrawer
+            });
+        },
         signUp: (email: string, password: string, mobile: number) => {
             dispatch({
                 type: "SIGN_UP"
             });
         }
-
-    }), [state.idToken]);
+        
+    }), [preferDarkModes, state.idToken]);
 
     return (
         <AuthContext.Provider value={{ ...state, ...AuthAction }}>
@@ -94,6 +130,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 const AuthReducer = (prevState: AuthState, action: AuthAction): AuthState => {
     switch (action.type) {
         case 'SIGN_IN':
+            return {
+                ...prevState,
+                ...action
+            }
+        case 'CHANGE_DRAWER':
+            return {
+                ...prevState,
+                ...action
+            }
+        case 'CHANGE_THEME':
             return {
                 ...prevState,
                 ...action
