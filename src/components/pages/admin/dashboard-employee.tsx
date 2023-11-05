@@ -6,14 +6,28 @@ import { DisplayTablePayload } from "../../../types";
 import { useDisplayTablePageController, useDisplayTableColumnController, DisplayTableItems } from "../../organism/display-table-items";
 
 interface PlanServerData {
-
+    id:string,
+    empName:string,
+    empMobileNumber: string,
+    empSalesCode:string,
+    totalSaleAmount:string,
+    totalCustomerCount:string
 }
 
 export const DashboardEmployee = () => {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const [payloadData, setPayloadData] = useState<DisplayTablePayload<PlanServerData>>({
-        rows: [],
+        rows: [
+            {
+                id:"1",
+                empName:"Roshni",
+                empMobileNumber: "911825845",
+                empSalesCode:"31B6D",
+                totalSaleAmount:"20000000",
+                totalCustomerCount:"5"
+            }
+        ],
         totalDataCount: 0
     });
     const paginationController = useDisplayTablePageController({});
@@ -22,34 +36,34 @@ export const DashboardEmployee = () => {
             columns:
                 [
                     {
-                        field: 'vendor',
+                        field: 'empName',
                         type: 'text',
-                        headerName: 'Plan Name',
+                        headerName: 'Employee Name',
                         filterable: true,
                         sortable: true
                     },
                     {
-                        field: 'addressVendor',
+                        field: 'empMobileNumber',
                         type: 'text',
-                        headerName: 'PDF Document'
+                        headerName: 'Employee Mob No.'
                     },
                     {
-                        field: 'gstNumberVendor',
+                        field: 'empSalesCode',
                         type: 'text',
-                        headerName: 'Plan Start Date',
+                        headerName: 'Emp Sales Code',
                         filterable: true
                     },
                     {
-                        field: 'panNumberVendor',
+                        field: 'totalSaleAmount',
                         type: 'text',
-                        headerName: 'Action',
+                        headerName: 'Total Sale Amount',
                         filterable: true
                     },
                     {
-                        field: 'dateUpdated',
-                        type: 'date',
+                        field: 'totalCustomerCount',
+                        type: 'text',
                         sortable: true,
-                        headerName: 'Last Updated'
+                        headerName: 'Total Customer Count'
                     }
                 ]
         });
@@ -57,6 +71,7 @@ export const DashboardEmployee = () => {
     return (
         <>
             <DashboardPageTemplate id={"expense-report-dashboard-page"}>
+                <h5>Employee Sales Data</h5>
                 <DisplayTableItems
                     loader={loader}
                     data={payloadData}

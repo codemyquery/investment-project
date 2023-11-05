@@ -6,14 +6,28 @@ import { DisplayTablePayload } from "../../../types";
 import { useDisplayTablePageController, useDisplayTableColumnController, DisplayTableItems } from "../../organism/display-table-items";
 
 interface PlanServerData {
-
+    id:string,
+    planName : string,
+    pdfDocument : string,
+    planStartDate : string,
+    actionPlan : string,
+    lastUpdated:Date
 }
 
 export const DashboardPlanDetails = () => {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const [payloadData, setPayloadData] = useState<DisplayTablePayload<PlanServerData>>({
-        rows: [],
+        rows: [
+            {
+                id: "1",
+                planName : "Aditya Birla Monthly Income Plan",
+                pdfDocument : "This will be PDF Attachment",
+                planStartDate : "11/06/2023",
+                actionPlan : "this will be button for edit/modify",
+                lastUpdated: new Date()
+            }
+        ],
         totalDataCount: 0
     });
     const paginationController = useDisplayTablePageController({});
@@ -22,34 +36,43 @@ export const DashboardPlanDetails = () => {
             columns:
                 [
                     {
-                        field: 'vendor',
+                        field: 'planName',
                         type: 'text',
                         headerName: 'Plan Name',
                         filterable: true,
                         sortable: true
                     },
                     {
-                        field: 'addressVendor',
+                        field: 'pdfDocument',
                         type: 'text',
                         headerName: 'PDF Document'
                     },
                     {
-                        field: 'gstNumberVendor',
+                        field: 'planStartDate',
                         type: 'text',
                         headerName: 'Plan Start Date',
                         filterable: true
                     },
+                    
                     {
-                        field: 'panNumberVendor',
-                        type: 'text',
-                        headerName: 'Action',
-                        filterable: true
-                    },
-                    {
-                        field: 'dateUpdated',
+                        field: 'lastUpdated',
                         type: 'date',
                         sortable: true,
                         headerName: 'Last Updated'
+                    },
+                    {
+                        field: 'updateDetails',
+                        type: 'action',
+                        sortable: true,
+                        headerName: 'Actions',
+                        actionsList: [
+                            {
+                                type: 'edit',
+                                callback: (params) => {
+                                   navigate(`/admin/edit-customers`)
+                                }
+                            }
+                        ]
                     }
                 ]
         });
@@ -57,6 +80,7 @@ export const DashboardPlanDetails = () => {
     return (
         <>
             <DashboardPageTemplate id={"expense-report-dashboard-page"}>
+                <h5>Plan List</h5>
                 <DisplayTableItems
                     loader={loader}
                     data={payloadData}

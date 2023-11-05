@@ -17,8 +17,8 @@ export const ContactUs = () => {
                                         className="img-fluid me-3 mb-4"
                                     />
                                     <p className="ms-1">
-                                        Plot no 25B, Institutional Area, Sector 32, Gurgaon, Haryana,
-                                        122022
+                                        MultiSphere Enterprises, LLP, Mughlaha, Medical Road, Gorakhpur,
+                                        273013
                                     </p>
                                 </div>
                                 <div className="d-inline-flex mb-4">
@@ -28,14 +28,14 @@ export const ContactUs = () => {
                                         className="img-fluid me-3 mb-4"
                                     />
                                     <a
-                                        href="tel:+91-7231844488"
+                                        href="tel:+91-9193909000"
                                         style={{
                                             color: "rgb(7, 229, 125)",
                                             textDecorationColor: "rgb(23, 23, 26)"
                                         }}
                                     >
                                         {" "}
-                                        +91-7231844488
+                                        +91-9793909000
                                     </a>
                                 </div>
                                 <div className="d-inline-flex mb-4 d-flex">
@@ -45,13 +45,13 @@ export const ContactUs = () => {
                                         className="img-fluid me-3 mb-4"
                                     />
                                     <a
-                                        href="mailto:info@growpital.com"
+                                        href="mailto:contact@multisphere.in"
                                         style={{
                                             color: "rgb(7, 229, 125)",
                                             textDecorationColor: "rgb(23, 23, 26)"
                                         }}
                                     >
-                                        info@growpital.com
+                                        contact@multisphere.in
                                     </a>
                                 </div>
                                 <div className="d-inline-flex mb-4">

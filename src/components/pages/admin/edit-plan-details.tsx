@@ -162,6 +162,17 @@ export const EditPlanDetails = () => {
                         <FormControl fullWidth>
 
                             <div>
+                                Policy Term :
+                                <Checkbox />10
+                                <Checkbox />20
+                                <Checkbox />30
+                            </div>
+                        </FormControl>
+
+                        <br />
+                        <FormControl fullWidth>
+
+                            <div>
                                 Premium Paying Term :
                                 <Checkbox />10
                                 <Checkbox />20

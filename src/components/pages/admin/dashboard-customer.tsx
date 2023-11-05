@@ -4,16 +4,33 @@ import { DashboardPageTemplate } from "../../templates";
 import AddIcon from '@mui/icons-material/Add';
 import { DisplayTablePayload } from "../../../types";
 import { useDisplayTablePageController, useDisplayTableColumnController, DisplayTableItems } from "../../organism/display-table-items";
+import { string } from "yargs";
 
 interface PlanServerData {
-
+    id: string,
+    custName: string,
+    custInitDate: string,
+    cust_empCode: string,
+    kycStatus: string,
+    investedAmount: string,
+    lastUpdated: Date
 }
 
 export const DashboardCustomers = () => {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const [payloadData, setPayloadData] = useState<DisplayTablePayload<PlanServerData>>({
-        rows: [],
+        rows: [
+            {
+                id: "1",
+                custName: "Ramesh Singh",
+                custInitDate: "12/01/23",
+                cust_empCode: "003B1",
+                kycStatus: "NO",
+                investedAmount: "NULL",
+                lastUpdated: new Date()         
+            }
+        ],
         totalDataCount: 0
     });
     const paginationController = useDisplayTablePageController({});
@@ -22,34 +39,54 @@ export const DashboardCustomers = () => {
             columns:
                 [
                     {
-                        field: 'vendor',
+                        field: 'custName',
                         type: 'text',
-                        headerName: 'Plan Name',
+                        headerName: 'Customer Name',
                         filterable: true,
                         sortable: true
                     },
                     {
-                        field: 'addressVendor',
+                        field: 'custInitDate',
                         type: 'text',
-                        headerName: 'PDF Document'
+                        headerName: 'Customer Initiation Date'
                     },
                     {
-                        field: 'gstNumberVendor',
+                        field: 'cust_empCode',
                         type: 'text',
-                        headerName: 'Plan Start Date',
+                        headerName: 'LG Code/LC Code',
                         filterable: true
                     },
                     {
-                        field: 'panNumberVendor',
+                        field: 'kycStatus',
                         type: 'text',
-                        headerName: 'Action',
+                        headerName: 'KYC Status',
                         filterable: true
                     },
                     {
-                        field: 'dateUpdated',
+                        field: 'investedAmount',
+                        type: 'text',
+                        sortable: true,
+                        headerName: 'Invested Amount'
+                    },
+                    {
+                        field: 'lastUpdated',
                         type: 'date',
                         sortable: true,
                         headerName: 'Last Updated'
+                    },
+                    {
+                        field: 'updateDetails',
+                        type: 'action',
+                        sortable: true,
+                        headerName: 'Actions',
+                        actionsList: [
+                            {
+                                type: 'edit',
+                                callback: (params) => {
+                                   navigate(`/admin/edit-customers`)
+                                }
+                            }
+                        ]
                     }
                 ]
         });
@@ -57,6 +94,7 @@ export const DashboardCustomers = () => {
     return (
         <>
             <DashboardPageTemplate id={"expense-report-dashboard-page"}>
+                <h5>Customer List</h5>
                 <DisplayTableItems
                     loader={loader}
                     data={payloadData}
@@ -64,18 +102,6 @@ export const DashboardCustomers = () => {
                     selectionPageController={paginationController}
                     tableId={"add-purchase-table"}
                     noRowsMessage="No Data"
-                    actionsLeft={
-                        [
-                            {
-                                type: 'customBasicAction',
-                                icon: <AddIcon />,
-                                title: "Add Customers",
-                                onClick: () => {
-                                    navigate('/admin/edit-customers')
-                                }
-                            }
-                        ]
-                    }
                     otherProps={{
                         autoHeight: false,
                         style: {
