@@ -31,7 +31,7 @@ export const AdminPageTemplate = ({
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" sx={{ flexGrow: 1 }} noWrap >
-                        Inventory-Management
+                        Admin Panel
                     </Typography>
                 </Toolbar>
             </AppBar>
