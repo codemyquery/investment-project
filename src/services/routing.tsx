@@ -6,6 +6,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import { LoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
 import { DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages/admin";
+import { EditEmployee } from "../components/pages/admin/edit-employee";
+import { DashboardEmployee } from "../components/pages/admin/dashboard-employee";
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 const AppMenus: NavigationMenu[] = [
     {
@@ -49,8 +52,30 @@ const AppMenus: NavigationMenu[] = [
         allowedGroups: ['Admin', 'Viewer', 'Maintainance']
     },
     {
-        id: "dashboard",
-        i18nKey: 'Dashboard',
+        id: "dashboard-employee",
+        i18nKey: 'Employee',
+        visible: true,
+        to: '/admin/employee',
+        path: 'admin/employee',
+        Icon: ContactMailIcon,
+        component: DashboardEmployee,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+    {
+        id: "edit-employee",
+        i18nKey: 'Employee',
+        visible: false,
+        to: '/admin/edit-employee',
+        path: 'admin/edit-employee',
+        Icon: ContactMailIcon,
+        component: EditEmployee,
+        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+    },
+
+    /** Routing for the public page */
+    {
+        id: "home-page",
+        i18nKey: 'Home Page',
         visible: false,
         to: '/',
         path: '/',
