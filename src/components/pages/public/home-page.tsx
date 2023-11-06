@@ -91,7 +91,7 @@ export const HomePage = () => {
                 </span>
               </h1>
               <p className="text-white fw-400 fs-24 my-3 mb-md-4 py-2">
-                Diversify your portfolio with safe agri-investments.
+                Diversify your portfolio with guaranteed from RBI governed Investment.
               </p>
             </div>
             <div className="px-5 px-lg-0">
@@ -111,7 +111,7 @@ export const HomePage = () => {
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
                         Guaranteed
-                        <span className="fw-600 text-main-gold">Monthly Income from Day 1</span>
+                        <span className="fw-600 text-main-gold"> Monthly Income from Day 1</span>
                       </div>
                     </div>
                   </div>
@@ -130,9 +130,9 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                      Booking Amount
-                        <span className="fw-600 text-main-gold"> 10% </span>
-                        
+                      Booking Amount<br/><br/>
+                        <span className="fw-600 text-main-gold"> 10%</span>
+                        <br/>
                         
                       </div>
                     </div>
@@ -152,8 +152,8 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                        Assured
-                        <span className="fw-600 text-main-gold">Buy</span>
+                        Assured<br/><br/>
+                        <span className="fw-600 text-main-gold"> Buy</span>
                         Back
                       </div>
                     </div>

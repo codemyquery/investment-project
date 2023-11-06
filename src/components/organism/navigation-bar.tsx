@@ -3,8 +3,8 @@ import logo from '../../assets/images/logo.png'
 import { useState } from 'react';
 import { Logo } from '../molecules';
 
-type MenusType = 'Home' | 'About' | 'FAQs' | 'Contact Us';
-const Menus: MenusType[] = ['Home', 'About', 'FAQs', 'Contact Us'];
+type MenusType = 'Home' | 'About' | 'Contact Us';
+const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
@@ -20,10 +20,10 @@ export const NavigationBar = () => {
                 navigate('./about-us')
                 setActive(navbar)
                 break;
-            case "FAQs":
-                navigate('./faqs')
-                setActive(navbar)
-                break;
+            // case "FAQs":
+            //     navigate('./faqs')
+            //     setActive(navbar)
+            //     break;
             case "Contact Us":
                 navigate('./contact-us')
                 setActive(navbar)
