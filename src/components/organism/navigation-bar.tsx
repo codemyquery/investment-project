@@ -61,52 +61,62 @@ export const NavigationBar = () => {
                         }
                     </ul>
 
-                    <div className="header-footer_user__eX1M2">
-                        <div className="header-footer_user_name_icon_wapper__dAxRN" style={{ color: 'white', display: 'inline-flex', textAlign: 'center', cursor: 'pointer' }}>
-                            <span style={{ height: '30px', width: '30px', color: 'black', textAlign: 'center', backgroundColor: 'white', borderRadius: '50%', paddingTop: '3px' }}>
-                                SM
-                            </span>
-                            <div className="header-footer_user_name__LV-tm" style={{ marginRight: '3px', textAlign: 'center', paddingTop: '3px' }}> &nbsp;Shubham Maurya &nbsp;</div>
-                            <svg fill='white' width="14" height="22" viewBox="0 0 12 1">
-                                <path d="M6 9L11.1962 0H0.803848L6 9Z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    {/* <div className="d-flex d-none d-md-block">
-                        <a
-                            href="https://growpital.zohobookings.in/#/customer/growpital"
-                            target="#"
-                        >
-                            <button
-                                type="button"
-                                className="main-btn-nav mb-2 fs-11 register_AMA btn btn-primary"
-                            >
-                                Get a Callback
-                            </button>
-                        </a>
-                    </div>
-                    <div className="d-flex d-none d-md-block">
-                        <button
-                            type="button"
-                            className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
-                            onClick={() => {
-                                navigate('./sign-up');
-                            }}
-                        >
-                            Sign up
-                        </button>
-                    </div>
-                    <div className="d-flex d-none d-md-block">
-                        <button
-                            type="button"
-                            className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
-                            onClick={() => {
-                                navigate('./login');
-                            }}
-                        >
-                            Login
-                        </button>
-                    </div> */}
+                    {
+                        homeURL.indexOf('/user') === 0 &&
+                        <>
+                            <div className="header-footer_user__eX1M2">
+                                <div className="header-footer_user_name_icon_wapper__dAxRN" style={{ color: 'white', display: 'inline-flex', textAlign: 'center', cursor: 'pointer' }}>
+                                    <span style={{ height: '30px', width: '30px', color: 'black', textAlign: 'center', backgroundColor: 'white', borderRadius: '50%', paddingTop: '3px' }}>
+                                        SM
+                                    </span>
+                                    <div className="header-footer_user_name__LV-tm" style={{ marginRight: '3px', textAlign: 'center', paddingTop: '3px' }}> &nbsp;Shubham Maurya &nbsp;</div>
+                                    <svg fill='white' width="14" height="22" viewBox="0 0 12 1">
+                                        <path d="M6 9L11.1962 0H0.803848L6 9Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </>
+                    }
+                    {
+                        homeURL.indexOf('/user') !== 0 &&
+                        <>
+                            <div className="d-flex d-none d-md-block">
+                                <a
+                                    href="https://growpital.zohobookings.in/#/customer/growpital"
+                                    target="#"
+                                >
+                                    <button
+                                        type="button"
+                                        className="main-btn-nav mb-2 fs-11 register_AMA btn btn-primary"
+                                    >
+                                        Get a Callback
+                                    </button>
+                                </a>
+                            </div>
+                            <div className="d-flex d-none d-md-block">
+                                <button
+                                    type="button"
+                                    className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
+                                    onClick={() => {
+                                        navigate('./sign-up');
+                                    }}
+                                >
+                                    Sign up
+                                </button>
+                            </div>
+                            <div className="d-flex d-none d-md-block">
+                                <button
+                                    type="button"
+                                    className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
+                                    onClick={() => {
+                                        navigate('./login');
+                                    }}
+                                >
+                                    Login
+                                </button>
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
         </nav>
