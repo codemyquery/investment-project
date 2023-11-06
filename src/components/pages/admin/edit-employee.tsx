@@ -115,17 +115,6 @@ export const EditEmployee = () => {
 
     /* const onSubmit = () => handleSubmit(onSubmitItem)(); */
 
-    const closeNotification = () => {
-        /* setFormState(prev => {
-            return {
-                ...prev,
-                notificationOpen: false,
-                notificationType: 'error',
-                notificationMessage: ''
-            }
-        }) */
-    }
-
     const onFormCancel = () => {
         navigate('/admin/employee');
     }
@@ -160,7 +149,6 @@ export const EditEmployee = () => {
                         />
                         <br />
                         <FormControl fullWidth>
-
                             <div>
                                 Premium Paying Term :
                                 <Checkbox />10
@@ -168,41 +156,31 @@ export const EditEmployee = () => {
                                 <Checkbox />30
                             </div>
                         </FormControl>
-
                         <br />
                         <FormControl fullWidth>
-
-
                             <div>
                                 Benefit Payout Frequency :
                                 <Checkbox />Weekly
                                 <Checkbox />Monthly
                                 <Checkbox />Yearly
                             </div>
-
                         </FormControl>
                         <br />
-
-
                         <TextField
                             margin="normal"
-
                             fullWidth
                             id="totalPaidPremium"
                             label="Total Paid Premium "
                             name="totalPaidPremium"
-
                             autoFocus
                         />
                     </Grid>
                     <Grid item xs={12} sm={12}>
                         <TextField
                             margin="normal"
-
                             fullWidth
                             name="totalBenefitTillMatuarity"
                             label="Total Benefit Till Matuarity"
-
                             id="totalBenefitTillMatuarity"
                             autoFocus
                         />
@@ -218,7 +196,6 @@ export const EditEmployee = () => {
                             }}
                             label="Plan Pdf Doc"
                             id="PlanDocumentPdf"
-
                         />
                     </Grid>
                 </Grid>

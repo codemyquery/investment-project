@@ -9,6 +9,8 @@ import { DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetail
 import { EditEmployee } from "../components/pages/admin/edit-employee";
 import { DashboardEmployee } from "../components/pages/admin/dashboard-employee";
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import { Dashboard } from "../components/pages/public/user-profile/dashboard";
+import { Profile } from "../components/pages/public/user-profile/profile";
 
 const AppMenus: NavigationMenu[] = [
     {
@@ -19,7 +21,7 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/plan-details',
         Icon: HomeIcon,
         component: DashboardPlanDetails,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "edit-plan-details",
@@ -29,7 +31,7 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/edit-plan-details',
         Icon: HomeIcon,
         component: EditPlanDetails,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "dashboard-customers",
@@ -39,7 +41,7 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/customers',
         Icon: GroupIcon,
         component: DashboardCustomers,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "edit-customers",
@@ -49,7 +51,7 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/edit-customers',
         Icon: GroupIcon,
         component: EditCustomers,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "dashboard-employee",
@@ -59,7 +61,7 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/employee',
         Icon: ContactMailIcon,
         component: DashboardEmployee,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "edit-employee",
@@ -69,9 +71,38 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/edit-employee',
         Icon: ContactMailIcon,
         component: EditEmployee,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
 
+    /** Routings for the Public Login Pages */
+    {
+        id: "user-dashboard",
+        i18nKey: '',
+        visible: false,
+        to: '/user/dashboard',
+        path: 'user/dashboard',
+        Icon: HomeIcon,
+        component: Dashboard,
+        allowedGroups: []
+    },
+    {
+        id: "user-profile",
+        i18nKey: '',
+        visible: false,
+        to: '/user/profile',
+        path: 'user/profile',
+        component: Profile,
+        allowedGroups: []
+    },
+    {
+        id: "home-page",
+        i18nKey: '',
+        visible: false,
+        to: '/user/my-plan',
+        path: '/user/my-plan',
+        component: Dashboard,
+        allowedGroups: []
+    },
     /** Routing for the public page */
     {
         id: "home-page",
@@ -79,9 +110,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/',
         path: '/',
-        Icon: HomeIcon,
         component: HomePage,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "about-us",
@@ -89,9 +119,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/about-us',
         path: '/about-us',
-        Icon: HomeIcon,
         component: AboutUs,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "faqs",
@@ -99,9 +128,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/faqs',
         path: '/faqs',
-        Icon: HomeIcon,
         component: Faqs,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "contact-us",
@@ -109,9 +137,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/contact-us',
         path: '/contact-us',
-        Icon: HomeIcon,
         component: ContactUs,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "login",
@@ -119,9 +146,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/login',
         path: '/login',
-        Icon: HomeIcon,
         component: Login,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "sign-up",
@@ -129,9 +155,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/sign-up',
         path: '/sign-up',
-        Icon: HomeIcon,
         component: SignUp,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
     {
         id: "admin-login",
@@ -139,9 +164,8 @@ const AppMenus: NavigationMenu[] = [
         visible: false,
         to: '/admin/login',
         path: 'admin/login',
-        Icon: HomeIcon,
         component: LoginPage,
-        allowedGroups: ['Admin', 'Viewer', 'Maintainance']
+        allowedGroups: []
     },
 ]
 

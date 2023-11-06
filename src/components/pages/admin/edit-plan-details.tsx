@@ -160,7 +160,6 @@ export const EditPlanDetails = () => {
                         />
                         <br />
                         <FormControl fullWidth>
-
                             <div>
                                 Policy Term :
                                 <Checkbox />10
@@ -168,10 +167,8 @@ export const EditPlanDetails = () => {
                                 <Checkbox />30
                             </div>
                         </FormControl>
-
                         <br />
                         <FormControl fullWidth>
-
                             <div>
                                 Premium Paying Term :
                                 <Checkbox />10
@@ -179,41 +176,31 @@ export const EditPlanDetails = () => {
                                 <Checkbox />30
                             </div>
                         </FormControl>
-
                         <br />
                         <FormControl fullWidth>
-
-
                             <div>
                                 Benefit Payout Frequency :
                                 <Checkbox />Weekly
                                 <Checkbox />Monthly
                                 <Checkbox />Yearly
                             </div>
-
                         </FormControl>
                         <br />
-
-
                         <TextField
                             margin="normal"
-
                             fullWidth
                             id="totalPaidPremium"
                             label="Total Paid Premium "
                             name="totalPaidPremium"
-
                             autoFocus
                         />
                     </Grid>
                     <Grid item xs={12} sm={12}>
                         <TextField
                             margin="normal"
-
                             fullWidth
                             name="totalBenefitTillMatuarity"
                             label="Total Benefit Till Matuarity"
-
                             id="totalBenefitTillMatuarity"
                             autoFocus
                         />
@@ -229,7 +216,6 @@ export const EditPlanDetails = () => {
                             }}
                             label="Plan Pdf Doc"
                             id="PlanDocumentPdf"
-
                         />
                     </Grid>
                 </Grid>

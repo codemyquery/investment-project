@@ -6,10 +6,48 @@ export const AboutUs = () => {
                     <div>
                         <div className="row">
                             <div data-aos="fade-up" className="col-md-6 aos-init aos-animate">
-                                
-                                
+                                <p className="text-uppercase fs-18 fs-fm-16 fw-500 text-main-green pb-1 mb-1">
+                                    <svg
+                                        stroke="currentColor"
+                                        fill="currentColor"
+                                        strokeWidth={0}
+                                        viewBox="0 0 16 16"
+                                        className="me-1"
+                                        height={8}
+                                        width={8}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <circle cx={8} cy={8} r={8} />
+                                    </svg>
+                                    DIVERSIFY YOUR INVESTMENT PORTFOLIO WITH FARM PROJECTS
+                                </p>
+                                <h1 className="fw-bold fs-48 content-text ">
+                                    Farm investments demystified!
+                                </h1>
+                                <p>
+                                    Growpital was incepted to radically democratize farm investment by
+                                    providing access to high profit opportunities to retail investors.
+                                    We Firmly believe that agriculture is a safe, stable and
+                                    attractive long-term investment for everyone, if invested with
+                                    right projects.
+                                </p>
+                                <a href="https://app.growpital.com/signup">
+                                    {" "}
+                                    <button className="main-btn maincolor mb-2">
+                                        Get Started
+                                    </button>{" "}
+                                </a>
                             </div>
-                            
+                            <div
+                                data-aos="fade-up"
+                                className="px-4 col-md-6 aos-init aos-animate"
+                            >
+                                <img
+                                    src="https://cms.growpital.com/uploads/Untitled_2_c89c672129.gif"
+                                    alt="Farm GIF "
+                                    className="img-fluid w-100"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -34,7 +72,7 @@ export const AboutUs = () => {
                                 >
                                     <circle cx={8} cy={8} r={8} />
                                 </svg>
-                                PROVIDING REGULAR INCOME WITH 150% RETURN ON MATUARITY
+                                PROVIDING TAX FREE PASSING EARNING OPPORTUNITIES
                             </p>
                             <p
                                 className="fw-bold fs-48 text-center content-text pb-3 mt-0 aos-init"
@@ -85,13 +123,13 @@ export const AboutUs = () => {
                                         >
                                             <circle cx={8} cy={8} r={8} />
                                         </svg>
-                                        INVEST WITH US, CREATE 2nd INCOME STREAM
+                                        INVEST WITH US, GROW YOUR CAPITAL
                                     </p>
                                     <p
                                         className="text-white fw-600 display-6 mb-3 mb-md-4 content-text aos-init"
                                         data-aos="fade-up"
                                     >
-                                        Why choose Virtual Property?
+                                        Why choose Growpital?
                                     </p>
                                 </div>
                             </div>
@@ -115,7 +153,7 @@ export const AboutUs = () => {
                                                     STRONG EXECUTION
                                                 </div>
                                                 <p className="fw-300 fs-14 text-white  card-text">
-                                                    Tech driven and process orientated investment projects with no
+                                                    Tech driven and process orientated farm projects with no
                                                     default till date.
                                                 </p>
                                             </div>
@@ -141,7 +179,7 @@ export const AboutUs = () => {
                                                     ECONOMIES OF SCALE
                                                 </div>
                                                 <p className="fw-300 fs-14 text-white  card-text">
-                                                    9+ Crore of portfolio
+                                                    9500+ Acres of farm portfolio
                                                 </p>
                                             </div>
                                         </div>
@@ -166,7 +204,7 @@ export const AboutUs = () => {
                                                     STRONG TEAM
                                                 </div>
                                                 <p className="fw-300 fs-14 text-white  card-text">
-                                                    Cumulative experience in Investment, management, finance,
+                                                    Cumulative experience in Agriculture, management, finance,
                                                     marketing and operations.
                                                 </p>
                                             </div>
@@ -206,7 +244,7 @@ export const AboutUs = () => {
                                     data-aos="fade-up"
                                 >
                                     The spirit behind{" "}
-                                    <span className="text-main-green"> Virtual Property</span>
+                                    <span className="text-main-green"> Growpital</span>
                                 </h2>
                                 <div className="d-flex justify-content-center align-items-start py-5 pt-md-0  row">
                                     <div
@@ -218,14 +256,14 @@ export const AboutUs = () => {
                                                 <div className="row">
                                                     <div className="col-md-4 col-12">
                                                         <img
-                                                            src=""
+                                                            src="https://cms.growpital.com/uploads/Rituraj_Sharma_8bea54ef16.jpg"
                                                             alt="profile pic"
                                                             className="img-fluid w-100 mb-md-0 mb-3"
                                                         />
                                                     </div>
                                                     <div className="col-md-8 col-12">
                                                         <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                                                            Ashish Agrawal
+                                                            Rituraj Sharma
                                                         </div>
                                                         <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
                                                             <cite>Director</cite>
@@ -248,7 +286,10 @@ export const AboutUs = () => {
                                                             </a>
                                                         </div>
                                                         <p className="fw-300 fs-15 lh-24 card-text">
-                                                            Intro
+                                                            Rituraj is an alumnus of IMT Nagpur and an engineer.
+                                                            He has over 10 years of experience being a serial
+                                                            entrepreneur in industries related to Solar Energy
+                                                            &amp; Agriculture.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -264,14 +305,14 @@ export const AboutUs = () => {
                                                 <div className="row">
                                                     <div className="col-md-4 col-12">
                                                         <img
-                                                            src=""
+                                                            src="https://cms.growpital.com/uploads/Krishnna_Joshi_394b072481.jpg"
                                                             alt="profile pic"
                                                             className="img-fluid w-100 mb-md-0 mb-3"
                                                         />
                                                     </div>
                                                     <div className="col-md-8 col-12">
                                                         <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                                                            Name
+                                                            Krishna Joshi
                                                         </div>
                                                         <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
                                                             <cite>Director-Farms</cite>
@@ -294,15 +335,318 @@ export const AboutUs = () => {
                                                             </a>
                                                         </div>
                                                         <p className="fw-300 fs-15 lh-24 card-text">
-                                                            Intro
+                                                            Krishna comes with vast experience of 12 years across
+                                                            industries ranging from BFSI, Marketing &amp;
+                                                            automobile. His educational background in commerce
+                                                            &amp; business management have led him to see through
+                                                            various industries.
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    
+                                    <div
+                                        data-aos="fade-up"
+                                        className="d-none d-lg-block col-md-6 aos-init"
+                                    >
+                                        <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
+                                            <div className="m-1 bg-dark-gradient rounded p-3 card-body">
+                                                <div className="row">
+                                                    <div className="col-md-4 col-12">
+                                                        <img
+                                                            src="https://cms.growpital.com/uploads/Sudhir_Paswan_79054509bb.jpg"
+                                                            alt="profile pic"
+                                                            className="img-fluid w-100 mb-md-0 mb-3"
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-8 col-12">
+                                                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
+                                                            Sudhir Paswan
+                                                        </div>
+                                                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
+                                                            <cite>Director- Agronomy</cite>
+                                                            <a
+                                                                href="https://www.linkedin.com/in/sudhir-paswan-19326969/"
+                                                                target="blank"
+                                                            >
+                                                                <svg
+                                                                    stroke="currentColor"
+                                                                    fill="currentColor"
+                                                                    strokeWidth={0}
+                                                                    viewBox="0 0 1024 1024"
+                                                                    className="ms-2 text-indigo"
+                                                                    height={18}
+                                                                    width={18}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <p className="fw-300 fs-15 lh-24 card-text">
+                                                            An Agriculture Graduate with 16+ years of agribusiness
+                                                            experience with Corporates and social organisations
+                                                            like Reliance, REI, PepsiCo, KGVK, Swades Foundation.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        data-aos="fade-up"
+                                        className="d-none d-lg-block col-md-6 aos-init"
+                                    >
+                                        <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
+                                            <div className="m-1 bg-dark-gradient rounded p-3 card-body">
+                                                <div className="row">
+                                                    <div className="col-md-4 col-12">
+                                                        <img
+                                                            src="https://cms.growpital.com/uploads/Karan_Agrawal_c112da518d.jpg"
+                                                            alt="profile pic"
+                                                            className="img-fluid w-100 mb-md-0 mb-3"
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-8 col-12">
+                                                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
+                                                            Karan Agrawal
+                                                        </div>
+                                                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
+                                                            <cite>Director- Business Finance</cite>
+                                                            <a
+                                                                href="https://www.linkedin.com/in/karan-agrawal-623b5531/"
+                                                                target="blank"
+                                                            >
+                                                                <svg
+                                                                    stroke="currentColor"
+                                                                    fill="currentColor"
+                                                                    strokeWidth={0}
+                                                                    viewBox="0 0 1024 1024"
+                                                                    className="ms-2 text-indigo"
+                                                                    height={18}
+                                                                    width={18}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <p className="fw-300 fs-15 lh-24 card-text">
+                                                            Karan is a self driven person with diverse experience
+                                                            of around 10 years in power and agriculture sector. He
+                                                            is B. Tech (Honors) in Mechanical engineering from NIT
+                                                            Raipur &amp; PGDM Operations and Strategy from MDI
+                                                            Gurgaon.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        data-aos="fade-up"
+                                        className="d-none d-lg-block col-md-6 aos-init"
+                                    >
+                                        <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
+                                            <div className="m-1 bg-dark-gradient rounded p-3 card-body">
+                                                <div className="row">
+                                                    <div className="col-md-4 col-12">
+                                                        <img
+                                                            src="https://cms.growpital.com/uploads/Ankush_Ramesh_Agrawal_dcb49ae283.jpg"
+                                                            alt="profile pic"
+                                                            className="img-fluid w-100 mb-md-0 mb-3"
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-8 col-12">
+                                                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
+                                                            Ankush Agrawal
+                                                        </div>
+                                                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
+                                                            <cite>Director- Business Intelligence</cite>
+                                                            <a
+                                                                href="https://www.linkedin.com/in/ankushragrawal/"
+                                                                target="blank"
+                                                            >
+                                                                <svg
+                                                                    stroke="currentColor"
+                                                                    fill="currentColor"
+                                                                    strokeWidth={0}
+                                                                    viewBox="0 0 1024 1024"
+                                                                    className="ms-2 text-indigo"
+                                                                    height={18}
+                                                                    width={18}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <p className="fw-300 fs-15 lh-24 card-text">
+                                                            Ankush has 10+ years experience spanning Social Media
+                                                            &amp; Digital Marketing, Market Research &amp;
+                                                            Consumer Insights, Data Analytics &amp; Business
+                                                            Strategy responsibilities across multiple sectors. A
+                                                            PGDM in Marketing &amp; Operations from IMT Nagpur
+                                                            &amp; B Tech UDCT Mumbai graduate.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        data-aos="fade-up"
+                                        className="d-none d-lg-block col-md-6 aos-init"
+                                    >
+                                        <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
+                                            <div className="m-1 bg-dark-gradient rounded p-3 card-body">
+                                                <div className="row">
+                                                    <div className="col-md-4 col-12">
+                                                        <img
+                                                            src="https://cms.growpital.com/uploads/Utkarsh_Srivastava_d09fbc3235.jpg"
+                                                            alt="profile pic"
+                                                            className="img-fluid w-100 mb-md-0 mb-3"
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-8 col-12">
+                                                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
+                                                            Utkarsh Srivastava
+                                                        </div>
+                                                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
+                                                            <cite>Director- Business</cite>
+                                                            <a
+                                                                href="https://www.linkedin.com/in/utkarsh-srivastava-30210417/"
+                                                                target="blank"
+                                                            >
+                                                                <svg
+                                                                    stroke="currentColor"
+                                                                    fill="currentColor"
+                                                                    strokeWidth={0}
+                                                                    viewBox="0 0 1024 1024"
+                                                                    className="ms-2 text-indigo"
+                                                                    height={18}
+                                                                    width={18}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <p className="fw-300 fs-15 lh-24 card-text">
+                                                            Utkarsh is a first principles person. Graduated from
+                                                            IMT Nagpur &amp; did his B Tech in computer science
+                                                            prior to that. He is also an Alumnus of IIM Lucknow.
+                                                            He has over a decade of diversified experience in
+                                                            BFSI, Fintech and Edtech industries.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        data-aos="fade-up"
+                                        className="d-none d-lg-block col-md-6 aos-init"
+                                    >
+                                        <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
+                                            <div className="m-1 bg-dark-gradient rounded p-3 card-body">
+                                                <div className="row">
+                                                    <div className="col-md-4 col-12">
+                                                        <img
+                                                            src="https://cms.growpital.com/uploads/Shubhanshu_Chouhan_d023e38f17.jpg"
+                                                            alt="profile pic"
+                                                            className="img-fluid w-100 mb-md-0 mb-3"
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-8 col-12">
+                                                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
+                                                            Shubhanshu Chouhan
+                                                        </div>
+                                                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
+                                                            <cite>Director-Technology</cite>
+                                                            <a
+                                                                href="https://www.linkedin.com/in/shubhanshu-chouhan/"
+                                                                target="blank"
+                                                            >
+                                                                <svg
+                                                                    stroke="currentColor"
+                                                                    fill="currentColor"
+                                                                    strokeWidth={0}
+                                                                    viewBox="0 0 1024 1024"
+                                                                    className="ms-2 text-indigo"
+                                                                    height={18}
+                                                                    width={18}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <p className="fw-300 fs-15 lh-24 card-text">
+                                                            Passionate about developing high-performing teams
+                                                            using transformational leadership to accelerate
+                                                            business capabilities and optimize IT value.
+                                                            Recognized for creating impactful relationships,
+                                                            strategic sourcing, consensus building, and leading
+                                                            full-cycle global projects.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        data-aos="fade-up"
+                                        className="d-none d-lg-block col-md-6 aos-init"
+                                    >
+                                        <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
+                                            <div className="m-1 bg-dark-gradient rounded p-3 card-body">
+                                                <div className="row">
+                                                    <div className="col-md-4 col-12">
+                                                        <img
+                                                            src="https://cms.growpital.com/uploads/Fahad_Shaikh_c6c7405150.jpg"
+                                                            alt="profile pic"
+                                                            className="img-fluid w-100 mb-md-0 mb-3"
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-8 col-12">
+                                                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
+                                                            Fahad Shaikh
+                                                        </div>
+                                                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
+                                                            <cite>Director- Farm Operations</cite>
+                                                            <a
+                                                                href="https://www.linkedin.com/in/fahad-shaikh-611b43217/"
+                                                                target="blank"
+                                                            >
+                                                                <svg
+                                                                    stroke="currentColor"
+                                                                    fill="currentColor"
+                                                                    strokeWidth={0}
+                                                                    viewBox="0 0 1024 1024"
+                                                                    className="ms-2 text-indigo"
+                                                                    height={18}
+                                                                    width={18}
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <p className="fw-300 fs-15 lh-24 card-text">
+                                                            Fahad's experience spans more than a decade in Supply
+                                                            Chain, Agriculture, Restaurants, Entrepreneurship and
+                                                            Telecommunication sector. He has operational skills
+                                                            and also possesses expertise in team management,
+                                                            vendor management, client management, and quality
+                                                            assurance.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -881,7 +1225,7 @@ export const AboutUs = () => {
                     </div>
                 </div>
             </section>
-            {/* <section className=" mb-md-5 mb-3">
+            <section className=" mb-md-5 mb-3">
                 <div className="container">
                     <div className="d-flex justify-content-center align-items-center row">
                         <div className="text-center col">
@@ -921,7 +1265,7 @@ export const AboutUs = () => {
                         </div>
                     </div>
                 </div>
-            </section> */}
+            </section>
             <section className="bg-charade py-5 mb-md-5 mb-3">
                 <div className="py-0 py-md-0 container">
                     <div className="d-flex justify-content-center align-items-center row">

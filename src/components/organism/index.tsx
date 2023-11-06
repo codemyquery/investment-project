@@ -2,10 +2,18 @@ import { AppDrawer } from "./app-drawer";
 import { AppRouting } from "./app-routing";
 import { Footer } from "./footer";
 import { NavigationBar } from "./navigation-bar";
+import { UserBankDetails } from "./user-bank-details";
+import { UserNomineeDetails } from "./user-nominee-details";
+import { UserPersonalDetails } from "./user-personal-details";
+import { UserUploadDocuments } from "./user-upload-documents";
 
 export {
     AppRouting,
     Footer,
     NavigationBar,
-    AppDrawer
+    AppDrawer,
+    UserPersonalDetails,
+    UserBankDetails,
+    UserNomineeDetails,
+    UserUploadDocuments
 }

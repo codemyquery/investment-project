@@ -9,7 +9,7 @@ export interface NavigationMenu {
     visible: boolean;
     to: string;
     path: string;
-    Icon: React.ElementType<any>;
+    Icon?: React.ElementType<any>;
     allowedActions?: ActionMenu[];
     component: (props: any) => JSX.Element;
     subMenu?: Array<NavigationMenu>;

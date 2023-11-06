@@ -17,8 +17,9 @@ export const SignUp = () => {
                             <div>
                                 <h1 className="fs-md-48 fs-40 fw-bold mb-4">Sign Up</h1>
                                 <p className="mb-4">
-                                    You are one step closer to start your better financial Journey.
-                                    Just enter your details and create your account. we’ll be in touch shortly.
+                                    Would you like to speak to one of our financial advisers over the
+                                    phone? Just submit your details and we’ll be in touch shortly. You
+                                    can also e-mail us for any further concern.
                                 </p>
                             </div>
                             <div className="contact-from text-white">
@@ -63,33 +64,13 @@ export const SignUp = () => {
                                         </div>
                                         <div className="mb-4">
                                             <textarea
-                                                placeholder="LG Code (Optional)"
-                                                
-                                                name="lgCode"
-                                                
+                                                placeholder="Message"
+                                                rows={3}
+                                                name="message"
+                                                id="exampleForm.ControlTextarea1"
                                                 className="form-control"
                                                 defaultValue={""}
                                             />
-                                        </div>
-                                        <div className="mb-4 col-12">
-                                            <input
-                                                placeholder="Enter New Password"
-                                                name="password"
-                                                type="text"
-                                                
-                                                className="form-control"
-                                            />
-                                            
-                                        </div>
-                                        <div className="mb-4 col-12">
-                                            <input
-                                                placeholder="Re-Enter Same Password"
-                                                name="reenterpassword"
-                                                type="text"
-                                                
-                                                className="form-control"
-                                            />
-                                            
                                         </div>
                                         <div className="mb-3">
                                             <div className="form-check">
@@ -112,7 +93,7 @@ export const SignUp = () => {
                                         type="submit"
                                         className="main-btn maincolor mb-2 btn btn-primary"
                                     >
-                                        Create
+                                        Submit
                                     </button>
                                 </form>
                             </div>

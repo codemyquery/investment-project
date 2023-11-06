@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Suspense } from "react";
-import './App.css';
 import { AuthProvider, useAuth } from './providers/auth';
 import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { RightsMenuService } from "./services";

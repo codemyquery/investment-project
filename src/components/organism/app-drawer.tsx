@@ -78,7 +78,7 @@ const NavList = ({
                 <List component={'nav'} aria-labelledby="main-navbar">
                     {
                         routingServices.payload.map(({ id, Icon, i18nKey, to, visible }) => {
-                            return visible && <NavListItem key={`${id}-link`} data-testid={`${id}-link`} icon={<Icon />} primary={i18nKey} to={to || "/error"} />
+                            return visible && <NavListItem key={`${id}-link`} data-testid={`${id}-link`} icon={Icon ? <Icon /> : undefined} primary={i18nKey} to={to || "/error"} />
                         })
                     }
                 </List>)

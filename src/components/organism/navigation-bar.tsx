@@ -2,12 +2,15 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import { useState } from 'react';
 import { Logo } from '../molecules';
+import { useAuth } from '../../providers';
 
-type MenusType = 'Home' | 'About' | 'Contact Us';
-const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
+type MenusType = 'Home' | 'About' | 'FAQs' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile';
+const Menus: MenusType[] = ['Home', 'About', 'FAQs', 'Contact Us'];
+const UserMenus: MenusType[] = ['Dashboard', 'My Plan', 'Profile'];
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
+    const { homeURL } = useAuth();
     const [active, setActive] = useState<MenusType>('Home')
     const [showHeader, setShowHeader] = useState('')
     const navBarClick = (navbar: MenusType) => {
@@ -20,10 +23,10 @@ export const NavigationBar = () => {
                 navigate('./about-us')
                 setActive(navbar)
                 break;
-            // case "FAQs":
-            //     navigate('./faqs')
-            //     setActive(navbar)
-            //     break;
+            case "FAQs":
+                navigate('./faqs')
+                setActive(navbar)
+                break;
             case "Contact Us":
                 navigate('./contact-us')
                 setActive(navbar)
@@ -48,7 +51,7 @@ export const NavigationBar = () => {
                 <div className={`navbar-collapse collapse ${showHeader}`} id="basic-navbar-nav">
                     <ul className="m-auto navbar-nav">
                         {
-                            Menus.map(menu => {
+                            (homeURL.indexOf('/user') === 0 ? UserMenus : Menus).map(menu => {
                                 return <>
                                     <li className={`nav-link ${active === menu ? 'active' : ''}`} onClick={() => { navBarClick(menu) }}>
                                         {menu}
@@ -57,7 +60,19 @@ export const NavigationBar = () => {
                             })
                         }
                     </ul>
-                    <div className="d-flex d-none d-md-block">
+
+                    <div className="header-footer_user__eX1M2">
+                        <div className="header-footer_user_name_icon_wapper__dAxRN" style={{ color: 'white', display: 'inline-flex', textAlign: 'center', cursor: 'pointer' }}>
+                            <span style={{ height: '30px', width: '30px', color: 'black', textAlign: 'center', backgroundColor: 'white', borderRadius: '50%', paddingTop: '3px' }}>
+                                SM
+                            </span>
+                            <div className="header-footer_user_name__LV-tm" style={{ marginRight: '3px', textAlign: 'center', paddingTop: '3px' }}> &nbsp;Shubham Maurya &nbsp;</div>
+                            <svg fill='white' width="14" height="22" viewBox="0 0 12 1">
+                                <path d="M6 9L11.1962 0H0.803848L6 9Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    {/* <div className="d-flex d-none d-md-block">
                         <a
                             href="https://growpital.zohobookings.in/#/customer/growpital"
                             target="#"
@@ -91,7 +106,7 @@ export const NavigationBar = () => {
                         >
                             Login
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>
