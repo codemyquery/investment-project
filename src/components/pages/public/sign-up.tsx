@@ -8,7 +8,7 @@ export const SignUp = () => {
                             data-aos="fade-up"
                             className="px-4 px-md-5 mb-5 col-md-5 aos-init aos-animate"
                         >
-                            
+
                         </div>
                         <div
                             data-aos="fade-up"
@@ -17,13 +17,11 @@ export const SignUp = () => {
                             <div>
                                 <h1 className="fs-md-48 fs-40 fw-bold mb-4">Sign Up</h1>
                                 <p className="mb-4">
-                                    Would you like to speak to one of our financial advisers over the
-                                    phone? Just submit your details and we’ll be in touch shortly. You
-                                    can also e-mail us for any further concern.
+                                    Sign Up and explore more Investment horizons with our
+                                    virtual investment platform.
                                 </p>
                             </div>
                             <div className="contact-from text-white">
-                                <form>
                                     <div className="mb-3 row">
                                         <div className="mb-4 col-12">
                                             <input
@@ -62,16 +60,6 @@ export const SignUp = () => {
                                                 Please provide a valid Email.
                                             </div>
                                         </div>
-                                        <div className="mb-4">
-                                            <textarea
-                                                placeholder="Message"
-                                                rows={3}
-                                                name="message"
-                                                id="exampleForm.ControlTextarea1"
-                                                className="form-control"
-                                                defaultValue={""}
-                                            />
-                                        </div>
                                         <div className="mb-3">
                                             <div className="form-check">
                                                 <input
@@ -95,7 +83,6 @@ export const SignUp = () => {
                                     >
                                         Submit
                                     </button>
-                                </form>
                             </div>
                         </div>
                     </div>

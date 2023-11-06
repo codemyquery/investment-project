@@ -1,47 +1,6 @@
 import virtualProperty from '../../../assets/images/VirtualProperty.png'
 export const HomePage = () => {
   return (<>
-    <section className="signup-page signup-trans">
-      <div className="fixed-bottom bottom-0 d-block d-sm-none container">
-        <div className="row">
-          <div className="d-flex align-items-center signBtn mb-0 col">
-            <div className="mx-2 registerForAMA-page registerAMA-trans">
-              <a
-                href="https://growpital.zohobookings.in/#/customer/growpital"
-                target="#"
-              >
-                <button
-                  type="button"
-                  className="main-btn-registerAMA fs-11 fs-sm-8 btn btn-primary"
-                >
-                  Get a Callback
-                </button>
-              </a>
-            </div>
-            <div className="mx-2">
-              <a href="https://app.growpital.com/signup">
-                <button
-                  type="button"
-                  className="main-btn-sign maincolor fs-11 fs-sm-8 btn btn-primary"
-                >
-                  Sign up
-                </button>
-              </a>
-            </div>
-            <div className="mx-2 login-page login-trans">
-              <a href="https://app.growpital.com/login">
-                <button
-                  type="button"
-                  className="main-btn-login maincolor fs-11 fs-sm-8 btn btn-primary"
-                >
-                  Login
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <section className="py-md-5 pt-3 pb-5">
       <div className="container">
         <div className="d-flex justify-content-center align-items-center py-0 mt-0 row">
