@@ -24,7 +24,7 @@ export const ExpandableCard = ({
                             {c.heading}
                         </button>
                     </h2>
-                    <div className="accordion-collapse collapse " style={{}}>
+                    <div className="accordion-collapse collapse show" style={{}}>
                         <div className="accordion-body">
                             {c.description}
                         </div>
