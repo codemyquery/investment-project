@@ -4,14 +4,14 @@ import { useState } from 'react';
 import { Logo } from '../molecules';
 import { useAuth } from '../../providers';
 
-type MenusType = 'Home' | 'About' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile';
+type MenusType = 'Home' | 'About' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile' | undefined;
 const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
 const UserMenus: MenusType[] = ['Dashboard', 'My Plan', 'Profile'];
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
     const { homeURL } = useAuth();
-    const [active, setActive] = useState<MenusType>('Home')
+    const [active, setActive] = useState<MenusType>(undefined)
     const [showHeader, setShowHeader] = useState('')
     const navBarClick = (navbar: MenusType) => {
         switch (navbar) {
@@ -99,6 +99,7 @@ export const NavigationBar = () => {
                                         type="button"
                                         className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
                                         onClick={() => {
+                                            setActive(undefined)
                                             navigate('./sign-up');
                                         }}
                                     >
@@ -110,6 +111,7 @@ export const NavigationBar = () => {
                                         type="button"
                                         className="main-btn-nav maincolor mb-2 fs-11 main-login-signup-btn btn btn-primary"
                                         onClick={() => {
+                                            setActive(undefined)
                                             navigate('./login');
                                         }}
                                     >
@@ -140,6 +142,7 @@ export const NavigationBar = () => {
                                         type="button"
                                         className="main-btn-sign maincolor fs-11 fs-sm-8 btn btn-primary"
                                         onClick={() => {
+                                            setActive(undefined)
                                             navigate('./sign-up');
                                         }}
                                     >
@@ -151,6 +154,7 @@ export const NavigationBar = () => {
                                         type="button"
                                         className="main-btn-login maincolor fs-11 fs-sm-8 btn btn-primary"
                                         onClick={() => {
+                                            setActive(undefined)
                                             navigate('./login');
                                         }}
                                     >
