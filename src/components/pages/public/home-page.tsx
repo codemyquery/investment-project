@@ -1,4 +1,6 @@
+import { left } from '@popperjs/core'
 import virtualProperty from '../../../assets/images/VirtualProperty.png'
+import { margin } from '@mui/system'
 export const HomePage = () => {
   return (<>
     <section className="py-md-5 pt-3 pb-5">
@@ -239,7 +241,7 @@ export const HomePage = () => {
               >
                 <circle cx={8} cy={8} r={8} />
               </svg>
-              WHAT ARE GROWPITAL INVESTMENTS LIKE?
+              WHAT ARE VIRTUAL PROPERTY INVESTMENTS LIKE?
             </p>
             <h2
               className="text-white fw-600 display-6 mb-3 mb-md-4 aos-init aos-animate"
@@ -267,25 +269,25 @@ export const HomePage = () => {
                 className="img-fluid"
               />
               <div className="text-start">
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-5">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Stamp Duty
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-4 mb-5">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Registration Charges
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   EMI
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Maintenance Cost
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Vacant Period
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Delay In Rentals
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Interior Cost
                 </p>
               </div>
@@ -334,8 +336,7 @@ export const HomePage = () => {
                         Safe &amp; Secure
                       </div>
                       <p className="fw-400 fs-17 lh-24 card-text">
-                        Sales contracts, crop insurance &amp; professional
-                        farming, ensure assured returns.
+                        RBI governed safe & big firms involved  &amp; to ensure assured returns.
                       </p>
                     </div>
                   </div>
