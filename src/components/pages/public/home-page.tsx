@@ -1,7 +1,24 @@
-import { left } from '@popperjs/core'
 import virtualProperty from '../../../assets/images/VirtualProperty.png'
-import { margin } from '@mui/system'
+import { ExpandableCard } from '../../atoms'
 export const HomePage = () => {
+  const content = [
+    {
+      heading: 'Create account and complete KYC',
+      description: 'Sign up with username and password. Verify your KYC which includes Pan Card, Adhaar card &amp; Bank account details.'
+    },
+    {
+      heading: 'Choose investment option',
+      description: 'Select the plan best suited to you and select the number of units you want to invest in.'
+    },
+    {
+      heading: 'Add money and invest',
+      description: 'Simply add money to Growpital Wallet, e-sign required documents.'
+    },
+    {
+      heading: 'Harvest your earnings',
+      description: 'Automate your earnings with assured return at scheduled dates.'
+    }
+  ]
   return (<>
     <section className="py-md-5 pt-3 pb-5">
       <div className="container">
@@ -562,77 +579,7 @@ export const HomePage = () => {
               </div>
             </div>
             <div className="text-center text-md-end col-lg-6 col-md-12 col-12">
-              <div className="home-accordian accordion">
-                <div className="mb-3 bg-transparent accordion-item">
-                  <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button
-                      type="button"
-                      aria-expanded="true"
-                      className="accordion-button"
-                    >
-                      <span className="pe-2">01 </span>Create account and complete
-                      KYC
-                    </button>
-                  </h2>
-                  <div className="accordion-collapse collapse show" style={{}}>
-                    <div className="accordion-body">
-                      Sign up with username and password. Verify your KYC which
-                      includes Pan Card, Adhaar card &amp; Bank account details.
-                    </div>
-                  </div>
-                </div>
-                <div className="mb-3 bg-transparent accordion-item">
-                  <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button
-                      type="button"
-                      aria-expanded="false"
-                      className="accordion-button collapsed"
-                    >
-                      <span className="pe-2">02 </span>Choose investment option
-                    </button>
-                  </h2>
-                  <div className="accordion-collapse collapse" style={{}}>
-                    <div className="accordion-body">
-                      Select the plan best suited to you and select the number of
-                      units you want to invest in.
-                    </div>
-                  </div>
-                </div>
-                <div className="mb-3 bg-transparent accordion-item">
-                  <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button
-                      type="button"
-                      aria-expanded="false"
-                      className="accordion-button collapsed"
-                    >
-                      <span className="pe-2">03 </span> Add money and invest
-                    </button>
-                  </h2>
-                  <div className="accordion-collapse collapse" style={{}}>
-                    <div className="accordion-body">
-                      Simply add money to Growpital Wallet, e-sign required
-                      documents.
-                    </div>
-                  </div>
-                </div>
-                <div className="mb-3 bg-transparent accordion-item">
-                  <h2 className="text-white fw-600 fs-22 accordion-header">
-                    <button
-                      type="button"
-                      aria-expanded="false"
-                      className="accordion-button collapsed"
-                    >
-                      <span className="pe-2">04 </span>Harvest your earnings
-                    </button>
-                  </h2>
-                  <div className="accordion-collapse collapse" style={{}}>
-                    <div className="accordion-body">
-                      Automate your earnings with assured return at scheduled
-                      dates.
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ExpandableCard content={content} />
             </div>
           </div>
         </div>

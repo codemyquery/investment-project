@@ -2,6 +2,7 @@ import { ButtonAddIcon } from "./button-add-icon";
 import { ButtonDeleteIcon } from "./button-delete-icon";
 import { ButtonEditIcon } from "./button-edit-icon";
 import { ButtonViewIcon } from "./button-view-icon";
+import { ExpandableCard } from "./expandable-card";
 import { GotoPageNo } from "./goto-page-no";
 import { NavListItem } from "./nav-list-item";
 import { PageContent } from "./page-content";
@@ -15,5 +16,6 @@ export {
     ButtonDeleteIcon,
     ButtonEditIcon,
     SkeletonLoader,
-    ButtonViewIcon
+    ButtonViewIcon,
+    ExpandableCard
 }
