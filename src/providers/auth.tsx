@@ -69,8 +69,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const preferDarkModes = useMediaQuery("(prefer-color-scheme: dark)");
     const hash = window.location.hash;
     const routeToNavigate = `${window.location.pathname}${hash}`;
-    console.log(routeToNavigate)
-    debugger
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',

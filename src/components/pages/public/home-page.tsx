@@ -1,24 +1,7 @@
 import virtualProperty from '../../../assets/images/VirtualProperty.png'
+import { content, content1 } from '../../../utils/content'
 import { ExpandableCard } from '../../atoms'
 export const HomePage = () => {
-  const content = [
-    {
-      heading: 'Create account and complete KYC',
-      description: 'Sign up with username and password. Verify your KYC which includes Pan Card, Adhaar card &amp; Bank account details.'
-    },
-    {
-      heading: 'Choose investment option',
-      description: 'Select the plan best suited to you and select the number of units you want to invest in.'
-    },
-    {
-      heading: 'Add money and invest',
-      description: 'Simply add money to Growpital Wallet, e-sign required documents.'
-    },
-    {
-      heading: 'Harvest your earnings',
-      description: 'Automate your earnings with assured return at scheduled dates.'
-    }
-  ]
   return (<>
     <section className="py-md-5 pt-3 pb-5">
       <div className="container">
@@ -7504,108 +7487,9 @@ export const HomePage = () => {
             >
               <div className="row">
                 <div className="text-center text-md-end col-md-12 col-12">
-                  <div className="home-accordian accordion">
-                    <div className="mb-3 bg-transparent accordion-item">
-                      <h2 className="text-white fw-600 fs-22 accordion-header">
-                        <button
-                          type="button"
-                          aria-expanded="false"
-                          className="accordion-button collapsed"
-                        >
-                          <span className="pe-2">01</span> What is Growpital? (In
-                          a Nutshell)
-                        </button>
-                      </h2>
-                      <div className="accordion-collapse collapse">
-                        <div className="pb-2 accordion-body">
-                          <p>
-                            The all -new Agro investment platform with tax-free
-                            income. It’s the new clutter-free, fixed-income
-                            platform with 11% -14% Tax free fixed profit share.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3 bg-transparent accordion-item">
-                      <h2 className="text-white fw-600 fs-22 accordion-header">
-                        <button
-                          type="button"
-                          aria-expanded="false"
-                          className="accordion-button collapsed"
-                        >
-                          <span className="pe-2">02</span> What is the lock-in
-                          period after I invest via Growpital?
-                        </button>
-                      </h2>
-                      <div className="accordion-collapse collapse">
-                        <div className="pb-2 accordion-body">
-                          <p>
-                            To make your investment experience hassle-free, the
-                            project entities just put a minimum Lock-in period. If
-                            you withdraw before the lock-in period ends, the
-                            project entity would deduct all payouts given to you
-                            from the original investment amount and pay the
-                            remaining amount to you. This will result in no
-                            profit/return to you.
-                          </p>
-                          <p>
-                            However, if you make any withdraw request after the
-                            lock in period before the maturity period, the
-                            original investment amount shall be paid at that time;
-                            no future profits and no pro-rata calculation of
-                            payouts will be done.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3 bg-transparent accordion-item">
-                      <h2 className="text-white fw-600 fs-22 accordion-header">
-                        <button
-                          type="button"
-                          aria-expanded="false"
-                          className="accordion-button collapsed"
-                        >
-                          <span className="pe-2">03</span> Are the returns
-                          guaranteed?
-                        </button>
-                      </h2>
-                      <div className="accordion-collapse collapse">
-                        <div className="pb-2 accordion-body">
-                          <p>
-                            The returns are projected revenues from farm project
-                            after sales of agri produce. So the revenues of the
-                            farm project will deviate from crop to crop, but we
-                            keep a satisfactory buffer to provide fixed returns in
-                            the form of advance profits.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3 bg-transparent accordion-item">
-                      <h2 className="text-white fw-600 fs-22 accordion-header">
-                        <button
-                          type="button"
-                          aria-expanded="false"
-                          className="accordion-button collapsed"
-                        >
-                          <span className="pe-2">04</span> How is my earning Tax
-                          Free?
-                        </button>
-                      </h2>
-                      <div className="accordion-collapse collapse">
-                        <div className="pb-2 accordion-body">
-                          <p>
-                            There are no tax deduction on the returns received by
-                            you as it is the share of profit given by the Farm
-                            project entity, which is an LLP, as per section
-                            10(2A). The earnings of the LLP is agriculture income,
-                            and is exempted under Section 10(1) of the Income Tax
-                            Act,1961 in India.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {
+                    <ExpandableCard content={content1} />
+                  }
                 </div>
               </div>
             </div>
