@@ -9,7 +9,7 @@ export const Footer = () => {
                         <img src={logo} alt="logo" className="img-fluid w-75" />
                         <p className="text-white fs-18 fs-sm-22 fw-400 my-3">
                             We connect you to the world of agri investment.
-                        </p> 
+                        </p>
                     </div>
                     <div className="col-lg-3">
                         <h6 className="fs-22 fs-sm-24 mb-md-3 mt-4 mt-md-0 fw-600 text-white">
