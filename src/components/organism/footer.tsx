@@ -1,4 +1,4 @@
-import logo from '../../assets/images/logo.png'
+//import logo from '../../assets/images/logo.png'
 
 export const Footer = () => {
     return (
@@ -6,14 +6,15 @@ export const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-6 col-12">
-                        <img src={logo} alt="logo" className="img-fluid w-75" />
+                        {/* <img src={logo} alt="logo" className="img-fluid w-75" /> */}
+                        <h4>Virtual Property</h4>
                         <p className="text-white fs-18 fs-sm-22 fw-400 my-3">
-                            We connect you to the world of agri investment.
+                            We connect you to the world of better investment.
                         </p>
                     </div>
                     <div className="col-lg-3">
                         <h6 className="fs-22 fs-sm-24 mb-md-3 mt-4 mt-md-0 fw-600 text-white">
-                            Growpital
+                            Virtual Property
                         </h6>
                         <div className="flex-column nav">
                             <a href="/about" data-rr-ui-event-key="/about" className="nav-link">
@@ -52,15 +53,7 @@ export const Footer = () => {
                                 Contact Us
                             </a>
                         </div>
-                        <div className="flex-column nav">
-                            <a
-                                href="https://zettafarms.com/"
-                                data-rr-ui-event-key="https://zettafarms.com/"
-                                className="nav-link"
-                            >
-                                Zetta Farms
-                            </a>
-                        </div>
+                        
                     </div>
                     <div className="col-lg-3">
                         <h6 className="fs-22 fs-sm-24 mb-md-3 mt-4 mt-md-0 fw-600 text-white">
@@ -127,7 +120,7 @@ export const Footer = () => {
                                 data-rr-ui-event-key="tel:+91-7231844488"
                                 className="nav-link"
                             >
-                                +91-7231844488
+                                +91-9793909000
                             </a>
                         </div>
                         <div className="flex-column nav">
@@ -136,7 +129,7 @@ export const Footer = () => {
                                 data-rr-ui-event-key="mailto:info@growpital.com"
                                 className="nav-link"
                             >
-                                info@growpital.com
+                                contact@multisphere.in
                             </a>
                         </div>
                         <div className="flex-column nav">
@@ -145,7 +138,8 @@ export const Footer = () => {
                                 data-rr-ui-event-key="https://maps.google.com/?q=Industrial Area, Sector 32, Gurgaon, Haryana, 122022"
                                 className="nav-link"
                             >
-                                Plot no 25B, Industrial Area, Sector 32, Gurgaon, Haryana,122022
+                                MultiSphere Enterprises, LLP, Mughlaha, 
+                                Medical Road, Gorakhpur, 273013
                             </a>
                         </div>
                         <div className="justify-content-start nav">
@@ -285,7 +279,7 @@ export const Footer = () => {
                                     textDecorationColor: "rgb(23, 23, 26)",
                                 }}
                             >
-                                <span>www.growpital.com </span>
+                                <span> www.multisphere.in </span>
                             </a>
                             . All Rights Reserved.
                         </p>

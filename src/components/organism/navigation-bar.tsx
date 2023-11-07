@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { Logo } from '../molecules';
 import { useAuth } from '../../providers';
 
-type MenusType = 'Home' | 'About' | 'FAQs' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile';
-const Menus: MenusType[] = ['Home', 'About', 'FAQs', 'Contact Us'];
+type MenusType = 'Home' | 'About' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile';
+const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
 const UserMenus: MenusType[] = ['Dashboard', 'My Plan', 'Profile'];
 
 export const NavigationBar = () => {
@@ -23,10 +23,10 @@ export const NavigationBar = () => {
                 navigate('./about-us')
                 setActive(navbar)
                 break;
-            case "FAQs":
-                navigate('./faqs')
-                setActive(navbar)
-                break;
+            // case "FAQs":
+            //     navigate('./faqs')
+            //     setActive(navbar)
+            //     break;
             case "Contact Us":
                 navigate('./contact-us')
                 setActive(navbar)

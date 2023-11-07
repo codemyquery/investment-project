@@ -69,7 +69,7 @@ export const HomePage = () => {
                 </span>
               </h1>
               <p className="text-white fw-400 fs-24 my-3 mb-md-4 py-2">
-                Diversify your portfolio with safe agri-investments.
+                Diversify your portfolio with guaranteed from RBI governed Investment.
               </p>
             </div>
             <div className="px-5 px-lg-0">
@@ -89,7 +89,7 @@ export const HomePage = () => {
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
                         Guaranteed
-                        <span className="fw-600 text-main-gold">Monthly Income from Day 1</span>
+                        <span className="fw-600 text-main-gold"> Monthly Income from Day 1</span>
                       </div>
                     </div>
                   </div>
@@ -108,9 +108,9 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                      Booking Amount
-                        <span className="fw-600 text-main-gold"> 10% </span>
-                        
+                      Booking Amount<br/><br/>
+                        <span className="fw-600 text-main-gold"> 10%</span>
+                        <br/>
                         
                       </div>
                     </div>
@@ -130,8 +130,8 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                        Assured
-                        <span className="fw-600 text-main-gold">Buy</span>
+                        Assured<br/><br/>
+                        <span className="fw-600 text-main-gold"> Buy</span>
                         Back
                       </div>
                     </div>
@@ -258,7 +258,7 @@ export const HomePage = () => {
               >
                 <circle cx={8} cy={8} r={8} />
               </svg>
-              WHAT ARE VIRTUAL PROPERTY INVESTMENTS LIKE?
+              WHAT ARE GROWPITAL INVESTMENTS LIKE?
             </p>
             <h2
               className="text-white fw-600 display-6 mb-3 mb-md-4 aos-init aos-animate"
@@ -286,25 +286,25 @@ export const HomePage = () => {
                 className="img-fluid"
               />
               <div className="text-start">
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-5">
                   Stamp Duty
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-4 mb-5">
                   Registration Charges
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
                   EMI
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
                   Maintenance Cost
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
                   Vacant Period
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
                   Delay In Rentals
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
+                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
                   Interior Cost
                 </p>
               </div>
@@ -353,7 +353,8 @@ export const HomePage = () => {
                         Safe &amp; Secure
                       </div>
                       <p className="fw-400 fs-17 lh-24 card-text">
-                        RBI governed safe & big firms involved  &amp; to ensure assured returns.
+                        Sales contracts, crop insurance &amp; professional
+                        farming, ensure assured returns.
                       </p>
                     </div>
                   </div>

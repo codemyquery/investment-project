@@ -17,17 +17,20 @@ export const Login = () => {
                             <div>
                                 <h1 className="fs-md-48 fs-40 fw-bold mb-4">Login</h1>
                                 <p className="mb-4">
-                                    Login and explore more Investment horizons with our
-                                    virtual investment platform.
+                                    Login into Your Account & Complete KYC to invest in our 
+                                    plans. Our advisor will connect with you shortly.
                                 </p>
                             </div>
                             <div className="contact-from text-white">
+                                <form>
                                     <div className="mb-3 row">
-                                    <div className="mb-4 col-12">
+                                        
+                                        
+                                        <div className="mb-4 col-12">
                                             <input
-                                                placeholder="Email/Mobile"
+                                                placeholder="Email"
                                                 name="email"
-                                                type="text"
+                                                type="email"
                                                 id="validationCustom05"
                                                 className="form-control"
                                             />
@@ -37,21 +40,24 @@ export const Login = () => {
                                         </div>
                                         <div className="mb-4 col-12">
                                             <input
-                                                placeholder="Password"
+                                                placeholder="Enter Your Password"
                                                 name="password"
-                                                type="password"
-                                                id="validationCustom05"
+                                                type="email"
+                                              
                                                 className="form-control"
                                             />
+                                            
                                         </div>
+                                        
                                     </div>
                                     <input type="hidden" id="zc_gad" name="zc_gad" defaultValue="" />
                                     <button
                                         type="submit"
                                         className="main-btn maincolor mb-2 btn btn-primary"
                                     >
-                                        Submit
+                                        Login
                                     </button>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ export const SignUp = () => {
                             data-aos="fade-up"
                             className="px-4 px-md-5 mb-5 col-md-5 aos-init aos-animate"
                         >
-
+                            
                         </div>
                         <div
                             data-aos="fade-up"
@@ -17,11 +17,12 @@ export const SignUp = () => {
                             <div>
                                 <h1 className="fs-md-48 fs-40 fw-bold mb-4">Sign Up</h1>
                                 <p className="mb-4">
-                                    Sign Up and explore more Investment horizons with our
-                                    virtual investment platform.
+                                    You are one step closer to start your better financial Journey.
+                                    Just enter your details and create your account. we’ll be in touch shortly.
                                 </p>
                             </div>
                             <div className="contact-from text-white">
+                                <form>
                                     <div className="mb-3 row">
                                         <div className="mb-4 col-12">
                                             <input
@@ -60,6 +61,36 @@ export const SignUp = () => {
                                                 Please provide a valid Email.
                                             </div>
                                         </div>
+                                        <div className="mb-4">
+                                            <textarea
+                                                placeholder="LG Code (Optional)"
+                                                
+                                                name="lgCode"
+                                                
+                                                className="form-control"
+                                                defaultValue={""}
+                                            />
+                                        </div>
+                                        <div className="mb-4 col-12">
+                                            <input
+                                                placeholder="Enter New Password"
+                                                name="password"
+                                                type="text"
+                                                
+                                                className="form-control"
+                                            />
+                                            
+                                        </div>
+                                        <div className="mb-4 col-12">
+                                            <input
+                                                placeholder="Re-Enter Same Password"
+                                                name="reenterpassword"
+                                                type="text"
+                                                
+                                                className="form-control"
+                                            />
+                                            
+                                        </div>
                                         <div className="mb-3">
                                             <div className="form-check">
                                                 <input
@@ -81,8 +112,9 @@ export const SignUp = () => {
                                         type="submit"
                                         className="main-btn maincolor mb-2 btn btn-primary"
                                     >
-                                        Submit
+                                        Create
                                     </button>
+                                </form>
                             </div>
                         </div>
                     </div>
