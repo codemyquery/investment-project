@@ -42,7 +42,7 @@ export const Login = () => {
                                             <input
                                                 placeholder="Enter Your Password"
                                                 name="password"
-                                                type="email"
+                                                type="password"
                                               
                                                 className="form-control"
                                             />

@@ -1,81 +1,64 @@
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { DashboardPageTemplate } from "../../templates";
-import AddIcon from '@mui/icons-material/Add';
 import { DisplayTablePayload } from "../../../types";
 import { useDisplayTablePageController, useDisplayTableColumnController, DisplayTableItems } from "../../organism/display-table-items";
-
+import { BrowseFile } from "../../atoms";
+import { Plan } from "../../../services";
+import * as XLSX from "xlsx";
 interface PlanServerData {
-    id:string,
-    planName : string,
-    pdfDocument : string,
-    planStartDate : string,
-    actionPlan : string,
-    lastUpdated:Date
+    id: string,
+    planName: string,
+    pdfDocument: string,
+    planStartDate: string,
+    actionPlan: string,
+    lastUpdated: Date
 }
 
 export const DashboardPlanDetails = () => {
-    const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const [payloadData, setPayloadData] = useState<DisplayTablePayload<PlanServerData>>({
-        rows: [
-            {
-                id: "1",
-                planName : "Aditya Birla Monthly Income Plan",
-                pdfDocument : "This will be PDF Attachment",
-                planStartDate : "11/06/2023",
-                actionPlan : "this will be button for edit/modify",
-                lastUpdated: new Date()
-            }
-        ],
+        rows: [],
         totalDataCount: 0
     });
     const paginationController = useDisplayTablePageController({});
-    const columnController = useDisplayTableColumnController<PlanServerData>(
-        {
-            columns:
-                [
-                    {
-                        field: 'planName',
-                        type: 'text',
-                        headerName: 'Plan Name',
-                        filterable: true,
-                        sortable: true
-                    },
-                    {
-                        field: 'pdfDocument',
-                        type: 'text',
-                        headerName: 'PDF Document'
-                    },
-                    {
-                        field: 'planStartDate',
-                        type: 'text',
-                        headerName: 'Plan Start Date',
-                        filterable: true
-                    },
-                    
-                    {
-                        field: 'lastUpdated',
-                        type: 'date',
-                        sortable: true,
-                        headerName: 'Last Updated'
-                    },
-                    {
-                        field: 'updateDetails',
-                        type: 'action',
-                        sortable: true,
-                        headerName: 'Actions',
-                        actionsList: [
-                            {
-                                type: 'edit',
-                                callback: (params) => {
-                                   navigate(`/admin/edit-customers`)
-                                }
-                            }
-                        ]
+    const columnController = useDisplayTableColumnController<PlanServerData>({
+        columns: Plan.useDisplayTablePlanHeaders()
+    });
+
+    const onBrowseFileHandler = async (evt: ChangeEvent<HTMLInputElement>) => {
+        const file = evt.currentTarget?.files;
+        if (file?.length) {
+            await readExcel(file[0]);
+        }
+    }
+
+    const readExcel = async (file: any) => {
+        const header = ['Income', 'Maturity', 'Surrender Value']
+        const fileReader = await new FileReader()
+        fileReader.readAsArrayBuffer(file);
+        fileReader.onload = (e: any) => {
+            const bufferArray = e?.target.result
+            const wb = XLSX.read(bufferArray, { type: "buffer" })
+            const data: Record<string, any> = {}
+            for (let i = 0; i < wb.SheetNames.length; i++) {
+                const sheetName = wb.SheetNames[i];
+                if(sheetName === "Plan Index") continue;
+                data[sheetName] = {};
+                const ws = wb.Sheets[sheetName]
+                const wb_as_json = XLSX.utils.sheet_to_json(ws);
+                for (let j = 0; j < wb_as_json.length; j++) {
+                    const row: any = wb_as_json[j];
+                    for( const key in row){
+                        if(Number(key)){
+                            data[sheetName][key] = []
+                            data[sheetName][key].push(header);
+                        }
                     }
-                ]
-        });
+                }
+            }
+            console.log(data)
+        }
+    }
 
     return (
         <>
@@ -91,12 +74,8 @@ export const DashboardPlanDetails = () => {
                     actionsLeft={
                         [
                             {
-                                type: 'customBasicAction',
-                                icon: <AddIcon />,
-                                title: "Add New Plan",
-                                onClick: () => {
-                                    navigate('/admin/edit-plan-details')
-                                }
+                                type: 'custom',
+                                action: <BrowseFile label="Upload File" onBrowseFileHandler={onBrowseFileHandler} />
                             }
                         ]
                     }
