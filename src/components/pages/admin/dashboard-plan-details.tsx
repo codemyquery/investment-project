@@ -5,13 +5,23 @@ import { useDisplayTablePageController, useDisplayTableColumnController, Display
 import { BrowseFile } from "../../atoms";
 import { Plan } from "../../../services";
 import * as XLSX from "xlsx";
+import { constant } from "../../../utils";
 interface PlanServerData {
     id: string,
+    planCode: string,
+    insuranceCompany: string,
     planName: string,
-    pdfDocument: string,
-    planStartDate: string,
-    actionPlan: string,
-    lastUpdated: Date
+    ageBand: string,
+    incomeTermOptions: string,
+    maturityValueOptions: string,
+    incomeFrequency: string,
+    ppt: string,
+}
+
+interface PlanDetails {
+    yearlyIncome: string,
+    maturity: string,
+    surrenderValue: string
 }
 
 export const DashboardPlanDetails = () => {
@@ -33,30 +43,48 @@ export const DashboardPlanDetails = () => {
     }
 
     const readExcel = async (file: any) => {
-        const header = ['Income', 'Maturity', 'Surrender Value']
         const fileReader = await new FileReader()
         fileReader.readAsArrayBuffer(file);
         fileReader.onload = (e: any) => {
             const bufferArray = e?.target.result
             const wb = XLSX.read(bufferArray, { type: "buffer" })
-            const data: Record<string, any> = {}
+            let data: Record<string, any> = {}
             for (let i = 0; i < wb.SheetNames.length; i++) {
                 const sheetName = wb.SheetNames[i];
-                if(sheetName === "Plan Index") continue;
-                data[sheetName] = {};
                 const ws = wb.Sheets[sheetName]
-                const wb_as_json = XLSX.utils.sheet_to_json(ws);
+                const wb_as_json: any[] = XLSX.utils.sheet_to_json(ws);
+                if (sheetName === "Plan Index") {
+                    const rows: PlanServerData[] = wb_as_json.map((row, i) => {
+                        return {
+                            id: i.toString(),
+                            ageBand: row['Age Band'] as string,
+                            planCode: row['Plan Code'] as string,
+                            insuranceCompany: row['Insurance Company'] as string,
+                            planName: row['Plan Name'] as string,
+                            incomeTermOptions: row['Income Term Option (yrs)'] as string,
+                            maturityValueOptions: row['Maturity Value Option (percentage of total premium paid)'] as string,
+                            incomeFrequency: row['Income Frequency (Monthly/Yearly)'] as string,
+                            ppt: row['PPT (10,12)'] as string,                        
+                        };
+                    })
+                    setPayloadData({
+                        rows: rows,
+                        totalDataCount: wb_as_json.length
+                    })
+                    continue;
+                }
+                data[sheetName] = {};
                 for (let j = 0; j < wb_as_json.length; j++) {
                     const row: any = wb_as_json[j];
-                    for( const key in row){
-                        if(Number(key)){
-                            data[sheetName][key] = []
-                            data[sheetName][key].push(header);
+                    for (let i = 0; i < constant.ExcelHeaders.length; i++) {
+                        const element = constant.ExcelHeaders[i];
+                        if (!data[sheetName].hasOwnProperty(element[0])) {
+                            data[sheetName][element[0]] = [];
                         }
+                        data[sheetName][element[0]].push([row[element[0]], row[element[1]], row[element[2]]]);
                     }
                 }
             }
-            console.log(data)
         }
     }
 
