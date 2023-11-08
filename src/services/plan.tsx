@@ -1,8 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { DisplayTableColumnDefinition } from "../types";
 
-export const useDisplayTablePlanHeaders = () => {
-    const navigate = useNavigate();
+interface useDisplayTablePlanHeadersProps{
+    dialogHandler: (open: boolean) => void
+}
+
+export const useDisplayTablePlanHeaders = ({
+    dialogHandler
+}: useDisplayTablePlanHeadersProps) => {
     const planTableHeader: Array<DisplayTableColumnDefinition> = [
         {
             field: 'planCode',
@@ -53,9 +58,9 @@ export const useDisplayTablePlanHeaders = () => {
             headerName: 'Actions',
             actionsList: [
                 {
-                    type: 'edit',
+                    type: 'view',
                     callback: (params) => {
-                        navigate(`/admin/edit-customers`)
+                        dialogHandler(true);
                     }
                 }
             ]
