@@ -6,8 +6,7 @@ export const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-6 col-12">
-                        {/* <img src={logo} alt="logo" className="img-fluid w-75" /> */}
-                        <h4>Virtual Property</h4>
+                        <h4 style={{color: 'white'}}>Virtual Property</h4>
                         <p className="text-white fs-18 fs-sm-22 fw-400 my-3">
                             We connect you to the world of better investment.
                         </p>
@@ -40,11 +39,6 @@ export const Footer = () => {
                             </a>
                         </div>
                         <div className="flex-column nav">
-                            <a href="/blog" data-rr-ui-event-key="/blog" className="nav-link">
-                                Blogs
-                            </a>
-                        </div>
-                        <div className="flex-column nav">
                             <a
                                 href="/contact-us.html"
                                 data-rr-ui-event-key="/contact"
@@ -66,11 +60,6 @@ export const Footer = () => {
                                 className="nav-link"
                             >
                                 Returns Calculator
-                            </a>
-                        </div>
-                        <div className="flex-column nav">
-                            <a href="/faqs" data-rr-ui-event-key="/faqs" className="nav-link">
-                                FAQs
                             </a>
                         </div>
                         <div className="flex-column nav">
