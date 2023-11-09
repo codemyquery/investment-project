@@ -38,7 +38,6 @@ export const DashboardPlanDetails = () => {
         rows: [],
         totalDataCount: 0
     });
-
     const dialogHandler = (params?: GridRenderCellParams<any, any, any>) => {
         if (params) {
             setDialog({ open: true, data: params.row })
@@ -158,6 +157,7 @@ export const DashboardPlanDetails = () => {
                                             {
                                                 dialog?.data?.planDetails[investmentAmount].map((key: any, i) => {
                                                     return <TableRow>
+                                                        <TableCell>{i === 0 ? 'Year' : i}</TableCell>
                                                         <TableCell>{i === 0 ? key[0] : `${formatNumber(Number(key[0] || 0))}₹`}</TableCell>
                                                         <TableCell>{i === 0 ? key[1] : `${formatNumber(Number(key[1] || 0))}₹`}</TableCell>
                                                         <TableCell>{i === 0 ? key[2] : `${formatNumber(Number(key[2] || 0))}₹`}</TableCell>
