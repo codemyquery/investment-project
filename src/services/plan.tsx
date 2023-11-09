@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { DisplayTableColumnDefinition } from "../types";
+import { GridRenderCellParams } from "@mui/x-data-grid";
 
 interface useDisplayTablePlanHeadersProps{
-    dialogHandler: (open: boolean) => void
+    dialogHandler: (params: GridRenderCellParams<any, any, any>) => void
 }
 
 export const useDisplayTablePlanHeaders = ({
@@ -59,9 +60,7 @@ export const useDisplayTablePlanHeaders = ({
             actionsList: [
                 {
                     type: 'view',
-                    callback: (params) => {
-                        dialogHandler(true);
-                    }
+                    callback: dialogHandler
                 }
             ]
         }

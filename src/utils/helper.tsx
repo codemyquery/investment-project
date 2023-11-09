@@ -34,7 +34,6 @@ export const formatDate = (date: Date, format?: 'dd-mm-yyyy' | 'yyyy-mm-dd') => 
     }
 }
 
-export const formatNumberToFixed = (value: number, toFixedValue?: number, round?: boolean) => {
-    toFixedValue = toFixedValue ? toFixedValue : 2;
-    return Number(round ? Math.round(value).toFixed(toFixedValue) : value.toFixed(toFixedValue));
+export const formatNumber = (number: number, maximumFractionDigits?: number) => {
+    return Intl.NumberFormat("en-In", { maximumFractionDigits: maximumFractionDigits,currency: 'INR' }).format(Number(number))
 }

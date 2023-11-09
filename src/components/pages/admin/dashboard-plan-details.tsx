@@ -5,9 +5,12 @@ import { useDisplayTablePageController, useDisplayTableColumnController, Display
 import { BrowseFile } from "../../atoms";
 import { Plan } from "../../../services";
 import * as XLSX from "xlsx";
-import { constant } from "../../../utils";
+import { constant, formatNumber } from "../../../utils";
 import CloseIcon from '@mui/icons-material/Close';
-import { DialogTitle, IconButton, DialogContent, Typography, DialogActions, Button, Dialog } from "@mui/material";
+import { DialogTitle, IconButton, DialogContent, Typography, DialogActions, Button, Dialog, Grid, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, MenuItem, MenuList } from "@mui/material";
+import { GridRenderCellParams } from "@mui/x-data-grid";
+import { GenericDialog } from "../../organism";
+
 interface PlanServerData {
     id: string,
     planCode: string,
@@ -18,23 +21,30 @@ interface PlanServerData {
     maturityValueOptions: string,
     incomeFrequency: string,
     ppt: string,
+    planDetails: Record<string, Array<string>>
 }
 
-interface PlanDetails {
-    yearlyIncome: string,
-    maturity: string,
-    surrenderValue: string
+interface Dialog {
+    data?: PlanServerData,
+    open: boolean
 }
-
+const dialogDefaultValue: Dialog = {
+    open: false,
+}
 export const DashboardPlanDetails = () => {
-    const [loader, setLoader] = useState(false);
-    const [dialogOpen, setDialogOpen] = useState(false);
-    const [payloadData, setPayloadData] = useState<DisplayTablePayload<PlanServerData>>({
+    const [dialog, setDialog] = useState(dialogDefaultValue);
+    const [investmentAmount, setInvestmentAmount] = useState<string>('1000000');
+    const [payloadPlanData, setPayloadPlanData] = useState<DisplayTablePayload<PlanServerData>>({
         rows: [],
         totalDataCount: 0
     });
-    const dialogHandler = (open: boolean) => {
-        setDialogOpen(open)
+
+    const dialogHandler = (params?: GridRenderCellParams<any, any, any>) => {
+        if (params) {
+            setDialog({ open: true, data: params.row })
+        } else {
+            setDialog(dialogDefaultValue)
+        }
     }
     const paginationController = useDisplayTablePageController({});
     const columnController = useDisplayTableColumnController<PlanServerData>({
@@ -54,13 +64,14 @@ export const DashboardPlanDetails = () => {
         fileReader.onload = (e: any) => {
             const bufferArray = e?.target.result
             const wb = XLSX.read(bufferArray, { type: "buffer" })
-            let data: Record<string, any> = {}
+            let data: Record<string, any> = {};
+            const totalPlans: PlanServerData[] = [];
             for (let i = 0; i < wb.SheetNames.length; i++) {
                 const sheetName = wb.SheetNames[i];
                 const ws = wb.Sheets[sheetName]
                 const wb_as_json: any[] = XLSX.utils.sheet_to_json(ws);
                 if (sheetName === "Plan Index") {
-                    const rows: PlanServerData[] = wb_as_json.map((row, i) => {
+                    totalPlans.push(...wb_as_json.map((row, i) => {
                         return {
                             id: i.toString(),
                             ageBand: row['Age Band'] as string,
@@ -71,12 +82,9 @@ export const DashboardPlanDetails = () => {
                             maturityValueOptions: row['Maturity Value Option (percentage of total premium paid)'] as string,
                             incomeFrequency: row['Income Frequency (Monthly/Yearly)'] as string,
                             ppt: row['PPT (10,12)'] as string,
+                            planDetails: {}
                         };
-                    })
-                    setPayloadData({
-                        rows: rows,
-                        totalDataCount: wb_as_json.length
-                    })
+                    }));
                     continue;
                 }
                 data[sheetName] = {};
@@ -90,7 +98,16 @@ export const DashboardPlanDetails = () => {
                         data[sheetName][element[0]].push([row[element[0]], row[element[1]], row[element[2]]]);
                     }
                 }
+                totalPlans.forEach((plan) => {
+                    if (plan.planCode === sheetName) {
+                        plan.planDetails = data[sheetName]
+                    }
+                })
             }
+            setPayloadPlanData({
+                rows: totalPlans,
+                totalDataCount: totalPlans.length
+            })
         }
     }
 
@@ -99,8 +116,7 @@ export const DashboardPlanDetails = () => {
             <DashboardPageTemplate id={"expense-report-dashboard-page"}>
                 <h5>Plan List</h5>
                 <DisplayTableItems
-                    loader={loader}
-                    data={payloadData}
+                    data={payloadPlanData}
                     columnControllerHandler={columnController}
                     selectionPageController={paginationController}
                     tableId={"add-purchase-table"}
@@ -120,48 +136,43 @@ export const DashboardPlanDetails = () => {
                         }
                     }}
                 />
-                <Dialog
-                    onClose={() => { dialogHandler(false) }}
-                    aria-labelledby="customized-dialog-title"
-                    open={dialogOpen}
-                >
-                    <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-                        Modal title
-                    </DialogTitle>
-                    <IconButton
-                        aria-label="close"
-                        onClick={() => { dialogHandler(false) }}
-                        sx={{
-                            position: 'absolute',
-                            right: 8,
-                            top: 8,
-                            color: (theme) => theme.palette.grey[500],
-                        }}
-                    >
-                        <CloseIcon />
-                    </IconButton>
-                    <DialogContent dividers>
-                        <Typography gutterBottom>
-                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                            consectetur ac, vestibulum at eros.
-                        </Typography>
-                        <Typography gutterBottom>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                        </Typography>
-                        <Typography gutterBottom>
-                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
-                            magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
-                            ullamcorper nulla non metus auctor fringilla.
-                        </Typography>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button autoFocus onClick={() => { dialogHandler(false) }}>
-                            Save changes
-                        </Button>
-                    </DialogActions>
-                </Dialog>
+                <GenericDialog
+                    open={dialog.open}
+                    title={dialog?.data?.planCode || ''}
+                    maxWidth="md"
+                    content={<>
+                        <Grid container>
+                            <Grid item xs={3} sx={{ overflowY: "scroll", maxHeight: "calc(50vh)" }}>
+                                {
+                                    Object.keys(dialog?.data?.planDetails || {}).map((key: string) => (
+                                        <MenuItem className={investmentAmount === key ? "Mui-selected" : ""} onClick={() => { setInvestmentAmount(key) }}>
+                                            {formatNumber(Number(key))}₹
+                                        </MenuItem>
+                                    ))
+                                }
+                            </Grid>
+                            <Grid item xs={9}>
+                                <TableContainer style={{ maxHeight: 'calc(50vh)' }}>
+                                    <Table aria-label="simple table" stickyHeader>
+                                        <TableBody>
+                                            {
+                                                dialog?.data?.planDetails[investmentAmount].map((key: any, i) => {
+                                                    return <TableRow>
+                                                        <TableCell>{i === 0 ? key[0] : `${formatNumber(Number(key[0] || 0))}₹`}</TableCell>
+                                                        <TableCell>{i === 0 ? key[1] : `${formatNumber(Number(key[1] || 0))}₹`}</TableCell>
+                                                        <TableCell>{i === 0 ? key[2] : `${formatNumber(Number(key[2] || 0))}₹`}</TableCell>
+                                                    </TableRow>
+                                                })
+                                            }
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </Grid>
+                        </Grid>
+                    </>}
+                    onSubmit={() => { dialogHandler() }}
+                    onSubmitText="Ok"
+                />
             </DashboardPageTemplate>
         </>
     )

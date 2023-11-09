@@ -1,6 +1,7 @@
 import { AppDrawer } from "./app-drawer";
 import { AppRouting } from "./app-routing";
 import { Footer } from "./footer";
+import { GenericDialog } from "./genique-dialog";
 import { NavigationBar } from "./navigation-bar";
 import { UserBankDetails } from "./user-bank-details";
 import { UserNomineeDetails } from "./user-nominee-details";
@@ -15,5 +16,6 @@ export {
     UserPersonalDetails,
     UserBankDetails,
     UserNomineeDetails,
-    UserUploadDocuments
+    UserUploadDocuments,
+    GenericDialog
 }
