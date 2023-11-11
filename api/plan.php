@@ -93,7 +93,7 @@ function formatPlanOutput($row)
         "incomeTermOptions"         => $row['income_terms_options'],
         "maturityValueOptions"      => $row['maturity_value'],
         "incomeFrequency"           => $row['income_frequency'],
-        "planDetails"               => $row['plan_details'],
+        "planDetails"               => json_decode($row['plan_details']),
         "createdBy"                 => $row['created_by'],
         "updatedBy"                 => $row['updated_by'],
         "dateUpdated"               => $row['updated_on']
