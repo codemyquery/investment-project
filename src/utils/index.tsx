@@ -3,7 +3,7 @@ import { formatDate, formatNumber, getAuthHeader, postJsonAuthHeader } from "./h
 import { callService } from "./service";
 import * as constant from "./constants";
 import * as request from './request';
-
+import { t } from './translation';
 export {
     request,
     constant,
@@ -13,5 +13,6 @@ export {
     callService,
     getAuthHeader,
     postJsonAuthHeader,
-    formatNumber
+    formatNumber,
+    t
 }

@@ -6,6 +6,11 @@ interface Login {
     actions: 'login'
 }
 
+interface Employee {
+    page: 'employee',
+    actions: 'addEmployee'
+}
+
 interface BodyData {
     [key: string]: any;
 }
@@ -13,7 +18,7 @@ interface FilterData {
     [key: string]: any;
 }
 interface Body {
-    route: Login
+    route: Login | Employee
     data?: BodyData
     filter?: FilterData
 }

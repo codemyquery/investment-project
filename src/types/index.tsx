@@ -1,3 +1,5 @@
+import { EmployeeData } from "./employee";
+import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
 import { ActionMenu, NavigationMenu, MainPageProps, RoutingURL } from "./routing";
 import { ServerResponse, Service, ServiceStatus, WebserviceApiError } from "./service";
 import {
@@ -27,9 +29,15 @@ export type {
     DisplayTablePayload,
     DisplayTableRowActionDefinition,
     DisplayTableSelectionMode,
-    Row
+    Row,
+    FormState,
+    Severity,
+    FormModes,
+    FormDialog,
+    EmployeeData
 }
 
 export {
-    ServiceStatus
+    ServiceStatus,
+    DefaultFormState
 }

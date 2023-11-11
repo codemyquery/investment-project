@@ -6,10 +6,10 @@ import { BrowseFile } from "../../atoms";
 import { Plan } from "../../../services";
 import * as XLSX from "xlsx";
 import { constant, formatNumber } from "../../../utils";
-import CloseIcon from '@mui/icons-material/Close';
 import { DialogTitle, IconButton, DialogContent, Typography, DialogActions, Button, Dialog, Grid, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, MenuItem, MenuList } from "@mui/material";
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import { GenericDialog } from "../../organism";
+import SaveIcon from '@mui/icons-material/Save';
 
 interface PlanServerData {
     id: string,
@@ -21,7 +21,8 @@ interface PlanServerData {
     maturityValueOptions: string,
     incomeFrequency: string,
     ppt: string,
-    planDetails: Record<string, Array<string>>
+    planDetails: Record<string, Array<string>>,
+    isNewRecord?: boolean
 }
 
 interface Dialog {
@@ -81,7 +82,8 @@ export const DashboardPlanDetails = () => {
                             maturityValueOptions: row['Maturity Value Option (percentage of total premium paid)'] as string,
                             incomeFrequency: row['Income Frequency (Monthly/Yearly)'] as string,
                             ppt: row['PPT (10,12)'] as string,
-                            planDetails: {}
+                            planDetails: {},
+                            isNewRecord: true
                         };
                     }));
                     continue;
@@ -110,6 +112,10 @@ export const DashboardPlanDetails = () => {
         }
     }
 
+    const onSavePlanHandler = () => {
+
+    }
+
     return (
         <>
             <DashboardPageTemplate id={"expense-report-dashboard-page"}>
@@ -124,7 +130,20 @@ export const DashboardPlanDetails = () => {
                         [
                             {
                                 type: 'custom',
-                                action: <BrowseFile label="Upload File" onBrowseFileHandler={onBrowseFileHandler} />
+                                action: <>
+                                    <BrowseFile label="Upload File" onBrowseFileHandler={onBrowseFileHandler} />
+                                </>
+                            },
+                            {
+                                type: 'customBasicAction',
+                                icon: <SaveIcon />,
+                                onClick: onSavePlanHandler,
+                                title: 'Save',
+                                otherProps: {
+                                    style: {
+                                        display: payloadPlanData.rows.some(r => r.isNewRecord) ? '' : 'none'
+                                    }
+                                }
                             }
                         ]
                     }
