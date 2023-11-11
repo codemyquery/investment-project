@@ -25,3 +25,8 @@ export interface PlanServerData {
     planDetails: Record<string, Array<string>>,
     isNewRecord?: boolean
 }
+
+export interface PlanDataResponse {
+    count: number,
+    rows: Array<PlanServerData>
+}

@@ -44,22 +44,24 @@ if ($page === 'employee') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
-	} else if ($method === 'PUT') {
 	} else {
 		http_response_code(METHOD_NOT_ALLOWED);
 	}
 }else if($page === 'plan') {
 	$result = null;
-	$employee = new Plan($helper);
+	$plan = new Plan($helper);
 	if ($method === 'GET') {
+		if($action === 'getPlanList'){
+			$result = $plan->get_plan_list();
+		}
+		echo json_encode($result);
 	} else if ($method === 'POST') { // For Create request
 		if ($action === 'addPlan') {
-			$result = $employee->create_new_Plan($bodyRawData['data']);
+			$result = $plan->create_new_Plan($bodyRawData['data']);
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
-	} else if ($method === 'PUT') {
-	} else {
+	}else {
 		http_response_code(METHOD_NOT_ALLOWED);
 	}
 }

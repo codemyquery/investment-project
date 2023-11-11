@@ -14,7 +14,7 @@ class Plan
             $this->helper->data = array();
             foreach ($rows as $row) {
                 $this->helper->data = array(
-                    ':plan_code'              =>    $this->helper->clean_data($row['planName']),
+                    ':plan_code'              =>    $this->helper->clean_data($row['planCode']),
                     ':insurance_company'      =>    $this->helper->clean_data($row['insuranceCompany']),
                     ':plan_name'              =>    $this->helper->clean_data($row['planName']),
                     ':age_band'               =>    $this->helper->clean_data($row['ageBand']),
@@ -63,20 +63,21 @@ class Plan
         return $this->helper->execute_query(); */
     }
 
-    function get_employee_list()
+    function get_plan_list()
     {
+        @$pages_array = [];
         $this->helper->query = "SELECT * FROM plan_details "
-            . $this->helper->getSortingQuery('plan_details', t_employee(@$_GET['orderBy']))
+            . $this->helper->getSortingQuery('plan_details', t_plans(@$_GET['orderBy']))
             . $this->helper->getPaginationQuery();
         $total_rows = $this->helper->query_result();
         $this->helper->query = "SELECT COUNT(*) as count FROM plan_details";
         $total_Count = $this->helper->query_result();
         foreach ($total_rows as $row) {
-            $pages_array[] = formatEmployeeOutput($row);
+            $pages_array[] = formatPlanOutput($row);
         }
         return array(
             "count" =>    (int)$total_Count[0]['count'],
-            "rows"  =>    $pages_array,
+            "rows"  =>    @$pages_array,
         );
     }
 }
@@ -84,13 +85,18 @@ class Plan
 function formatPlanOutput($row)
 {
     return (object) array(
-        "id" => $row['employee_code'],
-        "name" => $row['name'],
-        "employeeCode" => $row['employee_code'],
-        "email" => $row['email'],
-        "mobile" => $row['mobile'],
-        "designation" => $row['designation'],
-        "dateUpdated" => $row['updated_on']
+        "id"                        => $row['plan_code'],
+        "planCode"                  => $row['plan_code'],
+        "insuranceCompnay"          => $row['insurance_company'],
+        "planName"                  => $row['plan_name'],
+        "ageBand"                   => $row['age_band'],
+        "incomeTermOptions"         => $row['income_terms_options'],
+        "maturityValueOptions"      => $row['maturity_value'],
+        "incomeFrequency"           => $row['income_frequency'],
+        "planDetails"               => $row['plan_details'],
+        "createdBy"                 => $row['created_by'],
+        "updatedBy"                 => $row['updated_by'],
+        "dateUpdated"               => $row['updated_on']
     );
 }
 
@@ -99,8 +105,8 @@ function t_plans($fieldName)
     switch ($fieldName) {
         case 'dateUpdated':
             return 'updated_on';
-        case 'employee':
-            return 'name';
+        case 'planName':
+            return 'plan_name';
         default:
             return '';
     }

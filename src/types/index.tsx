@@ -1,6 +1,6 @@
 import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
-import { PlanFormData, PlanServerData } from "./plan";
+import { PlanDataResponse, PlanFormData, PlanServerData } from "./plan";
 import { ActionMenu, NavigationMenu, MainPageProps, RoutingURL } from "./routing";
 import { ServerResponse, Service, ServiceStatus, WebserviceApiError } from "./service";
 import {
@@ -38,7 +38,8 @@ export type {
     EmployeeFormData,
     EmployeeServerData,
     PlanServerData,
-    PlanFormData
+    PlanFormData,
+    PlanDataResponse
 }
 
 export {
