@@ -3,7 +3,7 @@ import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
 import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages/public";
 import HomeIcon from '@mui/icons-material/Home';
-import { LoginPage } from "../components/pages/admin/login";
+import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
 import { DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages/admin";
 import { EditEmployee } from "../components/pages/admin/edit-employee";
@@ -64,16 +64,34 @@ const AppMenus: NavigationMenu[] = [
         allowedGroups: []
     },
     {
-        id: "edit-employee",
-        i18nKey: 'Employee',
+        id: "add-employee",
+        i18nKey: 'Add Employee',
         visible: false,
         to: '/admin/edit-employee',
-        path: 'admin/edit-employee',
+        path: '/admin/edit-employee',
         Icon: ContactMailIcon,
         component: EditEmployee,
         allowedGroups: []
     },
-
+    {
+        id: "edit-employee",
+        i18nKey: 'Employee',
+        visible: false,
+        to: '/admin/edit-employee/:itemID',
+        path: '/admin/edit-employee/:itemID',
+        Icon: ContactMailIcon,
+        component: EditEmployee,
+        allowedGroups: []
+    },
+    {
+        id: "admin-login",
+        i18nKey: 'Login',
+        visible: false,
+        to: '/admin',
+        path: 'admin',
+        component: AdminLoginPage,
+        allowedGroups: []
+    },
     /** Routings for the Public Login Pages */
     {
         id: "user-dashboard",
@@ -157,16 +175,7 @@ const AppMenus: NavigationMenu[] = [
         path: '/sign-up',
         component: SignUp,
         allowedGroups: []
-    },
-    {
-        id: "admin-login",
-        i18nKey: 'Login',
-        visible: false,
-        to: '/admin/login',
-        path: 'admin/login',
-        component: LoginPage,
-        allowedGroups: []
-    },
+    }
 ]
 
 export const getMenuList = (

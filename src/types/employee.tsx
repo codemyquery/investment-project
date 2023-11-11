@@ -1,8 +1,8 @@
-export interface EmployeeData {
+export interface EmployeeFormData {
     id:string,
-    empName:string,
-    empMobileNumber: string,
-    empSalesCode:string,
-    totalSaleAmount:string,
-    totalCustomerCount:string
+    employeeName:string,
+    employeeCode: string,
+    mobile:string,
+    email:string,
+    designation:string
 }

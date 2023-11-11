@@ -2,20 +2,20 @@ import { Checkbox, FormControl, Grid, InputAdornment, TextField } from "@mui/mat
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AdminEditPageTemplate } from "../../templates";
-import { DefaultFormState, EmployeeData, FormModes, FormState } from "../../../types";
+import { DefaultFormState, EmployeeFormData, FormModes, FormState } from "../../../types";
 import { Employees, useHookForm } from "../../../services";
 import { nanoid } from "nanoid";
 import { UseFormReset } from "react-hook-form";
-import { ControlText } from "../../molecules";
+import { ControlNumber, ControlText, Notifications } from "../../molecules";
 import { t } from "../../../utils";
 
-const defaultValues: EmployeeData = {
+const defaultValues: EmployeeFormData = {
     id: "",
-    empName: "",
-    empMobileNumber: "",
-    empSalesCode: "",
-    totalSaleAmount: "",
-    totalCustomerCount: ""
+    employeeName: "",
+    employeeCode: "",
+    mobile: "",
+    email: "",
+    designation: "",
 }
 
 export const EditEmployee = () => {
@@ -25,11 +25,11 @@ export const EditEmployee = () => {
     const {
         control,
         handleSubmit,
-        formState: { isDirty },
+        formState: {  },
         setValue,
         reset,
         getValues
-    } = useHookForm<EmployeeData>({ defaultValues })
+    } = useHookForm<EmployeeFormData>({ defaultValues })
 
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
     const { itemID } = useParams();
@@ -69,26 +69,29 @@ export const EditEmployee = () => {
             }
             init();
         }
-    }, [formState])
+    }, [formState.formSubmitted])
 
-    const onSubmitItem = async (data: EmployeeData) => {
+    const onSubmitItem = async (data: EmployeeFormData) => {
         setFormState(prev => ({ ...prev, loading: true }))
         try {
-            /* const response = formState.mode === 'create' ? await Vendor.createVendorRecord(data, abortController) : await Vendor.updateVendorRecord(data, abortController);
+            const response = formState.mode === 'create' ? 
+            await Employees.createEmployeeRecord(data, abortController) 
+            : 
+            await Employees.updateEmployeeRecord(data, abortController);
             setFormState(prev => {
                 return {
                     ...prev,
                     notificationOpen: true,
                     formSubmitted: true,
                     ...(response.status ? { mode: 'edit' } : {}),
-                    ...(response.status ? { notificationMessage: translation.successMessage } : { notificationType: translation.errorMessage }),
+                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
                     loading: false,
                     ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
                 }
             });
             if(formState.mode === 'create'){
-                navigate(`../../edit/vendors/${data.id}`)
-            } */
+                navigate(`/admin/edit-employee/${data.employeeCode}`)
+            }
         } catch (error) {
             setFormState(prev => {
                 return {
@@ -112,6 +115,17 @@ export const EditEmployee = () => {
         abortController.abort();
     }
 
+    const closeNotification = () => {
+        setFormState(prev => {
+            return {
+                ...prev,
+                notificationOpen: false,
+                notificationType: 'error',
+                notificationMessage: ''
+            }
+        })
+    }
+
     return (
         <>
             <AdminEditPageTemplate
@@ -119,22 +133,14 @@ export const EditEmployee = () => {
                 loading={false}
                 onFormSubmit={onSubmit}
                 onFormCancel={onFormCancel}
-                submitDisabled={isDirty}
+                submitDisabled={false}
                 title={"Edit: Employee"}
             >
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12}>
                         <ControlText
                             control={control}
-                            name={'id'}
-                            helperText=""
-                            label="ID"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <ControlText
-                            control={control}
-                            name={'empName'}
+                            name={'employeeName'}
                             helperText=""
                             label="Employee Name"
                         />
@@ -142,28 +148,50 @@ export const EditEmployee = () => {
                     <Grid item xs={12} sm={12}>
                         <ControlText
                             control={control}
-                            name={'empSalesCode'}
+                            name={'employeeCode'}
                             helperText=""
-                            label="Sales Code"
+                            label="Employee Code"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12}>
                         <ControlText
                             control={control}
-                            name={'empMobileNumber'}
+                            name={'email'}
+                            helperText=""
+                            label="Email"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <ControlNumber
+                            control={control}
+                            name={'mobile'}
                             helperText=""
                             label="Mobile No."
                         />
                     </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <ControlText
+                            control={control}
+                            name={'designation'}
+                            helperText=""
+                            label="Designation"
+                        />
+                    </Grid>
                 </Grid>
+                <Notifications
+                open={formState.notificationOpen}
+                message={formState.notificationMessage}
+                onClose={closeNotification}
+                severity={formState.notificationType}
+                />
             </AdminEditPageTemplate >
         </>
     )
 }
 
 interface InitEmployeeFormProps {
-    data: EmployeeData;
-    reset: UseFormReset<EmployeeData>
+    data: EmployeeFormData;
+    reset: UseFormReset<EmployeeFormData>
 }
 
 const InitEmployeeForm = async ({

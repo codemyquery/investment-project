@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL, WS_BASE_URL } from '../../../utils';
 
 function Copyright(props: any) {
     return (
@@ -26,8 +28,9 @@ function Copyright(props: any) {
     );
 }
 
-export const LoginPage = () => {
+export const AdminLoginPage = () => {
     const defaultTheme = createTheme();
+    const navigate = useNavigate();
     const onSubmit = (data: any) => {
 
     };
@@ -57,27 +60,26 @@ export const LoginPage = () => {
                             label="Username"
                             name="username"
                             autoComplete="username"
+                            value={'admin'}
                             autoFocus
                         />
                         <TextField
                             margin="normal"
                             required
                             fullWidth
+                            value={'admin'}
                             name="password"
                             label="Password"
                             type="password"
                             id="password"
                             autoComplete="current-password"
                         />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
                         <Button
-                            type="submit"
+                            type="button"
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            onClick={() => { window.location.href = `${BASE_URL}admin/plan-details` }}
                         >
                             Sign In
                         </Button>

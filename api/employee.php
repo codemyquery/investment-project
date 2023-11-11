@@ -1,5 +1,4 @@
 <?php
-require_once('./helper.php');
 class Employee
 {
     var $helper;
@@ -11,28 +10,28 @@ class Employee
     function create_new_employee($data)
     {
         $this->helper->data = array(
-            ':employee_id'              =>    $this->helper->clean_data($data['id']),
-            ':name'            =>    $this->helper->clean_data($data['name']),
-            ':employee_code'                =>    $this->helper->clean_data($data['employee_code']),
+            ':name'                   =>    $this->helper->clean_data($data['employeeName']),
+            ':employee_code'          =>    $this->helper->clean_data($data['employeeCode']),
             ':mobile'                 =>    $this->helper->clean_data($data['mobile']),
             ':email'                  =>    $this->helper->clean_data($data['email']),
-            ':designation'             =>      $this->helper->clean_data($data['designation']),,
-            ':created_on'             =>   $this->helper->clean_data($data['created_on']),
+            ':designation'            =>    $this->helper->clean_data($data['designation']),
+            ':created_by'             =>    1
         );
-        $this->helper->query = "INSERT INTO employee (employee_id, name, employee_code,  mobile, email, designation, created_on)  VALUES (:id,:name,:employee_code,:mobile,:email,:designation,:created_on)";
+        $this->helper->query = "INSERT INTO employee (name, employee_code,  mobile, email, designation, created_by) VALUES (:name,:employee_code,:mobile,:email,:designation,:created_by)";
         return $this->helper->execute_query();
     }
 
-    function update_employee($data){
+    function update_employee($data)
+    {
         $this->helper->data = array(
-            ':employee_id'              =>    $this->helper->clean_data($data['id']),
-            ':name'            =>    $this->helper->clean_data($data['name']),
+            ':employee_id'      =>    $this->helper->clean_data($data['id']),
+            ':name'             =>    $this->helper->clean_data($data['name']),
             ':employee_code'    =>    $this->helper->clean_data($data['employee_code']),
-            ':mobile'                 =>    $this->helper->clean_data($data['mobile']),
-            ':email'                  =>    $this->helper->clean_data($data['email']),
-            ':designation'             =>      $this->helper->clean_data($data['designation']),,
-            ':created_on'             =>   $this->helper->clean_data($data['created_on']),
-            ':date_updated'           =>    $this->helper->get_current_datetimestamp()
+            ':mobile'           =>    $this->helper->clean_data($data['mobile']),
+            ':email'            =>    $this->helper->clean_data($data['email']),
+            ':designation'      =>    $this->helper->clean_data($data['designation']),
+            ':created_on'       =>    $this->helper->clean_data($data['created_on']),
+            ':date_updated'     =>    $this->helper->get_current_datetimestamp()
         );
         $this->helper->query = "UPDATE employee SET 
         name = :name, 
@@ -46,9 +45,10 @@ class Employee
         return $this->helper->execute_query();
     }
 
-    function get_employee($id){
+    function get_employee($id)
+    {
         $this->helper->query = "SELECT *FROM employee WHERE employee_id='$id'";
-        if($this->helper->total_row() === 0){
+        if ($this->helper->total_row() === 0) {
             return null;
         }
         $employee = $this->helper->query_result()[0];
@@ -58,7 +58,7 @@ class Employee
     function get_employee_list()
     {
         $this->helper->query = "SELECT *FROM employee "
-            . $this->helper->getSortingQuery('employee', t_employee(@$_GET['orderBy']) )
+            . $this->helper->getSortingQuery('employee', t_employee(@$_GET['orderBy']))
             . $this->helper->getPaginationQuery();
         $total_rows = $this->helper->query_result();
         $this->helper->query = "SELECT COUNT(*) as count FROM employee";
@@ -87,7 +87,8 @@ function formatEmployeeOutput($row)
     );
 }
 
-function t_employee($fieldName){
+function t_employee($fieldName)
+{
     switch ($fieldName) {
         case 'dateUpdated':
             return 'date_updated';

@@ -1,4 +1,4 @@
-import { EmployeeData } from "./employee";
+import { EmployeeFormData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
 import { ActionMenu, NavigationMenu, MainPageProps, RoutingURL } from "./routing";
 import { ServerResponse, Service, ServiceStatus, WebserviceApiError } from "./service";
@@ -34,7 +34,7 @@ export type {
     Severity,
     FormModes,
     FormDialog,
-    EmployeeData
+    EmployeeFormData
 }
 
 export {

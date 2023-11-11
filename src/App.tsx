@@ -5,12 +5,13 @@ import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { RightsMenuService } from "./services";
 import { ServiceStatus } from "./types";
 import { AdminPageTemplate, PublicPageTemplate } from "./components/templates";
+import { AdminLoginPage } from "./components/pages/admin/login";
 
 const HomePage = () => {
     const navigate = useNavigate();
     const { homeURL } = useAuth();
     const service = RightsMenuService.useMainRouting();
-
+    const isAdminUrl = !homeURL.indexOf('/admin');
     useEffect(() => {
         async function init() {
             if (service.result.status === ServiceStatus.Loaded) {
@@ -21,7 +22,16 @@ const HomePage = () => {
         return () => { console.log("unmount homepage") }
     }, [service.result.status]);
 
-    return homeURL.indexOf('/admin') === 0 ? <AdminPageTemplate routingService={service.result} /> : <PublicPageTemplate routingService={service.result} /> 
+    switch (isAdminUrl) {
+        case true:
+            if (homeURL === "/admin" || homeURL === "/admin/") {
+                return <AdminLoginPage />;
+            } else {
+                return <AdminPageTemplate routingService={service.result} />;
+            }
+        case false:
+            return <PublicPageTemplate routingService={service.result} />
+    }
 }
 
 const Main = () => {

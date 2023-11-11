@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Kolkata');
 require_once('./class.phpmailer.php');
 require_once('./statusCode.php');
 require_once('./helper.php');
-require_once('./vendor.php');
+require_once('./employee.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -27,11 +27,21 @@ try {
 	http_response_code(BAD_REQUEST);
 	echo `{ error: 'Invalid Data' }`;
 }
-
-$helper->query = "SELECT * FROM employee";
-$vendor = $helper->query_result()[0];
-print_r($vendor);
-
+if ($page === 'employee') {
+	$result = null;
+	$purchase = new Employee($helper);
+	if ($method === 'GET') {
+	} else if ($method === 'POST') { // For Create request
+		if ($action === 'addEmployee') {
+			$result = $purchase->create_new_employee($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
+	} else if ($method === 'PUT') {
+	} else {
+		http_response_code(METHOD_NOT_ALLOWED);
+	}
+}
 /* 
 if ($page === 'login') {
 	if ($action === 'login') {
