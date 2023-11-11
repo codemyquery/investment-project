@@ -1,29 +1,16 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { DashboardPageTemplate } from "../../templates";
-import { DisplayTablePayload } from "../../../types";
+import { DefaultFormState, DisplayTablePayload, EmployeeFormData, FormState, PlanFormData, PlanServerData } from "../../../types";
 import { useDisplayTablePageController, useDisplayTableColumnController, DisplayTableItems } from "../../organism/display-table-items";
 import { BrowseFile } from "../../atoms";
-import { Plan } from "../../../services";
+import { Plan, useHookForm } from "../../../services";
 import * as XLSX from "xlsx";
-import { constant, formatNumber } from "../../../utils";
-import { DialogTitle, IconButton, DialogContent, Typography, DialogActions, Button, Dialog, Grid, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, MenuItem, MenuList } from "@mui/material";
+import { constant, formatNumber, t } from "../../../utils";
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import { GenericDialog } from "../../organism";
 import SaveIcon from '@mui/icons-material/Save';
-
-interface PlanServerData {
-    id: string,
-    planCode: string,
-    insuranceCompany: string,
-    planName: string,
-    ageBand: string,
-    incomeTermOptions: string,
-    maturityValueOptions: string,
-    incomeFrequency: string,
-    ppt: string,
-    planDetails: Record<string, Array<string>>,
-    isNewRecord?: boolean
-}
+import { Grid, MenuItem, TableContainer, Table, TableBody, TableRow, TableCell } from "@mui/material";
+import { useFieldArray } from "react-hook-form";
 
 interface Dialog {
     data?: PlanServerData,
@@ -32,13 +19,22 @@ interface Dialog {
 const dialogDefaultValue: Dialog = {
     open: false,
 }
+
+interface ExcelPlanDetails {
+    rows: Array<PlanFormData>
+}
 export const DashboardPlanDetails = () => {
     const [dialog, setDialog] = useState(dialogDefaultValue);
+    const abortController = new AbortController();
     const [investmentAmount, setInvestmentAmount] = useState<string>('1000000');
-    const [payloadPlanData, setPayloadPlanData] = useState<DisplayTablePayload<PlanServerData>>({
-        rows: [],
-        totalDataCount: 0
+    const [payloadPlanData, setPayloadPlanData] = useState<DisplayTablePayload<PlanServerData>>({ rows: [], totalDataCount: 0 });
+    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
+    const { control, handleSubmit } = useHookForm<ExcelPlanDetails>({ defaultValues: { rows: [] } });
+    const { fields, append } = useFieldArray<ExcelPlanDetails>({
+        control,
+        name: "rows",
     });
+
     const dialogHandler = (params?: GridRenderCellParams<any, any, any>) => {
         if (params) {
             setDialog({ open: true, data: params.row })
@@ -46,6 +42,7 @@ export const DashboardPlanDetails = () => {
             setDialog(dialogDefaultValue)
         }
     }
+
     const paginationController = useDisplayTablePageController({});
     const columnController = useDisplayTableColumnController<PlanServerData>({
         columns: Plan.useDisplayTablePlanHeaders({ dialogHandler: dialogHandler })
@@ -105,16 +102,49 @@ export const DashboardPlanDetails = () => {
                     }
                 })
             }
-            setPayloadPlanData({
-                rows: totalPlans,
-                totalDataCount: totalPlans.length
+            append(totalPlans);
+        }
+    }
+
+    const onSubmit = () => handleSubmit(onSavePlanHandler)();
+
+    const onSavePlanHandler = async (data: ExcelPlanDetails) => {
+        setFormState(prev => ({ ...prev, loading: true }));
+        try {
+            const response = await Plan.createPlanRecord(data.rows, abortController);
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    ...(response.status ? { mode: 'edit' } : {}),
+                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    loading: false,
+                    ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                }
+            });
+        } catch (error) {
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    mode: 'edit',
+                    notificationMessage: t.errorMessage,
+                    reload: new Date(),
+                    loading: false,
+                    notificationType: 'error'
+                }
             })
         }
     }
 
-    const onSavePlanHandler = () => {
-
-    }
+    useEffect(() => {
+        setPayloadPlanData({
+            rows: fields,
+            totalDataCount: fields.length
+        })
+    }, [fields])
 
     return (
         <>
@@ -137,11 +167,11 @@ export const DashboardPlanDetails = () => {
                             {
                                 type: 'customBasicAction',
                                 icon: <SaveIcon />,
-                                onClick: onSavePlanHandler,
+                                onClick: onSubmit,
                                 title: 'Save',
                                 otherProps: {
                                     style: {
-                                        display: payloadPlanData.rows.some(r => r.isNewRecord) ? '' : 'none'
+                                        display: fields.some(r => r.isNewRecord) ? '' : 'none'
                                     }
                                 }
                             }

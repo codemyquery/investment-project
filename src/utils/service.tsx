@@ -11,6 +11,11 @@ interface Employee {
     actions: 'addEmployee'
 }
 
+interface Plan {
+    page: 'plan',
+    actions: 'addPlan'
+}
+
 interface BodyData {
     [key: string]: any;
 }
@@ -18,7 +23,7 @@ interface FilterData {
     [key: string]: any;
 }
 interface Body {
-    route: Login | Employee
+    route: Login | Employee | Plan
     data?: BodyData
     filter?: FilterData
 }

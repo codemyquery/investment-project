@@ -2,7 +2,7 @@ import { Checkbox, FormControl, Grid, InputAdornment, TextField } from "@mui/mat
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AdminEditPageTemplate } from "../../templates";
-import { DefaultFormState, EmployeeFormData, FormModes, FormState } from "../../../types";
+import { DefaultFormState, EmployeeFormData, EmployeeServerData, FormModes, FormState } from "../../../types";
 import { Employees, useHookForm } from "../../../services";
 import { nanoid } from "nanoid";
 import { UseFormReset } from "react-hook-form";
@@ -25,7 +25,7 @@ export const EditEmployee = () => {
     const {
         control,
         handleSubmit,
-        formState: {  },
+        formState: { },
         setValue,
         reset,
         getValues
@@ -39,7 +39,7 @@ export const EditEmployee = () => {
         const init = async () => {
             if (itemID) {
                 mode = 'edit';
-                const data = await Employees.fetchEmployes(itemID);
+                const data = await Employees.fetchEmployee(itemID);
                 await InitEmployeeForm({ data, reset });
             } else {
                 mode = 'create';
@@ -60,7 +60,7 @@ export const EditEmployee = () => {
             const init = async () => {
                 const itemID = getValues('id');
                 const abortController = new AbortController();
-                const data = await Employees.fetchEmployes(itemID, abortController);
+                const data = await Employees.fetchEmployee(itemID, abortController);
                 await InitEmployeeForm({ data, reset });
                 setFormState(prev => ({
                     ...prev,
@@ -74,10 +74,10 @@ export const EditEmployee = () => {
     const onSubmitItem = async (data: EmployeeFormData) => {
         setFormState(prev => ({ ...prev, loading: true }))
         try {
-            const response = formState.mode === 'create' ? 
-            await Employees.createEmployeeRecord(data, abortController) 
-            : 
-            await Employees.updateEmployeeRecord(data, abortController);
+            const response = formState.mode === 'create' ?
+                await Employees.createEmployeeRecord(data, abortController)
+                :
+                await Employees.updateEmployeeRecord(data, abortController);
             setFormState(prev => {
                 return {
                     ...prev,
@@ -89,7 +89,7 @@ export const EditEmployee = () => {
                     ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
                 }
             });
-            if(formState.mode === 'create'){
+            if (formState.mode === 'create') {
                 navigate(`/admin/edit-employee/${data.employeeCode}`)
             }
         } catch (error) {
@@ -179,10 +179,10 @@ export const EditEmployee = () => {
                     </Grid>
                 </Grid>
                 <Notifications
-                open={formState.notificationOpen}
-                message={formState.notificationMessage}
-                onClose={closeNotification}
-                severity={formState.notificationType}
+                    open={formState.notificationOpen}
+                    message={formState.notificationMessage}
+                    onClose={closeNotification}
+                    severity={formState.notificationType}
                 />
             </AdminEditPageTemplate >
         </>
@@ -190,7 +190,7 @@ export const EditEmployee = () => {
 }
 
 interface InitEmployeeFormProps {
-    data: EmployeeFormData;
+    data: EmployeeServerData;
     reset: UseFormReset<EmployeeFormData>
 }
 
@@ -199,6 +199,11 @@ const InitEmployeeForm = async ({
     reset
 }: InitEmployeeFormProps) => {
     reset({
-
+        designation: data.designation,
+        email: data.email,
+        mobile: data.mobile,
+        employeeCode: data.employeeCode,
+        id: data.id,
+        employeeName: data.name
     });
 }

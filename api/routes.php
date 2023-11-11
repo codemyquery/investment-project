@@ -4,6 +4,7 @@ require_once('./class.phpmailer.php');
 require_once('./statusCode.php');
 require_once('./helper.php');
 require_once('./employee.php');
+require_once('./plan.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -29,11 +30,31 @@ try {
 }
 if ($page === 'employee') {
 	$result = null;
-	$purchase = new Employee($helper);
+	$employee = new Employee($helper);
 	if ($method === 'GET') {
+		if ($action === 'getEmployeeList') {
+			$result = $employee->get_employee_list();
+		} else if ($action === 'getEmployee') {
+			$result = $employee->get_employee($itemID);
+		}
+		echo json_encode($result);
 	} else if ($method === 'POST') { // For Create request
 		if ($action === 'addEmployee') {
-			$result = $purchase->create_new_employee($bodyRawData['data']);
+			$result = $employee->create_new_employee($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
+	} else if ($method === 'PUT') {
+	} else {
+		http_response_code(METHOD_NOT_ALLOWED);
+	}
+}else if($page === 'plan') {
+	$result = null;
+	$employee = new Plan($helper);
+	if ($method === 'GET') {
+	} else if ($method === 'POST') { // For Create request
+		if ($action === 'addPlan') {
+			$result = $employee->create_new_Plan($bodyRawData['data']);
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));

@@ -1,5 +1,6 @@
-import { EmployeeFormData } from "./employee";
+import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
+import { PlanFormData, PlanServerData } from "./plan";
 import { ActionMenu, NavigationMenu, MainPageProps, RoutingURL } from "./routing";
 import { ServerResponse, Service, ServiceStatus, WebserviceApiError } from "./service";
 import {
@@ -34,7 +35,10 @@ export type {
     Severity,
     FormModes,
     FormDialog,
-    EmployeeFormData
+    EmployeeFormData,
+    EmployeeServerData,
+    PlanServerData,
+    PlanFormData
 }
 
 export {
