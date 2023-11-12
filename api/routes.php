@@ -5,6 +5,7 @@ require_once('./statusCode.php');
 require_once('./helper.php');
 require_once('./employee.php');
 require_once('./plan.php');
+require_once('./login.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -28,7 +29,18 @@ try {
 	http_response_code(BAD_REQUEST);
 	echo `{ error: 'Invalid Data' }`;
 }
-if ($page === 'employee') {
+
+if ($page === 'login') {
+	$result = null;
+	$login = new Login($helper);
+	if ($method === 'POST') {
+		if ($action === 'login') {
+			$result = $login->validateUserCredentails($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode($result);
+	}
+} else if ($page === 'employee') {
 	$result = null;
 	$employee = new Employee($helper);
 	if ($method === 'GET') {

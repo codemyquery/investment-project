@@ -5,7 +5,7 @@ interface AuthState {
     idToken: string;
     userInfo: any;
     homeURL: string;
-    status: "idle" | "signOut" | "signIn" | "signUp",
+    status: "idle" | "signOut" | "signIn" | "signUp" | "signInAdmin",
     isDark: boolean,
     openDrawer: boolean;
 }
@@ -13,7 +13,11 @@ interface AuthState {
 interface AuthContextAction {
     signIn: (
         token: string,
-        idToken: string,
+        userName: string,
+    ) => void;
+    signInAdmin: (
+        token: string,
+        userName: string,
     ) => void;
     signUp: (
         email: string,
@@ -35,16 +39,24 @@ const AuthContext = createContext<AuthContextType>({
     homeURL: "",
     isDark: false,
     openDrawer: true,
-    signIn: () => { },
-    signOut: () => { },
     changeTheme: () => { },
     changeDrawer: () => { },
+    signInAdmin: () => { },
+    signIn: () => { },
+    signOut: () => { },
     signUp: () => { }
 });
 
 type AuthAction =
     {
         type: "SIGN_IN"
+    }
+    |
+    {
+        type: "SIGN_IN_ADMIN",
+        userToken: string,
+        userInfo: Record<string, any>,
+        status: 'signInAdmin'
     }
     |
     {
@@ -68,16 +80,12 @@ type AuthAction =
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const preferDarkModes = useMediaQuery("(prefer-color-scheme: dark)");
     const hash = window.location.hash;
-    const routeToNavigate = `${window.location.pathname}${hash}`;
+    const adminInfo = sessionStorage.getItem("adminInfo");
+    const routeToNavigate = adminInfo ?  '/admin/plan-details' : `/admin`;
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',
-        userInfo: {
-            name: "Ashutosh",
-            email: "ashutoshsingh5192344@gmail.com",
-            mobile: "9794978416",
-            roles: ['ADMIN']
-        },
+        userInfo: JSON.parse(adminInfo || "{}"),
         homeURL: routeToNavigate,
         status: 'idle',
         isDark: false,
@@ -91,6 +99,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         ) => {
             dispatch({
                 type: "SIGN_IN"
+            });
+        },
+        signInAdmin: (
+            username: string,
+            token: string,
+        ) => {
+            dispatch({
+                type: "SIGN_IN_ADMIN",
+                status: "signInAdmin",
+                userInfo: {
+                    userName: JSON.parse(username)
+                },
+                userToken: token
             });
         },
         signOut: () => {
@@ -115,7 +136,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 type: "SIGN_UP"
             });
         }
-        
     }), [preferDarkModes, state.idToken]);
 
     return (
@@ -128,6 +148,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 const AuthReducer = (prevState: AuthState, action: AuthAction): AuthState => {
     switch (action.type) {
         case 'SIGN_IN':
+            return {
+                ...prevState,
+                ...action
+            }
+        case 'SIGN_IN_ADMIN':
             return {
                 ...prevState,
                 ...action

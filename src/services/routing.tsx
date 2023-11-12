@@ -194,13 +194,10 @@ export const useMainRouting = () => {
         const fetchData = async () => {
             setResult({ status: ServiceStatus.Loading });
             let currentNav: NavigationMenu[] = [];
-            if (userInfo.roles.includes('ADMIN')) {
+            if (/* userInfo.roles.includes('ADMIN') */true) {
                 currentNav = AppMenus;
             } else {
-                currentNav = getMenuList(
-                    AppMenus,
-                    userInfo.roles
-                )
+                //currentNav = getMenuList( AppMenus, userInfo.roles )
             }
             if (!isCancelled) {
                 if (currentNav.length > 0) {
@@ -233,10 +230,10 @@ export function useSubRouting(subMenus?: Array<NavigationMenu>) {
             const fetchData = async () => {
                 setResult({ status: ServiceStatus.Loading });
                 let currentNav: Array<NavigationMenu> = [];
-                if (userInfo.roles.includes('ADMIN')) {
+                if (/* userInfo.roles.includes('ADMIN') */true) {
                     currentNav = subMenus;
                 } else {
-                    currentNav = getMenuList(subMenus, userInfo.roles)
+                    //currentNav = getMenuList(subMenus, userInfo.roles)
                 }
                 if (!isCancelled) {
                     if (currentNav.length > 0) {

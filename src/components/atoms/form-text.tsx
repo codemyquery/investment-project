@@ -11,6 +11,8 @@ interface FormTextProps {
     minRows?: number
     maxRows?: number
     id?: string
+    margin?: "dense" | "normal" | "none" | undefined
+    type?: string
     InputProps?: Partial<FilledInputProps> | Partial<OutlinedInputProps> | Partial<InputProps> | undefined
 }
 
@@ -25,6 +27,8 @@ export const FormText = ({
     maxRows,
     id,
     InputProps,
+    margin,
+    type = "text"
 }: FormTextProps) => {
     return <TextField
         fullWidth={true}
@@ -35,8 +39,10 @@ export const FormText = ({
         helperText={helperText}
         disabled={isDisabled}
         multiline={multiline}
+        type={type}
         maxRows={maxRows}
         minRows={minRows}
+        margin={margin}
         {...field}
     />
 }

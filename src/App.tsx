@@ -9,7 +9,7 @@ import { AdminLoginPage } from "./components/pages/admin/login";
 
 const HomePage = () => {
     const navigate = useNavigate();
-    const { homeURL } = useAuth();
+    const { homeURL, userInfo } = useAuth();
     const service = RightsMenuService.useMainRouting();
     const isAdminUrl = !homeURL.indexOf('/admin');
     useEffect(() => {
@@ -19,12 +19,11 @@ const HomePage = () => {
             }
         }
         init();
-        return () => { console.log("unmount homepage") }
     }, [service.result.status]);
 
     switch (isAdminUrl) {
         case true:
-            if (homeURL === "/admin" || homeURL === "/admin/") {
+            if ((homeURL === "/admin" || homeURL === "/admin/")) {
                 return <AdminLoginPage />;
             } else {
                 return <AdminPageTemplate routingService={service.result} />;

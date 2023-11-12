@@ -11,6 +11,7 @@ import { GenericDialog } from "../../organism";
 import SaveIcon from '@mui/icons-material/Save';
 import { Grid, MenuItem, TableContainer, Table, TableBody, TableRow, TableCell } from "@mui/material";
 import { useFieldArray } from "react-hook-form";
+import { Notifications } from "../../molecules/notification";
 
 interface Dialog {
     data?: PlanServerData,
@@ -176,13 +177,25 @@ export const DashboardPlanDetails = () => {
             rows: fields,
             totalDataCount: fields.length
         })
-    }, [fields])
+    }, [fields]);
 
+    const closeNotification = () => {
+        setFormState(prev => {
+            return {
+                ...prev,
+                notificationOpen: false,
+                notificationType: 'error',
+                notificationMessage: ''
+            }
+        })
+    }
+    
     return (
         <>
             <DashboardPageTemplate id={"expense-report-dashboard-page"}>
                 <h5>Plan List</h5>
                 <DisplayTableItems
+                    loader={loader}
                     data={payloadPlanData}
                     columnControllerHandler={columnController}
                     selectionPageController={paginationController}
@@ -255,6 +268,12 @@ export const DashboardPlanDetails = () => {
                     onSubmitText="Ok"
                 />
             </DashboardPageTemplate>
+            <Notifications
+                open={formState.notificationOpen}
+                message={formState.notificationMessage}
+                onClose={closeNotification}
+                severity={formState.notificationType}
+            />
         </>
     )
 }

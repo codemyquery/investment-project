@@ -21,7 +21,9 @@ interface Props<T extends FieldValues> {
     name: Path<T>
     isDisabled?: boolean
     defaultValue?: PathValue<T, Path<T>>;
-    InputProps?: Object
+    InputProps?: Object;
+    margin?: "dense" | "normal" | "none" | undefined
+    type?: string
 }
 
 export const ControlText = <T extends object>({
@@ -37,6 +39,8 @@ export const ControlText = <T extends object>({
     isDisabled,
     defaultValue,
     InputProps,
+    margin,
+    type
 }: Props<T>) => {
     return (
         <Controller
@@ -55,6 +59,8 @@ export const ControlText = <T extends object>({
                     helperText={error?.message || helperText}
                     InputProps={InputProps}
                     isDisabled={isDisabled === true}
+                    margin={margin}
+                    type={type}
                 />
             )}
         />

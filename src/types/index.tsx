@@ -1,3 +1,4 @@
+import { AdminLogin } from "./admin-login";
 import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
 import { PlanDataResponse, PlanFormData, PlanServerData } from "./plan";
@@ -39,7 +40,8 @@ export type {
     EmployeeServerData,
     PlanServerData,
     PlanFormData,
-    PlanDataResponse
+    PlanDataResponse,
+    AdminLogin
 }
 
 export {
