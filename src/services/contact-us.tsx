@@ -9,7 +9,7 @@ export const createContactUs = async (data: ContactUsFormData) => {
         userToken: 'sdasdasd',
         body: {
             route: {
-                page: 'customers',
+                page: 'contactus',
                 actions: 'createContactUs'
             },
             data: data
