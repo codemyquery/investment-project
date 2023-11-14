@@ -79,9 +79,9 @@ type AuthAction =
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const preferDarkModes = useMediaQuery("(prefer-color-scheme: dark)");
-    const hash = window.location.hash;
+    const pathName = window.location.pathname;
     const adminInfo = sessionStorage.getItem("adminInfo");
-    const routeToNavigate = adminInfo ?  '/admin/plan-details' : `/admin`;
+    const routeToNavigate = adminInfo ?  '/admin/plan-details' : pathName;
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',
