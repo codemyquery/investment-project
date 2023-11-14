@@ -38,6 +38,19 @@ export const useDisplayTableCustomerHeaders = () => {
             type: 'date',
             sortable: true,
             headerName: 'Last Updated'
+        },
+        {
+            field: 'actions',
+            type: 'action',
+            actionsList: [
+                {
+                    type: 'edit',
+                    callback: () => {
+
+                    }
+                }
+            ],
+            headerName: 'Actions'
         }
     ]
     return customerTableHeaders;

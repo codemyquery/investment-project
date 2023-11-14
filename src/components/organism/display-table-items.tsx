@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Radio, Tooltip, IconButton, Button, Box, Alert, Grid, FormControl } from "@mui/material";
-import { DataGrid, GridColumnVisibilityModel, GridEnrichedColDef, GridFeatureMode, GridOverlay, GridRenderCellParams, GridRowId, GridSelectionModel, GridSortDirection, GridSortModel, GridToolbarColumnsButton, GridToolbarContainer, GridToolbarFilterButton, getGridStringOperators } from "@mui/x-data-grid";
+import { DataGrid, GridColumnVisibilityModel, GridEnrichedColDef, GridFeatureMode, GridOverlay, GridRenderCellParams, GridRowId, GridSelectionModel, GridSortDirection, GridSortModel, GridToolbar, GridToolbarColumnsButton, GridToolbarContainer, GridToolbarFilterButton, getGridStringOperators } from "@mui/x-data-grid";
 import { useState, useRef, useEffect } from "react";
 import { DisplayTableColumnControllerProps, DisplayTableColumnControllerHandler, DisplayTableColumnDefinition, DisplayTablePayload, DisplayTablePaginationController, DisplayTableAction, Row } from "../../types";
 import { GotoPageNo } from "../atoms/goto-page-no";
@@ -508,6 +508,8 @@ export const DisplayTableItems = <T extends object>({
                     LoadingOverlay: () => (<SkeletonLoader rowCount={selectionPageController.itemsPerPage} height='30px' />),
                     Toolbar: () => (
                         <GridToolbarContainer>
+                            <GridToolbarColumnsButton />
+                            <GridToolbarFilterButton />
                             {
                                 createActionSet(actionsLeft)
                             }
