@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 05:29 AM
+-- Generation Time: Nov 14, 2023 at 10:51 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -46,6 +46,34 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`, `last_login`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `mobile_no` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` text NOT NULL,
+  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT '0',
+  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `name`, `mobile_no`, `email`, `message`, `accepted_for_promotions`, `created_on`) VALUES
+(1, 'asdasd', 'asdas', 'dasdasd', 'asdasd', 0, '2023-11-14 14:49:19'),
+(2, 'Ashutosh Singh', '0979497841', 'ashutoshsingh5192344@gmail.com', 'asASA', 0, '2023-11-14 14:55:09'),
+(3, 'Ashutosh Singh', '0979497841', 'ashutoshsingh5192344@gmail.com', 'asASA', 0, '2023-11-14 14:55:26'),
+(4, 'Ashutosh Singh', '0979497841', 'ashutoshsingh5192344@gmail.com', 'asdasdasd', 1, '2023-11-14 15:00:12'),
+(5, 'Ashutosh Singh', '0979497841', 'ashutoshsingh5192344@gmail.com', '1', 1, '2023-11-14 15:07:03'),
+(6, 'Ashutosh Singhas', '0979497841', 'ashutoshsingh5192344@gmail.com', '1', 1, '2023-11-14 15:07:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -63,7 +91,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `kyc_status`, `updated_on`) VALUES
-(2, 'Shubham', 'mauryasingh@gmail.com', '9794978416', 'NO', '2023-11-14 05:24:34');
+(2, 'Shubham', 'mauryasingh@gmail.com', '9794978416', 'NO', '2023-11-01 05:24:34');
 
 -- --------------------------------------------------------
 
@@ -137,6 +165,12 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -165,6 +199,12 @@ ALTER TABLE `admin`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -174,7 +214,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `plan_details`

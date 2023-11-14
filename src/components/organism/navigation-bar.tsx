@@ -52,12 +52,10 @@ export const NavigationBar = () => {
                     <div className={`navbar-collapse collapse ${showHeader}`} id="basic-navbar-nav">
                         <ul className="m-auto navbar-nav">
                             {
-                                (homeURL.indexOf('/user') === 0 ? UserMenus : Menus).map(menu => {
-                                    return <>
-                                        <li className={`nav-link ${active === menu ? 'active' : ''}`} onClick={() => { navBarClick(menu) }}>
+                                (homeURL.indexOf('/user') === 0 ? UserMenus : Menus).map((menu, index) => {
+                                    return <li key={`${menu}-${index}`} className={`nav-link ${active === menu ? 'active' : ''}`} onClick={() => { navBarClick(menu) }}>
                                             {menu}
                                         </li>
-                                    </>
                                 })
                             }
                         </ul>

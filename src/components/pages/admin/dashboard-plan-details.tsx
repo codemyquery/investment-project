@@ -177,17 +177,6 @@ export const DashboardPlanDetails = () => {
             totalDataCount: fields.length
         })
     }, [fields]);
-
-    const closeNotification = () => {
-        setFormState(prev => {
-            return {
-                ...prev,
-                notificationOpen: false,
-                notificationType: 'error',
-                notificationMessage: ''
-            }
-        })
-    }
     
     return (
         <>
@@ -271,7 +260,7 @@ export const DashboardPlanDetails = () => {
             <Notifications
                 open={formState.notificationOpen}
                 message={formState.notificationMessage}
-                onClose={closeNotification}
+                onClose={() => { setFormState(prev => { return { ...prev, notificationOpen: false, notificationType: 'error', notificationMessage: '' } }) }}
                 severity={formState.notificationType}
             />
         </>

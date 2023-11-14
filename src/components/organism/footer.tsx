@@ -141,7 +141,7 @@ export const Footer = () => {
                                     <svg
                                         stroke="currentColor"
                                         fill="currentColor"
-                                        stroke-width="0"
+                                        strokeWidth="0"
                                         viewBox="0 0 320 512"
                                         className="text-indigo"
                                         height="1em"
@@ -161,7 +161,7 @@ export const Footer = () => {
                                     <svg
                                         stroke="currentColor"
                                         fill="currentColor"
-                                        stroke-width="0"
+                                        strokeWidth="0"
                                         viewBox="0 0 16 16"
                                         className="text-red"
                                         height="1em"
@@ -181,7 +181,7 @@ export const Footer = () => {
                                     <svg
                                         stroke="currentColor"
                                         fill="currentColor"
-                                        stroke-width="0"
+                                        strokeWidth="0"
                                         viewBox="0 0 16 16"
                                         className="text-indigo foot-icon"
                                         height="1em"
@@ -201,7 +201,7 @@ export const Footer = () => {
                                     <svg
                                         stroke="currentColor"
                                         fill="currentColor"
-                                        stroke-width="0"
+                                        strokeWidth="0"
                                         viewBox="0 0 16 16"
                                         className="text-darkpink"
                                         height="1em"
@@ -221,7 +221,7 @@ export const Footer = () => {
                                     <svg
                                         stroke="currentColor"
                                         fill="currentColor"
-                                        stroke-width="0"
+                                        strokeWidth="0"
                                         viewBox="0 0 16 16"
                                         className="text-darkgreen"
                                         height="1em"
@@ -241,7 +241,7 @@ export const Footer = () => {
                                     <svg
                                         stroke="currentColor"
                                         fill="currentColor"
-                                        stroke-width="0"
+                                        strokeWidth="0"
                                         viewBox="0 0 16 16"
                                         className="text-blue"
                                         height="1em"

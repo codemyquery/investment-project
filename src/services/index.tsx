@@ -4,6 +4,7 @@ import * as Plan from './plan'
 import * as Employees from './employee'
 import * as Admin from './admin-login'
 import * as Customer from './customers';
+import * as ContactForm from './contact-us';
 import { useHookForm } from './forms';
 export {
     Service,
@@ -12,5 +13,6 @@ export {
     useHookForm,
     Employees,
     Admin,
-    Customer
+    Customer,
+    ContactForm
 }

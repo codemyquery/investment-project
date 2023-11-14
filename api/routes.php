@@ -7,6 +7,7 @@ require_once('./employee.php');
 require_once('./plan.php');
 require_once('./login.php');
 require_once('./customer.php');
+require_once('./contactus.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -79,12 +80,18 @@ if ($page === 'login') {
 	}
 }else if($page === 'customers'){
 	$result = null;
-	$customer = new Customer($helper);
+	$contactUs = new ContactUs($helper);
 	if ($method === 'GET') {
 		if($action === 'getCustomerList'){
-			$result = $customer->get_customer_list();
+			$result = $contactUs->get_contactus_list();
 		}
 		echo json_encode($result);
+	} else if ($method === 'POST') { // For Create request
+		if ($action === 'createContactUs') {
+			$result = $contactUs->create_new_contactus($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
 	}
 }
 /* 

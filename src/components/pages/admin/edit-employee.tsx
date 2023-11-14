@@ -115,17 +115,6 @@ export const EditEmployee = () => {
         abortController.abort();
     }
 
-    const closeNotification = () => {
-        setFormState(prev => {
-            return {
-                ...prev,
-                notificationOpen: false,
-                notificationType: 'error',
-                notificationMessage: ''
-            }
-        })
-    }
-
     return (
         <>
             <AdminEditPageTemplate
@@ -181,7 +170,7 @@ export const EditEmployee = () => {
                 <Notifications
                     open={formState.notificationOpen}
                     message={formState.notificationMessage}
-                    onClose={closeNotification}
+                    onClose={() => { setFormState(prev => { return { ...prev, notificationOpen: false, notificationType: 'error', notificationMessage: '' } }) }}
                     severity={formState.notificationType}
                 />
             </AdminEditPageTemplate >

@@ -1,4 +1,58 @@
+import { Controller } from "react-hook-form"
+import { ContactForm, useHookForm } from "../../../services"
+import { ContactUsFormData, DefaultFormState, FormState } from "../../../types"
+import { useState } from "react"
+import { Notifications } from "../../molecules"
+import { t } from "../../../utils"
+
+const defaultValues: ContactUsFormData = {
+    name: "",
+    mobile: "",
+    email: "",
+    message: "",
+    acceptedPromotionMails: false
+}
+
 export const ContactUs = () => {
+    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
+
+    const {
+        control,
+        handleSubmit,
+        formState: { },
+        setValue,
+        reset
+    } = useHookForm<ContactUsFormData>({ defaultValues })
+
+    const onSubmitItem = async (data: ContactUsFormData) => {
+        try {
+            const response = await ContactForm.createContactUs(data);
+            setFormState(prev => {
+                reset(defaultValues)
+                return {
+                    ...prev,
+                    loading: false,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                }
+            });
+        } catch (error) {
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    loading: false,
+                    notificationOpen: true,
+                    notificationType: 'error',
+                    notificationMessage: t.errorMessage
+                }
+            })
+        }
+    }
+
+    const onSubmit = () => handleSubmit(onSubmitItem)();
+
     return (<>
         <div className="contact-us">
             <section>
@@ -147,57 +201,72 @@ export const ContactUs = () => {
                                 <form>
                                     <div className="mb-3 row">
                                         <div className="mb-4 col-12">
-                                            <input
-                                                placeholder="Name"
-                                                name="name"
-                                                type="text"
-                                                id="validationCustom03"
-                                                className="form-control"
+                                            <Controller
+                                                name={'name'}
+                                                control={control}
+                                                render={({ field }) => (
+                                                    <input
+                                                        {...field}
+                                                        placeholder="Name"
+                                                        className="form-control"
+                                                    />
+                                                )}
                                             />
-                                            <div className="invalid-feedback">
-                                                Please provide a valid name.
-                                            </div>
                                         </div>
                                         <div className="mb-4 col-12">
-                                            <input
-                                                placeholder="Phone Number"
-                                                name="phone"
-                                                pattern="[0-9]*"
-                                                type="tel"
-                                                id="validationCustom04"
-                                                className="form-control"
+                                            <Controller
+                                                name={'mobile'}
+                                                control={control}
+                                                render={({ field }) => (
+                                                    <input
+                                                        {...field}
+                                                        placeholder="Mobile"
+                                                        className="form-control"
+                                                    />
+                                                )}
                                             />
-                                            <div className="invalid-feedback">
-                                                Please provide a valid Phone Number.
-                                            </div>
                                         </div>
                                         <div className="mb-4 col-12">
-                                            <input
-                                                placeholder="Email"
-                                                name="email"
-                                                type="email"
-                                                id="validationCustom05"
-                                                className="form-control"
+                                            <Controller
+                                                name={'email'}
+                                                control={control}
+                                                render={({ field }) => (
+                                                    <input
+                                                        {...field}
+                                                        placeholder="Email"
+                                                        className="form-control"
+                                                    />
+                                                )}
                                             />
-                                            <div className="invalid-feedback">
-                                                Please provide a valid Email.
-                                            </div>
                                         </div>
                                         <div className="mb-4">
-                                            <textarea
-                                                placeholder="Message"
-                                                rows={3}
-                                                name="message"
-                                                id="exampleForm.ControlTextarea1"
-                                                className="form-control"
-                                                defaultValue={""}
+                                            <Controller
+                                                name={'message'}
+                                                control={control}
+                                                render={({ field }) => (
+                                                    <textarea
+                                                        {...field}
+                                                        placeholder="Message"
+                                                        rows={3}
+                                                        name="message"
+                                                        className="form-control"
+                                                    />
+                                                )}
                                             />
                                         </div>
                                         <div className="mb-3">
                                             <div className="form-check">
-                                                <input
-                                                    type="checkbox"
-                                                    className="form-check-input"
+                                                <Controller
+                                                    name={'message'}
+                                                    control={control}
+                                                    render={({ field }) => (
+                                                        <input
+                                                            {...field}
+                                                            onClick={(evt) => setValue('acceptedPromotionMails', evt.currentTarget.checked)}
+                                                            type="checkbox"
+                                                            className="form-check-input"
+                                                        />
+                                                    )}
                                                 />
                                                 <label title="" className="form-check-label">
                                                     You are signing up to receive transaction , promotions and
@@ -209,13 +278,7 @@ export const ContactUs = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="zc_gad" name="zc_gad" defaultValue="" />
-                                    <button
-                                        type="submit"
-                                        className="main-btn maincolor mb-2 btn btn-primary"
-                                    >
-                                        Submit
-                                    </button>
+                                    <button onClick={onSubmit} type="button" className="main-btn maincolor mb-2 btn btn-primary">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -223,5 +286,11 @@ export const ContactUs = () => {
                 </div>
             </section>
         </div>
+        <Notifications
+            open={formState.notificationOpen}
+            message={formState.notificationMessage}
+            onClose={() => { setFormState(prev => { return { ...prev, notificationOpen: false, notificationType: 'error', notificationMessage: '' } }) }}
+            severity={formState.notificationType}
+        />
     </>)
 }
