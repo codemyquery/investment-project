@@ -63,6 +63,11 @@ export const DashboardCustomers = () => {
                     selectionPageController={paginationController}
                     tableId={"add-purchase-table"}
                     noRowsMessage="No Data"
+                    actionsLeft={[
+                        {
+                            type: 'column'
+                        }
+                    ]}
                     otherProps={{
                         autoHeight: false,
                         style: {

@@ -84,7 +84,6 @@ export const DashboardPlanDetails = () => {
             setLoader(false);
         }
         init();
-        return () => { setTimeout(() => { abortController.abort(); }, 2000) };
     }, [query]);
 
     const readExcel = async (file: any) => {
@@ -205,9 +204,7 @@ export const DashboardPlanDetails = () => {
                         [
                             {
                                 type: 'custom',
-                                action: <>
-                                    <BrowseFile label="Upload File" onBrowseFileHandler={onBrowseFileHandler} />
-                                </>
+                                action: <BrowseFile key={'upload-excel-button'} id={'upload-button'} label="Upload File" onBrowseFileHandler={onBrowseFileHandler} />
                             },
                             {
                                 type: 'customBasicAction',
@@ -219,6 +216,9 @@ export const DashboardPlanDetails = () => {
                                         display: fields.some(r => r.isNewRecord) ? '' : 'none'
                                     }
                                 }
+                            },
+                            {
+                                type: 'column'
                             }
                         ]
                     }

@@ -4,7 +4,7 @@ import { NavigationMenu, Service } from "../../types"
 import MenuIcon from '@mui/icons-material/Menu';
 import { PageContent } from "../atoms";
 import { AppDrawer, AppRouting } from "../organism";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 interface HomeProps {
     routingService: Service<NavigationMenu[]>;
 }
@@ -13,7 +13,6 @@ export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
     const { openDrawer, changeDrawer, userInfo } = useAuth();
-    const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {
         changeDrawer(!openDrawer);
@@ -24,6 +23,7 @@ export const AdminPageTemplate = ({
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
     };
+
     return (
         <Box sx={{ display: 'flex', height: '100%' }}>
             <CssBaseline />
@@ -41,7 +41,7 @@ export const AdminPageTemplate = ({
                         Admin Panel
                     </Typography>
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
+                        <Tooltip title="Profile">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt={userInfo.userName} src="/static/images/avatar/2.jpg" />
                             </IconButton>

@@ -75,6 +75,9 @@ export const DashboardEmployee = () => {
                                 onClick: () => {
                                     navigate('/admin/edit-employee')
                                 }
+                            },
+                            {
+                                type: 'column'
                             }
                         ]
                     }

@@ -410,10 +410,10 @@ export const DisplayTableItems = <T extends object>({
         return actionSet?.map((action, index) => {
             switch (action.type) {
                 case 'column':
-                    return <>Column</>
+                    return <GridToolbarColumnsButton key={`${index}-colum-data-grid`} />
                 case 'customBasicAction':
                     return <Button
-                        key={index}
+                        key={`basic-action-${index}`}
                         id={`basic-action-${index}`}
                         data-testid={`${tableId}-basic-action-${index}`}
                         variant="text"
@@ -429,7 +429,7 @@ export const DisplayTableItems = <T extends object>({
                     </Button>
                 case 'customSelectionAction':
                     return <Button
-                        key={index}
+                        key={`custom-selection-action-${index}`}
                         id={`custom-selection-action-${index}`}
                         data-testid={`${tableId}-custom-selection-action-${index}`}
                         variant="text"
@@ -442,7 +442,7 @@ export const DisplayTableItems = <T extends object>({
                         {action.title}
                     </Button>
                 case 'filter':
-                    return <GridToolbarFilterButton key={index} data-testid={`${tableId}-filter-button`} />
+                    return <GridToolbarFilterButton key={`custom-filter-action-${index}`} data-testid={`${tableId}-filter-button`} />
                 case 'custom':
                     return action.action;
             }
@@ -452,6 +452,7 @@ export const DisplayTableItems = <T extends object>({
     return <div id={tableId} data-testid={`${tableId}-datagrid-table`} style={{ height: '100%' }}>
         <div>
             <StyledDataGrid
+                key={'sakdjasldkjkkljlj'}
                 checkboxSelection={columnControllerHandler.checkboxSelectionStatus}
                 sx={{
                     border: 0,
@@ -507,26 +508,25 @@ export const DisplayTableItems = <T extends object>({
                 components={{
                     LoadingOverlay: () => (<SkeletonLoader rowCount={selectionPageController.itemsPerPage} height='30px' />),
                     Toolbar: () => (
-                        <GridToolbarContainer>
-                            {
-                                createActionSet(actionsLeft)
-                            }
-                            <GridToolbarColumnsButton />
-                            <GridToolbarFilterButton />
-                            {
-                                <Box display="flex" justifyContent="end" textAlign={"right"} flexGrow="100">
-                                    {createActionSet(actionsRight)}
-                                </Box>
-                            }
-                        </GridToolbarContainer>
-
+                        <>
+                            <GridToolbarContainer key={'skjdhaksdhkashdk'}>
+                                {
+                                    createActionSet(actionsLeft)
+                                }
+                                {
+                                    <Box display="flex" key={'right-side-datagrid-menu'} justifyContent="end" textAlign={"right"} flexGrow="100">
+                                        {createActionSet(actionsRight)}
+                                    </Box>
+                                }
+                            </GridToolbarContainer>
+                        </>
                     ),
                     NoRowsOverlay: () => (
                         <>
                             {
                                 !loader &&
-                                <GridOverlay>
-                                    <Alert sx={{ m: 4, width: "100%" }} severity="info">
+                                <GridOverlay key='NoRowsOverlay'>
+                                    <Alert key={'asdaasdasdasdsndksadj'} sx={{ m: 4, width: "100%" }} severity="info">
                                         {noRowsMessage}
                                     </Alert>
                                 </GridOverlay>
@@ -537,8 +537,8 @@ export const DisplayTableItems = <T extends object>({
                         <>
                             {
                                 !loader &&
-                                <GridOverlay>
-                                    <Alert sx={{ m: 4, width: "100%" }} severity="info">
+                                <GridOverlay key='NoResultsOverlay'>
+                                    <Alert key={'asdasndksadj'} sx={{ m: 4, width: "100%" }} severity="info">
                                         {noRowsMessage}
                                     </Alert>
                                 </GridOverlay>
