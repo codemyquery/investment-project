@@ -1,95 +1,56 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { DashboardPageTemplate } from "../../templates";
 import AddIcon from '@mui/icons-material/Add';
-import { DisplayTablePayload } from "../../../types";
-import { useDisplayTablePageController, useDisplayTableColumnController, DisplayTableItems } from "../../organism/display-table-items";
-import { string } from "yargs";
-
-interface PlanServerData {
-    id: string,
-    custName: string,
-    custInitDate: string,
-    cust_empCode: string,
-    kycStatus: string,
-    investedAmount: string,
-    lastUpdated: Date
-}
+import { CustomerServerData, DisplayTablePayload } from "../../../types";
+import {
+    useDisplayTablePageController,
+    useDisplayTableColumnController,
+    DisplayTableItems
+} from "../../organism/display-table-items";
+import { Customer } from "../../../services";
+import { request } from "../../../utils";
 
 export const DashboardCustomers = () => {
-    const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
-    const [payloadData, setPayloadData] = useState<DisplayTablePayload<PlanServerData>>({
-        rows: [
-            {
-                id: "1",
-                custName: "Ramesh Singh",
-                custInitDate: "12/01/23",
-                cust_empCode: "003B1",
-                kycStatus: "NO",
-                investedAmount: "NULL",
-                lastUpdated: new Date()         
-            }
-        ],
+    const [payloadData, setPayloadData] = useState<DisplayTablePayload<CustomerServerData>>({
+        rows: [],
         totalDataCount: 0
     });
     const paginationController = useDisplayTablePageController({});
-    const columnController = useDisplayTableColumnController<PlanServerData>(
-        {
-            columns:
-                [
-                    {
-                        field: 'custName',
-                        type: 'text',
-                        headerName: 'Customer Name',
-                        filterable: true,
-                        sortable: true
-                    },
-                    {
-                        field: 'custInitDate',
-                        type: 'text',
-                        headerName: 'Customer Initiation Date'
-                    },
-                    {
-                        field: 'cust_empCode',
-                        type: 'text',
-                        headerName: 'LG Code/LC Code',
-                        filterable: true
-                    },
-                    {
-                        field: 'kycStatus',
-                        type: 'text',
-                        headerName: 'KYC Status',
-                        filterable: true
-                    },
-                    {
-                        field: 'investedAmount',
-                        type: 'text',
-                        sortable: true,
-                        headerName: 'Invested Amount'
-                    },
-                    {
-                        field: 'lastUpdated',
-                        type: 'date',
-                        sortable: true,
-                        headerName: 'Last Updated'
-                    },
-                    {
-                        field: 'updateDetails',
-                        type: 'action',
-                        sortable: true,
-                        headerName: 'Actions',
-                        actionsList: [
-                            {
-                                type: 'edit',
-                                callback: (params) => {
-                                   navigate(`/admin/edit-customers`)
-                                }
-                            }
-                        ]
-                    }
-                ]
-        });
+    const columnController = useDisplayTableColumnController<CustomerServerData>({
+        columns: Customer.useDisplayTableCustomerHeaders()
+    });
+
+    const query = useMemo(() => {
+        return request.computeCanonicalQueryString({
+            orderBy: paginationController.orderBy,
+            order: paginationController.order,
+            pageNumber: paginationController.page,
+            itemPerPage: paginationController.itemsPerPage
+        })
+
+    }, [
+        paginationController.order,
+        paginationController.orderBy,
+        paginationController.page,
+        paginationController.itemsPerPage
+    ]);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+        const init = async () => {
+            setLoader(true)
+            const response = await Customer.fetchCustomerList(query, abortController);
+            setPayloadData({
+                rows: response.rows,
+                totalDataCount: response.count
+            });
+            setLoader(false)
+        }
+        init();
+        return () => { setTimeout(() => { abortController.abort(); }, 2000) };
+    }, [query]);
 
     return (
         <>

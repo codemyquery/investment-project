@@ -6,6 +6,7 @@ require_once('./helper.php');
 require_once('./employee.php');
 require_once('./plan.php');
 require_once('./login.php');
+require_once('./customer.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -75,6 +76,15 @@ if ($page === 'login') {
 		echo json_encode(array('status'    =>    $result));
 	}else {
 		http_response_code(METHOD_NOT_ALLOWED);
+	}
+}else if($page === 'customers'){
+	$result = null;
+	$customer = new Customer($helper);
+	if ($method === 'GET') {
+		if($action === 'getCustomerList'){
+			$result = $customer->get_customer_list();
+		}
+		echo json_encode($result);
 	}
 }
 /* 

@@ -4,7 +4,7 @@ import { EmployeeDataResponse } from "../types/employee";
 
 
 export const useDisplayTableEmployeeHeaders = () => {
-    const purchaseTableHeaders: Array<DisplayTableColumnDefinition> = [
+    const employeeTableHeaders: Array<DisplayTableColumnDefinition> = [
         {
             field: 'name',
             type: 'text',
@@ -42,9 +42,8 @@ export const useDisplayTableEmployeeHeaders = () => {
             headerName: 'Last Updated'
         }
     ]
-    return purchaseTableHeaders;
+    return employeeTableHeaders;
 }
-
 
 export const fetchEmployeesList = async (
     query: string = "",

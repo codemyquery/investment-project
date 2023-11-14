@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2023 at 12:02 PM
+-- Generation Time: Nov 14, 2023 at 05:29 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -46,6 +46,28 @@ INSERT INTO `admin` (`id`, `username`, `email`, `password`, `last_login`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `kyc_status` enum('YES','NO') NOT NULL DEFAULT 'NO',
+  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `kyc_status`, `updated_on`) VALUES
+(2, 'Shubham', 'mauryasingh@gmail.com', '9794978416', 'NO', '2023-11-14 05:24:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employee`
 --
 
@@ -67,17 +89,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `name`, `employee_code`, `mobile`, `email`, `designation`, `created_on`, `created_by`, `updated_on`, `updated_by`) VALUES
-(1, 'sdas', 'das', '123123', 'dasdas', 'dfsfsdf', '2023-11-11 15:15:58', 1, '2023-11-11 17:17:41', 0),
-(2, 'sdf', 'sdfds', '324', 'fsdf', 'sdfsdf', '2023-11-11 15:16:31', 1, '2023-11-11 17:17:41', 0),
-(3, 'asdas', 'das', '9794978416', 'asd', 'asdasd', '2023-11-11 15:16:49', 1, '2023-11-11 17:17:41', 0),
-(4, 'asdas', 'dasd', '23123', 'asdas', 'fsdfsdfdsf', '2023-11-11 15:20:28', 1, '2023-11-11 17:17:41', 0),
-(5, 'fdgd', 'gdf', '324', 'gdfg', 'fdfsd', '2023-11-11 15:21:26', 1, '2023-11-11 17:17:41', 0),
-(6, 'sdadasd', 'asdas', '12312312', 'dasd', '3fsdfsdf', '2023-11-11 15:23:52', 1, '2023-11-11 17:17:41', 0),
-(7, 'asdas', 'bbbbbbbb', '333', 'bbbbbbbbbbbbbb', '333333', '2023-11-11 16:25:23', 1, '2023-11-11 17:17:41', 0),
-(8, 'Shubham', '004', '9794978416', 'maurysashubhamabc@gmail.com', 'R&amp;D Developer', '2023-11-11 17:50:39', 1, '2023-11-11 17:50:39', 0),
-(9, 'asdasdas', 'dasd', '9794978416', 'asdasda@fdsfs.fg', 'dasdasd', '2023-11-12 13:18:32', 1, '2023-11-12 13:18:32', 0),
-(10, 'dasd', 'asdd', '9794978416', 'asd', 'asdasdasd', '2023-11-12 13:18:48', 1, '2023-11-12 13:18:48', 0),
-(11, 'sadas', 'dasdasd', '9794978416', 'ashutoshsingh5192344@gmail.com', 'asdasd', '2023-11-12 13:19:46', 1, '2023-11-12 13:19:46', 0);
+(1, 'Ashutosh Singh', '001', '9794978416', 'ashutoshsingh5192344@gmail.com', 'R&D Developer', '2023-11-14 09:06:02', 1, '2023-11-14 09:06:02', 0);
 
 -- --------------------------------------------------------
 
@@ -125,6 +137,12 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
@@ -147,10 +165,16 @@ ALTER TABLE `admin`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `plan_details`

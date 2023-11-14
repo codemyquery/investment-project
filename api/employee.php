@@ -57,6 +57,7 @@ class Employee
 
     function get_employee_list()
     {
+        $pages_array = array();
         $this->helper->query = "SELECT * FROM employee "
             . $this->helper->getSortingQuery('employee', t_employee(@$_GET['orderBy']))
             . $this->helper->getPaginationQuery();
