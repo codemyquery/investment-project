@@ -141835,3 +141835,227 @@ nav a {
         font-size:calc(11px + .0055*(100vw - 1400px))
     }
 }
+  html[_ngcontent-eam-c19],
+    body[_ngcontent-eam-c19] {
+      height: 100%;
+      font-family: Arial, Helvetica, sans-serif
+    }
+
+    a.active[_ngcontent-eam-c19] {
+      background-color: gray
+    }
+    .owl-theme[_ngcontent-eam-c48] {
+      display: block
+    }
+    @keyframes tawkMaxOpen {
+        0% {
+          opacity: 0;
+          transform: translate(0, 30px);
+          ;
+        }
+  
+        to {
+          opacity: 1;
+          transform: translate(0, 0px);
+        }
+      }
+  
+      @-moz-keyframes tawkMaxOpen {
+        0% {
+          opacity: 0;
+          transform: translate(0, 30px);
+          ;
+        }
+  
+        to {
+          opacity: 1;
+          transform: translate(0, 0px);
+        }
+      }
+  
+      @-webkit-keyframes tawkMaxOpen {
+        0% {
+          opacity: 0;
+          transform: translate(0, 30px);
+          ;
+        }
+  
+        to {
+          opacity: 1;
+          transform: translate(0, 0px);
+        }
+      }
+  
+      #il0m6g2ur0681699942702499.open {
+        animation: tawkMaxOpen .25s ease !important;
+      }
+  
+      @keyframes tawkMaxClose {
+        from {
+          opacity: 1;
+          transform: translate(0, 0px);
+          ;
+        }
+  
+        to {
+          opacity: 0;
+          transform: translate(0, 30px);
+          ;
+        }
+      }
+  
+      @-moz-keyframes tawkMaxClose {
+        from {
+          opacity: 1;
+          transform: translate(0, 0px);
+          ;
+        }
+  
+        to {
+          opacity: 0;
+          transform: translate(0, 30px);
+          ;
+        }
+      }
+  
+      @-webkit-keyframes tawkMaxClose {
+        from {
+          opacity: 1;
+          transform: translate(0, 0px);
+          ;
+        }
+  
+        to {
+          opacity: 0;
+          transform: translate(0, 30px);
+          ;
+        }
+      }
+  
+      #il0m6g2ur0681699942702499.closed {
+        animation: tawkMaxClose .25s ease !important
+      }
+
+      .full-page-loader {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        z-index: 9999;
+      }
+  
+      .desc-txt {
+        color: #585858;
+        padding: 10px 20px;
+        text-align: center;
+        font-family: Inter, sans-serif, Arial, Helvetica;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      @import"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap";
+
+    :root {
+      --swiper-theme-color: #007aff
+    }
+
+    :root {
+      --swiper-navigation-size: 44px
+    }
+
+    @charset "UTF-8";
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box
+    }
+
+    html {
+      font-family: sans-serif;
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      -ms-overflow-style: scrollbar;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: left;
+      background-color: #fff
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem
+    }
+
+    img {
+      vertical-align: middle;
+      border-style: none
+    }
+
+    :root {
+      --gradient: linear-gradient(90deg, #eee 0px, #fff 80px);
+      --animation: loading 5s infinite linear;
+      background-repeat: no-repeat;
+      --grey: #fff;
+      --text: #ccc
+    }
+
+    :root {
+      --gradient: linear-gradient(90deg, #eee 0px, #fff 80px);
+      --animation: loading 2.5s infinite linear;
+      background-repeat: no-repeat;
+      --grey: #fff;
+      --text: #ccc
+    }
+
+    @media (min-width: 992px) {}
+
+    @media (min-width: 992px) {}
+
+    @media (min-width: 992px) {}
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      overscroll-behavior-y: none;
+      font-size: 16px;
+      line-height: 1.2;
+      background-color: #fff;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      color: #000;
+      font-family: Inter, sans-serif;
+      overflow-x: hidden
+    }
+
+    @media (min-width: 320px) {
+      body {
+        font-size: calc(16px + .00125*(100vw - 320px))
+      }
+    }
+
+    @media (min-width: 1920px) {
+      body {
+        font-size: 18px
+      }
+    }
