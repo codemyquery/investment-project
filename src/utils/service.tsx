@@ -17,7 +17,7 @@ interface Plan {
 }
 
 interface ContactUs {
-    page: 'customers',
+    page: 'contactus',
     actions: 'createContactUs'
 }
 

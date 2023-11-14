@@ -11,7 +11,7 @@ require_once('./contactus.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
-//header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Max-Age: 86400');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -80,13 +80,17 @@ if ($page === 'login') {
 	}
 }else if($page === 'customers'){
 	$result = null;
-	$contactUs = new ContactUs($helper);
+	$contactUs = new Customer($helper);
 	if ($method === 'GET') {
 		if($action === 'getCustomerList'){
-			$result = $contactUs->get_contactus_list();
+			$result = $contactUs->get_customer_list();
 		}
 		echo json_encode($result);
-	} else if ($method === 'POST') { // For Create request
+	}
+}else if($page === 'contactus'){
+	$result = null;
+	$contactUs = new ContactUs($helper);
+	if ($method === 'POST') { // For Create request
 		if ($action === 'createContactUs') {
 			$result = $contactUs->create_new_contactus($bodyRawData['data']);
 		}
