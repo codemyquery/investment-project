@@ -5,13 +5,13 @@ import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
-import { DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages/admin";
+import { DashboardContactus, DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages/admin";
 import { EditEmployee } from "../components/pages/admin/edit-employee";
 import { DashboardEmployee } from "../components/pages/admin/dashboard-employee";
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { Dashboard } from "../components/pages/public/user-profile/dashboard";
 import { Profile } from "../components/pages/public/user-profile/profile";
-
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 const AppMenus: NavigationMenu[] = [
     {
         id: "dashboard-plan-details",
@@ -41,6 +41,16 @@ const AppMenus: NavigationMenu[] = [
         path: 'admin/customers',
         Icon: GroupIcon,
         component: DashboardCustomers,
+        allowedGroups: []
+    },
+    {
+        id: "dashboard-contactus",
+        i18nKey: 'Contact Us',
+        visible: true,
+        to: '/admin/contactus',
+        path: 'admin/contactus',
+        Icon: ConnectWithoutContactIcon,
+        component: DashboardContactus,
         allowedGroups: []
     },
     {

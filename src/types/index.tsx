@@ -1,5 +1,5 @@
 import { AdminLogin } from "./admin-login";
-import { ContactUsFormData } from "./contact-us";
+import { ContactUsFormData, ContactUsServerData, ContactusDataResponse } from "./contact-us";
 import { CustomerDataResponse, CustomerServerData } from "./customer";
 import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
@@ -46,7 +46,9 @@ export type {
     AdminLogin,
     CustomerServerData,
     CustomerDataResponse,
-    ContactUsFormData
+    ContactUsFormData,
+    ContactUsServerData,
+    ContactusDataResponse
 }
 
 export {

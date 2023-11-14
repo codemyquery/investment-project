@@ -18,8 +18,9 @@ interface Plan {
 
 interface ContactUs {
     page: 'contactus',
-    actions: 'createContactUs'
+    actions: 'createContactUs' | 'fetchContactus'
 }
+
 
 interface BodyData {
     [key: string]: any;

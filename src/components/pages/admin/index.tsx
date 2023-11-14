@@ -1,3 +1,4 @@
+import { DashboardContactus } from "./dashboard-contact-us";
 import { DashboardCustomers } from "./dashboard-customer";
 import { DashboardPlanDetails } from "./dashboard-plan-details";
 import { EditCustomers } from "./edit-customer";
@@ -7,5 +8,6 @@ export {
     DashboardPlanDetails,
     EditPlanDetails,
     EditCustomers,
-    DashboardCustomers
+    DashboardCustomers,
+    DashboardContactus
 }

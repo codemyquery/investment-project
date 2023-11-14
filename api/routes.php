@@ -80,10 +80,10 @@ if ($page === 'login') {
 	}
 }else if($page === 'customers'){
 	$result = null;
-	$contactUs = new Customer($helper);
+	$customer = new Customer($helper);
 	if ($method === 'GET') {
 		if($action === 'getCustomerList'){
-			$result = $contactUs->get_customer_list();
+			$result = $customer->get_customer_list();
 		}
 		echo json_encode($result);
 	}
@@ -96,7 +96,13 @@ if ($page === 'login') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
+	}else if ($method === 'GET') {
+		if($action === 'getContactusList'){
+			$result = $contactUs->get_contactus_list();
+		}
+		echo json_encode($result);
 	}
+
 }
 /* 
 if ($page === 'login') {

@@ -19,7 +19,7 @@ class ContactUs
         $this->helper->query = "INSERT INTO contact_us (name, mobile_no,  email, message, accepted_for_promotions) VALUES (:name,:mobile_no,:email,:message,:accepted_for_promotions)";
         return $this->helper->execute_query();
     }
-
+    
     function get_contactus_list()
     {
         $pages_array = array();
