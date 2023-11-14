@@ -508,11 +508,11 @@ export const DisplayTableItems = <T extends object>({
                     LoadingOverlay: () => (<SkeletonLoader rowCount={selectionPageController.itemsPerPage} height='30px' />),
                     Toolbar: () => (
                         <GridToolbarContainer>
-                            <GridToolbarColumnsButton />
-                            <GridToolbarFilterButton />
                             {
                                 createActionSet(actionsLeft)
                             }
+                            <GridToolbarColumnsButton />
+                            <GridToolbarFilterButton />
                             {
                                 <Box display="flex" justifyContent="end" textAlign={"right"} flexGrow="100">
                                     {createActionSet(actionsRight)}
