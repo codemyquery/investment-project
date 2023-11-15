@@ -4,7 +4,9 @@ import { NavigationMenu, Service } from "../../types"
 import MenuIcon from '@mui/icons-material/Menu';
 import { PageContent } from "../atoms";
 import { AppDrawer, AppRouting } from "../organism";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils";
 interface HomeProps {
     routingService: Service<NavigationMenu[]>;
 }
@@ -12,12 +14,18 @@ const settings = ['Logout'];
 export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
+    const navigate = useNavigate();
     const { openDrawer, changeDrawer, userInfo } = useAuth();
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {
         changeDrawer(!openDrawer);
     }
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu = (evt: React.MouseEvent<HTMLElement>) => {
+        const currentTarget = evt.currentTarget;
+        if(currentTarget.innerText === 'Logout'){
+            sessionStorage.removeItem('adminInfo');
+            window.location.href = `${BASE_URL}admin`
+        }
         setAnchorElUser(null);
     };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -63,8 +71,8 @@ export const AdminPageTemplate = ({
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                <MenuItem key={setting} style={{ marginLeft: '5px',marginRight: '5px' }} onClick={handleCloseUserMenu}>
+                                    {setting}
                                 </MenuItem>
                             ))}
                         </Menu>
