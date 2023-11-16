@@ -5,7 +5,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { PageContent } from "../atoms";
 import { AppDrawer, AppRouting } from "../organism";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../utils";
 import { Admin } from "../../services";
 import { ADMIN_SESSION_NAME } from "../../utils/constants";
@@ -16,7 +15,6 @@ const settings = ['Logout'];
 export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
-    const navigate = useNavigate();
     const { openDrawer, changeDrawer, userInfo } = useAuth();
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {
@@ -28,7 +26,7 @@ export const AdminPageTemplate = ({
             const logout = async () => {
                 await Admin.signOut();
                 sessionStorage.removeItem(ADMIN_SESSION_NAME);
-                window.location.href = `${BASE_URL}admin`
+                window.location.href = `${BASE_URL}/admin`
             }
             logout();
         }

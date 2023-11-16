@@ -5,7 +5,7 @@ import { t } from "../../../utils";
 import { Controller } from "react-hook-form";
 import { Notifications } from "../../molecules";
 import { useNavigate } from "react-router-dom";
-import { USER_SESSION_NAME } from "../../../utils/constants";
+import { BASE_URL, USER_SESSION_NAME } from "../../../utils/constants";
 
 const defaultValues: LoginFormData = {
     username: "ashutoshsingh5192344@gmail.com",
@@ -27,7 +27,7 @@ export const Login = () => {
             const response = await Users.loginUser(data);
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
             if(response){
-                navigate('/user/dashboard')
+                window.location.href = `${BASE_URL}/user/dashboard`
             }
         } catch (error) {
             setFormState(prev => {

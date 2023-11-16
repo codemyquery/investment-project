@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',
-        userInfo: JSON.parse(adminInfo || "{}"),
+        userInfo: {},
         homeURL: routeToNavigate,
         status: 'idle',
         isDark: false,

@@ -35,7 +35,7 @@ export const AdminLoginPage = () => {
             const response = await Admin.signIn(data);
             if (response) {
                 sessionStorage.setItem(ADMIN_SESSION_NAME, JSON.stringify(response));
-                window.location.href = `${BASE_URL}admin/plan-details`;
+                window.location.href = `${BASE_URL}/admin/plan-details`;
             }
         } catch (error) {
 

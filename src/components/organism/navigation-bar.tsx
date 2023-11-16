@@ -3,14 +3,19 @@ import logo from '../../assets/images/logo.png'
 import { useState } from 'react';
 import { Logo } from '../molecules';
 import { useAuth } from '../../providers';
+import { Box, Tooltip, IconButton, Avatar, Menu, MenuItem } from '@mui/material';
+import { Admin } from '../../services';
+import { BASE_URL } from '../../utils';
+import { ADMIN_SESSION_NAME, USER_SESSION_NAME } from '../../utils/constants';
 
 type MenusType = 'Home' | 'About' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile' | undefined;
 const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
 const UserMenus: MenusType[] = ['Dashboard', 'My Plan', 'Profile'];
+const settings = ['Logout'];
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
-    const { homeURL } = useAuth();
+    const { homeURL, userInfo } = useAuth();
     const [active, setActive] = useState<MenusType>(undefined)
     const [showHeader, setShowHeader] = useState('')
     const navBarClick = (navbar: MenusType) => {
@@ -33,6 +38,25 @@ export const NavigationBar = () => {
                 break;
         }
     }
+
+    const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+    const handleCloseUserMenu = (evt: React.MouseEvent<HTMLElement>) => {
+        const currentTarget = evt.currentTarget;
+        if (currentTarget.innerText === 'Logout') {
+            const logout = async () => {
+                await Admin.signOut();
+                sessionStorage.removeItem(USER_SESSION_NAME);
+                window.location.href = `${BASE_URL}`
+            }
+            logout();
+        }
+        setAnchorElUser(null);
+    };
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
     return (
         <>
             <nav className="py-2 sticky-top overflow-hidden top-0 mb-3 navbar navbar-expand-lg navbar-light">
@@ -54,8 +78,8 @@ export const NavigationBar = () => {
                             {
                                 (homeURL.indexOf('/user') === 0 ? UserMenus : Menus).map((menu, index) => {
                                     return <li key={`${menu}-${index}`} className={`nav-link ${active === menu ? 'active' : ''}`} onClick={() => { navBarClick(menu) }}>
-                                            {menu}
-                                        </li>
+                                        {menu}
+                                    </li>
                                 })
                             }
                         </ul>
@@ -63,17 +87,35 @@ export const NavigationBar = () => {
                         {
                             homeURL.indexOf('/user') === 0 &&
                             <>
-                                <div className="header-footer_user__eX1M2">
-                                    <div className="header-footer_user_name_icon_wapper__dAxRN" style={{ color: 'white', display: 'inline-flex', textAlign: 'center', cursor: 'pointer' }}>
-                                        <span style={{ height: '30px', width: '30px', color: 'black', textAlign: 'center', backgroundColor: 'white', borderRadius: '50%', paddingTop: '3px' }}>
-                                            SM
-                                        </span>
-                                        <div className="header-footer_user_name__LV-tm" style={{ marginRight: '3px', textAlign: 'center', paddingTop: '3px' }}> &nbsp;Shubham Maurya &nbsp;</div>
-                                        <svg fill='white' width="14" height="22" viewBox="0 0 12 1">
-                                            <path d="M6 9L11.1962 0H0.803848L6 9Z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
+                                <Box sx={{ flexGrow: 0 }}>
+                                    <Tooltip title="Profile">
+                                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                            <Avatar alt={userInfo.userName} src="/static/images/avatar/2.jpg" />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Menu
+                                        sx={{ mt: '45px' }}
+                                        id="menu-appbar"
+                                        anchorEl={anchorElUser}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        keepMounted
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={Boolean(anchorElUser)}
+                                        onClose={handleCloseUserMenu}
+                                    >
+                                        {settings.map((setting) => (
+                                            <MenuItem key={setting} style={{ marginLeft: '5px', marginRight: '5px' }} onClick={handleCloseUserMenu}>
+                                                {setting}
+                                            </MenuItem>
+                                        ))}
+                                    </Menu>
+                                </Box>
                             </>
                         }
                         {
