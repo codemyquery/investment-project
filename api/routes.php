@@ -6,7 +6,7 @@ require_once('./helper.php');
 require_once('./employee.php');
 require_once('./plan.php');
 require_once('./login.php');
-require_once('./customer.php');
+require_once('./user.php');
 require_once('./contactus.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
@@ -37,10 +37,15 @@ if ($page === 'login') {
 	$login = new Login($helper);
 	if ($method === 'POST') {
 		if ($action === 'login') {
-			$result = $login->validateUserCredentails($bodyRawData['data']);
+			$result = $login->validateAdminUserCredentails($bodyRawData['data']);
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode($result);
+	}else if($method === "GET"){
+		if ($action === "logout"){
+			$login->logout();
+			http_response_code(NO_CONTENT);
+		}
 	}
 } else if ($page === 'employee') {
 	$result = null;
@@ -61,11 +66,11 @@ if ($page === 'login') {
 	} else {
 		http_response_code(METHOD_NOT_ALLOWED);
 	}
-}else if($page === 'plan') {
+} else if ($page === 'plan') {
 	$result = null;
 	$plan = new Plan($helper);
 	if ($method === 'GET') {
-		if($action === 'getPlanList'){
+		if ($action === 'getPlanList') {
 			$result = $plan->get_plan_list();
 		}
 		echo json_encode($result);
@@ -75,19 +80,27 @@ if ($page === 'login') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
-	}else {
+	} else {
 		http_response_code(METHOD_NOT_ALLOWED);
 	}
-}else if($page === 'customers'){
+} else if ($page === 'user') {
 	$result = null;
-	$customer = new Customer($helper);
+	$user = new Users($helper);
 	if ($method === 'GET') {
-		if($action === 'getCustomerList'){
-			$result = $customer->get_customer_list();
+		if ($action === 'getUsersList') {
+			$result = $user->get_user_list();
 		}
 		echo json_encode($result);
+	} else if ($method === 'POST') {
+		if ($action === 'createUser') {
+			$result = $user->create_new_user($bodyRawData['data']);
+		} else if($action === 'loginUser'){
+			$result = $user->login_user($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
 	}
-}else if($page === 'contactus'){
+} else if ($page === 'contactus') {
 	$result = null;
 	$contactUs = new ContactUs($helper);
 	if ($method === 'POST') { // For Create request
@@ -96,137 +109,10 @@ if ($page === 'login') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
-	}else if ($method === 'GET') {
-		if($action === 'getContactusList'){
+	} else if ($method === 'GET') {
+		if ($action === 'getContactusList') {
 			$result = $contactUs->get_contactus_list();
 		}
 		echo json_encode($result);
 	}
-
 }
-/* 
-if ($page === 'login') {
-	if ($action === 'login') {
-		echo json_encode(@$output);
-	}
-} else if ($page === 'purchase') {
-	$result = null;
-	$purchase = new Purchase($helper);
-	if ($method === 'GET') {
-		if ($action === 'getPurchaseList') {
-			$result = $purchase->get_purchase_list();
-		} else if ($action === 'getPurchase') {
-			$result = $purchase->get_purchase($itemID);
-		}
-		echo json_encode($result);
-	} else if ($method === 'POST') { // For Create request
-		if ($action === 'addPurchase') {
-			$result = $purchase->create_purchase_order($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else if ($method === 'PUT'){
-		if($action === 'updatePayments'){
-			$result = $purchase->update_payment_history($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else {
-		http_response_code(METHOD_NOT_ALLOWED);
-	}
-} else if ($page === 'vendor') {
-	$result = null;
-	$vendor = new Vendor($helper);
-	if ($method === 'POST') { // For Create request
-		if ($action === 'addVendor') {
-			$result = $vendor->create_new_vendor($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else if ($method === "PUT") {
-		if ($action === 'updateVendor') {
-			$result = $vendor->update_vendor($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else if ($method === "GET") { // For fetch requests
-		if ($action === 'getVendorList') {
-			$result = $vendor->get_vendor_list();
-		} else if ($action === 'getVendor') {
-			$result = $vendor->get_vendor($itemID);
-		}
-		echo json_encode($result);
-	} else {
-		http_response_code(METHOD_NOT_ALLOWED);
-	}
-} else if ($page === 'product') {
-	$result = null;
-	$product = new Product($helper);
-	if ($method === "GET") { // For fetch requests
-		if ($action === 'getProductList') {
-			$result = $product->get_product_list();
-		}
-		echo json_encode($result);
-	} else if ($method === "POST") {
-		if ($action === 'addProduct') {
-			$result = $product->create_new_product($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else if ($method === "PUT") {
-	} else {
-		http_response_code(METHOD_NOT_ALLOWED);
-	}
-} else if ($page === 'expense') {
-	$result = null;
-	$expense = new Expense($helper);
-	if ($method === "GET") { // For fetch requests
-		if ($action === 'getExpenseList') {
-			$expense->get_expense_list();
-		} else if ($action === 'getExpense') {
-			$expense->get_expense();
-		}
-	} else if ($method === "POST") {
-		if ($action === 'addExpense') {
-			$result = $expense->create_new_expense($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else if ($method === "DELETE") {
-		if ($action === 'deleteExpense') {
-			$result = $expense->delete_expense($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else {
-		http_response_code(METHOD_NOT_ALLOWED);
-	}
-} else if($page === 'product-against-purchase') {
-	$result = null;
-	$productAgainstPurchase = new ProductAgainstPurchase($helper);
-	if ($method === "PUT") {
-		if ($action === 'addCreditNote') {
-			$result = $productAgainstPurchase->add_credit_note($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	}
-} else if($page === 'invoice') {
-	$result = null;
-	$invoice = new Invoice($helper);
-	if ($method === "POST") {
-		if ($action === 'addInvoice') {
-			$result = $invoice->create_invoice_order($bodyRawData['data']);
-		}
-		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
-	} else if($method === 'GET'){
-		if ($action === 'getInvoiceList') {
-			$result = $invoice->get_invoice_list();
-		} else if($action === 'getNextInvoiceNumber'){
-			$result = $invoice->get_next_invoiceNumber();
-		}
-		echo json_encode($result);
-	}
-}
- */

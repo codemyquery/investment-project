@@ -15,6 +15,7 @@ import { Admin, useHookForm } from '../../../services';
 import { AdminLogin } from '../../../types';
 import { ControlText } from '../../molecules';
 import { BASE_URL } from '../../../utils';
+import { ADMIN_SESSION_NAME } from '../../../utils/constants';
 
 const defaultValues: AdminLogin = {
     password: 'Waves@125',
@@ -33,7 +34,7 @@ export const AdminLoginPage = () => {
         try {
             const response = await Admin.signIn(data);
             if (response) {
-                sessionStorage.setItem("adminInfo", JSON.stringify(response));
+                sessionStorage.setItem(ADMIN_SESSION_NAME, JSON.stringify(response));
                 window.location.href = `${BASE_URL}admin/plan-details`;
             }
         } catch (error) {

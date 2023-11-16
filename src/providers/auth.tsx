@@ -1,5 +1,6 @@
 import { useMediaQuery } from "@mui/material";
 import React, { createContext, useContext, useMemo, useReducer } from "react"
+import { ADMIN_SESSION_NAME } from "../utils/constants";
 interface AuthState {
     userToken: string | null;
     idToken: string;
@@ -80,7 +81,7 @@ type AuthAction =
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const preferDarkModes = useMediaQuery("(prefer-color-scheme: dark)");
     const pathName = window.location.pathname;
-    const adminInfo = sessionStorage.getItem("adminInfo");
+    const adminInfo = sessionStorage.getItem(ADMIN_SESSION_NAME);
     const routeToNavigate = adminInfo ?  '/admin/plan-details' : pathName;
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,

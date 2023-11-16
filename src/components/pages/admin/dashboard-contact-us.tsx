@@ -8,7 +8,7 @@ import {
     useDisplayTableColumnController,
     DisplayTableItems
 } from "../../organism/display-table-items";
-import { ContactForm, Customer } from "../../../services";
+import { ContactForm } from "../../../services";
 import { request } from "../../../utils";
 
 

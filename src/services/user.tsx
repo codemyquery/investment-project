@@ -1,13 +1,16 @@
 import {
-    CustomerDataResponse,
-    DisplayTableColumnDefinition
+    UserDataResponse,
+    DisplayTableColumnDefinition,
+    ServerResponse,
+    SignUpFormData,
+    LoginFormData
 } from "../types";
 import {
     WS_BASE_URL,
     callService
 } from "../utils";
 
-export const useDisplayTableCustomerHeaders = () => {
+export const useDisplayTableUsersHeaders = () => {
     const customerTableHeaders: Array<DisplayTableColumnDefinition> = [
         {
             field: 'name',
@@ -34,10 +37,10 @@ export const useDisplayTableCustomerHeaders = () => {
             filterable: true
         },
         {
-            field: 'dateUpdated',
+            field: 'dateCreated',
             type: 'date',
             sortable: true,
-            headerName: 'Last Updated'
+            headerName: 'Date Created'
         },
         {
             field: 'actions',
@@ -56,15 +59,49 @@ export const useDisplayTableCustomerHeaders = () => {
     return customerTableHeaders;
 }
 
-export const fetchCustomerList = async (
+export const fetchUserList = async (
     query: string = "",
     abortController?: AbortController
-): Promise<CustomerDataResponse> => {
-    const url = `${WS_BASE_URL}/routes.php?&page=customers&actions=getCustomerList&${query}`;
+): Promise<UserDataResponse> => {
+    const url = `${WS_BASE_URL}/routes.php?&page=user&actions=getUsersList&${query}`;
     return await callService({
         url: url,
         method: 'GET',
         userToken: 'sdasdasd',
         abortController: abortController
+    })
+}
+
+export const createUser = async (data: SignUpFormData, abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}/routes.php`;
+    return await callService({
+        url: url,
+        method: 'POST',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'user',
+                actions: 'createUser'
+            },
+            data: data
+        }
+    })
+}
+
+export const loginUser = async (data: LoginFormData, abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}/routes.php`;
+    return await callService({
+        url: url,
+        method: 'POST',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'user',
+                actions: 'loginUser'
+            },
+            data: data
+        }
     })
 }

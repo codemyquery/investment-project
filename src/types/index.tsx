@@ -1,6 +1,6 @@
 import { AdminLogin } from "./admin-login";
 import { ContactUsFormData, ContactUsServerData, ContactusDataResponse } from "./contact-us";
-import { CustomerDataResponse, CustomerServerData } from "./customer";
+import { UserDataResponse, UserServerData, SignUpFormData, LoginFormData } from "./user";
 import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
 import { PlanDataResponse, PlanFormData, PlanServerData } from "./plan";
@@ -44,11 +44,13 @@ export type {
     PlanFormData,
     PlanDataResponse,
     AdminLogin,
-    CustomerServerData,
-    CustomerDataResponse,
+    UserServerData,
+    UserDataResponse,
     ContactUsFormData,
     ContactUsServerData,
-    ContactusDataResponse
+    ContactusDataResponse,
+    SignUpFormData,
+    LoginFormData
 }
 
 export {

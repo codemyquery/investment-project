@@ -1,6 +1,6 @@
 <?php
 require_once('./helper.php');
-class Customer
+class Users
 {
     var $helper;
     function __construct($helper)
@@ -8,20 +8,23 @@ class Customer
         $this->helper = $helper;
     }
 
-    function create_new_customer($data)
+    function create_new_user($data)
     {
         $this->helper->data = array(
-            ':name'             =>    $this->helper->clean_data($data['customer_id']),
-            ':email'            =>    $this->helper->clean_data($data['name']),
-            ':mobile'           =>    $this->helper->clean_data($data['address']),
-            ':kyc_status'       =>    $this->helper->clean_data($data['panNumber'])
+            ':name'                    =>    $this->helper->clean_data($data['name']),
+            ':email'                   =>    $this->helper->clean_data($data['email']),
+            ':mobile'                  =>    $this->helper->clean_data($data['mobile']),
+            ':lg_lc_code'              =>    $this->helper->clean_data($data['lgLcCode']),
+            ':kyc_status'              =>    'NO',
+            ':password'                =>    $this->helper->clean_data($data['password']),
+            ':accepted_for_promotions' =>    $this->helper->clean_data($data['acceptedPromotionMails'])
         );
-        $this->helper->query = "INSERT INTO customers (name, email, mobile, kyc_status) 
-         VALUES (:name,:email,:mobile,:kyc_status)";
+        $this->helper->query = "INSERT INTO users (name, email, mobile, lg_lc_code, kyc_status, password, accepted_for_promotions) 
+         VALUES (:name,:email,:mobile,:lg_lc_code, :kyc_status, :password, :accepted_for_promotions)";
         return $this->helper->execute_query();
     }
 
-    function update_customer($data)
+    function update_user($data)
     {
         /* $this->helper->data = array(
             ':customer_id'              =>    $this->helper->clean_data($data['customer_id']),
@@ -49,9 +52,9 @@ class Customer
         return $this->helper->execute_query(); */
     }
 
-    function get_customer($mobileNo)
+    function get_user($mobileNo)
     {
-        $this->helper->query = "SELECT *FROM customers WHERE mobile='$mobileNo'";
+        $this->helper->query = "SELECT *FROM users WHERE mobile='$mobileNo'";
         if ($this->helper->total_row() === 0) {
             return null;
         }
@@ -59,14 +62,27 @@ class Customer
         return formatCustomerOutput($customer);
     }
 
-    function get_customer_list()
+    function login_user($data) {
+        $username = $data['username'];
+        $password = $data['password'];
+        $this->helper->query = "SELECT * FROM users WHERE email='$username' OR mobile='$username' AND password='$password'";
+        if ($this->helper->total_row() === 0) {
+            return null;
+        }
+        $username = $this->helper->query_result()[0];
+        $_SESSION["username_email"] = $username['email'];
+        $_SESSION["username_mobile"] = $username['mobile'];
+        return formatCustomerOutput($username);
+    }
+
+    function get_user_list()
     {
         $pages_array = array();
-        $this->helper->query = "SELECT * FROM customers "
-            . $this->helper->getSortingQuery('customers', t_customer(@$_GET['orderBy']))
+        $this->helper->query = "SELECT * FROM users "
+            . $this->helper->getSortingQuery('users', t_customer(@$_GET['orderBy']))
             . $this->helper->getPaginationQuery();
         $total_rows = $this->helper->query_result();
-        $this->helper->query = "SELECT COUNT(*) as count FROM customers";
+        $this->helper->query = "SELECT COUNT(*) as count FROM users";
         $total_Count = $this->helper->query_result();
         foreach ($total_rows as $row) {
             $pages_array[] = formatCustomerOutput($row);
@@ -86,7 +102,7 @@ function formatCustomerOutput($row)
         "email"         =>     $row['email'],
         "mobile"        =>     $row['mobile'],
         "kycStatus"     =>     $row['kyc_status'],
-        "dateUpdated"   =>     $row['updated_on']
+        "dateCreated"   =>     $row['created_on']
     );
 }
 
@@ -94,8 +110,8 @@ function t_customer($fieldName)
 {
     switch ($fieldName) {
         case 'dateUpdated':
-            return 'updated_on';
-        case 'customers':
+            return 'created_on';
+        case 'users':
             return 'name';
         case 'kycStatus':
             return 'kyc_status';

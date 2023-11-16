@@ -1,5 +1,4 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material"
-import { UserProfileKycOptions } from "../molecules"
 
 export const UserNomineeDetails = () => {
     return <>

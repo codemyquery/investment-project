@@ -7,6 +7,8 @@ import { AppDrawer, AppRouting } from "../organism";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../utils";
+import { Admin } from "../../services";
+import { ADMIN_SESSION_NAME } from "../../utils/constants";
 interface HomeProps {
     routingService: Service<NavigationMenu[]>;
 }
@@ -22,9 +24,13 @@ export const AdminPageTemplate = ({
     }
     const handleCloseUserMenu = (evt: React.MouseEvent<HTMLElement>) => {
         const currentTarget = evt.currentTarget;
-        if(currentTarget.innerText === 'Logout'){
-            sessionStorage.removeItem('adminInfo');
-            window.location.href = `${BASE_URL}admin`
+        if (currentTarget.innerText === 'Logout') {
+            const logout = async () => {
+                await Admin.signOut();
+                sessionStorage.removeItem(ADMIN_SESSION_NAME);
+                window.location.href = `${BASE_URL}admin`
+            }
+            logout();
         }
         setAnchorElUser(null);
     };
@@ -71,7 +77,7 @@ export const AdminPageTemplate = ({
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} style={{ marginLeft: '5px',marginRight: '5px' }} onClick={handleCloseUserMenu}>
+                                <MenuItem key={setting} style={{ marginLeft: '5px', marginRight: '5px' }} onClick={handleCloseUserMenu}>
                                     {setting}
                                 </MenuItem>
                             ))}

@@ -1,6 +1,8 @@
 export const WS_BASE_URL = "http://localhost/virtual-property/api/routes.php";
 export const BASE_URL = "http://localhost:3000/";
 export const DRAWER_WIDTH = 250;
+export const ADMIN_SESSION_NAME = "adminInfo";
+export const USER_SESSION_NAME = "user-data";
 export const ExcelHeaders = [
     ["1000000", "__EMPTY", "__EMPTY_1"],
     ["2000000", "__EMPTY_2", "__EMPTY_3"],

@@ -3,7 +3,7 @@ import { getAuthHeader, postJsonAuthHeader } from "./helper";
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 interface Login {
     page: 'login',
-    actions: 'login'
+    actions: 'login' | 'logout'
 }
 
 interface Employee {
@@ -21,6 +21,10 @@ interface ContactUs {
     actions: 'createContactUs' | 'fetchContactus'
 }
 
+interface User {
+    page: 'user',
+    actions: 'createUser' | 'loginUser'
+}
 
 interface BodyData {
     [key: string]: any;
@@ -29,7 +33,7 @@ interface FilterData {
     [key: string]: any;
 }
 interface Body {
-    route: Login | Employee | Plan | ContactUs
+    route: Login | Employee | Plan | ContactUs | User
     data?: BodyData
     filter?: FilterData
 }

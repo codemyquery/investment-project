@@ -7,7 +7,7 @@ class Login
         $this->helper = $helper;
     }
 
-    function validateUserCredentails($data)
+    function validateAdminUserCredentails($data)
     {
         $userName = $this->helper->clean_data($data['username']);
         $password = $this->helper->clean_data($data['password']);
@@ -19,6 +19,10 @@ class Login
         } else {
             return null;
         }
+    }
+
+    function logout(){
+        unset($_SESSION['admin_username']);
     }
 }
 

@@ -2,24 +2,24 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { DashboardPageTemplate } from "../../templates";
 import AddIcon from '@mui/icons-material/Add';
-import { CustomerServerData, DisplayTablePayload } from "../../../types";
+import { UserServerData, DisplayTablePayload } from "../../../types";
 import {
     useDisplayTablePageController,
     useDisplayTableColumnController,
     DisplayTableItems
 } from "../../organism/display-table-items";
-import { Customer } from "../../../services";
+import { Users } from "../../../services";
 import { request } from "../../../utils";
 
 export const DashboardCustomers = () => {
     const [loader, setLoader] = useState(false);
-    const [payloadData, setPayloadData] = useState<DisplayTablePayload<CustomerServerData>>({
+    const [payloadData, setPayloadData] = useState<DisplayTablePayload<UserServerData>>({
         rows: [],
         totalDataCount: 0
     });
     const paginationController = useDisplayTablePageController({});
-    const columnController = useDisplayTableColumnController<CustomerServerData>({
-        columns: Customer.useDisplayTableCustomerHeaders()
+    const columnController = useDisplayTableColumnController<UserServerData>({
+        columns: Users.useDisplayTableUsersHeaders()
     });
 
     const query = useMemo(() => {
@@ -41,7 +41,7 @@ export const DashboardCustomers = () => {
         const abortController = new AbortController();
         const init = async () => {
             setLoader(true)
-            const response = await Customer.fetchCustomerList(query, abortController);
+            const response = await Users.fetchUserList(query, abortController);
             setPayloadData({
                 rows: response.rows,
                 totalDataCount: response.count

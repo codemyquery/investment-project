@@ -18,3 +18,12 @@ export const signIn = async (
         }
     })
 }
+
+export const signOut = async () => {
+    const url = `${WS_BASE_URL}/routes.php?&page=login&actions=logout`;
+    return await callService({
+        url: url,
+        method: 'GET',
+        userToken: 'sdasdasd'
+    })
+}
