@@ -3,7 +3,7 @@ export interface ContactUsFormData {
     mobile:string,
     email: string,
     message:string,
-    acceptedPromotionMails:boolean
+    acceptedPromotionMails:number
 }
 export interface ContactUsServerData {
     id : string,

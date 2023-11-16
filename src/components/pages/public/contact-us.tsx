@@ -10,7 +10,7 @@ const defaultValues: ContactUsFormData = {
     mobile: "",
     email: "",
     message: "",
-    acceptedPromotionMails: false
+    acceptedPromotionMails: 0
 }
 
 export const ContactUs = () => {
@@ -257,13 +257,14 @@ export const ContactUs = () => {
                                         <div className="mb-3">
                                             <div className="form-check">
                                                 <Controller
-                                                    name={'message'}
+                                                    name={'acceptedPromotionMails'}
                                                     control={control}
                                                     render={({ field }) => (
                                                         <input
                                                             {...field}
-                                                            onClick={(evt) => setValue('acceptedPromotionMails', evt.currentTarget.checked)}
+                                                            onClick={(evt) => setValue('acceptedPromotionMails', evt.currentTarget.checked ? 1 : 0)}
                                                             type="checkbox"
+                                                            checked={!!field.value}
                                                             className="form-check-input"
                                                         />
                                                     )}
