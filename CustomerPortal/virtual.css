@@ -276,7 +276,7 @@ timeline .content {
 }
 
 
-three-step {
+#three-steps {
     padding: 0 20px;
     border-radius: 10px;
     box-shadow: 0 0 4px #0000001a;
@@ -286,7 +286,7 @@ three-step {
     display: block
 }
 
-three-step .heading {
+#three-steps .heading {
     font-size: 20px;
     color: #222;
     font-weight: 500;
@@ -296,31 +296,31 @@ three-step .heading {
 }
 
 @media (min-width: 992px) {
-    three-step .heading {
+    #three-steps .heading {
         font-size:calc(20px + .01*(100vw - 1400px))
     }
 }
 
-three-step .step-images {
+#three-steps .step-images {
     display: flex;
     justify-content: space-between;
     padding: 30px 0 34px
 }
 
-three-step .step-icons {
+#three-steps .step-icons {
     width: 50px;
     height: 63px;
     object-fit: contain
 }
 
-three-step hr {
+#three-steps hr {
     border-top: 1.4px dashed #3f6fa3;
     width: 100%;
     top: 26px;
     margin: 33px 10px
 }
 
-three-step .steps-text {
+#three-steps .steps-text {
     width: 54px;
     text-align: center;
     margin-top: 5px;
@@ -330,22 +330,22 @@ three-step .steps-text {
 }
 
 @media (min-width: 992px) {
-    three-step .steps-text {
+    #three-steps .steps-text {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-three-step .steps-text:last-child {
+#three-steps .steps-text:last-child {
     margin-right: 10px
 }
 
-three-step .next-steps {
+#three-steps .next-steps {
     display: flex;
     flex: 1
 }
 
 @media (min-width: 992px) {
-    three-step {
+    #three-steps {
         border:transparent;
         box-shadow: 0 0 #fff;
         width: 60%;
@@ -353,7 +353,7 @@ three-step .next-steps {
         padding: 0
     }
 
-    three-step .heading {
+    #three-steps .heading {
         font-size: 24px;
         color: #222;
         font-weight: 500;
@@ -363,27 +363,27 @@ three-step .next-steps {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    three-step .heading {
+    #three-steps .heading {
         font-size:calc(24px + .012*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    three-step .step-images {
+    #three-steps .step-images {
         padding:40px 0;
         margin-left: 18%
     }
 }
 
 @media (min-width: 992px) {
-    three-step .step-icons {
+    #three-steps .step-icons {
         width:87px;
         height: 84px
     }
 }
 
 @media (min-width: 992px) {
-    three-step .steps-text {
+    #three-steps .steps-text {
         width:75px;
         margin-top: 29px;
         font-size: 14px;
@@ -394,7 +394,7 @@ three-step .next-steps {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    three-step .steps-text {
+    #three-steps .steps-text {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
@@ -409,24 +409,24 @@ three-step .next-steps {
 
 
 
-bond-details bottom-drawer {
+#bond-details bottom-drawer {
     position: relative;
     z-index: 20000000000
 }
 
 
 
-bond-details .container {
+#bond-details .container {
     position: relative
 }
 
-bond-details .bond-details-header {
+#bond-details .bond-details-header {
     display: block;
     height: 63px;
     z-index: 9
 }
 
-bond-details .bond-details-header .scrollmenu {
+#bond-details .bond-details-header .scrollmenu {
     font-size: 14px;
     color: #929292;
     font-weight: 400;
@@ -439,16 +439,16 @@ bond-details .bond-details-header .scrollmenu {
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu {
+    #bond-details .bond-details-header .scrollmenu {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-bond-details .bond-details-header .scrollmenu::-webkit-scrollbar {
+#bond-details .bond-details-header .scrollmenu::-webkit-scrollbar {
     display: none
 }
 
-bond-details .bond-details-header .scrollmenu a {
+#bond-details .bond-details-header .scrollmenu a {
     font-size: 14px;
     color: #929292;
     font-weight: 400;
@@ -464,36 +464,36 @@ bond-details .bond-details-header .scrollmenu a {
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu a {
+    #bond-details .bond-details-header .scrollmenu a {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 
-bond-details .bond-details-header .scrollmenu a.active {
+#bond-details .bond-details-header .scrollmenu a.active {
     color: #222;
     border-bottom: 3px solid #e6a127;
     font-weight: 500
 }
 
-bond-details .bond-details-header .scrollmenu .button-invest {
+#bond-details .bond-details-header .scrollmenu .button-invest {
     display: none
 }
 
-bond-details .bond-details-content {
+#bond-details .bond-details-content {
     background-color: #f6f6f6;
     height: 100%;
     padding-top: 20px
 }
 
-bond-details .bond-details-content .common-container {
+#bond-details .bond-details-content .common-container {
     padding: 25px;
     background-color: #fff
 }
 
 
 
-bond-details .bond-details-content .details-container .bond-banner-bg {
+#bond-details .bond-details-content .details-container .bond-banner-bg {
     position: relative;
     padding: 20px 0 20px 25px;
     width: 100%;
@@ -501,24 +501,24 @@ bond-details .bond-details-content .details-container .bond-banner-bg {
     background-color: #fff
 }
 
-bond-details .bond-details-content .details-container .bond-banner-bg .side-icons {
+#bond-details .bond-details-content .details-container .bond-banner-bg .side-icons {
     display: none
 }
 
 
 
-bond-details .bond-details-content .details-container .bond-banner .bond-name-container {
+#bond-details .bond-details-content .details-container .bond-banner .bond-name-container {
     display: flex;
     justify-content: flex-start;
     flex-direction: column
 }
 
-bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div {
+#bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div {
     display: flex;
     align-items: center
 }
 
-bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
+#bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
     color: #222;
     font-weight: 600;
     line-height: 31px;
@@ -528,28 +528,28 @@ bond-details .bond-details-content .details-container .bond-banner .bond-name-co
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
+    #bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
         font-size:calc(22px + .011*(100vw - 1400px))
     }
 }
 
 
 
-bond-details .bond-details-content .sticky-popup {
+#bond-details .bond-details-content .sticky-popup {
     position: relative
 }
 
-bond-details .sticky-section {
+#bond-details .sticky-section {
     background-color: #fff
 }
 
-bond-details .sticky-section .returns-parent {
+#bond-details .sticky-section .returns-parent {
     padding: 25px
 }
 
 
 
-bond-details .details-section-header,bond-details issuer-section collapsible .collapsible-header .header-title,bond-details three-step .heading {
+#bond-details .details-section-header,#bond-details issuer-section collapsible .collapsible-header .header-title,#bond-details #three-steps .heading {
     font-size: 20px;
     color: #00334e;
     font-weight: 500;
@@ -557,14 +557,14 @@ bond-details .details-section-header,bond-details issuer-section collapsible .co
 }
 
 @media (min-width: 992px) {
-    bond-details .details-section-header,bond-details issuer-section collapsible .collapsible-header .header-title,bond-details three-step .heading {
+    #bond-details .details-section-header,#bond-details issuer-section collapsible .collapsible-header .header-title,#bond-details #three-steps .heading {
         font-size:calc(20px + .01*(100vw - 1400px))
     }
 }
 
 
 
-bond-details return-section .heading {
+#bond-details .return-section .heading {
     font-size: 20px;
     color: #222;
     font-weight: 600;
@@ -572,30 +572,30 @@ bond-details return-section .heading {
 }
 
 @media (min-width: 992px) {
-    bond-details return-section .heading {
+    #bond-details .return-section .heading {
         font-size:calc(20px + .01*(100vw - 1400px))
     }
 }
 
 
 
-bond-details return-section .heading:before {
+#bond-details .return-section .heading:before {
     margin-right: 0
 }
 
-bond-details .details-section-header {
+#bond-details .details-section-header {
     margin: 20px;
     border-bottom: 1px solid #cbcbcb;
     padding-bottom: 13px
 }
 
-bond-details tooltip-component {
+#bond-details tooltip-component {
     cursor: pointer
 }
 
 
 
-bond-details .common-bonds-faq {
+#bond-details .common-bonds-faq {
     width: 100%;
     padding: 40px 6% 0
 }
@@ -603,19 +603,19 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .bond-container {
+    #bond-details .bond-container {
         margin-top:80px
     }
 
 
 
-    bond-details bottom-drawer {
+    #bond-details bottom-drawer {
         display: none
     }
 
    
 
-    bond-details .details-section-header,bond-details issuer-section collapsible .collapsible-header .header-title,bond-details three-step .heading {
+    #bond-details .details-section-header,#bond-details issuer-section collapsible .collapsible-header .header-title,#bond-details #three-steps .heading {
         font-size: 23px;
         color: #222;
         font-weight: 500;
@@ -625,13 +625,13 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .details-section-header,bond-details issuer-section collapsible .collapsible-header .header-title,bond-details three-step .heading {
+    #bond-details .details-section-header,#bond-details issuer-section collapsible .collapsible-header .header-title,#bond-details #three-steps .heading {
         font-size:calc(23px + .0115*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    bond-details return-section .heading {
+    #bond-details .return-section .heading {
         font-size:23px;
         color: #222;
         font-weight: 400;
@@ -640,7 +640,7 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details return-section .heading {
+    #bond-details .return-section .heading {
         font-size:calc(23px + .0115*(100vw - 1400px))
     }
 }
@@ -648,7 +648,7 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu {
+    #bond-details .bond-details-header .scrollmenu {
         padding:0 6%;
         font-size: 16px;
         color: #585858;
@@ -665,19 +665,19 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu {
+    #bond-details .bond-details-header .scrollmenu {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu::-webkit-scrollbar {
+    #bond-details .bond-details-header .scrollmenu::-webkit-scrollbar {
         display:none
     }
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu a {
+    #bond-details .bond-details-header .scrollmenu a {
         font-size:18px;
         color: #585858;
         font-weight: 400;
@@ -692,7 +692,7 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu a {
+    #bond-details .bond-details-header .scrollmenu a {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
@@ -700,7 +700,7 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu a.active {
+    #bond-details .bond-details-header .scrollmenu a.active {
         color:#00334e;
         border-bottom: 3px solid #e6a127;
         font-weight: 600
@@ -710,7 +710,7 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .bond-details-header .scrollmenu .button-invest {
+    #bond-details .bond-details-header .scrollmenu .button-invest {
         display:block;
         align-self: center;
         margin-left: auto;
@@ -719,18 +719,18 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-content {
+    #bond-details .bond-details-content {
         background-color:#fff;
         padding-top: unset
     }
 
-    bond-details .bond-details-content .common-container {
+    #bond-details .bond-details-content .common-container {
         padding: 40px 6%;
         background-color: #fff
     }
 
 
-    bond-details .bond-details-content .details-container .bond-banner-bg {
+    #bond-details .bond-details-content .details-container .bond-banner-bg {
         position: relative;
         padding: 25px 6%;
         width: 100%;
@@ -738,7 +738,7 @@ bond-details .common-bonds-faq {
         background-color: #fff
     }
 
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons {
         bottom: -15px;
         position: absolute;
         display: flex;
@@ -748,13 +748,13 @@ bond-details .common-bonds-faq {
         top: 38%
     }
 
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top {
         display: flex;
         justify-content: space-between;
         align-items: center
     }
 
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .help-text {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .help-text {
         font-size: 18px;
         color: #585858;
         font-weight: 400;
@@ -764,13 +764,13 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .help-text {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .help-text {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 @media (min-width: 992px) {
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone {
         color:#222;
         display: flex;
         width: auto;
@@ -779,12 +779,12 @@ bond-details .common-bonds-faq {
         cursor: pointer
     }
 
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone img {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone img {
         width: 20px;
         height: 20px
     }
 
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone span {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone span {
         margin-left: 10px;
         font-size: 18px;
         color: #222;
@@ -794,7 +794,7 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone span {
+    #bond-details .bond-details-content .details-container .bond-banner-bg .side-icons .side-icons-top .button-phone span {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
@@ -802,12 +802,12 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .bond-details-content .details-container .bond-banner .bond-name-container {
+    #bond-details .bond-details-content .details-container .bond-banner .bond-name-container {
         align-items:center;
         flex-direction: row
     }
 
-    bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
+    #bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
         font-size: 32px;
         color: #222;
         font-weight: 500;
@@ -818,7 +818,7 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
+    #bond-details .bond-details-content .details-container .bond-banner .bond-name-container .bond-name-div .bond-name {
         font-size:calc(32px + .016*(100vw - 1400px))
     }
 }
@@ -826,7 +826,7 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .button-invest {
+    #bond-details .button-invest {
         font-size:13px;
         color: #fff;
         font-weight: 400;
@@ -842,28 +842,28 @@ bond-details .common-bonds-faq {
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    bond-details .button-invest {
+    #bond-details .button-invest {
         font-size:calc(13px + 13 * (100vw - 1400px) / 2000)
     }
 }
 
 @media (min-width: 992px) {
-    bond-details .sticky-section {
+    #bond-details .sticky-section {
         display:flex;
         flex-direction: column;
         justify-content: space-between;
         background-color: #fff
     }
 
-    bond-details .sticky-section .keyhighlight-parent,bond-details .sticky-section .compare-parent {
+    #bond-details .sticky-section .keyhighlight-parent,#bond-details .sticky-section .compare-parent {
         max-width: 58%
     }
 
-    bond-details .sticky-section .keyhighlight-parent {
+    #bond-details .sticky-section .keyhighlight-parent {
         padding-left: 6%
     }
 
-    bond-details .sticky-section .returns-parent {
+    #bond-details .sticky-section .returns-parent {
         background-color: #fff;
         margin-right: 6%;
         margin-top: 42px;
@@ -877,7 +877,7 @@ bond-details .common-bonds-faq {
 
    
 
-    bond-details .sticky-section .returns-parent return-section .returns-container {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container {
         max-height: calc(100vh - 175px);
         overflow-y: auto;
         box-shadow: none;
@@ -887,13 +887,13 @@ bond-details .common-bonds-faq {
 
    
 
-    bond-details .sticky-section .returns-parent return-section .returns-container .container {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container .container {
         max-height: 400px
     }
 }
 
 @media (min-width: 992px) and (min-width: 993px) {
-    bond-details .sticky-section .returns-parent return-section .returns-container .container {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container .container {
         max-height:calc(400px + 400 * (100vw - 993px) / 927)
     }
 }
@@ -901,23 +901,23 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .sticky-section .returns-parent return-section .returns-container.concise {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container.concise {
         overflow:hidden;
         display: flex;
         flex-direction: column
     }
 
-    bond-details .sticky-section .returns-parent return-section .returns-container.concise .read-more {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container.concise .read-more {
         margin-top: 0
     }
 
-    bond-details .sticky-section .returns-parent return-section .returns-container.concise .earned-intrest {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container.concise .earned-intrest {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         margin-top: 10px
     }
 
-    bond-details .sticky-section .returns-parent return-section .returns-container.concise .disclaimer-section,bond-details .sticky-section .returns-parent return-section .returns-container.concise .download-cashFlow {
+    #bond-details .sticky-section .returns-parent .return-section .returns-container.concise .disclaimer-section,#bond-details .sticky-section .returns-parent .return-section .returns-container.concise .download-cashFlow {
         display: none
     }
 }
@@ -925,7 +925,7 @@ bond-details .common-bonds-faq {
 
 
 @media (min-width: 992px) {
-    bond-details .stick-cashflow {
+    #bond-details .stick-cashflow {
         position:relative
     }
 }
@@ -1192,18 +1192,18 @@ overview-section .main-container .flex-column:nth-child(1),overview-section .mai
     }
 }
 
-return-section {
+.return-section {
     display: block;
     border-radius: 10px;
     box-shadow: 0 0 4px #0000001a;
     border: solid 1px #ddd
 }
 
-return-section .cont-padding {
+.return-section .cont-padding {
     padding: 0
 }
 
-return-section .header {
+.return-section .header {
     display: flex;
     justify-content: space-between;
     padding: 19px 20px 11px;
@@ -1212,7 +1212,7 @@ return-section .header {
     align-items: center
 }
 
-return-section .header .heading {
+.return-section .header .heading {
     font-size: 20px;
     color: #222;
     font-weight: 600;
@@ -1220,12 +1220,12 @@ return-section .header .heading {
 }
 
 @media (min-width: 992px) {
-    return-section .header .heading {
+    .return-section .header .heading {
         font-size:calc(20px + .01*(100vw - 1400px))
     }
 }
 
-return-section .header .heading:before {
+.return-section .header .heading:before {
     content: "";
     position: relative;
     top: -3px;
@@ -1234,12 +1234,12 @@ return-section .header .heading:before {
 }
 
 @media (min-width: 992px) {
-    return-section .header .heading:before {
+    .return-section .header .heading:before {
         font-size:calc(11px + .0055*(100vw - 1400px))
     }
 }
 
-return-section .header .download-cashflow {
+.return-section .header .download-cashflow {
     cursor: pointer;
     font-size: 14px;
     color: #222;
@@ -1250,14 +1250,14 @@ return-section .header .download-cashflow {
 
 
 @media (min-width: 992px) {
-    return-section .header .download-cashflow {
+    .return-section .header .download-cashflow {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 
 
-return-section .read-more {
+.return-section .read-more {
     text-align: center;
     margin-top: 18%;
     z-index: 9;
@@ -1269,12 +1269,12 @@ return-section .read-more {
 }
 
 @media (min-width: 992px) {
-    return-section .read-more {
+    .return-section .read-more {
         font-size:calc(13px + 13 * (100vw - 1400px) / 2000)
     }
 }
 
-return-section .container {
+.return-section .container {
     display: flex;
     justify-content: space-evenly;
     max-height: 400px;
@@ -1282,7 +1282,7 @@ return-section .container {
     padding-top: 10px
 }
 
-return-section .container:after {
+.return-section .container:after {
     position: absolute;
     bottom: 0;
     height: 100%;
@@ -1292,18 +1292,18 @@ return-section .container:after {
     pointer-events: none
 }
 
-return-section .container .investment-flow {
+.return-section .container .investment-flow {
     margin-left: 25%
 }
 
-return-section .container .investment-flow .settelment-amount {
+.return-section .container .investment-flow .settelment-amount {
     min-height: 144px;
     display: flex;
     flex-direction: column;
     align-items: center
 }
 
-return-section .container .investment-flow .settelment-amount .investment-text {
+.return-section .container .investment-flow .settelment-amount .investment-text {
     margin-bottom: 10px;
     font-size: 14px;
     color: #585858;
@@ -1311,12 +1311,12 @@ return-section .container .investment-flow .settelment-amount .investment-text {
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .settelment-amount .investment-text {
+    .return-section .container .investment-flow .settelment-amount .investment-text {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .settelment-amount .settlmentt-unit {
+.return-section .container .investment-flow .settelment-amount .settlmentt-unit {
     display: flex;
     text-align: center;
     width: 100%;
@@ -1324,7 +1324,7 @@ return-section .container .investment-flow .settelment-amount .settlmentt-unit {
     align-items: flex-start
 }
 
-return-section .container .investment-flow .settelment-amount .amount {
+.return-section .container .investment-flow .settelment-amount .amount {
     margin-bottom: 4px;
     min-width: 130px;
     font-size: 18px;
@@ -1335,14 +1335,14 @@ return-section .container .investment-flow .settelment-amount .amount {
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .settelment-amount .amount {
+    .return-section .container .investment-flow .settelment-amount .amount {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 
 
-return-section .container .investment-flow .settelment-amount .unit-count {
+.return-section .container .investment-flow .settelment-amount .unit-count {
     font-size: 14px;
     color: #222;
     line-height: 1.07;
@@ -1350,54 +1350,54 @@ return-section .container .investment-flow .settelment-amount .unit-count {
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .settelment-amount .unit-count {
+    .return-section .container .investment-flow .settelment-amount .unit-count {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 
 
-return-section .container .investment-flow .settelment-amount .rupee-symbol {
+.return-section .container .investment-flow .settelment-amount .rupee-symbol {
     vertical-align: super;
     font-size: 12px
 }
 
 
 
-return-section .container .investment-flow .intrest-frequency {
+.return-section .container .investment-flow .intrest-frequency {
     margin-left: -52px;
     text-align: left
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount {
     min-height: 80px
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:last-child {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:last-child {
     height: auto!important;
     min-height: 50px
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:first-child {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:first-child {
     height: 11px;
     min-height: auto
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:first-child .heading-interest {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:first-child .heading-interest {
     display: none
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:first-child .cost {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest:first-child .cost {
     margin-top: -12px
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest {
     display: block;
     height: 35px;
     margin-left: 12px
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
     margin-top: 45px;
     margin-bottom: 0;
     text-align: left;
@@ -1406,12 +1406,12 @@ return-section .container .investment-flow .intrest-frequency .intrest-amount .e
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
         font-size:calc(12px + .006*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
     margin-bottom: 6px;
     font-size: 14px;
     color: #585858;
@@ -1419,12 +1419,12 @@ return-section .container .investment-flow .intrest-frequency .intrest-amount .i
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
     margin-bottom: 0;
     text-align: left;
     min-width: 96px;
@@ -1435,18 +1435,18 @@ return-section .container .investment-flow .intrest-frequency .intrest-amount .c
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount:last-child .cost {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount:last-child .cost {
     margin-bottom: 0
 }
 
 
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount .principle-percent {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount .principle-percent {
     font-size: 10px;
     color: #222;
     margin-bottom: 8px;
@@ -1454,23 +1454,23 @@ return-section .container .investment-flow .intrest-frequency .intrest-amount .p
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .principle-percent {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .principle-percent {
         font-size:calc(10px + .005*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .plus-icon {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .plus-icon {
     margin: 5px 0 -2px 30px;
     line-height: 1.75
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .face-value {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .face-value {
     display: flex;
     flex-direction: column;
     height: 100px
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .principle {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .principle {
     margin-bottom: 0;
     font-size: 14px;
     color: #585858;
@@ -1478,12 +1478,12 @@ return-section .container .investment-flow .intrest-frequency .intrest-amount co
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .principle {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .principle {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .cost {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .cost {
     margin-bottom: 0;
     margin-top: 0;
     font-size: 14px;
@@ -1493,26 +1493,26 @@ return-section .container .investment-flow .intrest-frequency .intrest-amount co
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .cost {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-amount .cost {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 
 
-return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
+.return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
     font-size: 8px;
     color: #222;
     margin-bottom: -12px
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
         font-size:calc(8px + .004*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .plus-icon {
+.return-section .container .investment-flow .plus-icon {
     margin: -38px 0 0 30px;
     text-align: left;
     font-size: 20px;
@@ -1521,16 +1521,16 @@ return-section .container .investment-flow .plus-icon {
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .plus-icon {
+    .return-section .container .investment-flow .plus-icon {
         font-size:calc(20px + .01*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .principle-amount {
+.return-section .container .investment-flow .principle-amount {
     text-align: left
 }
 
-return-section .container .investment-flow .principle-amount .principle {
+.return-section .container .investment-flow .principle-amount .principle {
     margin-bottom: 6px;
     font-size: 14px;
     color: #585858;
@@ -1538,12 +1538,12 @@ return-section .container .investment-flow .principle-amount .principle {
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .principle-amount .principle {
+    .return-section .container .investment-flow .principle-amount .principle {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-return-section .container .investment-flow .principle-amount .cost {
+.return-section .container .investment-flow .principle-amount .cost {
     margin-bottom: 0;
     font-size: 14px;
     color: #222;
@@ -1552,36 +1552,36 @@ return-section .container .investment-flow .principle-amount .cost {
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .principle-amount .cost {
+    .return-section .container .investment-flow .principle-amount .cost {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 
 
-return-section .container .investment-flow .principle-amount .principle-percent {
+.return-section .container .investment-flow .principle-amount .principle-percent {
     font-size: 8px;
     color: #222;
     margin-bottom: -12px
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .principle-amount .principle-percent {
+    .return-section .container .investment-flow .principle-amount .principle-percent {
         font-size:calc(8px + .004*(100vw - 1400px))
     }
 }
 
-return-section .earned-intrest {
+.return-section .earned-intrest {
     background-color: #ec9b26;
     margin-top: 25px;
     color: #fff
 }
 
-return-section .earned-intrest .yield-section {
+.return-section .earned-intrest .yield-section {
     padding: 0 20px 20px
 }
 
-return-section .earned-intrest .yield-section .earned-text {
+.return-section .earned-intrest .yield-section .earned-text {
     margin-bottom: 10px;
     padding-top: 26px;
     font-size: 16px;
@@ -1589,12 +1589,12 @@ return-section .earned-intrest .yield-section .earned-text {
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .yield-section .earned-text {
+    .return-section .earned-intrest .yield-section .earned-text {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
-return-section .earned-intrest .yield-section .earned-cost {
+.return-section .earned-intrest .yield-section .earned-cost {
     margin-bottom: 7px;
     font-size: 18px;
     font-weight: 500;
@@ -1602,44 +1602,44 @@ return-section .earned-intrest .yield-section .earned-cost {
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .yield-section .earned-cost {
+    .return-section .earned-intrest .yield-section .earned-cost {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
-return-section .earned-intrest .yield-section .yield-text {
+.return-section .earned-intrest .yield-section .yield-text {
     font-size: 10px;
     line-height: 1.5;
     margin-bottom: 10px
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .yield-section .yield-text {
+    .return-section .earned-intrest .yield-section .yield-text {
         font-size:calc(10px + .005*(100vw - 1400px))
     }
 }
 
-return-section .earned-intrest .coin-img {
+.return-section .earned-intrest .coin-img {
     height: 81px
 }
 
-return-section .earned-intrest .returns-section {
+.return-section .earned-intrest .returns-section {
     padding: 0 20px
 }
 
-return-section .earned-intrest .returns-section .returns-text {
+.return-section .earned-intrest .returns-section .returns-text {
     font-size: 16px;
     line-height: 1.07;
     margin-bottom: 10px
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .returns-section .returns-text {
+    .return-section .earned-intrest .returns-section .returns-text {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
-return-section .earned-intrest .returns-section .returns-amt {
+.return-section .earned-intrest .returns-section .returns-amt {
     margin-bottom: 7px;
     font-size: 18px;
     font-weight: 500;
@@ -1647,12 +1647,12 @@ return-section .earned-intrest .returns-section .returns-amt {
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .returns-section .returns-amt {
+    .return-section .earned-intrest .returns-section .returns-amt {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
-return-section .earned-intrest .invest-btn {
+.return-section .earned-intrest .invest-btn {
     background-color: #3f6fa3;
     color: #fff;
     text-align: center;
@@ -1673,36 +1673,36 @@ return-section .earned-intrest .invest-btn {
 
 
 
-return-section .flex {
+.return-section .flex {
     display: flex;
     justify-content: space-between
 }
 
-return-section .disclaimer-section {
+.return-section .disclaimer-section {
     padding: 26px 20px 13px;
     text-align: left
 }
 
 
 
-return-section timeline .timeline:first-child:after {
+.return-section timeline .timeline:first-child:after {
     background-color: #d6e9ff
 }
 
-return-section timeline .timeline:first-child .timeline-container {
+.return-section timeline .timeline:first-child .timeline-container {
     padding-bottom: 85px
 }
 
 
-return-section timeline .timeline:after {
+.return-section timeline .timeline:after {
     background-color: #3f6fa3
 }
 
-return-section timeline .timeline .timeline-container {
+.return-section timeline .timeline .timeline-container {
     padding: 15px 0
 }
 
-return-section timeline .timeline.maturity-item .timeline-container:after {
+.return-section timeline .timeline.maturity-item .timeline-container:after {
     border: solid 2px #3f6fa3;
     background-color: #ec9b26;
     width: 12px;
@@ -1711,31 +1711,31 @@ return-section timeline .timeline.maturity-item .timeline-container:after {
     top: -1px
 }
 
-return-section timeline .timeline.maturity-item:after {
+.return-section timeline .timeline.maturity-item:after {
     background-color: #ec9b26
 }
 
 
 
-return-section timeline .left,return-section timeline .right {
+.return-section timeline .left,.return-section timeline .right {
     color: #585858;
     font-size: 14px
 }
 
 @media (min-width: 992px) {
-    return-section timeline .left,return-section timeline .right {
+    .return-section timeline .left,.return-section timeline .right {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
-return-section timeline .right {
+.return-section timeline .right {
     right: -99%;
     position: absolute;
     text-align: left;
     width: 90px
 }
 
-return-section .download-cashFlow {
+.return-section .download-cashFlow {
     display: flex;
     justify-content: space-around;
     margin: 20px 0;
@@ -1745,46 +1745,46 @@ return-section .download-cashFlow {
 
 
 
-return-section collapsible .collapsible-header {
+.return-section collapsible .collapsible-header {
     padding: 0;
     height: 0px;
     text-align: center
 }
 
-return-section collapsible .collapsible-header span.plus:after {
+.return-section collapsible .collapsible-header span.plus:after {
     content: "\2c7";
     font-size: 31px
 }
 
-return-section collapsible .collapsible-header span.minus:after {
+.return-section collapsible .collapsible-header span.minus:after {
     content: "\2c6";
     font-size: 31px
 }
 
-return-section collapsible .collapsible-header .header-title {
+.return-section collapsible .collapsible-header .header-title {
     font-size: 12px;
     color: #585858;
     font-weight: 400
 }
 
 @media (min-width: 992px) {
-    return-section collapsible .collapsible-header .header-title {
+    .return-section collapsible .collapsible-header .header-title {
         font-size:calc(12px + .006*(100vw - 1400px))
     }
 }
 
-return-section collapsible .collapsible-header .header-title:before {
+.return-section collapsible .collapsible-header .header-title:before {
     content: "";
     border-left: none
 }
 
-return-section collapsible .collapsible-header .plus-minus {
+.return-section collapsible .collapsible-header .plus-minus {
     width: 14px!important;
     height: 15px;
     text-align: left!important
 }
 
-return-section collapsible .collapsible-body {
+.return-section collapsible .collapsible-body {
     padding: 15px 0 34px 25%;
     position: relative
 }
@@ -1792,162 +1792,162 @@ return-section collapsible .collapsible-body {
 
 
 @media (min-width: 992px) {
-    return-section timeline .timeline .timeline-container:after {
+    .return-section timeline .timeline .timeline-container:after {
         right:-22px
     }
 
-    return-section timeline .timeline.maturity-item .timeline-container:after {
+    .return-section timeline .timeline.maturity-item .timeline-container:after {
         right: -24px
     }
 
-    return-section timeline .timeline .left,return-section timeline .timeline .right {
+    .return-section timeline .timeline .left,.return-section timeline .timeline .right {
         font-size: 16px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section timeline .timeline .left,return-section timeline .timeline .right {
+    .return-section timeline .timeline .left,.return-section timeline .timeline .right {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .settelment-amount .investment-text {
+    .return-section .container .investment-flow .settelment-amount .investment-text {
         font-size:18px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .container .investment-flow .settelment-amount .investment-text {
+    .return-section .container .investment-flow .settelment-amount .investment-text {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
         font-size:16px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .intrest {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
         font-size:16px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .cost {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest {
         margin-left:8px
     }
 
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
         font-size: 14px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount .expand-intrest .heading-interest {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
         font-size:10px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
+    .return-section .container .investment-flow .intrest-frequency .intrest-amount collapsible .collapsible-container .principle-percent {
         font-size:calc(10px + .005*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .container .investment-flow .principle-amount .principle {
+    .return-section .container .investment-flow .principle-amount .principle {
         font-size:16px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .container .investment-flow .principle-amount .principle {
+    .return-section .container .investment-flow .principle-amount .principle {
         font-size:calc(16px + .008*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest {
+    .return-section .earned-intrest {
         position:relative
     }
 
-    return-section .earned-intrest .yield-section .earned-text {
+    .return-section .earned-intrest .yield-section .earned-text {
         font-size: 18px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .earned-intrest .yield-section .earned-text {
+    .return-section .earned-intrest .yield-section .earned-text {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .yield-section .earned-cost {
+    .return-section .earned-intrest .yield-section .earned-cost {
         font-size:22px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .earned-intrest .yield-section .earned-cost {
+    .return-section .earned-intrest .yield-section .earned-cost {
         font-size:calc(22px + .011*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .yield-section .yield-text {
+    .return-section .earned-intrest .yield-section .yield-text {
         font-size:12px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .earned-intrest .yield-section .yield-text {
+    .return-section .earned-intrest .yield-section .yield-text {
         font-size:calc(12px + .006*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .returns-section .returns-text {
+    .return-section .earned-intrest .returns-section .returns-text {
         font-size:18px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .earned-intrest .returns-section .returns-text {
+    .return-section .earned-intrest .returns-section .returns-text {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .returns-section .returns-amt {
+    .return-section .earned-intrest .returns-section .returns-amt {
         font-size:22px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section .earned-intrest .returns-section .returns-amt {
+    .return-section .earned-intrest .returns-section .returns-amt {
         font-size:calc(22px + .011*(100vw - 1400px))
     }
 }
@@ -1955,7 +1955,7 @@ return-section collapsible .collapsible-body {
 
 
 @media (min-width: 992px) {
-    return-section .earned-intrest .invest-btn {
+    .return-section .earned-intrest .invest-btn {
         width:auto;
         height: auto;
         padding: 13px 20px
@@ -1963,62 +1963,62 @@ return-section collapsible .collapsible-body {
 }
 
 @media (min-width: 992px) {
-    return-section .disclaimer-section {
+    .return-section .disclaimer-section {
         text-align:left
     }
 
 
 
 @media (min-width: 992px) {
-    return-section collapsible .collapsible-header .header-title {
+    .return-section collapsible .collapsible-header .header-title {
         font-size:14px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    return-section collapsible .collapsible-header .header-title {
+    .return-section collapsible .collapsible-header .header-title {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    return-section collapsible .collapsible-header .header-title:before {
+    .return-section collapsible .collapsible-header .header-title:before {
         margin-right:-23px
     }
 }
 
 
 
-keyhighlight-section {
+.keyhighlight-section {
     display: block;
     display: flex;
     flex-direction: column;
     background-color: #fff
 }
 
-keyhighlight-section .container {
+.keyhighlight-section .container {
     padding-bottom: 35px
 }
 
 
 
-keyhighlight-section .container .common-padding-class {
+.keyhighlight-section .container .common-padding-class {
     padding-left: 25px;
     padding-right: 15px
 }
 
 
 
-keyhighlight-section .container .key-highlight-heading {
+.keyhighlight-section .container .key-highlight-heading {
     padding-top: 50px;
     border-bottom: transparent
 }
 
-keyhighlight-section .container .summary-container {
+.keyhighlight-section .container .summary-container {
     padding: 35px 15px 0 30px
 }
 
-keyhighlight-section .container .summary-container .exctv-summary-class {
+.keyhighlight-section .container .summary-container .exctv-summary-class {
     display: flex;
     flex-direction: column;
     font-size: 15px;
@@ -2029,12 +2029,12 @@ keyhighlight-section .container .summary-container .exctv-summary-class {
 }
 
 @media (min-width: 992px) {
-    keyhighlight-section .container .summary-container .exctv-summary-class {
+    .keyhighlight-section .container .summary-container .exctv-summary-class {
         font-size:calc(15px + .0075*(100vw - 1400px))
     }
 }
 
-keyhighlight-section .container .summary-container .exctv-summary-class ul {
+.keyhighlight-section .container .summary-container .exctv-summary-class ul {
     position: relative;
     list-style: none;
     padding-left: 24px;
@@ -2045,11 +2045,11 @@ keyhighlight-section .container .summary-container .exctv-summary-class ul {
     width: 89%
 }
 
-keyhighlight-section .container .summary-container .exctv-summary-class li:not(:last-child) {
+.keyhighlight-section .container .summary-container .exctv-summary-class li:not(:last-child) {
     margin-bottom: 25px
 }
 
-keyhighlight-section .container .summary-container .exctv-summary-class ul li:before {
+.keyhighlight-section .container .summary-container .exctv-summary-class ul li:before {
     content: url(/assets/img/green-tik.svg);
     position: absolute;
     display: inline-block;
@@ -2060,15 +2060,15 @@ keyhighlight-section .container .summary-container .exctv-summary-class ul li:be
 
 
 @media (min-width: 992px) {
-    keyhighlight-section {
+    .keyhighlight-section {
         background-color:#fff
     }
 
-    keyhighlight-section .container {
+    .keyhighlight-section .container {
         padding-bottom: 6%
     }
 
-    keyhighlight-section .container .key-highlight-heading {
+    .keyhighlight-section .container .key-highlight-heading {
         font-size: 24px;
         line-height: .64;
         padding: 50px 0 40px
@@ -2076,17 +2076,17 @@ keyhighlight-section .container .summary-container .exctv-summary-class ul li:be
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    keyhighlight-section .container .key-highlight-heading {
+    .keyhighlight-section .container .key-highlight-heading {
         font-size:calc(24px + .012*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    keyhighlight-section .container .summary-container {
+    .keyhighlight-section .container .summary-container {
         padding:0
     }
 
-    keyhighlight-section .container .summary-container .exctv-summary-class {
+    .keyhighlight-section .container .summary-container .exctv-summary-class {
         font-size: 18px;
         font-weight: 400;
         line-height: 1.6;
@@ -2095,26 +2095,26 @@ keyhighlight-section .container .summary-container .exctv-summary-class ul li:be
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    keyhighlight-section .container .summary-container .exctv-summary-class {
+    .keyhighlight-section .container .summary-container .exctv-summary-class {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 @media (min-width: 992px) {
-    keyhighlight-section .container .summary-container .exctv-summary-class ul {
+    .keyhighlight-section .container .summary-container .exctv-summary-class ul {
         padding-left:27px;
         width: 100%
     }
 }
 
 @media (min-width: 992px) {
-    keyhighlight-section .container .summary-container .exctv-summary-class li:not(:last-child) {
+    .keyhighlight-section .container .summary-container .exctv-summary-class li:not(:last-child) {
         margin-bottom:30px
     }
 }
 
 @media (min-width: 992px) {
-    keyhighlight-section .container .summary-container .exctv-summary-class ul li:before {
+    .keyhighlight-section .container .summary-container .exctv-summary-class ul li:before {
         font-size:17px;
         margin-top: 3px
     }
@@ -2153,4 +2153,3 @@ body {
 .rupee-symbol {
     font-family: Arial,Helvetica,sans-serif
 }
-
