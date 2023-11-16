@@ -589,7 +589,7 @@ timeline .content {
     padding-bottom: 13px
 }
 
-#bond-details tooltip-component {
+#bond-details #tooltip-component {
     cursor: pointer
 }
 
@@ -933,7 +933,7 @@ timeline .content {
 
 
 
-overview-section .main-container {
+#overview-section .main-container {
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -942,11 +942,11 @@ overview-section .main-container {
 
 
 
-overview-section .main-container .info-main-container {
+#overview-section .main-container .info-main-container {
     padding: 20px 25px
 }
 
-overview-section .main-container .info-main-container .info-container {
+#overview-section .main-container .info-main-container .info-container {
     display: flex;
     flex-wrap: wrap;
     border-radius: 20px;
@@ -954,36 +954,36 @@ overview-section .main-container .info-main-container .info-container {
     padding: 5px 20px
 }
 
-overview-section .main-container .info-main-container .term-sheet-container {
+#overview-section .main-container .info-main-container .term-sheet-container {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     margin-top: 30px
 }
 
-overview-section .main-container .info-main-container .term-sheet-container .info-below-rating {
+#overview-section .main-container .info-main-container .term-sheet-container .info-below-rating {
     display: flex
 }
 
 
-overview-section .main-container .info-main-container .term-sheet-container .info-below-rating .download-icon {
+#overview-section .main-container .info-main-container .term-sheet-container .info-below-rating .download-icon {
     position: relative;
     margin: 0 10px 0 0;
     height: 12px;
     width: auto
 }
 
-overview-section .main-container .side-view .padding15 {
+#overview-section .main-container .side-view .padding15 {
     padding: 25px
 }
 
-overview-section .main-container .side-view .gradient-top {
+#overview-section .main-container .side-view .gradient-top {
     position: relative
 }
 
 
 
-overview-section .main-container .text-title {
+#overview-section .main-container .text-title {
     font-family: Inter;
     font-size: 10px;
     color: #222;
@@ -994,12 +994,12 @@ overview-section .main-container .text-title {
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .text-title {
+    #overview-section .main-container .text-title {
         font-size:calc(10px + .005*(100vw - 1400px))
     }
 }
 
-overview-section .main-container .text-subtitle {
+#overview-section .main-container .text-subtitle {
     font-size: 10px;
     color: #585858;
     font-weight: 400;
@@ -1009,17 +1009,17 @@ overview-section .main-container .text-subtitle {
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .text-subtitle {
+    #overview-section .main-container .text-subtitle {
         font-size:calc(10px + .005*(100vw - 1400px))
     }
 }
 
-overview-section .main-container .text-subtitle span {
+#overview-section .main-container .text-subtitle span {
     color: #e6a127
 }
 
 
-overview-section .main-container .text-value {
+#overview-section .main-container .text-value {
     font-size: 18px;
     color: #00334e;
     font-weight: 300;
@@ -1028,19 +1028,19 @@ overview-section .main-container .text-value {
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .text-value {
+    #overview-section .main-container .text-value {
         font-size:calc(18px + 18 * (100vw - 1400px) / 2000)
     }
 }
 
 
 
-overview-section .main-container .download-pdf {
+#overview-section .main-container .download-pdf {
     display: flex;
     align-items: center
 }
 
-overview-section .main-container .download-pdf-txt {
+#overview-section .main-container .download-pdf-txt {
     font-size: 12px;
     color: #585858;
     font-weight: 500;
@@ -1050,14 +1050,14 @@ overview-section .main-container .download-pdf-txt {
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .download-pdf-txt {
+    #overview-section .main-container .download-pdf-txt {
         font-size:calc(12px + .006*(100vw - 1400px))
     }
 }
 
 
 
-overview-section .main-container .flex-column {
+#overview-section .main-container .flex-column {
     width: 50%;
     display: flex;
     align-items: center;
@@ -1067,18 +1067,18 @@ overview-section .main-container .flex-column {
     padding: 20px 0 23px
 }
 
-overview-section .main-container .flex-column.show-less,overview-section .main-container .flex-column.lg-show {
+#overview-section .main-container .flex-column.show-less,#overview-section .main-container .flex-column.lg-show {
     display: none
 }
 
 
 
-overview-section .main-container .flex-column:nth-child(1),overview-section .main-container .flex-column:nth-child(2) {
+#overview-section .main-container .flex-column:nth-child(1),#overview-section .main-container .flex-column:nth-child(2) {
     border-top: none
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container {
+    #overview-section .main-container {
         padding:40px 0 40px 6%;
         width: 62%
     }
@@ -1086,40 +1086,40 @@ overview-section .main-container .flex-column:nth-child(1),overview-section .mai
 
 
 @media (min-width: 992px) {
-    overview-section .main-container .info-main-container {
+    #overview-section .main-container .info-main-container {
         padding:unset;
         flex: 2
     }
 
-    overview-section .main-container .info-main-container .info-container {
+    #overview-section .main-container .info-main-container .info-container {
         display: flex
     }
 
-    overview-section .main-container .info-main-container .term-sheet-container .info-below-rating {
+    #overview-section .main-container .info-main-container .term-sheet-container .info-below-rating {
         padding: 0
     }
 
 
 
 @media (min-width: 992px) {
-    overview-section .main-container .info-main-container .term-sheet-container .info-below-rating .download-icon {
+    #overview-section .main-container .info-main-container .term-sheet-container .info-below-rating .download-icon {
         margin-left:0
     }
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .side-view {
+    #overview-section .main-container .side-view {
         flex:1
     }
 
-    overview-section .main-container .side-view .gradient-top {
+    #overview-section .main-container .side-view .gradient-top {
         height: auto;
         margin-top: 60px
     }
 
 
 @media (min-width: 992px) {
-    overview-section .main-container .side-view .padding15 {
+    #overview-section .main-container .side-view .padding15 {
         padding:unset
     }
 }
@@ -1127,39 +1127,39 @@ overview-section .main-container .flex-column:nth-child(1),overview-section .mai
 
 
 @media (min-width: 992px) {
-    overview-section .main-container .text-title {
+    #overview-section .main-container .text-title {
         font-size:12px;
         margin: 8px 0 16px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    overview-section .main-container .text-title {
+    #overview-section .main-container .text-title {
         font-size:calc(12px + .006*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .text-subtitle {
+    #overview-section .main-container .text-subtitle {
         font-size:12px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    overview-section .main-container .text-subtitle {
+    #overview-section .main-container .text-subtitle {
         font-size:calc(12px + .006*(100vw - 1400px))
     }
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .text-value {
+    #overview-section .main-container .text-value {
         font-size:24px;
         margin: 0
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    overview-section .main-container .text-value {
+    #overview-section .main-container .text-value {
         font-size:calc(24px + .012*(100vw - 1400px))
     }
 }
@@ -1167,7 +1167,7 @@ overview-section .main-container .flex-column:nth-child(1),overview-section .mai
 
 
 @media (min-width: 992px) {
-    overview-section .main-container .flex-column {
+    #overview-section .main-container .flex-column {
         width:25%;
         border-top: unset;
         border-right: 1px solid #e6e6e6;
@@ -1175,19 +1175,19 @@ overview-section .main-container .flex-column:nth-child(1),overview-section .mai
         margin: 30px 0
     }
 
-    overview-section .main-container .flex-column:nth-child(4n+4) {
+    #overview-section .main-container .flex-column:nth-child(4n+4) {
         border-right: none
     }
 }
 
 @media (min-width: 992px) {
-    overview-section .main-container .download-pdf-txt {
+    #overview-section .main-container .download-pdf-txt {
         font-size:14px
     }
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
-    overview-section .main-container .download-pdf-txt {
+    #overview-section .main-container .download-pdf-txt {
         font-size:calc(14px + .007*(100vw - 1400px))
     }
 }
