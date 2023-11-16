@@ -112,10 +112,10 @@ export const HomePage = () => {
                           className="img-fluid"
                         />
                       </div>
-                      <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
+                      <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5"><br/>
                         Assured<br/><br/>
                         <span className="fw-600 text-main-gold"> Buy</span>
-                        Back
+                        Back<br/>
                       </div>
                     </div>
                   </div>
@@ -142,70 +142,7 @@ export const HomePage = () => {
               data-aos="fade-up"
               data-aos-offset={50}
             >
-              <p className="mb-1 text-md-start text-center">
-                <span className="text-white fs-18 me-2">Rated </span>
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth={0}
-                  viewBox="0 0 16 16"
-                  className="text-sunglow me-1"
-                  height={18}
-                  width={18}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth={0}
-                  viewBox="0 0 16 16"
-                  className="text-sunglow me-1"
-                  height={18}
-                  width={18}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth={0}
-                  viewBox="0 0 16 16"
-                  className="text-sunglow me-1"
-                  height={18}
-                  width={18}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth={0}
-                  viewBox="0 0 16 16"
-                  className="text-sunglow me-1"
-                  height={18}
-                  width={18}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth={0}
-                  viewBox="0 0 16 16"
-                  className="text-sunglow me-1"
-                  height={18}
-                  width={18}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <span className="text-white fs-18 ms-1">4.7 by user</span>
-              </p>
+             
             </div>
           </div>
           <div
@@ -241,7 +178,7 @@ export const HomePage = () => {
               >
                 <circle cx={8} cy={8} r={8} />
               </svg>
-              WHAT ARE GROWPITAL INVESTMENTS LIKE?
+              WHAT ARE VIRTUAL PROPERTY INVESTMENTS LIKE?
             </p>
             <h2
               className="text-white fw-600 display-6 mb-3 mb-md-4 aos-init aos-animate"
@@ -269,25 +206,25 @@ export const HomePage = () => {
                 className="img-fluid"
               />
               <div className="text-start">
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-5">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Stamp Duty
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-4 mb-5">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Registration Charges
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   EMI
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Maintenance Cost
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Vacant Period
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Delay In Rentals
                 </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white ms-2 mb-0">
+                <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Interior Cost
                 </p>
               </div>
@@ -314,10 +251,10 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-600 fs-24 mb-3 pt-2 card-title h5">
-                        Assured Growth
+                        Second Income
                       </div>
                       <p className="fw-400 fs-17 lh-24 card-text">
-                        We provide much higher returns than FD and several bonds.
+                        We provide Second Income with safety and high returns.
                       </p>
                     </div>
                   </div>
@@ -336,8 +273,7 @@ export const HomePage = () => {
                         Safe &amp; Secure
                       </div>
                       <p className="fw-400 fs-17 lh-24 card-text">
-                        Sales contracts, crop insurance &amp; professional
-                        farming, ensure assured returns.
+                        This scheme is secured by RBI Investment. Hence, No worry!!
                       </p>
                     </div>
                   </div>
@@ -357,7 +293,7 @@ export const HomePage = () => {
                       Consistent Returns
                     </div>
                     <p className="fw-400 fs-17 lh-24 card-text">
-                      Free from Stock market volatality. Monthly payouts in your
+                      Free from any volatality. Monthly payouts in your
                       Bank Account.
                     </p>
                   </div>
@@ -391,8 +327,7 @@ export const HomePage = () => {
               WHAT ARE WE PROUD ABOUT?
             </p>
             <p className="text-white fw-600 fs-24 mb-4 mb-md-4">
-              Agriculture Sector is growing rapidly. Join us in the fast growing
-              industry
+              We are growing rapidly. Join us soon
             </p>
           </div>
         </div>
@@ -413,7 +348,7 @@ export const HomePage = () => {
                     TOTAL INVESTMENTS
                   </div>
                   <div className="fw-700 display-5 text-main-green mb-0 card-title h5">
-                    <span>₹130+</span>
+                    <span>₹10+</span>
                   </div>
                   <p className="fw-500 fs-14 text-white text-uppercase card-text">
                     CRORES
@@ -438,10 +373,10 @@ export const HomePage = () => {
                     PROFIT RETURNS
                   </div>
                   <div className="fw-700 display-5 text-main-green mb-0 card-title h5">
-                    <span> 14%</span>
+                    <span>150%</span>
                   </div>
                   <p className="fw-500 fs-14 text-white text-uppercase card-text">
-                    PER ANNUM
+                  Upto
                   </p>
                 </div>
               </div>
@@ -460,13 +395,13 @@ export const HomePage = () => {
                 />
                 <div>
                   <div className="fw-600 fs-22 text-white text-uppercase card-title h5">
-                    MANAGED AREA
+                    MANAGED PORTFOLIO
                   </div>
                   <div className="fw-700 display-5 text-main-green mb-0 card-title h5">
-                    <span> 16500+</span>
+                    <span> 1200+</span>
                   </div>
                   <p className="fw-500 fs-14 text-white text-uppercase card-text">
-                    ACRES
+                    Customers
                   </p>
                 </div>
               </div>
@@ -481,17 +416,7 @@ export const HomePage = () => {
                 <button className="main-btn maincolor mb-2">Invest Now</button>
               </a>
             </div>
-            <div className="pt-3">
-              <p className="text-white fw-600 fs-24 fs-sm-16 mb-3 mb-md-4">
-                Subscribed 100% in 6 hours on
-                <a className="text-main-green"> Tyke Invest</a>
-              </p>
-              <p className="text-white fw-600 fs-24 fs-sm-16 mb-3 mb-md-4">
-                Trusted by investor community spread across
-                <span className="text-main-green">10+</span> countries and
-                <span className="text-main-green">150+</span> cities
-              </p>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -574,6 +499,7 @@ export const HomePage = () => {
         </div>
       </div>
     </section>
+    {/* Plan Will be shown here */}
     <section className="py-3">
       <div className="container">
         <div className="d-flex justify-content-center align-items-center row">
@@ -1784,7 +1710,9 @@ export const HomePage = () => {
         </div>
       </div>
     </section>
-    <section className="py-5" id="calci" style={{overflow: "hidden"}}>
+    {/* End Plan Show */}
+    {/* Return Calculator */}
+    {/* <section className="py-5" id="calci" style={{overflow: "hidden"}}>
       <div className="container">
         <div className="d-flex justify-content-center align-items-center row">
           <div
@@ -2102,7 +2030,8 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
+    {/* End Return Calculator */}
     <section className="py-5 bg-charade">
       <div className="container">
         <div className="d-flex justify-content-center align-items-center row">
@@ -2248,686 +2177,8 @@ export const HomePage = () => {
         </div>
       </div>
     </section>
-    <section className="py-md-5">
-      <div className="container-fluid">
-        <div className="d-flex justify-content-center align-items-center row">
-          <div
-            data-aos="fade-up"
-            data-aos-offset={500}
-            className="text-center col aos-init aos-animate"
-          >
-            <p className="text-uppercase fs-18 fw-500 text-main-green">
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                strokeWidth={0}
-                viewBox="0 0 16 16"
-                className="me-1"
-                height={8}
-                width={8}
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx={8} cy={8} r={8} />
-              </svg>
-              MEET OUR TEAM
-            </p>
-            <h2 className="text-white fw-600 display-6 mb-3 mb-md-4">
-              The spirit behind <span className="text-main-green">Growpital</span>
-            </h2>
-          </div>
-        </div>
-        <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events">
-          <div
-            className="swiper-wrapper"
-            style={{
-              cursor: "grab",
-              transitionDuration: "0ms",
-              transform: "translate3d(-8478px, 0px, 0px)",
-            }}
-          >
-            <div
-              className="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev"
-              data-swiper-slide-index={6}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Utkarsh_Srivastava_d09fbc3235.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Utkarsh Srivastava
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Business</cite>
-                          <a
-                            href="https://www.linkedin.com/in/utkarsh-srivastava-30210417/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Utkarsh is a first principles person. Graduated from IMT
-                          Nagpur &amp; did his B Tech in computer science prior to
-                          that. He is also an Alumnus of IIM Lucknow. He has over
-                          a decade of diversified experience in BFSI, Fintech and
-                          Edtech industries.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-              data-swiper-slide-index={7}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Shubhanshu_Chouhan_d023e38f17.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Shubhanshu Chouhan
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director-Technology</cite>
-                          <a
-                            href="https://www.linkedin.com/in/shubhanshu-chouhan/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Passionate about developing high-performing teams using
-                          transformational leadership to accelerate business
-                          capabilities and optimize IT value. Recognized for
-                          creating impactful relationships, strategic sourcing,
-                          consensus building, and leading full-cycle global
-                          projects.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide swiper-slide-duplicate-next"
-              data-swiper-slide-index={0}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Ankush_Ramesh_Agrawal_dcb49ae283.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Ankush Agrawal
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Business Intelligence</cite>
-                          <a
-                            href="https://www.linkedin.com/in/ankushragrawal/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Ankush has 10+ years experience spanning Social Media
-                          &amp; Digital Marketing, Market Research &amp; Consumer
-                          Insights, Data Analytics &amp; Business Strategy
-                          responsibilities across multiple sectors. A PGDM in
-                          Marketing &amp; Operations from IMT Nagpur &amp; B Tech
-                          UDCT Mumbai graduate.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide"
-              data-swiper-slide-index={1}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Karan_Agrawal_c112da518d.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Karan Agrawal
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Business Finance</cite>
-                          <a
-                            href="https://www.linkedin.com/in/karan-agrawal-623b5531/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Karan is a self driven person with diverse experience of
-                          around 10 years in power and agriculture sector. He is
-                          B. Tech (Honors) in Mechanical engineering from NIT
-                          Raipur &amp; PGDM Operations and Strategy from MDI
-                          Gurgaon.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide"
-              data-swiper-slide-index={2}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Krishnna_Joshi_394b072481.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Krishna Joshi
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director-Farms</cite>
-                          <a
-                            href="https://www.linkedin.com/in/krishnna-joshi-a33638118/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Krishna comes with vast experience of 12 years across
-                          industries ranging from BFSI, Marketing &amp;
-                          automobile. His educational background in commerce &amp;
-                          business management have led him to see through various
-                          industries.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide"
-              data-swiper-slide-index={3}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Rituraj_Sharma_8bea54ef16.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Rituraj Sharma
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director</cite>
-                          <a
-                            href="https://www.linkedin.com/in/riturajsharma123/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Rituraj is an alumnus of IMT Nagpur and an engineer. He
-                          has over 10 years of experience being a serial
-                          entrepreneur in industries related to Solar Energy &amp;
-                          Agriculture.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide"
-              data-swiper-slide-index={4}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Sudhir_Paswan_79054509bb.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Sudhir Paswan
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Agronomy</cite>
-                          <a
-                            href="https://www.linkedin.com/in/sudhir-paswan-19326969/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          An Agriculture Graduate with 16+ years of agribusiness
-                          experience with Corporates and social organisations like
-                          Reliance, REI, PepsiCo, KGVK, Swades Foundation.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide"
-              data-swiper-slide-index={5}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Fahad_Shaikh_c6c7405150.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Fahad Shaikh
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Farm Operations</cite>
-                          <a
-                            href="https://www.linkedin.com/in/fahad-shaikh-611b43217/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Fahad's experience spans more than a decade in Supply
-                          Chain, Agriculture, Restaurants, Entrepreneurship and
-                          Telecommunication sector. He has operational skills and
-                          also possesses expertise in team management, vendor
-                          management, client management, and quality assurance.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide swiper-slide-prev"
-              data-swiper-slide-index={6}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Utkarsh_Srivastava_d09fbc3235.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Utkarsh Srivastava
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Business</cite>
-                          <a
-                            href="https://www.linkedin.com/in/utkarsh-srivastava-30210417/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Utkarsh is a first principles person. Graduated from IMT
-                          Nagpur &amp; did his B Tech in computer science prior to
-                          that. He is also an Alumnus of IIM Lucknow. He has over
-                          a decade of diversified experience in BFSI, Fintech and
-                          Edtech industries.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide swiper-slide-active"
-              data-swiper-slide-index={7}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Shubhanshu_Chouhan_d023e38f17.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Shubhanshu Chouhan
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director-Technology</cite>
-                          <a
-                            href="https://www.linkedin.com/in/shubhanshu-chouhan/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Passionate about developing high-performing teams using
-                          transformational leadership to accelerate business
-                          capabilities and optimize IT value. Recognized for
-                          creating impactful relationships, strategic sourcing,
-                          consensus building, and leading full-cycle global
-                          projects.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide swiper-slide-duplicate swiper-slide-next"
-              data-swiper-slide-index={0}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Ankush_Ramesh_Agrawal_dcb49ae283.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Ankush Agrawal
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Business Intelligence</cite>
-                          <a
-                            href="https://www.linkedin.com/in/ankushragrawal/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Ankush has 10+ years experience spanning Social Media
-                          &amp; Digital Marketing, Market Research &amp; Consumer
-                          Insights, Data Analytics &amp; Business Strategy
-                          responsibilities across multiple sectors. A PGDM in
-                          Marketing &amp; Operations from IMT Nagpur &amp; B Tech
-                          UDCT Mumbai graduate.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="swiper-slide swiper-slide-duplicate"
-              data-swiper-slide-index={1}
-              style={{ width: 937, marginRight: 5 }}
-            >
-              <div className="px-1 col-md-12">
-                <div className="darkcard mb-4 mb-md-4 p-0 rounded text-start text-white card">
-                  <div className="m-1 bg-dark-gradient rounded p-4 card-body">
-                    <div className="row">
-                      <div className="col-md-4 col-12">
-                        <img
-                          src="https://cms.growpital.com/uploads/Karan_Agrawal_c112da518d.jpg"
-                          alt=""
-                          className="img-fluid w-100 mb-md-0 mb-3"
-                        />
-                      </div>
-                      <div className="col-md-8 col-12">
-                        <div className="fw-600 fs-20 mb-0 pt-2 card-title h5">
-                          Karan Agrawal
-                        </div>
-                        <div className="fw-600 fs-14 mb-3 pt-2 text-italian card-title h5">
-                          <cite>Director- Business Finance</cite>
-                          <a
-                            href="https://www.linkedin.com/in/karan-agrawal-623b5531/"
-                            target="blank"
-                          >
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 1024 1024"
-                              className="ms-2 text-indigo"
-                              height={18}
-                              width={18}
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1 1 68.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
-                            </svg>
-                          </a>
-                        </div>
-                        <p className="fw-300 fs-15 lh-24 card-text">
-                          Karan is a self driven person with diverse experience of
-                          around 10 years in power and agriculture sector. He is
-                          B. Tech (Honors) in Mechanical engineering from NIT
-                          Raipur &amp; PGDM Operations and Strategy from MDI
-                          Gurgaon.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          ...
-        </div>
-      </div>
-    </section>
-    <section className="py-5">
+    {/* Investor Says About US */}
+    {/* <section className="py-5">
       <div className="container-fluid">
         <div className="d-flex justify-content-center align-items-center row">
           <div
@@ -6655,8 +5906,10 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
-    </section>
-    <section className="py-5">
+    </section> */}
+    {/* END Investor Says About US */}
+    {/* Latest News Section */}
+    {/* <section className="py-5">
       <div className="container-fluid">
         <section className="py-0 mt-0 mt-md-0">
           <div className="container">
@@ -7423,7 +6676,8 @@ export const HomePage = () => {
           </div>
         </section>
       </div>
-    </section>
+    </section> */}
+    {/* End Latest News Section */}
     <section className="py-5 hidden-section">
       <div className="container">
         <iframe
@@ -7493,9 +6747,9 @@ export const HomePage = () => {
                 </div>
               </div>
             </div>
-            <a href="/faqs" className="fs-16 fw-700 text-white text-start">
+            {/* <a href="/faqs" className="fs-16 fw-700 text-white text-start">
               More FAQs
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
