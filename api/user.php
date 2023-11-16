@@ -65,7 +65,7 @@ class Users
     function login_user($data) {
         $username = $data['username'];
         $password = $data['password'];
-        $this->helper->query = "SELECT * FROM users WHERE email='$username' OR mobile='$username' AND password='$password'";
+        $this->helper->query = "SELECT * FROM users WHERE (email='$username' OR mobile='$username') AND password='$password'";
         if ($this->helper->total_row() === 0) {
             return null;
         }
