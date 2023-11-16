@@ -2,7 +2,7 @@ import '../../../../styles/virtual.css'
 export const Dashboard = () => {
     return <><div
         className="app-root"
-        style={{ height: "100%" }}
+        style={{ height: "100%", backgroundColor: 'white' }}
         _nghost-eam-c19=""
         ng-version="15.2.10"
     >
