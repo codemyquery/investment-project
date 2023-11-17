@@ -2180,4 +2180,13 @@ font-weight: normal;
 cursor: pointer;
 }
 
+.square {
+ width: 100%;
+ height: 100%;
+ background-color: darkcyan;
+}
+.cashflow{
+    color: #00334e;
+ 
+}
 /* end */

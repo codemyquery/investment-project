@@ -445,7 +445,7 @@ export const HomePage = () => {
             </p>
             <h2 className="text-white fw-600 display-6 mb-3 mb-md-3">
               Start investing in
-              <span className="text-main-green">4 simple steps</span>
+              <span className="text-main-green"> 4 simple steps</span>
             </h2>
           </div>
         </div>
@@ -462,28 +462,7 @@ export const HomePage = () => {
                       style={{ width: "24rem" }}
                     />
                   </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block img-fluid accordian-main-img"
-                      src="https://cms.growpital.com/uploads/step3_c5a53d3b80.png"
-                      alt="First slide"
-                      style={{ width: "24rem" }}
-                    />
-                  </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block img-fluid accordian-main-img"
-                      src="https://cms.growpital.com/uploads/step2_b5c85a6e85.png"
-                      alt="First slide"
-                    />
-                  </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block img-fluid accordian-main-img"
-                      src="https://cms.growpital.com/uploads/step4_cc8ce0c98a.png"
-                      alt="First slide"
-                    />
-                  </div>
+                  
                 </div>
               </div>
             </div>

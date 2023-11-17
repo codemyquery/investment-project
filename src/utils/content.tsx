@@ -1,18 +1,18 @@
 export const content = [
     {
       heading: 'Create account and complete KYC',
-      description: ['Sign up with username and password. Verify your KYC which includes Pan Card, Adhaar card &amp; Bank account details.']
+      description: ['Sign up with username and password. Verify your KYC which includes Pan Card, Adhaar card & Bank account details.']
     },
     {
       heading: 'Choose investment option',
       description: ['Select the plan best suited to you and select the number of units you want to invest in.']
     },
     {
-      heading: 'Add money and invest',
-      description: ['Simply add money to Growpital Wallet, e-sign required documents.']
+      heading: 'Get Invested ',
+      description: ['Simply invest through our sales agent, e-sign required documents.']
     },
     {
-      heading: 'Harvest your earnings',
+      heading: 'Enjoy your earnings',
       description: ['Automate your earnings with assured return at scheduled dates.']
     }
   ]
