@@ -19,19 +19,19 @@ export const content = [
 
 export const content1 = [
   {
-    heading: 'What is Growpital? (In a Nutshell)',
-    description: ['The all -new Agro investment platform with tax-free income. It’s the new clutter-free, fixed-income platform with 11% -14% Tax free fixed profit share.']
+    heading: 'What is Virtual Property?',
+    description: ['Virtual Property is way to explain how you can have a better passive income over a general rental income which may or may not come from buying a property.']
   },
   {
-    heading: 'What is the lock-in period after I invest via Growpital?',
-    description: ['To make your investment experience hassle-free, the project entities just put a minimum Lock-in period. If you withdraw before the lock-in period ends, the project entity would deduct all payouts given to you from the original investment amount and pay the remaining amount to you. This will result in no profit/return to you. However, if you make any withdraw request after the lock in period before the maturity period, the original investment amount shall be paid at that time; no future profits and no pro-rata calculation of payouts will be done.']
+    heading: 'What is the lock-in period after I invest via MultiSphere?',
+    description: ['To make your investment experience hassle-free, the project entities just put a minimum Lock-in period. Each Plan have thier own lock-in period. You can check the lock-in period in the plan detail page. Minimum Lock-in Period is 3 Years only.']
   },
   {
     heading: 'Are the returns guaranteed?',
-    description: ['The returns are projected revenues from farm project after sales of agri produce. So the revenues of the farm project will deviate from crop to crop, but we keep a satisfactory buffer to provide fixed returns in the form of advance profits.']
+    description: ['The national level houses like Birla, TATA, HDFC, ICICI are the one who guarantees your income and principal. So you don’t need to worry about a single penny. All the cash flows are fully secured.']
   },
-  {
-    heading: 'How is my earning Tax Free?',
-    description: ['There are no tax deduction on the returns received by you as it is the share of profit given by the Farm project entity, which is an LLP, as per section 10(2A). The earnings of the LLP is agriculture income, and is exempted under Section 10(1) of the Income Tax Act,1961 in India.']
-  }
+  // {
+  //   heading: 'How is my earning Tax Free?',
+  //   description: ['There are no tax deduction on the returns received by you as it is the share of profit given by the Farm project entity, which is an LLP, as per section 10(2A). The earnings of the LLP is agriculture income, and is exempted under Section 10(1) of the Income Tax Act,1961 in India.']
+  // }
 ]
