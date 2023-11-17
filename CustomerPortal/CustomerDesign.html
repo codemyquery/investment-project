@@ -5,6 +5,9 @@
       <base href="/">
       <link rel="icon" type="image/x-icon" width="200" href="/assets/icon/favicon.ico">
       <link rel="stylesheet" href="C:\xampp\htdocs\virtual-property\CustomerPortal\virtual.css">
+      
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+      
    </head>
    <body style="width: 100%; overflow-y: auto; position: relative;">
       <div class="app-root" style="height: 100%;" _nghost-eam-c19="" ng-version="15.2.10">
@@ -87,9 +90,42 @@
                               </div>
                            </div>
                         </div>
-                        <div class="side-view">
-                           <div class="padding15">
-                              <div class="gradient-top">
+                        <div>
+                           <div>
+                              <div>
+                                 <p style="color: blue;">hiiiiiiiiiiiiiiiii</p>
+
+                                 <ul class="archive_year">
+                                    <li class="years">2012</li>
+                                        <ul class="archive_month">
+                                            <li class="months">September</li>
+                                                <ul class="archive_posts">
+                                                    <li class="posts">Article 1</li>
+                                                    <li class="posts">Article 2</li>
+                                                    <li class="posts">Article 3</li>
+                                                    <li class="posts">Article 4</li>
+                                                </ul>
+                                            <li class="months">August</li>
+                                                <ul class="archive_posts">
+                                                    <li class="posts">Article 1</li>
+                                                </ul>
+                                        </ul>
+                                    <li class="years">2011</li>
+                                        <ul class="archive_month">
+                                            <li class="months">July</li>
+                                                <ul class="archive_posts">
+                                                    <li class="posts">Article 1</li>
+                                                </ul>
+                                        </ul>
+                                    <li class="years">2009</li>
+                                        <ul class="archive_month">
+                                            <li class="months">January</li>
+                                                <ul class="archive_posts">
+                                                    <li class="posts">Article 1</li>
+                                                </ul>
+                                        </ul>
+                                    </ul>
+
                               </div>
                            </div>
                         </div>
@@ -148,5 +184,20 @@
             </div>
          </div>
       </div>
+
+
+      <script>
+         $('.archive_year ul').hide();
+
+         $('.years').on('click', function() {
+           $(this).next('ul.archive_month').slideToggle();
+           $('.archive_month').not($(this).next('ul.archive_month')).slideUp();
+         });
+         
+         $('.months').on('click', function() {
+           $(this).next('ul.archive_posts').slideToggle();
+           $('.archive_posts').not($(this).next('ul.archive_posts')).slideUp();
+         });
+      </script>
    </body>
 </html>
