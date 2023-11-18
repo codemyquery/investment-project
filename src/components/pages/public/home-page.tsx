@@ -91,10 +91,10 @@ export const HomePage = () => {
                         />
                       </div>
                       <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
-                      Booking Amount<br/><br/>
+                        Booking Amount<br /><br />
                         <span className="fw-600 text-main-gold"> 10%</span>
-                        <br/>
-                        
+                        <br />
+
                       </div>
                     </div>
                   </div>
@@ -112,10 +112,10 @@ export const HomePage = () => {
                           className="img-fluid"
                         />
                       </div>
-                      <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5"><br/>
-                        Assured<br/><br/>
+                      <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5"><br />
+                        Assured<br /><br />
                         <span className="fw-600 text-main-gold"> Buy</span>
-                        Back<br/>
+                        Back<br />
                       </div>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ export const HomePage = () => {
               data-aos="fade-up"
               data-aos-offset={50}
             >
-             
+
             </div>
           </div>
           <div
@@ -210,19 +210,16 @@ export const HomePage = () => {
                   Stamp Duty
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white">
-                  Registration Charges
+                  &nbsp;&nbsp;Registration Charges EMI
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white">
-                  EMI
+                  &nbsp;&nbsp;&nbsp;&nbsp;Maintenance Cost
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white">
-                  Maintenance Cost
+                  &nbsp;&nbsp;&nbsp;&nbsp;Vacant Period
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white">
-                  Vacant Period
-                </p>
-                <p className="fs-24 fs-sm-18 fw-400 text-white">
-                  Delay In Rentals
+                  &nbsp;&nbsp;&nbsp;Delay In Rentals
                 </p>
                 <p className="fs-24 fs-sm-18 fw-400 text-white">
                   Interior Cost
@@ -376,7 +373,7 @@ export const HomePage = () => {
                     <span>150%</span>
                   </div>
                   <p className="fw-500 fs-14 text-white text-uppercase card-text">
-                  Upto
+                    Upto
                   </p>
                 </div>
               </div>
@@ -416,7 +413,7 @@ export const HomePage = () => {
                 <button className="main-btn maincolor mb-2">Invest Now</button>
               </a>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -462,7 +459,7 @@ export const HomePage = () => {
                       style={{ width: "24rem" }}
                     />
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -698,7 +695,7 @@ export const HomePage = () => {
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>

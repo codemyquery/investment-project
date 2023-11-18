@@ -85,6 +85,9 @@ export const SignUp = () => {
                                             <Controller
                                                 name={"name"}
                                                 control={control}
+                                                rules={{
+                                                    required: true
+                                                }}
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}
@@ -118,6 +121,10 @@ export const SignUp = () => {
                                             <Controller
                                                 name={"email"}
                                                 control={control}
+                                                rules={{
+                                                    required: true,
+                                                    pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+                                                }}
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}
@@ -134,6 +141,9 @@ export const SignUp = () => {
                                             <Controller
                                                 name={"lgLcCode"}
                                                 control={control}
+                                                rules={{
+                                                    required: true
+                                                }}
                                                 render={({ field }) => (
                                                     <textarea
                                                         {...field}
@@ -147,6 +157,9 @@ export const SignUp = () => {
                                         <div className="mb-4 col-12">
                                             <Controller
                                                 name={"password"}
+                                                rules={{
+                                                    required: true
+                                                }}
                                                 control={control}
                                                 render={({ field }) => (
                                                     <input
@@ -163,6 +176,9 @@ export const SignUp = () => {
                                             <Controller
                                                 name={"confirmPassword"}
                                                 control={control}
+                                                rules={{
+                                                    required: true
+                                                }}
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}

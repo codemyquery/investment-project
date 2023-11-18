@@ -14,7 +14,7 @@ const defaultValues: LoginFormData = {
 
 export const Login = () => {
     const navigate = useNavigate();
-    const [formState, setFormState] = useState<FormState>({...DefaultFormState});
+    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
 
     const {
         control,
@@ -26,7 +26,7 @@ export const Login = () => {
         try {
             const response = await Users.loginUser(data);
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
-            if(response){
+            if (response) {
                 window.location.href = `${BASE_URL}/user/dashboard`
             }
         } catch (error) {
@@ -74,6 +74,9 @@ export const Login = () => {
                                         <Controller
                                             name={"username"}
                                             control={control}
+                                            rules={{
+                                                required: true
+                                            }}
                                             render={({ field }) => (
                                                 <input
                                                     {...field}
@@ -93,6 +96,9 @@ export const Login = () => {
                                         <Controller
                                             name={"password"}
                                             control={control}
+                                            rules={{
+                                                required: true
+                                            }}
                                             render={({ field }) => (
                                                 <input
                                                     {...field}

@@ -25,15 +25,23 @@ export const NavigationBar = () => {
                 setActive(navbar)
                 break;
             case "About":
-                navigate('./about-us')
+                navigate('/about-us')
                 setActive(navbar)
                 break;
-            // case "FAQs":
-            //     navigate('./faqs')
-            //     setActive(navbar)
-            //     break;
             case "Contact Us":
-                navigate('./contact-us')
+                navigate('/contact-us')
+                setActive(navbar)
+                break;
+            case "Dashboard":
+                navigate('/user/dashboard')
+                setActive(navbar)
+                break;
+            case "My Plan":
+                navigate('/user/my-plan')
+                setActive(navbar)
+                break;
+            case "Profile":
+                navigate('/user/profile')
                 setActive(navbar)
                 break;
         }
