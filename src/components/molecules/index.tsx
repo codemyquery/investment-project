@@ -6,10 +6,16 @@ import { ControlNumber } from "./control-number";
 import { ControlSelect } from "./control-select";
 import { ControlSwitch } from "./control-switch";
 import { ControlText } from "./control-text";
+import { GetStarted } from "./get-started";
+import { HaveQuestions } from "./have-questions";
+import { HomeWelcomeSection } from "./home-welcome-section";
 import { Logo } from "./logo";
 import { Notifications } from "./notification";
 import { PlanSliderCards } from "./plan-slider-cards";
+import { ProudAbout } from "./proud-about";
+import { SocialSection } from "./social-sections";
 import { UserProfileKycOptions } from "./user-profile-kyc-options";
+import { VirtualPropertyBenifits } from "./virtual-property-benifits";
 
 export { 
     Logo,
@@ -23,5 +29,11 @@ export {
     ControlCheckbox,
     ControlAutocompleteSimple,
     ControlAutocompleteMulti,
-    PlanSliderCards
+    PlanSliderCards,
+    ProudAbout,
+    GetStarted,
+    HomeWelcomeSection,
+    VirtualPropertyBenifits,
+    HaveQuestions,
+    SocialSection
 }
