@@ -185,9 +185,9 @@ export const HomePage = () => {
               className="text-white fw-600 display-6 mb-3 mb-md-4 aos-init aos-animate"
               data-aos="fade-up"
             >
-              Its like a
+              Its like a &nbsp;
               <span className="text-main-green">
-                <AutoWriting text=' Property' />
+                <AutoWriting text='Property' />
                 <span
                   className="styles-module_blinkingCursor__yugAC"
                   style={{ color: "inherit" }}
