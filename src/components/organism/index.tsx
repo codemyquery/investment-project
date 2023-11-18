@@ -3,6 +3,7 @@ import { AppRouting } from "./app-routing";
 import { Footer } from "./footer";
 import { GenericDialog } from "./genique-dialog";
 import { NavigationBar } from "./navigation-bar";
+import { PlanSlider } from "./plan-sliders";
 import { UserBankDetails } from "./user-bank-details";
 import { UserNomineeDetails } from "./user-nominee-details";
 import { UserPersonalDetails } from "./user-personal-details";
@@ -17,5 +18,6 @@ export {
     UserBankDetails,
     UserNomineeDetails,
     UserUploadDocuments,
-    GenericDialog
+    GenericDialog,
+    PlanSlider
 }
