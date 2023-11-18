@@ -1,4 +1,4 @@
-import { Box, useTheme, Skeleton } from "@mui/material"
+import { Box, useTheme, Skeleton, Grid } from "@mui/material"
 import { useState } from "react";
 import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
@@ -76,20 +76,20 @@ export const PlanSlider = ({
                     >
                         {
                             (() => {
-                                const arr = [];
+                                const planSlider = [];
                                 for (let i = 0; i < planDetail.length; i += 2) {
                                     const plan1 = planDetail[i]
                                     const plan2 = planDetail[i + 1]
-                                    arr.push(
+                                    planSlider.push(
                                         <div key={plan1.planCode} >
-                                            <div data-aos="fade-up" className="d-flex justify-content-center align-items-center   aos-init aos-animate">
-                                                <PlanSliderCards classss="mobileview1" key={plan1.planCode} data={plan1} />
-                                                <PlanSliderCards classss="mobileview2" key={plan2.planCode} data={plan2} />
+                                            <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
+                                                {plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
+                                                {plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
                                             </div>
                                         </div>
                                     );
                                 }
-                                return arr;
+                                return planSlider;
                             })()
                         }
                     </AutoPlaySwipeableViews>

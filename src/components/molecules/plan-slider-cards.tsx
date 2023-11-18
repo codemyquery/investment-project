@@ -1,14 +1,12 @@
 import { PlanServerData } from "../../types"
 
 interface PlanSliderCardsProps {
-    data: PlanServerData,
-    classss: 'mobileview1' | 'mobileview2'
+    data: PlanServerData
 }
 export const PlanSliderCards = ({
-    data,
-    classss
+    data
 }: PlanSliderCardsProps) => {
-    return <div className={`mb-2 bg-dark-gradient text-white position-relative card ${classss}`} style={{ width: "50rem", ...(classss === 'mobileview2' ? {marginLeft: '15px'} : {}) }}>
+    return <div className='mb-2 bg-dark-gradient text-white position-relative card' style={{ width: "50rem", margin: '10px', borderRadius: '10px' }}>
         <div className="d-inline-flex align-items-center py-3 fw-bold fs-4 card-header">
             <p className="colan-icon text-center d-inline-block mb-0 d-flex justify-content-center align-items-center me-4 p-2">
                 <img
@@ -29,7 +27,7 @@ export const PlanSliderCards = ({
             </div>
             <div>
                 <div className="text-main-green card-title h5">11%</div>
-                <p className="card-text">Max. Benifits</p>
+                <p className="card-text">ROI</p>
             </div>
         </div>
         <div className="text-center card-body">
