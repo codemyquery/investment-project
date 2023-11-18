@@ -16,8 +16,11 @@ export const AutoWriting = ({ text }: AutoWritingProps) => {
             index = 0;
             clearTimeout(intervalId);
             await delay(2000);
+            setTimeout(writeText, 300);
+            return;
         }
+        setTimeout(writeText, 300)
     };
-    let intervalId = setInterval(writeText, 300);
+    let intervalId = setTimeout(writeText, 300);
     return <span ref={ref}>{text}</span>
 }
