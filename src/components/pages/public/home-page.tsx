@@ -1,6 +1,6 @@
 import virtualProperty from '../../../assets/images/VirtualProperty.png'
 import { content, content1 } from '../../../utils/content'
-import { ExpandableCard } from '../../atoms'
+import { AutoWriting, ExpandableCard } from '../../atoms'
 export const HomePage = () => {
   return (<>
     <section className="py-md-5 pt-3 pb-5">
@@ -42,7 +42,7 @@ export const HomePage = () => {
                   </svg>
                 </span>
                 <span className="text-main-green">
-                  <span> Sure Thing</span>
+                  <AutoWriting text='Sure Things' />
                   <span
                     className="styles-module_blinkingCursor__yugAC"
                     style={{ color: "inherit" }}
@@ -186,7 +186,7 @@ export const HomePage = () => {
             >
               Its like a
               <span className="text-main-green">
-                <span> Property</span>
+                <AutoWriting text=' Property ' />
                 <span
                   className="styles-module_blinkingCursor__yugAC"
                   style={{ color: "inherit" }}

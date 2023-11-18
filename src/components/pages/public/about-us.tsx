@@ -1,19 +1,6 @@
 export const AboutUs = () => {
     return (<>
         <div className="about">
-            <section className="mb-md-5 mb-3 pt-3 text-start text-white">
-                <div className="container">
-                    <div>
-                        <div className="row">
-                            <div data-aos="fade-up" className="col-md-6 aos-init aos-animate">
-                                
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </section>
             <section className="mb-md-5 mb-3 " id="how_it_works">
                 <div className="text-white container">
                     <div className="d-flex align-items-center row">
@@ -40,7 +27,7 @@ export const AboutUs = () => {
                                 className="fw-bold fs-48 text-center content-text pb-3 mt-0 aos-init"
                                 data-aos="fade-up"
                             >
-                                Concept of Virtual Property? 
+                                Concept of Virtual Property?
                             </p>
                             <p
                                 className="text-center d-flex align-items-center justify-content-center ms-1 aos-init"
@@ -52,7 +39,7 @@ export const AboutUs = () => {
                                 className="fw-bold fs-48 text-center content-text pb-3 mt-0 aos-init"
                                 data-aos="fade-up"
                             >
-                               Who are the Guarantor of Money?
+                                Who are the Guarantor of Money?
                             </p>
                             <p
                                 className="text-center d-flex align-items-center justify-content-center ms-1 aos-init"
@@ -301,8 +288,8 @@ export const AboutUs = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
                             </div>
                         </div>

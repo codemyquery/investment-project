@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const text = "SIMPLE AUTO WRITE TEXT WITH JAVASCRIPT.";
+      let index = 0;
+      function writeText() {
+        document.body.innerText = text.slice(0, index);
+        index++;
+        if (index > text.length) {
+          index = 0;
+        }
+      }
+      setInterval(writeText, 150);
+    </script>
+  </body>
+</html>

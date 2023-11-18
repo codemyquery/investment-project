@@ -1,3 +1,4 @@
+import { AutoWriting } from "./auto-writing";
 import { ButtonAddIcon } from "./button-add-icon";
 import { ButtonDeleteIcon } from "./button-delete-icon";
 import { ButtonEditIcon } from "./button-edit-icon";
@@ -31,5 +32,6 @@ export {
     FormNumber,
     FormAutocompleteMulti,
     FormAutocompleteSimple,
-    FormDate
+    FormDate,
+    AutoWriting
 }
