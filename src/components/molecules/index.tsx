@@ -8,6 +8,7 @@ import { ControlSwitch } from "./control-switch";
 import { ControlText } from "./control-text";
 import { Logo } from "./logo";
 import { Notifications } from "./notification";
+import { PlanSliderCards } from "./plan-slider-cards";
 import { UserProfileKycOptions } from "./user-profile-kyc-options";
 
 export { 
@@ -21,5 +22,6 @@ export {
     ControlDate,
     ControlCheckbox,
     ControlAutocompleteSimple,
-    ControlAutocompleteMulti
+    ControlAutocompleteMulti,
+    PlanSliderCards
 }
