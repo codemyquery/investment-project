@@ -29,6 +29,7 @@ export const SignUp = () => {
     } = useHookForm<SignUpFormData>({ defaultValues });
 
     const onSubmitItem = async (data: SignUpFormData) => {
+        if(data.confirmPassword !== data.password) return;
         try {
             const response = await Users.createUser(data);
             setFormState(prev => {
