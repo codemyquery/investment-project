@@ -88,6 +88,14 @@ export const PlanSlider = () => {
                         {images.map((step, index) => (
                             <div key={step.label} >
                                 <div data-aos="fade-up" className="d-flex justify-content-center align-items-center   aos-init aos-animate">
+                                    <Button size="small" onClick={handleBack} disabled={activeStep === 0} >
+                                    {theme.direction === 'rtl' ? (
+                                        <KeyboardArrowRight />
+                                    ) : (
+                                        <KeyboardArrowLeft />
+                                    )}
+                                    Back
+                                    </Button>
                                     <div className="mb-2 bg-dark-gradient text-white position-relative card mobileview1" style={{ width: "50rem" }}>
                                         <div className="d-inline-flex align-items-center py-3 fw-bold fs-4 card-header">
                                             <p className="colan-icon text-center d-inline-block mb-0 d-flex justify-content-center align-items-center me-4 p-2">
@@ -262,42 +270,20 @@ export const PlanSlider = () => {
                                         </div>
                                     </div>
                                 
-                                
+                                    <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1} >
+                                         Next
+                                        {theme.direction === 'rtl' ? (
+                                            <KeyboardArrowLeft />
+                                        ) : (
+                                            <KeyboardArrowRight />
+                                        )}
+                                    </Button>
                                 </div>
                                 
                             </div>
                         ))}
                     </AutoPlaySwipeableViews>
-                    
-                    <MobileStepper
-                        steps={maxSteps}
-                        position="static"
-                        activeStep={activeStep}
-                        nextButton={
-                            <Button
-                                size="small"
-                                onClick={handleNext}
-                                disabled={activeStep === maxSteps - 1}
-                            >
-                                Next
-                                {theme.direction === 'rtl' ? (
-                                    <KeyboardArrowLeft />
-                                ) : (
-                                    <KeyboardArrowRight />
-                                )}
-                            </Button>
-                        }
-                        backButton={
-                            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                                {theme.direction === 'rtl' ? (
-                                    <KeyboardArrowRight />
-                                ) : (
-                                    <KeyboardArrowLeft />
-                                )}
-                                Back
-                            </Button>
-                        }
-                    />
+                
                 </Box>
             </div>
             
