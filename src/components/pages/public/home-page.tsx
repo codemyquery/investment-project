@@ -186,7 +186,7 @@ export const HomePage = () => {
             >
               Its like a
               <span className="text-main-green">
-                <AutoWriting text=' Property ' />
+                <AutoWriting text=' Property' />
                 <span
                   className="styles-module_blinkingCursor__yugAC"
                   style={{ color: "inherit" }}
