@@ -15,10 +15,9 @@ export const PlanSlider = ({
     loader,
     planDetail
 }: PlanSliderProps) => {
-
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
-    const maxSteps = planDetail.length;
+    const isMobile = window.matchMedia("(max-width: 600px)").matches;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -77,14 +76,14 @@ export const PlanSlider = ({
                         {
                             (() => {
                                 const planSlider = [];
-                                for (let i = 0; i < planDetail.length; i += 2) {
+                                for (let i = 0; i < planDetail.length; isMobile ? i++ :i += 2) {
                                     const plan1 = planDetail[i]
                                     const plan2 = planDetail[i + 1]
                                     planSlider.push(
                                         <div key={plan1.planCode} >
                                             <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
                                                 {plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
-                                                {plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
+                                                {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
                                             </div>
                                         </div>
                                     );

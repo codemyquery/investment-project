@@ -15,7 +15,6 @@ export const PlanSliderCards = ({
     lowestInvestmentPlan.every((row, index) => {
         return row[2] == '0' ? ++lockingPeriod : false; // It contains 3 element [yearlyIncome, Maturity, Surrender Value]
     })
-    console.log(lockingPeriod)
     return <div className='mb-2 bg-dark-gradient text-white position-relative card' style={{ width: "50rem", margin: '10px', borderRadius: '10px' }}>
         <div className="d-inline-flex align-items-center py-3 fw-bold fs-4 card-header">
             <p className="colan-icon text-center d-inline-block mb-0 d-flex justify-content-center align-items-center me-4 p-2">
