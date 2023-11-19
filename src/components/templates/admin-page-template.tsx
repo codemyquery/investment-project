@@ -17,7 +17,7 @@ export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
     const navigate = useNavigate();
-    const { openDrawer, changeDrawer, adminInfo, homeURL } = useAuth();
+    const { openDrawer, changeDrawer, adminInfo } = useAuth();
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {
         changeDrawer(!openDrawer);
@@ -41,7 +41,7 @@ export const AdminPageTemplate = ({
     return (
         <Box sx={{ display: 'flex', height: '100%' }}>
             <CssBaseline />
-            <AppBar position="fixed" color="inherit" sx={{ zIndex: (theme: any) => theme.zIndex.drawer + 1 }}>
+            {adminInfo && <AppBar position="fixed" color="inherit" sx={{ zIndex: (theme: any) => theme.zIndex.drawer + 1 }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -87,8 +87,8 @@ export const AdminPageTemplate = ({
                         </Box>
                     }
                 </Toolbar>
-            </AppBar>
-            <AppDrawer routingServices={routingService} />
+            </AppBar>}
+            {adminInfo && <AppDrawer routingServices={routingService} />}
             <PageContent>
                 <Toolbar />
                 <AppRouting routingService={routingService} />
