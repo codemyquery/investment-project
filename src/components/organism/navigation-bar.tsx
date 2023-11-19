@@ -54,7 +54,7 @@ export const NavigationBar = () => {
         if (currentTarget.innerText === 'Logout') {
             const logout = async () => {
                 await Admin.signOut();
-                sessionStorage.removeItem(USER_SESSION_NAME);
+                sessionStorage.clear();
                 window.location.href = `${BASE_URL}`
             }
             logout();
@@ -98,7 +98,7 @@ export const NavigationBar = () => {
                                 <Box sx={{ flexGrow: 0 }}>
                                     <Tooltip title="Profile">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar alt={userInfo.userName} src="/static/images/avatar/2.jpg" />
+                                            <Avatar alt={userInfo?.userName} src="/static/images/avatar/2.jpg" />
                                         </IconButton>
                                     </Tooltip>
                                     <Menu

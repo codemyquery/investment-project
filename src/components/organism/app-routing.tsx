@@ -1,5 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { NavigationMenu, Service, ServiceStatus } from "../../types"
+import { Alert } from "@mui/material";
+import { Login, PageNotFound } from "../pages";
+import { useAuth } from "../../providers";
+import { AdminLoginPage } from "../pages/admin/login";
 
 interface AppRoutingProps {
     routingService: Service<NavigationMenu[]>;
@@ -7,6 +11,7 @@ interface AppRoutingProps {
 export const AppRouting = ({
     routingService
 }: AppRoutingProps) => {
+    const { adminInfo, userInfo } = useAuth()
     switch (routingService.status) {
         case ServiceStatus.Init:
         case ServiceStatus.Loading:
@@ -20,17 +25,21 @@ export const AppRouting = ({
                         <Route
                             key={`${route.id}-route`}
                             path={route.path}
-                            element={<route.component currentPath={route.to} subMenu={route.subMenu} />}
+                            element={
+                                route.to.indexOf('/admin') === 0 ?
+                                adminInfo ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <AdminLoginPage />
+                                : route.to.indexOf('/user') === 0 ?
+                                userInfo ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <Login />
+                                : <route.component currentPath={route.to} subMenu={route.subMenu} />
+                        }
                         />
                     ))
                 }
                 {
-                    /*
                         <Route
-                            path=""
-                            element={<Alert severity="warning">Page not found</Alert>}
+                            path="*"
+                            element={<PageNotFound />}
                         />
-                    */
                 }
             </Routes>
     }

@@ -29,7 +29,7 @@ export const AdminLoginPage = () => {
         handleSubmit,
         formState: { }
     } = useHookForm<AdminLogin>({ defaultValues })
-
+    
     const onSubmit = async (data: AdminLogin) => {
         try {
             const response = await Admin.signIn(data);

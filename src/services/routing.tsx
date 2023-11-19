@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages/public";
+import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages";
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
-import { DashboardContactus, DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages/admin";
+import { DashboardContactus, DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages";
 import { EditEmployee } from "../components/pages/admin/edit-employee";
 import { DashboardEmployee } from "../components/pages/admin/dashboard-employee";
 import ContactMailIcon from '@mui/icons-material/ContactMail';

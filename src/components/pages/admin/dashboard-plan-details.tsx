@@ -12,6 +12,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import { Grid, MenuItem, TableContainer, Table, TableBody, TableRow, TableCell } from "@mui/material";
 import { useFieldArray } from "react-hook-form";
 import { Notifications } from "../../molecules/notification";
+import { useAuth } from "../../../providers";
 
 interface Dialog {
     data?: PlanServerData,

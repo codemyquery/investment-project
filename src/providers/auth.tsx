@@ -1,10 +1,11 @@
 import { useMediaQuery } from "@mui/material";
 import React, { createContext, useContext, useMemo, useReducer } from "react"
-import { ADMIN_SESSION_NAME } from "../utils/constants";
+import { ADMIN_SESSION_NAME, USER_SESSION_NAME } from "../utils/constants";
 interface AuthState {
     userToken: string | null;
     idToken: string;
     userInfo: any;
+    adminInfo: any;
     homeURL: string;
     status: "idle" | "signOut" | "signIn" | "signUp" | "signInAdmin",
     isDark: boolean,
@@ -35,7 +36,8 @@ interface AuthContextType extends AuthState, AuthContextAction { }
 const AuthContext = createContext<AuthContextType>({
     status: "idle",
     userToken: null,
-    userInfo: {},
+    userInfo: null,
+    adminInfo: null,
     idToken: "",
     homeURL: "",
     isDark: false,
@@ -56,7 +58,7 @@ type AuthAction =
     {
         type: "SIGN_IN_ADMIN",
         userToken: string,
-        userInfo: Record<string, any>,
+        adminInfo: Record<string, any>,
         status: 'signInAdmin'
     }
     |
@@ -80,19 +82,16 @@ type AuthAction =
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const preferDarkModes = useMediaQuery("(prefer-color-scheme: dark)");
-    const pathName = window.location.pathname;
-    const adminInfo = sessionStorage.getItem(ADMIN_SESSION_NAME);
-    const routeToNavigate = adminInfo ?  '/admin/plan-details' : pathName;
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',
-        userInfo: {},
-        homeURL: routeToNavigate,
+        userInfo: sessionStorage.getItem(USER_SESSION_NAME),
+        adminInfo: sessionStorage.getItem(ADMIN_SESSION_NAME),
+        homeURL: window.location.pathname,
         status: 'idle',
         isDark: false,
         openDrawer: false
     });
-
     const AuthAction: AuthContextAction = useMemo(() => ({
         signIn: (
             token: string,
@@ -109,8 +108,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             dispatch({
                 type: "SIGN_IN_ADMIN",
                 status: "signInAdmin",
-                userInfo: {
-                    userName: JSON.parse(username)
+                adminInfo: {
+                    userName: username
                 },
                 userToken: token
             });

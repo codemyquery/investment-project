@@ -8,6 +8,7 @@ import { useState } from "react";
 import { BASE_URL } from "../../utils";
 import { Admin } from "../../services";
 import { ADMIN_SESSION_NAME } from "../../utils/constants";
+import { useNavigate } from "react-router";
 interface HomeProps {
     routingService: Service<NavigationMenu[]>;
 }
@@ -15,7 +16,8 @@ const settings = ['Logout'];
 export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
-    const { openDrawer, changeDrawer, userInfo } = useAuth();
+    const navigate = useNavigate();
+    const { openDrawer, changeDrawer, adminInfo, homeURL } = useAuth();
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {
         changeDrawer(!openDrawer);
@@ -52,35 +54,38 @@ export const AdminPageTemplate = ({
                     <Typography variant="h6" sx={{ flexGrow: 1 }} noWrap >
                         Admin Panel
                     </Typography>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Profile">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt={userInfo.userName} src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} style={{ marginLeft: '5px', marginRight: '5px' }} onClick={handleCloseUserMenu}>
-                                    {setting}
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                    {
+                        adminInfo &&
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Profile">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt={adminInfo?.userName} src="/static/images/avatar/2.jpg" />
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: '45px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                {settings.map((setting) => (
+                                    <MenuItem key={setting} style={{ marginLeft: '5px', marginRight: '5px' }} onClick={handleCloseUserMenu}>
+                                        {setting}
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </Box>
+                    }
                 </Toolbar>
             </AppBar>
             <AppDrawer routingServices={routingService} />
