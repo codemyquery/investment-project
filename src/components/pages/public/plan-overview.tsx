@@ -1,63 +1,52 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { Plan } from "../../../services";
-import { PlanServerData } from "../../../types";
+import { Months, PlanServerData } from "../../../types";
 import "../../../styles/virtual.css";
-import Slider from '@mui/material/Slider';
+import { Autocomplete, Collapse, List, ListItemButton, ListItemIcon, ListItemText, TextField } from "@mui/material";
+import { formatNumber } from "../../../utils";
+import { ExpandableList } from "../../molecules";
 
-function valueLabelFormat(value: number) {
-  const units = ['KB', 'MB', 'GB', 'TB'];
-
-  let unitIndex = 0;
-  let scaledValue = value;
-
-  while (scaledValue >= 1024 && unitIndex < units.length - 1) {
-    unitIndex += 1;
-    scaledValue /= 1024;
-  }
-
-  return `${scaledValue} ${units[unitIndex]}`;
+const defaultValue: PlanServerData = {
+  id: "",
+  planCode: "",
+  insuranceCompany: "",
+  planName: "",
+  ageBand: "",
+  incomeTermOptions: "",
+  maturityValueOptions: "",
+  incomeFrequency: "",
+  ppt: "",
+  planDetails: {}
 }
 
-function calculateValue(value: number) {
-  return 2 ** value;
+interface SelectOptions {
+  label: string,
+  value: string
 }
 
 export const PlanOverview = () => {
   const { itemID } = useParams();
-  const [loader, setLoader] = useState<boolean>(true);
-  const [planDetail, setPlanDetail] = useState<PlanServerData>();
-  const planDetails = planDetail?.planDetails || [];
+  const [planDetail, setPlanDetail] = useState<PlanServerData>(defaultValue);
+  const [options, setOptions] = useState<SelectOptions[]>([]);
+  const [planAmount, setPlanAmount] = useState<SelectOptions>({label: '', value: ''});
+  const planDetails = planDetail?.planDetails || {};
+  const cashFlowYears = (planDetail.planDetails[planAmount.value] || []);
 
-  const [value, setValue] = useState<number>(10);
-
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    if (typeof newValue === 'number') {
-      setValue(newValue);
-    }
-  };
+  useEffect(()=>{
+    const options = Object.keys(planDetails).map((amount) => ({ value: amount, label: `₹ ${formatNumber(Number(amount))}` }));
+    setOptions(options)
+    setPlanAmount(prev => ({...prev, ...options[0]}))
+  },[planDetail.planDetails])
 
   useEffect(() => {
     const abortController = new AbortController();
     const init = async () => {
       const response = await Plan.fetchPlan(itemID!, abortController);
       setPlanDetail(response);
-      setLoader(false);
     };
     init();
   }, []);
-
-  const onYearClickHandler = (event: any) => {
-    const currentTarget = event.currentTarget;
-    const nextLi = currentTarget.nextElementSibling;
-    if (nextLi.classList.contains("showYearsUl")) {
-      nextLi.classList.remove("showYearsUl");
-      nextLi.classList.add("hideYearsUl");
-    } else {
-      nextLi.classList.remove("hideYearsUl");
-      nextLi.classList.add("showYearsUl");
-    }
-  };
 
   return (
     <div
@@ -154,38 +143,32 @@ export const PlanOverview = () => {
                 </div>
                 <div className="returns-parent">
                   <div className="return-section">
-                    <div className="returns-container concise">
+                    <div className="returns-container concise"  style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Cash Flow ₹ { calculateValue(value) }</h2>
+                        <h2 className="heading">Cash Flow { planAmount.label}</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
-                        <Slider
-                          value={value}
-                          min={5}
-                          step={1}
-                          max={30}
-                          scale={calculateValue}
-                          getAriaValueText={valueLabelFormat}
-                          valueLabelFormat={valueLabelFormat}
-                          onChange={handleChange}
-                          aria-labelledby="non-linear-slider"
+                        <Autocomplete
+                          fullWidth
+                          id="combo-box-demo"
+                          value={planAmount}
+                          onChange={(event, newValue) => {
+                            if(newValue){
+                              setPlanAmount(newValue)
+                            }
+                          }}
+                          isOptionEqualToValue={(o, v) => o.value === v.value}
+                          options={options}
+                          renderInput={(params) => <TextField {...params} variant="outlined" label="₹ Amount" />}
                         />
                       </div>
                       <div>
                         <div className="square">
-                          <ul className="archive_year">
-                            <li
-                              className="years"
-                              onClick={onYearClickHandler}
-                              style={{ cursor: "pointer" }}
-                            >
-                              2012
-                            </li>
-                            <ul className="archive_month hideYearsUl">
-                              <li className="months">September</li>
-                              <li className="months">August</li>
-                            </ul>
-                          </ul>
+                            {
+                              cashFlowYears.map((row, year) => {
+                                return <ExpandableList totalYear={cashFlowYears.length-1}  year={year} />
+                              })
+                            }
                         </div>
                       </div>
                     </div>

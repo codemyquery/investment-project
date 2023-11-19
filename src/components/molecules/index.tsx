@@ -6,6 +6,7 @@ import { ControlNumber } from "./control-number";
 import { ControlSelect } from "./control-select";
 import { ControlSwitch } from "./control-switch";
 import { ControlText } from "./control-text";
+import { ExpandableList } from "./expandable-list";
 import { GetStarted } from "./get-started";
 import { HaveQuestions } from "./have-questions";
 import { HomeWelcomeSection } from "./home-welcome-section";
@@ -35,5 +36,6 @@ export {
     HomeWelcomeSection,
     VirtualPropertyBenifits,
     HaveQuestions,
-    SocialSection
+    SocialSection,
+    ExpandableList
 }
