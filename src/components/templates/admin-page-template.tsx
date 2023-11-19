@@ -16,7 +16,6 @@ const settings = ['Logout'];
 export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
-    const navigate = useNavigate();
     const { openDrawer, changeDrawer, adminInfo } = useAuth();
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {

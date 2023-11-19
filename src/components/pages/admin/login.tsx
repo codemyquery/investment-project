@@ -16,6 +16,7 @@ import { AdminLogin } from '../../../types';
 import { ControlText } from '../../molecules';
 import { BASE_URL } from '../../../utils';
 import { ADMIN_SESSION_NAME } from '../../../utils/constants';
+import { useNavigate } from 'react-router';
 
 const defaultValues: AdminLogin = {
     password: 'Waves@125',
@@ -24,6 +25,11 @@ const defaultValues: AdminLogin = {
 
 export const AdminLoginPage = () => {
     const defaultTheme = createTheme();
+    const navigate = useNavigate();
+    const { adminInfo } = useAuth();
+    if(adminInfo){
+        navigate('/admin/plan-details')
+    }
     const {
         control,
         handleSubmit,
