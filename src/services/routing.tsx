@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp } from "../components/pages";
+import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp, PlanOverview } from "../components/pages";
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
@@ -9,9 +9,9 @@ import { DashboardContactus, DashboardCustomers, DashboardPlanDetails, EditCusto
 import { EditEmployee } from "../components/pages/admin/edit-employee";
 import { DashboardEmployee } from "../components/pages/admin/dashboard-employee";
 import ContactMailIcon from '@mui/icons-material/ContactMail';
-import { Dashboard } from "../components/pages/public/user-profile/dashboard";
 import { Profile } from "../components/pages/public/user-profile/profile";
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+
 const AppMenus: NavigationMenu[] = [
     {
         id: "dashboard-plan-details",
@@ -104,16 +104,6 @@ const AppMenus: NavigationMenu[] = [
     },
     /** Routings for the Public Login Pages */
     {
-        id: "user-dashboard",
-        i18nKey: '',
-        visible: false,
-        to: '/user/dashboard',
-        path: 'user/dashboard',
-        Icon: HomeIcon,
-        component: Dashboard,
-        allowedGroups: []
-    },
-    {
         id: "user-profile",
         i18nKey: '',
         visible: false,
@@ -122,7 +112,7 @@ const AppMenus: NavigationMenu[] = [
         component: Profile,
         allowedGroups: []
     },
-    {
+    /* {
         id: "home-page",
         i18nKey: '',
         visible: false,
@@ -130,7 +120,7 @@ const AppMenus: NavigationMenu[] = [
         path: '/user/my-plan',
         component: Dashboard,
         allowedGroups: []
-    },
+    }, */
     /** Routing for the public page */
     {
         id: "home-page",
@@ -184,6 +174,15 @@ const AppMenus: NavigationMenu[] = [
         to: '/sign-up',
         path: '/sign-up',
         component: SignUp,
+        allowedGroups: []
+    },
+    {
+        id: "plan-overview",
+        i18nKey: "Plan Overview",
+        visible: false,
+        to: '/plan-overview/:itemID',
+        path: '/plan-overview/:itemID',
+        component: PlanOverview,
         allowedGroups: []
     }
 ]

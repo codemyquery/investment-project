@@ -72,6 +72,8 @@ if ($page === 'login') {
 	if ($method === 'GET') {
 		if ($action === 'getPlanList') {
 			$result = $plan->get_plan_list();
+		} else if ($action === 'getPlan') {
+			$result = $plan->get_plan($itemID);
 		}
 		echo json_encode($result);
 	} else if ($method === 'POST') { // For Create request

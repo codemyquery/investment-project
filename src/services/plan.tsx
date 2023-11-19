@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { DisplayTableColumnDefinition, PlanDataResponse, PlanFormData, ServerResponse } from "../types";
+import { DisplayTableColumnDefinition, PlanDataResponse, PlanFormData, PlanServerData, ServerResponse } from "../types";
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import { WS_BASE_URL, callService } from "../utils";
 
@@ -19,7 +19,7 @@ export const useDisplayTablePlanHeaders = ({
             sortable: true
         },
         {
-            field: 'insuranceCompnay',
+            field: 'insuranceCompany',
             type: 'text',
             headerName: 'Insurance Company'
         },
@@ -100,6 +100,17 @@ export const fetchPlanList = async (
     abortController?: AbortController
 ): Promise<PlanDataResponse> => {
     const url = `${WS_BASE_URL}/routes.php?&page=plan&actions=getPlanList&${query}`;
+    return await callService({
+        url: url,
+        method: 'GET',
+        userToken: 'sdasdasd',
+        abortController: abortController
+    })
+}
+
+
+export const fetchPlan = async (itemID: string, abortController?: AbortController) : Promise<PlanServerData> => {
+    const url = `${WS_BASE_URL}/routes.php?&page=plan&actions=getPlan&itemID=${itemID}`;
     return await callService({
         url: url,
         method: 'GET',

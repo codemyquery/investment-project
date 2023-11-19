@@ -1,0 +1,13 @@
+.showYearsUl {
+    display: block;
+    -webkit-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+    max-height: 100%;
+}
+
+.hideYearsUl {
+    display: none;
+    -webkit-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+    max-height: 0;
+}

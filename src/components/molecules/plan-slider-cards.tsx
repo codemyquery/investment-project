@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { PlanServerData } from "../../types"
 import { formatNumber } from "../../utils";
 
@@ -7,6 +8,7 @@ interface PlanSliderCardsProps {
 export const PlanSliderCards = ({
     data
 }: PlanSliderCardsProps) => {
+    const navigate = useNavigate();
     // finding the lowest plan amount
     let lockingPeriod = 0;
     const investmentAmounts = Object.keys(data.planDetails).sort((a,b) => Number(a) > Number(b) ? Number(a) : Number(b));
@@ -82,18 +84,17 @@ export const PlanSliderCards = ({
                 </div>
             </div>
             <div className="py-2">
-                <a href="https://app.growpital.com/signup">
                     <button
                         type="button"
                         className="main-btn-service maincolor bg-transparent btn btn-primary"
+                        onClick={() => navigate(`/login`)}
                     >
                         Invest Now
                     </button>
-                </a>
             </div>
             <div className="py-2">
                 <a
-                    href="https://drive.google.com/file/d/1bUF3cdfk5gGHGSK7Jh35kQD9ZwrQMLTK/view"
+                    href={`/plan-overview/${data.planCode}`}
                     className="fs-16 fw-700 text-white text-center py-2"
                 >
                     Know more

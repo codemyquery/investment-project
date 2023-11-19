@@ -22,9 +22,7 @@ export const HomePage = () => {
     <VirtualPropertyBenifits />
     <ProudAbout />
     <GetStarted />
-    {/* Plan Will be shown here */}
     <PlanSlider loader={loader} planDetail={planDetail} />
-    {/* End Plan Show */}
     <HaveQuestions />
     <SocialSection />
   </>)

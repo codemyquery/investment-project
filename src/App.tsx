@@ -5,6 +5,7 @@ import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { RightsMenuService } from "./services";
 import { ServiceStatus } from "./types";
 import { AdminPageTemplate, PublicPageTemplate } from "./components/templates";
+import './App.css';
 
 const HomePage = () => {
     const navigate = useNavigate();

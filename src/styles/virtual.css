@@ -482,11 +482,9 @@ timeline .content {
 #bond-details .bond-details-content {
     background-color: #f6f6f6;
     height: 100%;
-    padding-top: 20px
 }
 
 #bond-details .bond-details-content .common-container {
-    padding: 25px;
     background-color: #fff
 }
 

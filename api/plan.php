@@ -63,6 +63,16 @@ class Plan
         return $this->helper->execute_query(); */
     }
 
+    function get_plan($itemID)
+    {
+        $this->helper->query = "SELECT * FROM plan_details WHERE plan_code='$itemID'";
+        if ($this->helper->total_row() === 0) {
+            return null;
+        }
+        $employee = $this->helper->query_result()[0];
+        return formatPlanOutput($employee);
+    }
+
     function get_plan_list()
     {
         @$pages_array = [];
@@ -87,7 +97,7 @@ function formatPlanOutput($row)
     return (object) array(
         "id"                        => $row['plan_code'],
         "planCode"                  => $row['plan_code'],
-        "insuranceCompnay"          => $row['insurance_company'],
+        "insuranceCompany"          => $row['insurance_company'],
         "planName"                  => $row['plan_name'],
         "ageBand"                   => $row['age_band'],
         "incomeTermOptions"         => $row['income_terms_options'],

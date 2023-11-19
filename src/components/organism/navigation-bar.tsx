@@ -6,11 +6,10 @@ import { useAuth } from '../../providers';
 import { Box, Tooltip, IconButton, Avatar, Menu, MenuItem } from '@mui/material';
 import { Admin } from '../../services';
 import { BASE_URL } from '../../utils';
-import { ADMIN_SESSION_NAME, USER_SESSION_NAME } from '../../utils/constants';
 
-type MenusType = 'Home' | 'About' | 'Contact Us' | 'Dashboard' | 'My Plan' | 'Profile' | undefined;
+type MenusType = 'Home' | 'About' | 'Contact Us' | 'My Plan' | 'Profile' | undefined;
 const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
-const UserMenus: MenusType[] = ['Dashboard', 'My Plan', 'Profile'];
+const UserMenus: MenusType[] = ['My Plan', 'Profile'];
 const settings = ['Logout'];
 
 export const NavigationBar = () => {
@@ -30,10 +29,6 @@ export const NavigationBar = () => {
                 break;
             case "Contact Us":
                 navigate('/contact-us')
-                setActive(navbar)
-                break;
-            case "Dashboard":
-                navigate('/user/dashboard')
                 setActive(navbar)
                 break;
             case "My Plan":

@@ -10,6 +10,7 @@ import { Faqs } from "./public/faqs";
 import { HomePage } from "./public/home-page";
 import { Login } from "./public/login";
 import { SignUp } from "./public/sign-up";
+import { PlanOverview } from "./public/plan-overview";
 
 export {
     PageNotFound,
@@ -23,5 +24,6 @@ export {
     Faqs,
     ContactUs,
     Login,
-    SignUp
+    SignUp,
+    PlanOverview
 }
