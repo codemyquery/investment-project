@@ -11,6 +11,7 @@ import { HomePage } from "./public/home-page";
 import { Login } from "./public/login";
 import { SignUp } from "./public/sign-up";
 import { PlanOverview } from "./public/plan-overview";
+import { MyPlans } from "./public/user-profile/my-plan";
 
 export {
     PageNotFound,
@@ -25,5 +26,6 @@ export {
     ContactUs,
     Login,
     SignUp,
-    PlanOverview
+    PlanOverview,
+    MyPlans
 }

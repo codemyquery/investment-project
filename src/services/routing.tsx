@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp, PlanOverview } from "../components/pages";
+import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp, PlanOverview, MyPlans } from "../components/pages";
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
@@ -112,15 +112,15 @@ const AppMenus: NavigationMenu[] = [
         component: Profile,
         allowedGroups: []
     },
-    /* {
+    {
         id: "home-page",
         i18nKey: '',
         visible: false,
         to: '/user/my-plan',
         path: '/user/my-plan',
-        component: Dashboard,
+        component: MyPlans,
         allowedGroups: []
-    }, */
+    },
     /** Routing for the public page */
     {
         id: "home-page",
