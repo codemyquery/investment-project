@@ -70,8 +70,9 @@ export const PlanOverview = () => {
                   <div className="side-icons-top">
                     <span className="help-text">Need Help ?</span>
                     <div className="button-phone gtm-cb-talk-expert">
-                      <WifiCalling3Icon style={{ color: "brown" }}/>
-                      <span>Talk to Expert</span>
+                      <a href="tel:+91-7231844488">
+                        <span><WifiCalling3Icon style={{ color: "brown", marginRight: '8px' }}/>Talk to Expert</span>
+                      </a>
                     </div>
                   </div>
                   <div className="side-icons-bottom" />

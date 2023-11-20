@@ -27,7 +27,7 @@ export const Login = () => {
             const response = await Users.loginUser(data);
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
             if (response) {
-                window.location.href = `${BASE_URL}/user/dashboard`
+                window.location.href = `${BASE_URL}/user/my-plan`
             }
         } catch (error) {
             setFormState(prev => {
