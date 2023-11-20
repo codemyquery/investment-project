@@ -32,7 +32,7 @@ export interface PlanDataResponse {
 }
 
 export enum Months {
-    JANUARY = 1,
+    JANUARY ,
     FEBRUARY,
     MARCH,
     APRIL,
@@ -47,16 +47,16 @@ export enum Months {
 }
 
 export enum MonthsName {
-    JANUARY = "JANUARY",
-    FEBRUARY = "FEBRUARY",
-    MARCH = "MARCH",
-    APRIL = "APRIL",
-    MAY = "MAY",
-    JUNE = "JUNE",
-    JULY = "JULY",
-    AUGUST = "AUGUST",
-    SEPTEMBER = "SEPTEMBER",
-    OCTOBER = "OCTOBER",
-    NOVEMBER = "NOVEMBER",
-    DECEMBER = "DECEMBER",
+    JANUARY ,
+    FEBRUARY ,
+    MARCH ,
+    APRIL ,
+    MAY ,
+    JUNE ,
+    JULY ,
+    AUGUST ,
+    SEPTEMBER ,
+    OCTOBER ,
+    NOVEMBER ,
+    DECEMBER ,
 };

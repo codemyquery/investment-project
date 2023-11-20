@@ -1,11 +1,13 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { Plan } from "../../../services";
-import { Months, PlanServerData } from "../../../types";
+import { MonthsName, PlanServerData } from "../../../types";
 import "../../../styles/virtual.css";
-import { Autocomplete, Collapse, List, ListItemButton, ListItemIcon, ListItemText, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { formatNumber } from "../../../utils";
 import { ExpandableList } from "../../molecules";
+import { capitalize } from "../../../utils/helper";
+import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 
 const defaultValue: PlanServerData = {
   id: "",
@@ -27,32 +29,38 @@ interface SelectOptions {
 
 export const PlanOverview = () => {
   const { itemID } = useParams();
-  const [planDetail, setPlanDetail] = useState<PlanServerData>(defaultValue);
+  const date = new Date();
+  const [plan, setPlan] = useState<PlanServerData>(defaultValue);
+  const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
-  const [planAmount, setPlanAmount] = useState<SelectOptions>({label: '', value: ''});
-  const planDetails = planDetail?.planDetails || {};
-  const cashFlowYears = (planDetail.planDetails[planAmount.value] || []);
+  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: '0' });
+  const currentYear = date.getFullYear();
+  const currentMonth= date.getMonth()+1;
+  const currentDate = date.getDate();
 
-  useEffect(()=>{
-    const options = Object.keys(planDetails).map((amount) => ({ value: amount, label: `₹ ${formatNumber(Number(amount))}` }));
+  useEffect(() => {
+    const options = Object.keys(plan.planDetails).map((amount) => ({ value: amount, label: `₹ ${formatNumber(Number(amount))}` }));
     setOptions(options)
-    setPlanAmount(prev => ({...prev, ...options[0]}))
-  },[planDetail.planDetails])
+    setPlanAmount(prev => {
+      const newData = { ...prev, ...options[0] };
+      const selectedInvestmentAmount = (plan.planDetails[newData.value] || []);
+      selectedInvestmentAmount.shift();
+      setCashFlowYears(selectedInvestmentAmount)
+      return newData
+    })
+  }, [plan.planDetails])
 
   useEffect(() => {
     const abortController = new AbortController();
     const init = async () => {
       const response = await Plan.fetchPlan(itemID!, abortController);
-      setPlanDetail(response);
+      setPlan(response);
     };
     init();
   }, []);
 
   return (
-    <div
-      className="app-root"
-      style={{ height: "100%", backgroundColor: "white" }}
-    >
+    <div className="app-root" style={{ height: "100%", backgroundColor: "white" }}>
       <div id="bond-details">
         <div className="">
           <div className="bond-details-content ">
@@ -62,21 +70,18 @@ export const PlanOverview = () => {
                   <div className="side-icons-top">
                     <span className="help-text">Need Help ?</span>
                     <div className="button-phone gtm-cb-talk-expert">
-                      <img
-                        src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/phone-icon-yellow.svg"
-                        alt=""
-                      />
+                      <WifiCalling3Icon style={{ color: "brown" }}/>
                       <span>Talk to Expert</span>
                     </div>
                   </div>
                   <div className="side-icons-bottom" />
                 </div>
                 <div className="bond-banner">
-                  <h4 style={{ color: "brown" }}>{`${planDetail?.planName} (${planDetail?.planCode})`}</h4>
+                  <h4 style={{ color: "brown" }}>{`${plan?.planName} (${plan?.planCode})`}</h4>
                   <div className="bond-name-container">
                     <div className="bond-name-div">
                       <h1 className="bond-name">
-                        {planDetail?.insuranceCompany}
+                        {plan?.insuranceCompany}
                       </h1>
                     </div>
                   </div>
@@ -98,7 +103,10 @@ export const PlanOverview = () => {
                       <div className="info-container">
                         <div className="flex-column">
                           <p className="text-value ">
-                            <span className="rupee-symbol">₹</span> 2,98,782.74
+                            <span className="rupee-symbol">₹</span>
+                            {
+                              formatNumber(Number(planAmount.value || 0))
+                            }
                           </p>
                           <p className="text-title">Investment</p>
                           <div id="tooltip-component" className="">
@@ -110,7 +118,7 @@ export const PlanOverview = () => {
                           <p />
                         </div>
                         <div className="flex-column ">
-                          <p className="text-value ">24-Apr-2029</p>
+                          <p className="text-value">{currentDate}-{ capitalize(MonthsName[currentMonth].slice(0,3)) }-{currentYear + cashFlowYears.length}</p>
                           <p className="text-title ">Maturity Date</p>
                           <div id="tooltip-component">
                             <img
@@ -137,15 +145,26 @@ export const PlanOverview = () => {
                           </div>
                           <p />
                         </div>
+                        <div className="flex-column">
+                          <p className="text-value">{plan.ageBand}</p>
+                          <p className="text-title">Age Band</p>
+                          <div id="tooltip-component">
+                            <img
+                              alt="tooltip"
+                              src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
+                            />
+                          </div>
+                          <p />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="returns-parent">
                   <div className="return-section">
-                    <div className="returns-container concise"  style={{ overflowY: 'scroll' }}>
+                    <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Cash Flow { planAmount.label}</h2>
+                        <h2 className="heading">Cash Flow {planAmount.label}</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
                         <Autocomplete
@@ -153,7 +172,7 @@ export const PlanOverview = () => {
                           id="combo-box-demo"
                           value={planAmount}
                           onChange={(event, newValue) => {
-                            if(newValue){
+                            if (newValue) {
                               setPlanAmount(newValue)
                             }
                           }}
@@ -164,11 +183,13 @@ export const PlanOverview = () => {
                       </div>
                       <div>
                         <div className="square">
-                            {
-                              cashFlowYears.map((row, year) => {
-                                return <ExpandableList totalYear={cashFlowYears.length-1}  year={year} />
-                              })
-                            }
+                          {
+                            cashFlowYears.map((row, year) => {
+                              const currentYear = (new Date()).getFullYear();
+                              const [yearlyIncome, maturity, surrenderValue] = row;
+                              return <ExpandableList list={[]} label={year + currentYear} />
+                            })
+                          }
                         </div>
                       </div>
                     </div>

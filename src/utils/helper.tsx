@@ -35,7 +35,11 @@ export const formatDate = (date: Date, format?: 'dd-mm-yyyy' | 'yyyy-mm-dd') => 
 }
 
 export const formatNumber = (number: number, maximumFractionDigits?: number) => {
-    return Intl.NumberFormat("en-In", { maximumFractionDigits: maximumFractionDigits,currency: 'INR' }).format(Number(number))
+    return Intl.NumberFormat("en-In", { maximumFractionDigits: maximumFractionDigits, currency: 'INR' }).format(Number(number))
 }
 
 export const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
+
+export const capitalize = (text: string) => {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+}
