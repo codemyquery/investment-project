@@ -1,11 +1,13 @@
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Plan } from "../../../services";
-import { Months, PlanServerData } from "../../../types";
+import { MonthsName, PlanServerData } from "../../../types";
 import "../../../styles/virtual.css";
-import { Autocomplete, Collapse, List, ListItemButton, ListItemIcon, ListItemText, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { formatNumber } from "../../../utils";
 import { ExpandableList } from "../../molecules";
+import { capitalize } from "../../../utils/helper";
+import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 
 const defaultValue: PlanServerData = {
   id: "",
@@ -27,32 +29,56 @@ interface SelectOptions {
 
 export const PlanOverview = () => {
   const { itemID } = useParams();
-  const [planDetail, setPlanDetail] = useState<PlanServerData>(defaultValue);
+  const date = new Date();
+  const plan = useRef<PlanServerData>(defaultValue);
+  const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
-  const [planAmount, setPlanAmount] = useState<SelectOptions>({label: '', value: ''});
-  const planDetails = planDetail?.planDetails || {};
-  const cashFlowYears = (planDetail.planDetails[planAmount.value] || []);
-
-  useEffect(()=>{
-    const options = Object.keys(planDetails).map((amount) => ({ value: amount, label: `₹ ${formatNumber(Number(amount))}` }));
-    setOptions(options)
-    setPlanAmount(prev => ({...prev, ...options[0]}))
-  },[planDetail.planDetails])
+  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: '0' });
+  const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+  const currentDate = date.getDate();
 
   useEffect(() => {
     const abortController = new AbortController();
     const init = async () => {
-      const response = await Plan.fetchPlan(itemID!, abortController);
-      setPlanDetail(response);
+      plan.current = await Plan.fetchPlan(itemID!, abortController);
+      const options: SelectOptions[] = Object.keys(plan.current.planDetails).map((amount) => ({ value: amount, label: `₹ ${formatNumber(Number(amount))}` }));
+      setOptions(options) 
+      setPlanAmount({label: options[0].label, value: options[0].value})
     };
     init();
   }, []);
 
+  useEffect(() => {
+    const selectedInvestmentAmount = (plan.current.planDetails[planAmount.value] || []);
+    selectedInvestmentAmount.shift();
+    setCashFlowYears(selectedInvestmentAmount);
+  }, [planAmount.value])
+
+  useEffect(() => {
+    const updatedPlanToPreview: Record<string, Record<string, any>> = {};
+    const dateForCashFlow = new Date();
+    for (let i = 0; i < cashFlowYears.length; i++) {
+      const [income] = cashFlowYears[i];
+      for (let i = 0; i < 12; i++) {
+        const currentMonth = dateForCashFlow.getMonth()
+        dateForCashFlow.setMonth(currentMonth + 1);
+        const year = dateForCashFlow.getFullYear().toString();
+        const month = dateForCashFlow.getMonth();
+        if (updatedPlanToPreview.hasOwnProperty(year)) {
+          updatedPlanToPreview[year][MonthsName[month]] = `₹${formatNumber(Number(income) / 12, 0)}`;
+        } else {
+          updatedPlanToPreview[year] = {}
+          updatedPlanToPreview[year][MonthsName[month]] = `₹${formatNumber(Number(income) / 12, 0)}`;
+        }
+      }
+    }
+    setPataToPreview(updatedPlanToPreview)
+  }, [cashFlowYears])
+
   return (
-    <div
-      className="app-root"
-      style={{ height: "100%", backgroundColor: "white" }}
-    >
+    <div className="app-root" style={{ height: "100%", backgroundColor: "white" }}>
       <div id="bond-details">
         <div className="">
           <div className="bond-details-content ">
@@ -62,21 +88,19 @@ export const PlanOverview = () => {
                   <div className="side-icons-top">
                     <span className="help-text">Need Help ?</span>
                     <div className="button-phone gtm-cb-talk-expert">
-                      <img
-                        src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/phone-icon-yellow.svg"
-                        alt=""
-                      />
-                      <span>Talk to Expert</span>
+                      <a href="tel:+91-7231844488">
+                        <span><WifiCalling3Icon style={{ color: "brown", marginRight: '8px' }} />Talk to Expert</span>
+                      </a>
                     </div>
                   </div>
                   <div className="side-icons-bottom" />
                 </div>
                 <div className="bond-banner">
-                  <h4 style={{ color: "brown" }}>{`${planDetail?.planName} (${planDetail?.planCode})`}</h4>
+                  <h4 style={{ color: "brown" }}>{`${plan.current?.planName} (${plan.current?.planCode})`}</h4>
                   <div className="bond-name-container">
                     <div className="bond-name-div">
                       <h1 className="bond-name">
-                        {planDetail?.insuranceCompany}
+                        {plan.current?.insuranceCompany}
                       </h1>
                     </div>
                   </div>
@@ -98,7 +122,10 @@ export const PlanOverview = () => {
                       <div className="info-container">
                         <div className="flex-column">
                           <p className="text-value ">
-                            <span className="rupee-symbol">₹</span> 2,98,782.74
+                            <span className="rupee-symbol">₹</span>
+                            {
+                              formatNumber(Number(planAmount.value || 0))
+                            }
                           </p>
                           <p className="text-title">Investment</p>
                           <div id="tooltip-component" className="">
@@ -110,7 +137,7 @@ export const PlanOverview = () => {
                           <p />
                         </div>
                         <div className="flex-column ">
-                          <p className="text-value ">24-Apr-2029</p>
+                          <p className="text-value">{currentDate}-{capitalize(MonthsName[currentMonth + 1].slice(0, 3))}-{currentYear + cashFlowYears.length}</p>
                           <p className="text-title ">Maturity Date</p>
                           <div id="tooltip-component">
                             <img
@@ -137,15 +164,26 @@ export const PlanOverview = () => {
                           </div>
                           <p />
                         </div>
+                        <div className="flex-column">
+                          <p className="text-value">{plan.current?.ageBand}</p>
+                          <p className="text-title">Age Band</p>
+                          <div id="tooltip-component">
+                            <img
+                              alt="tooltip"
+                              src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
+                            />
+                          </div>
+                          <p />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="returns-parent">
                   <div className="return-section">
-                    <div className="returns-container concise"  style={{ overflowY: 'scroll' }}>
+                    <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Cash Flow { planAmount.label}</h2>
+                        <h2 className="heading">Cash Flow {planAmount.label}</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
                         <Autocomplete
@@ -153,7 +191,7 @@ export const PlanOverview = () => {
                           id="combo-box-demo"
                           value={planAmount}
                           onChange={(event, newValue) => {
-                            if(newValue){
+                            if (newValue) {
                               setPlanAmount(newValue)
                             }
                           }}
@@ -164,11 +202,11 @@ export const PlanOverview = () => {
                       </div>
                       <div>
                         <div className="square">
-                            {
-                              cashFlowYears.map((row, year) => {
-                                return <ExpandableList totalYear={cashFlowYears.length-1}  year={year} />
-                              })
-                            }
+                          {
+                            Object.keys(dataToPreview).map((year, i) => {
+                              return <ExpandableList key={`${year}-${i}`} label={year} items={dataToPreview[year]} />
+                            })
+                          }
                         </div>
                       </div>
                     </div>
@@ -238,7 +276,6 @@ export const PlanOverview = () => {
                     </div>
                   </div>
                 </div>
-                {/* Invest Steps End */}
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { ContactUsFormData, ContactUsServerData, ContactusDataResponse } from ".
 import { UserDataResponse, UserServerData, SignUpFormData, LoginFormData } from "./user";
 import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
-import { Months, MonthsName, PlanDataResponse, PlanFormData, PlanServerData } from "./plan";
+import { MonthsName, PlanDataResponse, PlanFormData, PlanServerData } from "./plan";
 import { ActionMenu, NavigationMenu, MainPageProps, RoutingURL } from "./routing";
 import { ServerResponse, Service, ServiceStatus, WebserviceApiError } from "./service";
 import {
@@ -56,6 +56,5 @@ export type {
 export {
     ServiceStatus,
     DefaultFormState,
-    Months,
     MonthsName
 }
