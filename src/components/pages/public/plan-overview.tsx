@@ -51,7 +51,7 @@ export const PlanOverview = () => {
   }, []);
 
   useEffect(() => {
-    const selectedInvestmentAmount = (plan.current.planDetails[planAmount.value] || []);
+    const selectedInvestmentAmount = [...(plan.current.planDetails[planAmount.value] || [])];
     selectedInvestmentAmount.shift();
     setCashFlowYears(selectedInvestmentAmount);
   }, [planAmount.value])
@@ -183,7 +183,7 @@ export const PlanOverview = () => {
                   <div className="return-section">
                     <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Cash Flow {planAmount.label}</h2>
+                        <h2 className="heading">Cash Flow {formatNumber(cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0))}</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
                         <Autocomplete
