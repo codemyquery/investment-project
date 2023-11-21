@@ -31,32 +31,5 @@ export interface PlanDataResponse {
     rows: Array<PlanServerData>
 }
 
-export enum Months {
-    JANUARY ,
-    FEBRUARY,
-    MARCH,
-    APRIL,
-    MAY,
-    JUNE,
-    JULY,
-    AUGUST,
-    SEPTEMBER,
-    OCTOBER,
-    NOVEMBER ,
-    DECEMBER
-}
-
-export enum MonthsName {
-    JANUARY ,
-    FEBRUARY ,
-    MARCH ,
-    APRIL ,
-    MAY ,
-    JUNE ,
-    JULY ,
-    AUGUST ,
-    SEPTEMBER ,
-    OCTOBER ,
-    NOVEMBER ,
-    DECEMBER ,
-};
+type MonthsNameEnums = "JANUARY" | "FEBRUARY" | "MARCH" | "APRIL" | "MAY" | "JUNE" | "JULY" | "AUGUST" | "SEPTEMBER" | "OCTOBER" | "NOVEMBER" | "DECEMBER"
+export const MonthsName : MonthsNameEnums[] = ["JANUARY" , "FEBRUARY" , "MARCH" , "APRIL" , "MAY" , "JUNE" , "JULY" , "AUGUST" , "SEPTEMBER" , "OCTOBER" , "NOVEMBER" , "DECEMBER"]

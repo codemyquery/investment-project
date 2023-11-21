@@ -11,13 +11,15 @@ import {
 import { useState } from "react"
 
 interface ExpandableListProps {
-    label: any;
-    list: Array<any>
+    items: Record<string, any>
+    label: string
+    icons?: React.ReactNode
 }
 
 export const ExpandableList = ({
+    items,
     label,
-    list
+    icons
 }: ExpandableListProps) => {
     const [open, setOpen] = useState(false);
     const handleClick = () => {
@@ -31,12 +33,15 @@ export const ExpandableList = ({
         <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
                 {
-                    list.map(item => {
-                        return <ListItemButton sx={{ pl: 4 }}>
-                            <ListItemIcon>
-                                <CurrencyRupeeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={item} />
+                    Object.keys(items).map((item, index) => {
+                        return <ListItemButton key={`${label}-${item}-${index}`} sx={{ pl: 4 }}>
+                            {
+                                icons && 
+                                <ListItemIcon>
+                                    {icons}
+                                </ListItemIcon>
+                            }
+                            <ListItemText primary={`${item} (${items[item]})`} />
                         </ListItemButton>
                     })
                 }
