@@ -24,7 +24,7 @@ const defaultValue: PlanServerData = {
 
 interface SelectOptions {
   label: string,
-  value: string
+  value: number
 }
 
 export const PlanOverview = () => {
@@ -33,7 +33,7 @@ export const PlanOverview = () => {
   const plan = useRef<PlanServerData>(defaultValue);
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
-  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: '0' });
+  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: 0 });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
@@ -43,7 +43,7 @@ export const PlanOverview = () => {
     const abortController = new AbortController();
     const init = async () => {
       plan.current = await Plan.fetchPlan(itemID!, abortController);
-      const options: SelectOptions[] = Object.keys(plan.current.planDetails).map((amount) => ({ value: amount, label: `₹ ${formatNumber(Number(amount))}` }));
+      const options: SelectOptions[] = Object.keys(plan.current.planDetails).map((amount) => ({ value: Number(amount), label: `₹ ${formatNumber(Number(amount))}` }));
       setOptions(options) 
       setPlanAmount({label: options[0].label, value: options[0].value})
     };
@@ -76,6 +76,8 @@ export const PlanOverview = () => {
     }
     setPataToPreview(updatedPlanToPreview)
   }, [cashFlowYears])
+
+  const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
 
   return (
     <div className="app-root" style={{ height: "100%", backgroundColor: "white" }}>
@@ -124,7 +126,7 @@ export const PlanOverview = () => {
                           <p className="text-value ">
                             <span className="rupee-symbol">₹</span>
                             {
-                              formatNumber(Number(planAmount.value || 0))
+                              formatNumber(planAmount.value)
                             }
                           </p>
                           <p className="text-title">Investment</p>
@@ -139,7 +141,12 @@ export const PlanOverview = () => {
                         <div className="flex-column ">
                           <p className="text-value">{currentDate}-{capitalize(MonthsName[currentMonth + 1].slice(0, 3))}-{currentYear + cashFlowYears.length}</p>
                           <p className="text-title ">Maturity Date</p>
-                          <div id="tooltip-component">
+                          <p className="text-value">
+                            <span className="rupee-symbol">₹</span>
+                            {formatNumber(planAmount.value + income)}
+                          </p>
+                          <p className="text-title ">Maturity Value</p>
+                          {/* <div id="tooltip-component">
                             <img
                               alt="tooltip"
                               src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
@@ -151,7 +158,7 @@ export const PlanOverview = () => {
                             <span className="">5 Mo </span>
                             <span className="">12 Days</span>
                             <br /> to maturity
-                          </p>
+                          </p> */}
                         </div>
                         <div className="flex-column">
                           <p className="text-value">Monthly</p>
@@ -183,7 +190,7 @@ export const PlanOverview = () => {
                   <div className="return-section">
                     <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Cash Flow {formatNumber(cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0))}</h2>
+                        <h2 className="heading">Cash Flow ₹{formatNumber(income)}</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
                         <Autocomplete
