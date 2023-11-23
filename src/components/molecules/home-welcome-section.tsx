@@ -112,7 +112,7 @@ export const HomeWelcomeSection = () => {
                                             />
                                         </div>
                                         <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5"><br />
-                                            Assured<br /><br />
+                                            Assured<br />
                                             <span className="fw-600 text-main-gold"> Buy</span>
                                             Back<br />
                                         </div>

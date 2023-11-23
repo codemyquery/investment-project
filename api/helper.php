@@ -51,6 +51,43 @@ class Helper
 		return $this->statement->rowCount();
 	}
 
+	function ValidateEmail($emailid){
+		$emailErr = ""
+			$email = test_input($emailid);
+			// check if e-mail address is well-formed
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			  return 0;//$emailErr = "Invalid email format";
+			}
+		  return 1;
+	}
+
+	function validatePhoneNumber($phone){
+		if(preg_match('/^[0-9]{10}+$/', $phone)) {
+			return 1;//echo "Valid Phone Number";
+			} else {
+				return 0;//echo "Invalid Phone Number";
+			}
+	}
+
+	function checkPasswordStrength($password) {
+		// Define password strength requirements using regular expressions
+		$uppercase = preg_match('@[A-Z]@', $password);
+		$lowercase = preg_match('@[a-z]@', $password);
+		$number = preg_match('@[0-9]@', $password);
+		$specialChar = preg_match('@[^\w]@', $password);
+		
+		// Define minimum length for the password
+		$minLength = 8;
+		
+		// Check if the password meets all the requirements
+		if ($uppercase && $lowercase && $number && $specialChar && strlen($password) >= $minLength) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+
 	function send_email($receiver_email, $subject, $body)
 	{
 		$mail = new PHPMailer;

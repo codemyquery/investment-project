@@ -1,6 +1,10 @@
 //import logo from '../../assets/images/logo.png'
 
 export const Footer = () => {
+    function setActive(undefined: undefined) {
+        throw new Error("Function not implemented.");
+    }
+
     return (
         <footer className="py-4 margin-top">
             <div className="container">
@@ -20,7 +24,7 @@ export const Footer = () => {
                                 About Us
                             </a>
                         </div>
-                        <div className="flex-column nav">
+                        {/* <div className="flex-column nav">
                             <a
                                 href="/about#how_it_works"
                                 data-rr-ui-event-key="/about#how_it_works"
@@ -37,7 +41,7 @@ export const Footer = () => {
                             >
                                 Team
                             </a>
-                        </div>
+                        </div> */}
                         <div className="flex-column nav">
                             <a
                                 href="/contact-us.html"
@@ -53,7 +57,7 @@ export const Footer = () => {
                         <h6 className="fs-22 fs-sm-24 mb-md-3 mt-4 mt-md-0 fw-600 text-white">
                             Important Links
                         </h6>
-                        <div className="flex-column nav">
+                        {/* <div className="flex-column nav">
                             <a
                                 href="/home#calci"
                                 data-rr-ui-event-key="/home#calci"
@@ -61,7 +65,7 @@ export const Footer = () => {
                             >
                                 Returns Calculator
                             </a>
-                        </div>
+                        </div> */}
                         <div className="flex-column nav">
                             <a
                                 href="https://app.growpital.com/signup?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA."
@@ -76,11 +80,12 @@ export const Footer = () => {
                                 href="https://app.growpital.com/login?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA"
                                 data-rr-ui-event-key="https://app.growpital.com/login?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA"
                                 className="nav-link"
+                                
                             >
                                 Login
                             </a>
                         </div>
-                        <div className="flex-column nav">
+                        {/* <div className="flex-column nav">
                             <a
                                 href="/terms-of-use"
                                 data-rr-ui-event-key="/terms-of-use"
@@ -97,7 +102,7 @@ export const Footer = () => {
                             >
                                 Privacy Policy
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-lg-3">
                         <h6 className="fs-22 fs-sm-24 mb-md-3 mt-4 mt-md-0 fw-600 text-white">
@@ -132,7 +137,7 @@ export const Footer = () => {
                             </a>
                         </div>
                         <div className="justify-content-start nav">
-                            <div className="pe-4 foot-icon nav-item">
+                            {/* <div className="pe-4 foot-icon nav-item">
                                 <a
                                     href=" https://www.facebook.com/growpital"
                                     data-rr-ui-event-key=" https://www.facebook.com/growpital"
@@ -251,7 +256,7 @@ export const Footer = () => {
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"></path>
                                     </svg>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
