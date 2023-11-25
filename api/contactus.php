@@ -9,6 +9,10 @@ class ContactUs
 
     function create_new_contactus($data)
     {
+        $result = $this->helper->ValidateEmail($data['email']);
+        if($result["status"] !== true)return $result;
+        $result = $this->helper->ValidatePhoneNumber($data['mobile']);
+        if($result["status"] !== true)return $result;
         $this->helper->data = array(
             ':name'                     =>    $this->helper->clean_data($data['name']),
             ':mobile_no'                =>    $this->helper->clean_data($data['mobile']),

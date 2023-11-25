@@ -36,5 +36,6 @@ export type Service<T> =
     | ServiceError;
 
 export interface ServerResponse {
-    status : boolean
+    status : boolean,
+    errMsg?: string
 }

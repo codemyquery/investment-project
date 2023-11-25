@@ -16,6 +16,11 @@ interface Plan {
     actions: 'addPlan'
 }
 
+interface SellPlan {
+    page: 'sell',
+    actions: 'sellPlan'
+}
+
 interface ContactUs {
     page: 'contactus',
     actions: 'createContactUs' | 'fetchContactus'
@@ -33,7 +38,7 @@ interface FilterData {
     [key: string]: any;
 }
 interface Body {
-    route: Login | Employee | Plan | ContactUs | User
+    route: Login | Employee | Plan | ContactUs | User | SellPlan
     data?: BodyData
     filter?: FilterData
 }

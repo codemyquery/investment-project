@@ -5,12 +5,13 @@ import { AboutUs, HomePage, Faqs, ContactUs, Login, SignUp, PlanOverview, MyPlan
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
-import { DashboardContactus, DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails } from "../components/pages";
+import { DashboardContactus, DashboardCustomers, DashboardPlanDetails, EditCustomers, EditPlanDetails,DashboardSellData } from "../components/pages";
 import { EditEmployee } from "../components/pages/admin/edit-employee";
 import { DashboardEmployee } from "../components/pages/admin/dashboard-employee";
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { Profile } from "../components/pages/public/user-profile/profile";
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import SellIcon from '@mui/icons-material/Sell';
 
 const AppMenus: NavigationMenu[] = [
     {
@@ -100,6 +101,16 @@ const AppMenus: NavigationMenu[] = [
         to: '/admin',
         path: 'admin',
         component: AdminLoginPage,
+        allowedGroups: []
+    },
+    {
+        id: "plansell",
+        i18nKey: "plan s",
+        visible: true,
+        to: '/admin/plan-sell',
+        path: '/admin/plan-sell',
+        component: DashboardSellData,
+        Icon: SellIcon,
         allowedGroups: []
     },
     /** Routings for the Public Login Pages */

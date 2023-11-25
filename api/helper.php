@@ -52,24 +52,31 @@ class Helper
 	}
 
 	function ValidateEmail($emailid){
-		$emailErr = ""
-			$email = test_input($emailid);
-			// check if e-mail address is well-formed
-			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			  return 0;//$emailErr = "Invalid email format";
-			}
-		  return 1;
+		$emailStatus = true;
+		if (!filter_var($emailid, FILTER_VALIDATE_EMAIL)) {
+			$emailStatus = false;
+		}
+		return array(
+			"status" =>    $emailStatus,
+			"errMsg"  =>    $emailStatus==false?"Please enter valid email-id": "",
+		);
 	}
 
-	function validatePhoneNumber($phone){
+	function ValidatePhoneNumber($phone){
+		$MobileNumberStatus = true;
 		if(preg_match('/^[0-9]{10}+$/', $phone)) {
-			return 1;//echo "Valid Phone Number";
+		
 			} else {
-				return 0;//echo "Invalid Phone Number";
+				$MobileNumberStatus = false;//echo "Invalid Phone Number";
 			}
+		return array(
+			"status" =>    $MobileNumberStatus,
+			"errMsg"  =>    $MobileNumberStatus==false?"Please enter valid mobile no.": "",
+		);
 	}
 
 	function checkPasswordStrength($password) {
+		$PasswordStatus = true;
 		// Define password strength requirements using regular expressions
 		$uppercase = preg_match('@[A-Z]@', $password);
 		$lowercase = preg_match('@[a-z]@', $password);
@@ -81,10 +88,15 @@ class Helper
 		
 		// Check if the password meets all the requirements
 		if ($uppercase && $lowercase && $number && $specialChar && strlen($password) >= $minLength) {
-			return 1;
+			
 		} else {
-			return 0;
+			$PasswordStatus = false;
 		}
+
+		return array(
+			"status" =>    $PasswordStatus,
+			"errMsg"  =>    $PasswordStatus==false?"Password should be 8 character long with atleast a uppercase letter,a lowercase letter, a numeric value & an special character": "",
+		);
 	}
 
 

@@ -26,8 +26,18 @@ export const Login = () => {
         try {
             const response = await Users.loginUser(data);
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
-            if (response) {
+            if (response.status) {
                 window.location.href = `${BASE_URL}/user/my-plan`
+            }else {
+                setFormState(prev => {
+                    return {
+                        ...prev,
+                        loading: false,
+                        notificationOpen: true,
+                        notificationType: 'error',
+                        notificationMessage: response.errMsg || t.errorMessage
+                    }
+                })
             }
         } catch (error) {
             setFormState(prev => {

@@ -8,10 +8,11 @@ require_once('./plan.php');
 require_once('./login.php');
 require_once('./user.php');
 require_once('./contactus.php');
+require_once('./plansell.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
-header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+// header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Max-Age: 86400');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -100,7 +101,7 @@ if ($page === 'login') {
 			$result = $user->login_user($bodyRawData['data']);
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode(array('status'    =>    $result));
+		echo json_encode($result);
 	}
 } else if ($page === 'contactus') {
 	$result = null;
@@ -116,5 +117,17 @@ if ($page === 'login') {
 			$result = $contactUs->get_contactus_list();
 		}
 		echo json_encode($result);
+	}
+}else if ($page === 'sell') {
+	$result = null;
+	$employee = new PlanSell($helper);
+	if ($method === 'GET') {
+		if ($action === 'getSellist') {
+			$result = $employee->get_plansell_list();
+		} 
+		echo json_encode($result);
+	
+	} else {
+		http_response_code(METHOD_NOT_ALLOWED);
 	}
 }

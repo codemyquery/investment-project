@@ -5,6 +5,7 @@ import * as Employees from './employee'
 import * as Admin from './admin-login'
 import * as Users from './user';
 import * as ContactForm from './contact-us';
+import * as Sell from './sell';
 import { useHookForm } from './forms';
 export {
     Service,
@@ -14,5 +15,6 @@ export {
     Employees,
     Admin,
     Users,
-    ContactForm
+    ContactForm,
+    Sell
 }

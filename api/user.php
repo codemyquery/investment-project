@@ -10,6 +10,12 @@ class Users
 
     function create_new_user($data)
     {
+        $result = $this->helper->ValidateEmail($data['email']);
+        if($result["status"] !== true)return $result;
+        $result = $this->helper->ValidatePhoneNumber($data['mobile']);
+        if($result["status"] !== true)return $result;
+        $result = $this->helper->checkPasswordStrength($data['password']);
+        if($result["status"] !== true)return $result;
         $this->helper->data = array(
             ':name'                    =>    $this->helper->clean_data($data['name']),
             ':email'                   =>    $this->helper->clean_data($data['email']),
@@ -65,6 +71,9 @@ class Users
     function login_user($data) {
         $username = $data['username'];
         $password = $data['password'];
+        $result = $this->helper->ValidateEmail($username);
+        if($result["status"] !== 1)return $result;
+        
         $this->helper->query = "SELECT * FROM users WHERE (email='$username' OR mobile='$username') AND password='$password'";
         if ($this->helper->total_row() === 0) {
             return null;

@@ -17,6 +17,7 @@ import {
     DisplayTableSelectionMode,
     Row
 } from "./table";
+import { SellDataResponse, SellServerData } from "./sell";
 
 export type {
     ActionMenu,
@@ -50,7 +51,9 @@ export type {
     ContactUsServerData,
     ContactusDataResponse,
     SignUpFormData,
-    LoginFormData
+    LoginFormData,
+    SellDataResponse,
+    SellServerData
 }
 
 export {
