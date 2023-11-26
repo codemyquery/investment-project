@@ -28,7 +28,7 @@ interface ContactUs {
 
 interface User {
     page: 'user',
-    actions: 'createUser' | 'loginUser'
+    actions: 'createUser' | 'loginUser' | 'updateKycData'
 }
 
 interface BodyData {

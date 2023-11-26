@@ -172,10 +172,10 @@ class Helper
 		return $data;
 	}
 
-	function Upload_file()
+	function Upload_file($file)
 	{
-		if (!empty($this->filedata['name'])) {
-			$extension = pathinfo($this->filedata['name'], PATHINFO_EXTENSION);
+		if (!empty($file)) {
+			$extension = pathinfo($file, PATHINFO_EXTENSION);
 
 			$new_name = uniqid() . '.' . $extension;
 

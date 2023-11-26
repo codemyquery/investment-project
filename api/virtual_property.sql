@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2023 at 04:34 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Nov 26, 2023 at 05:35 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +34,7 @@ CREATE TABLE `admin` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `last_login` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -54,9 +55,9 @@ CREATE TABLE `contact_us` (
   `mobile_no` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `message` text NOT NULL,
-  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT 0,
-  `created_on` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT '0',
+  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contact_us`
@@ -83,11 +84,11 @@ CREATE TABLE `employee` (
   `mobile` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `designation` varchar(100) NOT NULL,
-  `created_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_by` int(11) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
@@ -116,7 +117,14 @@ CREATE TABLE `kyc_data` (
   `Nominee_relation` text NOT NULL,
   `Nominee_dob` date NOT NULL,
   `Nominee_address` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kyc_data`
+--
+
+INSERT INTO `kyc_data` (`Customer_id`, `Adhaar_no`, `Pan_no`, `Bank_Acc_no`, `Bank_name`, `Customer_dob`, `Bank_ifsc`, `Nominee_name`, `Nominee_relation`, `Nominee_dob`, `Nominee_address`) VALUES
+(14, 123123123, 'HYTPS0490A', 0, '', '0000-00-00', '', '', '', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -134,11 +142,11 @@ CREATE TABLE `plan_details` (
   `maturity_value` varchar(100) NOT NULL,
   `income_frequency` tinyint(1) NOT NULL,
   `plan_details` text NOT NULL,
-  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` int(11) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `plan_details`
@@ -164,8 +172,8 @@ CREATE TABLE `plan_sell_data` (
   `plan_id` varchar(100) NOT NULL,
   `customer_purchase_status` enum('YES','NO') NOT NULL,
   `purchase_amount` int(100) NOT NULL,
-  `updated_on` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `updated_on` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `plan_sell_data`
@@ -189,10 +197,10 @@ CREATE TABLE `users` (
   `lg_lc_code` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `accepted_for_promotions` tinyint(1) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int(11) DEFAULT NULL,
-  `created_on` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -227,6 +235,12 @@ ALTER TABLE `contact_us`
 --
 ALTER TABLE `employee`
   ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `kyc_data`
+--
+ALTER TABLE `kyc_data`
+  ADD UNIQUE KEY `Customer_id` (`Customer_id`);
 
 --
 -- Indexes for table `plan_details`

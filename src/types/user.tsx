@@ -8,6 +8,7 @@ export interface UserServerData {
 }
 
 export interface UserKYCFormData {
+    id: string
     name: string,
     pancardNumber: string,
     aadharCardNumber: string,

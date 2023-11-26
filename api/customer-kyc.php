@@ -10,7 +10,7 @@ class CustomerKYC
 
     function get_kycData($itemID)
     {
-        
+
         $this->helper->query = "SELECT 
         KD.Customer_id,
         KD.Adhaar_no,	
@@ -65,27 +65,30 @@ class CustomerKYC
             "rows"  =>    $pages_array,
         );
     }
-}
 
-function update_kyc_data($data)
+    function update_kyc_data($data)
     {
-        $customer_id = this->helper->clean_data($data['customerId']) ;
+        $customer_id = $this->helper->clean_data($data['id']);
+        $pathName = $this->helper->Upload_file($data['aadharCard']['front']);
+        echo $pathName;
         $this->helper->data = array(
-            ':Adhaar_no'           =>  $this->helper->clean_data($data['designation']) ,
-            ':Pan_no'          =>  $this->helper->clean_data($data['designation']) ,
-            ':Bank_Acc_no'         =>  $this->helper->clean_data($data['designation']), 
-            ':Bank_name'          =>  $this->helper->clean_data($data['designation']), 
-            ':Customer_dob'      =>  $this->helper->clean_data($data['designation']),     
-            ':Bank_ifsc'          =>  $this->helper->clean_data($data['designation']), 
-            ':Nominee_name'        =>  $this->helper->clean_data($data['designation']), 
-            ':Nominee_relation'    =>  $this->helper->clean_data($data['designation']),     
-            ':Nominee_dob'         =>  $this->helper->clean_data($data['designation']) ,
-            ':Nominee_address'     =>  $this->helper->clean_data($data['designation']) 
+            ':id'               => $customer_id,
+            ':Adhaar_no'           =>  $this->helper->clean_data($data['aadharCardNumber']),
+            ':Pan_no'          =>  $this->helper->clean_data($data['pancardNumber']),
+            ':Bank_Acc_no'         =>  $this->helper->clean_data($data['bankAccNo']),
+            ':Bank_name'          =>  $this->helper->clean_data($data['bankName']),
+            ':Customer_dob'      =>  $this->helper->clean_data($data['dob']),
+            ':Bank_ifsc'          =>  $this->helper->clean_data($data['ifsc']),
+            ':Nominee_name'        =>  $this->helper->clean_data($data['nomineeName']),
+            ':Nominee_relation'    =>  $this->helper->clean_data($data['nomineerelation']),
+            ':Nominee_dob'         =>  $this->helper->clean_data($data['nomineeDob']),
+            ':Nominee_address'     =>  $this->helper->clean_data($data['nomineeAddress'])
         );
 
         $this->helper->query = "
-        Update Table kyc_data
-        SET 
+        INSERT INTO kyc_data (Customer_id,Adhaar_no,Pan_no,Bank_Acc_no,Bank_name,Customer_dob,Bank_ifsc,Nominee_name,Nominee_relation,Nominee_dob,Nominee_address) 
+        VALUES(:id,:Adhaar_no, :Pan_no, :Bank_Acc_no, :Bank_name, :Customer_dob, :Bank_ifsc, :Nominee_name, :Nominee_relation, :Nominee_dob, :Nominee_address ) 
+        ON DUPLICATE KEY Update
         Adhaar_no = :Adhaar_no,
         Pan_no	=:Pan_no,
         Bank_Acc_no =:Bank_Acc_no,	
@@ -95,13 +98,10 @@ function update_kyc_data($data)
         Nominee_name=:Nominee_name,
         Nominee_relation=:Nominee_relation,
         Nominee_dob=:Nominee_dob,	
-        Nominee_address=:Nominee_address
-        where kyc_data.customer_id=$customer_id";
-           
-        $total_rows = $this->helper->query_result();
-        return $total_rows;
+        Nominee_address=:Nominee_address";
+        $this->helper->execute_query();
     }
-
+}
 
 function formatKycOutput($row)
 {
@@ -126,7 +126,7 @@ function t_customer_kyc($fieldName)
     switch ($fieldName) {
         case 'last_modified':
             return 'last_modified';
-      
+
         default:
             return '';
     }

@@ -5,7 +5,8 @@ import {
     ServerResponse,
     SignUpFormData,
     LoginFormData,
-    UserKYCServerData
+    UserKYCServerData,
+    UserKYCFormData
 } from "../types";
 import {
     WS_BASE_URL,
@@ -109,13 +110,29 @@ export const loginUser = async (data: LoginFormData, abortController?: AbortCont
     })
 }
 
-
-export const fetchKycDetails = async (userId: string, abortController?: AbortController) : Promise<UserKYCServerData> => {
+export const fetchKycDetails = async (userId: string, abortController?: AbortController): Promise<UserKYCServerData> => {
     const url = `${WS_BASE_URL}/routes.php?&page=user&actions=getKYCData&itemID=${userId}`;
     return await callService({
         url: url,
         method: 'GET',
         userToken: 'sdasdasd',
+        abortController: abortController
+    })
+}
+
+export const updateKYCDetails = async (data: UserKYCFormData, abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}/routes.php`;
+    return await callService({
+        url: url,
+        method: 'PUT',
+        userToken: 'sdasdasd',
+        body: {
+            route: {
+                page: 'user',
+                actions: 'updateKycData'
+            },
+            data: data
+        },
         abortController: abortController
     })
 }

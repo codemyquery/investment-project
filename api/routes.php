@@ -106,6 +106,10 @@ if ($page === 'login') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode($result);
+	} else if($method === "PUT"){
+		if ($action === 'updateKycData') {
+			$result = $userKyc->update_kyc_data($bodyRawData['data']);
+		}
 	}
 } else if ($page === 'contactus') {
 	$result = null;

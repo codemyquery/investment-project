@@ -5,9 +5,10 @@ import { AdminEditPageTemplate } from "../../templates";
 import { DefaultFormState, FormModes, FormState, UserKYCFormData } from "../../../types";
 import { nanoid } from "nanoid";
 import { Users, useHookForm } from "../../../services";
-import { ControlText } from "../../molecules";
+import { ControlNumber, ControlText } from "../../molecules";
 
 const defaultValues: UserKYCFormData = {
+    id: "",
     name: "",
     pancardNumber: "",
     aadharCardNumber: "",
@@ -41,14 +42,12 @@ export const EditCustomers = () => {
         handleSubmit,
         formState: { errors, isDirty },
         setValue,
-        reset,
-        watch,
-        getValues
+        reset
     } = useHookForm<UserKYCFormData>({ defaultValues })
 
-    /* const onSubmitPreCheck = async () => {
-        onSubmit();
-    } */
+    const onSubmitPreCheck = async (data: UserKYCFormData) => {
+        onSubmitItem(data);
+    }
 
     useEffect(() => {
         let mode: FormModes = 'init';
@@ -58,6 +57,7 @@ export const EditCustomers = () => {
                 const abortController = new AbortController();
                 const data = await Users.fetchKycDetails(itemID, abortController);
                 reset({
+                    id: itemID,
                     name: data.Customer_name,
                     pancardNumber: data.Panno,
                     aadharCardNumber: data.Adhaarno,
@@ -87,28 +87,28 @@ export const EditCustomers = () => {
 
     }, []);
 
-    /* useEffect(()=>{
+    useEffect(()=>{
         if(formState.mode === 'edit' && formState.formSubmitted){
             const init = async () => {
-                const itemID = getValues('id');
+                /* const itemID = getValues('id');
                 const abortController = new AbortController();
                 const data = await Vendor.getVendor(itemID, abortController);
                 await InitVendorForm({ data, reset });
                 setFormState(prev => ({
                     ...prev, 
                     formSubmitted: false,
-                }))
+                })) */
             }
             init();
         }
-    }, [formState]) */
+    }, [formState])
 
     const onSubmitItem = async (data: UserKYCFormData) => {
         setFormState(prev => ({ ...prev, loading: true }))
         const abortController = new AbortController();
         console.log(data)
         try {
-            /* const response = formState.mode === 'create' ? await Users.createUser(data, abortController) : await Vendor.updateVendorRecord(data, abortController);
+            const response = await Users.updateKYCDetails(data, abortController);
             setFormState(prev => {
                 return {
                     ...prev,
@@ -120,9 +120,6 @@ export const EditCustomers = () => {
                     ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
                 }
             });
-            if(formState.mode === 'create'){
-                navigate(`../../edit/vendors/${data.id}`)
-            } */
         } catch (error) {
             setFormState(prev => {
                 return {
@@ -139,7 +136,7 @@ export const EditCustomers = () => {
         }
     }
 
-    const onSubmit = () => handleSubmit(onSubmitItem)();
+    const onSubmit = () => handleSubmit(onSubmitPreCheck)();
 
     const closeNotification = () => {
         setFormState(prev => {
@@ -184,7 +181,7 @@ export const EditCustomers = () => {
                         />
                     </Grid>
                     <Grid item xs={6}>
-                        <ControlText
+                        <ControlNumber
                             control={control}
                             label="Aadhar Card No"
                             name="aadharCardNumber"
