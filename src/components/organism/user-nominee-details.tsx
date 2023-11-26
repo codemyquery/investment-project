@@ -1,46 +1,47 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material"
+import { ControlText } from "../molecules"
+import { Control } from "react-hook-form"
+import { UserKYCFormData } from "../../types"
 
-export const UserNomineeDetails = () => {
+interface UserNomineeDetailsProps {
+    control: Control<UserKYCFormData, any>
+}
+
+export const UserNomineeDetails = ({
+    control
+}: UserNomineeDetailsProps) => {
     return <>
         <Grid container spacing={3}>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="nominee-name"
-                    label="Name"
+                <ControlText
+                    control={control}
+                    label="Nominee Name"
+                    name="nomineeName"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Relation</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        label="Relation"
-                    >
-                        <MenuItem value={'Mother'}>Mother</MenuItem>
-                        <MenuItem value={'Father'}>Father</MenuItem>
-                        <MenuItem value={'Brother'}>Brother</MenuItem>
-                        <MenuItem value={'Wife'}>Wife</MenuItem>
-                    </Select>
-                </FormControl>
-            </Grid>
-            <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="nominee-date-of-birth"
-                    label="Date of Birth"
-                    placeholder="DD-MM-YYYY"
+                <ControlText
+                    control={control}
+                    label="Nominee Relation"
+                    name="nomineerelation"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="nominee-address"
-                    label="Address"
+                <ControlText
+                    control={control}
+                    label="Nominee DOB"
+                    name="nomineeDob"
+                    helperText=""
+                />
+            </Grid>
+            <Grid item xs={6}>
+                <ControlText
+                    control={control}
+                    label="Nominee Address"
+                    name="nomineeAddress"
+                    helperText=""
                 />
             </Grid>
         </Grid>

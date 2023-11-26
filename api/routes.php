@@ -34,7 +34,17 @@ try {
 	echo `{ error: 'Invalid Data' }`;
 }
 
-if ($page === 'login') {
+if($_GET['page'] === "upload" && $_GET['actions'] === 'uploadKyc'){
+	//try {
+		//code...
+		echo 'hurrrrrr';
+		$new_name = uniqid() . '.' . "jpg";
+		$target_path = 'upload/' . $new_name;
+		move_uploaded_file($_FILES['fileseeeee']['tmp_name'], $target_path);
+		echo 'hiii';
+		// $helper->Upload_file($_FILES['fileseeeee']);
+	
+}else if ($page === 'login') {
 	$result = null;
 	$login = new Login($helper);
 	if ($method === 'POST') {

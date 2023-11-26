@@ -1,41 +1,47 @@
 import { Grid, TextField } from "@mui/material"
-import { UserProfileKycOptions } from "../molecules"
+import { ControlText, UserProfileKycOptions } from "../molecules"
+import { Control } from "react-hook-form"
+import { UserKYCFormData } from "../../types"
 
-export const UserBankDetails = () => {
+interface UserBankDetailsProps {
+    control: Control<UserKYCFormData, any>
+}
+
+export const UserBankDetails = ({
+    control
+}: UserBankDetailsProps) => {
     return <>
         <Grid container spacing={3}>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="bank-name"
+                <ControlText
+                    control={control}
                     label="Bank Name"
+                    name="bankName"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="bank-ifsc-code"
+                <ControlText
+                    control={control}
                     label="IFSC Code"
+                    name="ifsc"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="bank-account-number"
-                    label="Bank Account Number"
-                    type="number"
+                <ControlText
+                    control={control}
+                    label="Bank Acc No."
+                    name="bankAccNo"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="confirm-bank-account-number"
-                    label="Confirm Bank Account Number"
-                    type="number"
+                <ControlText
+                    control={control}
+                    label="Confirm Bank Acc No."
+                    name="confBankAccNo"
+                    helperText=""
                 />
             </Grid>
         </Grid>

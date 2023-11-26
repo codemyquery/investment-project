@@ -50,6 +50,12 @@ interface callServiceProps {
     body?: Body;
     abortController?: AbortController
 }
+interface callFileUploadServiceProps {
+    userToken: string | null;
+    url: string;
+    file: File[];
+    abortController?: AbortController
+}
 
 export const callService = async ({
     userToken,
@@ -97,6 +103,38 @@ export const callService = async ({
         throw new Error('Web service cannot be called without user token')
     }
 }
+
+export const callFileUploadService = async ({
+    userToken,
+    url,
+    file,
+    abortController
+}: callFileUploadServiceProps) => {
+    if (userToken) {
+        let response: Response;
+        const formData = new FormData();
+        formData.append("fileseeeee", file[0]);
+        response = await fetch(url,
+            {
+                method: 'POST',
+                body: formData,
+                signal: abortController?.signal
+            })
+        if (response.status !== 200 && response.status !== 201 && response.status !== 204) {
+            const resp = await response.json();
+            if (resp.error) {
+                throw resp.console.error();
+            }
+            throw new Error(
+                `Web service returned an unexpected status code: ${response.status}`
+            )
+        }
+        return response.status === 204 ? {} : response.json();
+    } else {
+        throw new Error('Web service cannot be called without user token')
+    }
+}
+
 
 export const callURL = async (url: string) => {
     const response = await fetch(url, {

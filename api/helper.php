@@ -175,14 +175,14 @@ class Helper
 	function Upload_file($file)
 	{
 		if (!empty($file)) {
-			$extension = pathinfo($file, PATHINFO_EXTENSION);
+			$extension = pathinfo($file['name'], PATHINFO_EXTENSION);
 
 			$new_name = uniqid() . '.' . $extension;
 
-			$_source_path = $this->filedata['tmp_name'];
+			$_source_path = $file['name']['tmp_name'];
 
 			$target_path = 'upload/' . $new_name;
-
+			
 			move_uploaded_file($_source_path, $target_path);
 
 			return $new_name;

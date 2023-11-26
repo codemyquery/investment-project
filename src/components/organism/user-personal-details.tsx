@@ -1,70 +1,70 @@
 import { Grid, TextField } from "@mui/material"
+import { ControlText, ControlNumber } from "../molecules"
+import { Control } from "react-hook-form"
+import { UserKYCFormData } from "../../types"
 
-export const UserPersonalDetails = () => {
+interface UserPersonalDetailsProps {
+    control: Control<UserKYCFormData, any>
+}
+export const UserPersonalDetails = ({
+    control
+}: UserPersonalDetailsProps) => {
     return <>
         <Grid container spacing={3}>
             <Grid item xs={12}>
-                <TextField
-                    required
-                    fullWidth
-                    id="name"
+                <ControlText
+                    control={control}
                     label="Name"
-                    value={'Ashutosh Singh'}
-                    disabled
+                    name="name"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="pan-card"
-                    label="Pan Card"
+                <ControlText
+                    control={control}
+                    label="Pan Card No"
+                    name="pancardNumber"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="aadhar-card"
-                    label="Aadhar Card"
-                    type="number"
+                <ControlNumber
+                    control={control}
+                    label="Aadhar Card No"
+                    name="aadharCardNumber"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="email"
+                <ControlText
+                    control={control}
                     label="Email"
-                    value={'ashutoshsingh5192344@gmial.com'}
-                    disabled
+                    name="email"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="customerMobile"
+                <ControlText
+                    control={control}
                     label="Mobile"
-                    value={'9794978416'}
-                    disabled
+                    name="mobile"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="dateOfBirth"
-                    label="Date of Birth"
-                    placeholder="DD-MM-YYYY"
+                <ControlText
+                    control={control}
+                    label="Date Of Birth"
+                    name="dob"
+                    helperText=""
                 />
             </Grid>
             <Grid item xs={6}>
-                <TextField
-                    required
-                    fullWidth
-                    id="address"
+                <ControlText
+                    control={control}
                     label="Address"
+                    name="address"
+                    helperText=""
                 />
             </Grid>
         </Grid>
