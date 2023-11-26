@@ -6,6 +6,7 @@ import { Controller } from "react-hook-form";
 import { Notifications } from "../../molecules";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL, USER_SESSION_NAME } from "../../../utils/constants";
+import { loginProperty } from "../../../assets";
 
 const defaultValues: LoginFormData = {
     username: "ashutoshsingh5192344@gmail.com",
@@ -63,7 +64,11 @@ export const Login = () => {
                             data-aos="fade-up"
                             className="px-4 px-md-5 mb-5 col-md-5 aos-init aos-animate"
                         >
-
+                            <img
+                                src={loginProperty}
+                                alt="Login Page Image"
+                                className="img-fluid rounded-4"
+                            />
                         </div>
                         <div
                             data-aos="fade-up"

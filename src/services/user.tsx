@@ -4,7 +4,8 @@ import {
     DisplayTableColumnDefinition,
     ServerResponse,
     SignUpFormData,
-    LoginFormData
+    LoginFormData,
+    UserKYCServerData
 } from "../types";
 import {
     WS_BASE_URL,
@@ -105,5 +106,16 @@ export const loginUser = async (data: LoginFormData, abortController?: AbortCont
             },
             data: data
         }
+    })
+}
+
+
+export const fetchKycDetails = async (userId: string, abortController?: AbortController) : Promise<UserKYCServerData> => {
+    const url = `${WS_BASE_URL}/routes.php?&page=user&actions=getKYCData&itemID=${userId}`;
+    return await callService({
+        url: url,
+        method: 'GET',
+        userToken: 'sdasdasd',
+        abortController: abortController
     })
 }

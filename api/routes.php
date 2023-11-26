@@ -9,6 +9,7 @@ require_once('./login.php');
 require_once('./user.php');
 require_once('./contactus.php');
 require_once('./plansell.php');
+require_once('./Customer-kyc.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -89,9 +90,12 @@ if ($page === 'login') {
 } else if ($page === 'user') {
 	$result = null;
 	$user = new Users($helper);
+	$userKyc = new CustomerKYC($helper);
 	if ($method === 'GET') {
 		if ($action === 'getUsersList') {
 			$result = $user->get_user_list();
+		}else if($action === "getKYCData"){
+			$result = $userKyc->get_kycData($itemID);
 		}
 		echo json_encode($result);
 	} else if ($method === 'POST') {
