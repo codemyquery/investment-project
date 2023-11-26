@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 06:15 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Nov 26, 2023 at 04:34 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,7 +33,7 @@ CREATE TABLE `admin` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `last_login` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `admin`
@@ -55,9 +54,9 @@ CREATE TABLE `contact_us` (
   `mobile_no` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `message` text NOT NULL,
-  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT '0',
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT 0,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `contact_us`
@@ -84,11 +83,11 @@ CREATE TABLE `employee` (
   `mobile` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `designation` varchar(100) NOT NULL,
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `employee`
@@ -98,6 +97,26 @@ INSERT INTO `employee` (`id`, `name`, `employee_code`, `mobile`, `email`, `desig
 (1, 'Ashutosh Singh', '001', '9794978416', 'ashutoshsingh5192344@gmail.com', 'R&D Developer', '2023-11-14 09:06:02', 1, '2023-11-14 09:06:02', 0),
 (3, '', '', '', '', '', '2023-11-16 20:55:51', 1, '2023-11-16 20:55:51', 0),
 (4, '', '', '+919794978', 'ashutoshsingh5192344@gmail.com', '', '2023-11-16 20:57:27', 1, '2023-11-16 20:57:27', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kyc_data`
+--
+
+CREATE TABLE `kyc_data` (
+  `Customer_id` int(11) NOT NULL,
+  `Adhaar_no` bigint(20) NOT NULL,
+  `Pan_no` varchar(10) NOT NULL,
+  `Bank_Acc_no` bigint(20) NOT NULL,
+  `Bank_name` text NOT NULL,
+  `Customer_dob` date NOT NULL,
+  `Bank_ifsc` varchar(20) NOT NULL,
+  `Nominee_name` text NOT NULL,
+  `Nominee_relation` text NOT NULL,
+  `Nominee_dob` date NOT NULL,
+  `Nominee_address` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -115,11 +134,11 @@ CREATE TABLE `plan_details` (
   `maturity_value` varchar(100) NOT NULL,
   `income_frequency` tinyint(1) NOT NULL,
   `plan_details` text NOT NULL,
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
   `created_by` int(11) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `plan_details`
@@ -137,6 +156,27 @@ INSERT INTO `plan_details` (`id`, `plan_code`, `insurance_company`, `plan_name`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `plan_sell_data`
+--
+
+CREATE TABLE `plan_sell_data` (
+  `customer_id` varchar(100) NOT NULL,
+  `plan_id` varchar(100) NOT NULL,
+  `customer_purchase_status` enum('YES','NO') NOT NULL,
+  `purchase_amount` int(100) NOT NULL,
+  `updated_on` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `plan_sell_data`
+--
+
+INSERT INTO `plan_sell_data` (`customer_id`, `plan_id`, `customer_purchase_status`, `purchase_amount`, `updated_on`) VALUES
+('1', '2', 'YES', 10, '2023-11-25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -149,17 +189,22 @@ CREATE TABLE `users` (
   `lg_lc_code` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `accepted_for_promotions` tinyint(1) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL,
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `created_on` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `kyc_status`, `lg_lc_code`, `password`, `accepted_for_promotions`, `updated_on`, `updated_by`, `created_on`) VALUES
-(7, 'Ashutosh Singh', 'ashutoshsingh5192344@gmail.com', '+919794978416', 'NO', 'ashutoshsingh5192344', 'ashutoshsingh5192344@gmail.com', 0, '2023-11-16 21:44:50', NULL, '2023-11-16 21:29:01');
+(1, 'Ashutosh Singh', 'ashutoshsingh5192344@gmail.com', '+919794978416', 'NO', 'ashutoshsingh5192344', 'ashutoshsingh5192344@gmail.com', 0, '2023-11-25 23:41:37', NULL, '2023-11-16 21:29:01'),
+(10, 'shubham maurya', 'a@b.com', '7894561230', 'NO', '123', '123456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 22:48:50'),
+(11, 'ssadasd', 'dasda54654@gmail.com', '54564564', 'NO', '54654564', '456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 23:03:32'),
+(12, 'ssadasd', 'dasda54654@gmail.com', '54564564', 'NO', '54654564', '456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 23:03:38'),
+(13, 'ssadasd', 'dasda54654@gmail.com', '54564564', 'NO', '54654564', '456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 23:03:49'),
+(14, 'addsasd', 'a@c.com', '9118740611', 'NO', '545456', '456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 23:06:46');
 
 --
 -- Indexes for dumped tables
@@ -227,7 +272,7 @@ ALTER TABLE `plan_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
