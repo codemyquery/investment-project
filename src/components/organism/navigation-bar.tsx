@@ -8,7 +8,7 @@ import { Admin } from '../../services';
 import { BASE_URL } from '../../utils';
 
 type MenusType = 'Home' | 'About' | 'Contact Us' | 'My Plan' | 'Profile' | undefined;
-const Menus: MenusType[] = ['Home', 'About', 'Contact Us'];
+const Menus: MenusType[] = ['Home', 'About', 'Contact Us', 'My Plan', 'Profile'];
 const UserMenus: MenusType[] = ['My Plan', 'Profile'];
 const settings = ['Logout'];
 
@@ -79,7 +79,13 @@ export const NavigationBar = () => {
                     <div className={`navbar-collapse collapse ${showHeader}`} id="basic-navbar-nav">
                         <ul className="m-auto navbar-nav">
                             {
-                                (homeURL.indexOf('/user') === 0 ? UserMenus : Menus).map((menu, index) => {
+                                Menus.filter(menu => {
+                                    if(userInfo){
+                                        return true;
+                                    }else{
+                                        return !UserMenus.includes(menu);
+                                    }
+                                }).map((menu, index) => {
                                     return <li key={`${menu}-${index}`} className={`nav-link ${active === menu ? 'active' : ''}`} onClick={() => { navBarClick(menu) }}>
                                         {menu}
                                     </li>
@@ -88,7 +94,7 @@ export const NavigationBar = () => {
                         </ul>
 
                         {
-                            homeURL.indexOf('/user') === 0 &&
+                            userInfo &&
                             <>
                                 <Box sx={{ flexGrow: 0 }}>
                                     <Tooltip title="Profile">
@@ -122,7 +128,7 @@ export const NavigationBar = () => {
                             </>
                         }
                         {
-                            homeURL.indexOf('/user') !== 0 &&
+                            !userInfo &&
                             <>
                                 <div className="d-flex d-none d-md-block">
                                     <a
