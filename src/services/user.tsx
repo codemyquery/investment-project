@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
     UserDataResponse,
     DisplayTableColumnDefinition,
@@ -11,11 +12,12 @@ import {
 } from "../utils";
 
 export const useDisplayTableUsersHeaders = () => {
+    const navigate = useNavigate();
     const customerTableHeaders: Array<DisplayTableColumnDefinition> = [
         {
             field: 'name',
             type: 'text',
-            headerName: 'Employee Name',
+            headerName: 'Customer Name',
             filterable: true,
             sortable: true
         },
@@ -38,7 +40,7 @@ export const useDisplayTableUsersHeaders = () => {
         },
         {
             field: 'dateCreated',
-            type: 'date',
+            type: 'text',
             sortable: true,
             headerName: 'Date Created'
         },
@@ -48,8 +50,8 @@ export const useDisplayTableUsersHeaders = () => {
             actionsList: [
                 {
                     type: 'edit',
-                    callback: () => {
-
+                    callback: (params: any) => {
+                        navigate(`/admin/edit-customers/${params.id}`)
                     }
                 }
             ],

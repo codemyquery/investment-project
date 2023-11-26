@@ -58,8 +58,8 @@ const AppMenus: NavigationMenu[] = [
         id: "edit-customers",
         i18nKey: 'Customer',
         visible: false,
-        to: '/admin/edit-customers',
-        path: 'admin/edit-customers',
+        to: '/admin/edit-customers/:itemID',
+        path: 'admin/edit-customers/:itemID',
         Icon: GroupIcon,
         component: EditCustomers,
         allowedGroups: []

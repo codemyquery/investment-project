@@ -138,88 +138,145 @@ export const EditCustomers = () => {
                 onFormSubmit={() => { }}
                 onFormCancel={onFormCancel}
                 submitDisabled={!false}
-                title={"Edit: Edit Customer"}
+                title={"Edit: 21312"}
             >
                 <Grid container spacing={3}>
-                    <Grid item xs={12} sm={12}>
+                    <Grid item xs={12}>
                         <TextField
-                            margin="normal"
                             required
                             fullWidth
-                            id="planName"
-                            label="Plan Name"
-                            autoFocus
+                            id="name"
+                            label="Name"
+                            value={'Ashutosh Singh'}
+                            disabled
                         />
+                    </Grid>
+                    <Grid item xs={6}>
                         <TextField
-                            margin="normal"
                             required
                             fullWidth
-                            id="sumAssured"
-                            label="Sum Assured"
-                            autoFocus
-                        />
-                        <br />
-                        <FormControl fullWidth>
-
-                            <div>
-                                Premium Paying Term :
-                                <Checkbox />10
-                                <Checkbox />20
-                                <Checkbox />30
-                            </div>
-                        </FormControl>
-
-                        <br />
-                        <FormControl fullWidth>
-
-
-                            <div>
-                                Benefit Payout Frequency :
-                                <Checkbox />Weekly
-                                <Checkbox />Monthly
-                                <Checkbox />Yearly
-                            </div>
-
-                        </FormControl>
-                        <br />
-
-
-                        <TextField
-                            margin="normal"
-
-                            fullWidth
-                            id="totalPaidPremium"
-                            label="Total Paid Premium "
-                            name="totalPaidPremium"
-
-                            autoFocus
+                            id="pan-card"
+                            label="Pan Card"
                         />
                     </Grid>
-                    <Grid item xs={12} sm={12}>
+                    <Grid item xs={6}>
                         <TextField
-                            margin="normal"
-
+                            required
                             fullWidth
-                            name="totalBenefitTillMatuarity"
-                            label="Total Benefit Till Matuarity"
-
-                            id="totalBenefitTillMatuarity"
-                            autoFocus
+                            id="aadhar-card"
+                            label="Aadhar Card"
                         />
                     </Grid>
-                    <Grid item xs={12} sm={12}>
+                    <Grid item xs={6}>
                         <TextField
-                            margin="normal"
-                            type="file"
+                            required
                             fullWidth
-                            name="PlanDocumentPdf"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            label="Plan Pdf Doc"
-                            id="PlanDocumentPdf"
-
+                            id="email"
+                            label="Email"
                         />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="mobile"
+                            label="Mobile"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="dob"
+                            label="Date of Birth"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="address"
+                            label="Address"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="bankDetails"
+                            label="Bank Details"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="ifsc"
+                            label="IFSC Code"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="bankAccountNumber"
+                            label="Bank Account Number"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="confirmBankAccountNumber"
+                            label="Confirm Bank Account Number"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="nomineeName"
+                            label="Nominee Name"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="realtion"
+                            label="Relation"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="dateOfBirth"
+                            label="Date of Birth"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            id="nomineeAddress"
+                            label="Nominee Address"
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <img src="https://www.fisdom.com/wp-content/uploads/2023/06/pvc-aadhaar-card-1.webp" width={'100%'} height={'400px'} alt="Aadhar Card Front" />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <img src="https://www.fisdom.com/wp-content/uploads/2023/06/pvc-aadhaar-card-1.webp" width={'100%'} height={'400px'} alt="Aadhar Card Bank" />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <img src="https://scontent.fknu1-1.fna.fbcdn.net/v/t1.6435-9/207056686_4175559985870132_121310395359847418_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=cWZVIfdZnE8AX9AxIsx&_nc_ht=scontent.fknu1-1.fna&oh=00_AfDT-_UT1X4b1VDQ-cEbu6_kmH4-7qoYpAJ_7owiqxUh0Q&oe=658A3C47" width={'100%'} height={'400px'} alt="PAN Card" />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Wonho-Signature.svg" width={'100%'} height={'400px'} alt="Signature Card" />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/BankStatementChequing.png" width={'100%'} height={'400px'} alt="Bank Statement" />
                     </Grid>
                 </Grid>
             </AdminEditPageTemplate >
