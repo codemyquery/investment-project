@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2023 at 05:35 PM
+-- Generation Time: Nov 27, 2023 at 05:21 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -108,8 +108,13 @@ INSERT INTO `employee` (`id`, `name`, `employee_code`, `mobile`, `email`, `desig
 CREATE TABLE `kyc_data` (
   `Customer_id` int(11) NOT NULL,
   `Adhaar_no` bigint(20) NOT NULL,
+  `Adhaar_no_front_url` varchar(100) NOT NULL,
+  `Adhaar_no_back_url` varchar(100) NOT NULL,
   `Pan_no` varchar(10) NOT NULL,
+  `Pan_no_url` varchar(100) NOT NULL,
   `Bank_Acc_no` bigint(20) NOT NULL,
+  `Bank_Acc_no_url` varchar(100) NOT NULL,
+  `Signature_url` varchar(100) NOT NULL,
   `Bank_name` text NOT NULL,
   `Customer_dob` date NOT NULL,
   `Bank_ifsc` varchar(20) NOT NULL,
@@ -123,8 +128,8 @@ CREATE TABLE `kyc_data` (
 -- Dumping data for table `kyc_data`
 --
 
-INSERT INTO `kyc_data` (`Customer_id`, `Adhaar_no`, `Pan_no`, `Bank_Acc_no`, `Bank_name`, `Customer_dob`, `Bank_ifsc`, `Nominee_name`, `Nominee_relation`, `Nominee_dob`, `Nominee_address`) VALUES
-(14, 123123123, 'HYTPS0490A', 0, '', '0000-00-00', '', '', '', '0000-00-00', '');
+INSERT INTO `kyc_data` (`Customer_id`, `Adhaar_no`, `Adhaar_no_front_url`, `Adhaar_no_back_url`, `Pan_no`, `Pan_no_url`, `Bank_Acc_no`, `Bank_Acc_no_url`, `Signature_url`, `Bank_name`, `Customer_dob`, `Bank_ifsc`, `Nominee_name`, `Nominee_relation`, `Nominee_dob`, `Nominee_address`) VALUES
+(1, 189573648392, 'upload/6564bffba7cda.jpg', 'upload/6564c00abd113.jpg', 'HYTPS0490A', 'upload/6564c0249b7ca.jpg', 558902010895610, 'upload/6564c048c31ef.jpg', 'upload/6564c0331af26.jpg', 'UNION BANK OF INDIA', '0000-00-00', 'UBIN0289A', 'Umesh Singh', 'Father', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
