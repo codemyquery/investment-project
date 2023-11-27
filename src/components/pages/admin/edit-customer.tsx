@@ -6,7 +6,7 @@ import { DefaultFormState, FormModes, FormState, UserKYCFormData } from "../../.
 import { nanoid } from "nanoid";
 import { Users, useHookForm } from "../../../services";
 import { callFileUploadService } from "../../../utils/service";
-import { WS_BASE_URL } from "../../../utils";
+import { WS_BASE_URL, t } from "../../../utils";
 import { UserPersonalDetails, UserBankDetails, UserNomineeDetails, UserUploadDocuments } from "../../organism";
 import { Notifications } from "../../molecules";
 
@@ -113,7 +113,7 @@ export const EditCustomers = () => {
                     notificationOpen: true,
                     formSubmitted: true,
                     ...(response.status ? { mode: 'edit' } : {}),
-                    ...(response.status ? { notificationMessage: 'translation.successMessage' } : { notificationType: 'translation.errorMessage' }),
+                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
                     loading: false,
                     ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
                     reload: new Date()
@@ -126,7 +126,7 @@ export const EditCustomers = () => {
                     notificationOpen: true,
                     formSubmitted: true,
                     mode: 'edit',
-                    notificationMessage: 'translation.errorMessage',
+                    notificationMessage: t.errorMessage,
                     reload: new Date(),
                     loading: false,
                     notificationType: 'error'
@@ -155,7 +155,7 @@ export const EditCustomers = () => {
                     <UserPersonalDetails control={control} />
                     <UserBankDetails control={control} />
                     <UserNomineeDetails control={control} />
-                    <UserUploadDocuments control={control} setValue={setValue} getValues={getValues} />
+                    <UserUploadDocuments setFormState={setFormState} control={control} setValue={setValue} getValues={getValues} />
                 </Grid>
             </AdminEditPageTemplate >
             <Notifications

@@ -38,9 +38,11 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	$new_name = uniqid() . '.' . "jpg";
 	$target_path = 'upload/' . $new_name;
 	if (move_uploaded_file($_FILES['uploadedFile']['tmp_name'], "../" . $target_path)) {
+		http_response_code(OK);
 		echo json_encode(array('url'    =>    $target_path));
 	} else {
 		echo json_encode(array('url'    =>    null));
+		http_response_code(BAD_REQUEST);
 	}
 } else if ($page === 'login') {
 	$result = null;
@@ -119,7 +121,7 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 			$result = $userKyc->update_kyc_data($bodyRawData['data']);
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode($result);
+		echo json_encode(array('status'    =>    $result));
 	}
 } else if ($page === 'contactus') {
 	$result = null;

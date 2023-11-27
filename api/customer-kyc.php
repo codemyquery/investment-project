@@ -75,8 +75,6 @@ class CustomerKYC
     function update_kyc_data($data)
     {
         $customer_id = $this->helper->clean_data($data['id']);
-        $pathName = $this->helper->Upload_file($data['aadharCard']['front']);
-        echo $pathName;
         $this->helper->data = array(
             ':id'                  =>  $customer_id,
             ':Adhaar_no'           =>  $this->helper->clean_data($data['aadharCardNumber']),

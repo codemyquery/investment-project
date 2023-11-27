@@ -1,24 +1,27 @@
 import * as React from 'react';
 import { Button, Card, CardHeader, CardMedia, Grid, IconButton, Typography } from "@mui/material"
 import { Control, UseFormGetValues, UseFormSetValue } from "react-hook-form"
-import { UserKYCFormData } from "../../types"
+import { FormState, UserKYCFormData } from "../../types"
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { KYCCards } from '../molecules';
 import { noAadharCardBank, noAadharCardFront, noBankStatement, noPanCard, noSignature } from '../../assets';
 import { data } from 'jquery';
-import { WS_BASE_URL } from '../../utils';
+import { WS_BASE_URL, t } from '../../utils';
 import { callFileUploadService } from '../../utils/service';
+import { SetStateAction } from 'react';
 interface UserUploadDocumentsProps {
     control: Control<UserKYCFormData, any>
     setValue: UseFormSetValue<UserKYCFormData>
     getValues: UseFormGetValues<UserKYCFormData>
+    setFormState: (value: SetStateAction<FormState>) => void
 }
 
 export const UserUploadDocuments = ({
     control,
     setValue,
-    getValues
+    getValues,
+    setFormState
 }: UserUploadDocumentsProps) => {
 
     const onChangeHandler = (file: File, option: string) => {
@@ -42,48 +45,73 @@ export const UserUploadDocuments = ({
     };
 
     const onUploadHandler = async (option: string) => {
-        let response = null;
-        switch (option) {
-            case 'Aadhar Card Front':
-                response = await callFileUploadService({
-                    userToken: 'asdasdasd',
-                    file: [getValues('aadharCard.front')!],
-                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
-                })
-                setValue('aadharCard.frontUrl', response.url);
-                break;
-            case 'Aadhar Card Back':
-                response = await callFileUploadService({
-                    userToken: 'asdasdasd',
-                    file: [getValues('aadharCard.back')!],
-                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
-                })
-                setValue('aadharCard.backUrl', response.url);
-                break;
-            case 'PAN Card ':
-                response = await callFileUploadService({
-                    userToken: 'asdasdasd',
-                    file: [getValues('panCard')!],
-                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
-                })
-                setValue('panCardUrl', response.url);
-                break;
-            case 'Bank Statement ':
-                response = await callFileUploadService({
-                    userToken: 'asdasdasd',
-                    file: [getValues('bankStatement')!],
-                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
-                })
-                setValue('bankStatementUrl', response.url);
-                break;
-            case 'Signature ':
-                response = await callFileUploadService({
-                    userToken: 'asdasdasd',
-                    file: [getValues('signature')!],
-                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
-                })
-                setValue('signatureUrl', response.url);
-                break;
+        try {
+            let response: any = null;
+            switch (option) {
+                case 'Aadhar Card Front':
+                    response = await callFileUploadService({
+                        userToken: 'asdasdasd',
+                        file: [getValues('aadharCard.front')!],
+                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                    })
+                    setValue('aadharCard.frontUrl', response.url);
+                    break;
+                case 'Aadhar Card Back':
+                    response = await callFileUploadService({
+                        userToken: 'asdasdasd',
+                        file: [getValues('aadharCard.back')!],
+                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                    })
+                    setValue('aadharCard.backUrl', response.url);
+                    break;
+                case 'PAN Card ':
+                    response = await callFileUploadService({
+                        userToken: 'asdasdasd',
+                        file: [getValues('panCard')!],
+                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                    })
+                    setValue('panCardUrl', response.url);
+                    break;
+                case 'Bank Statement ':
+                    response = await callFileUploadService({
+                        userToken: 'asdasdasd',
+                        file: [getValues('bankStatement')!],
+                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                    })
+                    setValue('bankStatementUrl', response.url);
+                    break;
+                case 'Signature ':
+                    response = await callFileUploadService({
+                        userToken: 'asdasdasd',
+                        file: [getValues('signature')!],
+                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                    })
+                    setValue('signatureUrl', response.url);
+                    break;
+            }
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    ...(response.url ? { mode: 'edit' } : {}),
+                    ...(response.url ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    loading: false,
+                    ...(response.url ? { notificationType: 'success' } : { notificationType: 'error' })
+                }
+            })
+        } catch (error) {
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    mode: 'edit',
+                    notificationMessage: t.errorMessage,
+                    loading: false,
+                    notificationType: 'error'
+                }
+            })
         }
     }
 

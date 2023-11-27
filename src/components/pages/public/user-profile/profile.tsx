@@ -3,7 +3,7 @@ import { UserBankDetails, UserNomineeDetails, UserPersonalDetails, UserUploadDoc
 import { UserProfileKycOptions } from "../../../molecules"
 import { useState } from "react"
 import { useHookForm } from "../../../../services"
-import { UserKYCFormData } from "../../../../types"
+import { DefaultFormState, FormState, UserKYCFormData } from "../../../../types"
 
 const defaultValues: UserKYCFormData = {
     id: "",
@@ -38,6 +38,7 @@ const defaultValues: UserKYCFormData = {
 
 export const Profile = () => {
     const [activeButton, setActiveButton] = useState<1 | 2 | 3 | 4>(1)
+    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
     const onClickHandler = (activeButton: 1 | 2 | 3 | 4) => {
         setActiveButton(activeButton)
     }
@@ -60,7 +61,7 @@ export const Profile = () => {
                         {activeButton == 1 && <UserPersonalDetails control={control} />}
                         {activeButton == 2 && <><br /><UserBankDetails control={control} /></>}
                         {activeButton == 3 && <><br /><UserNomineeDetails control={control} /></>}
-                        {activeButton == 4 && <><br /><UserUploadDocuments control={control} getValues={getValues} setValue={setValue} /></>}
+                        {activeButton == 4 && <><br /><UserUploadDocuments setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} /></>}
                     </Grid>
                 </CardContent>
             </Card>
