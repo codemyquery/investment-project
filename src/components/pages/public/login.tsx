@@ -29,7 +29,7 @@ export const Login = () => {
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
             if (response.status) {
                 window.location.href = `${BASE_URL}/user/my-plan`
-            }else {
+            } else {
                 setFormState(prev => {
                     return {
                         ...prev,

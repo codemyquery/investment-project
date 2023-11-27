@@ -99,7 +99,7 @@ export const NavigationBar = () => {
                                 <Box sx={{ flexGrow: 0 }}>
                                     <Tooltip title="Profile">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar alt={userInfo?.userName} src="/static/images/avatar/2.jpg" />
+                                            <Avatar alt={userInfo?.name} src="/static/images/avatar/2.jpg" />
                                         </IconButton>
                                     </Tooltip>
                                     <Menu

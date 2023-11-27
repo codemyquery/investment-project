@@ -1,11 +1,26 @@
 import { useMediaQuery } from "@mui/material";
 import React, { createContext, useContext, useMemo, useReducer } from "react"
 import { ADMIN_SESSION_NAME, USER_SESSION_NAME } from "../utils/constants";
+
+interface UserInfo {
+    id:  string,
+    name: string,
+    email: string,
+    mobile: string,
+    kycStatus: string,
+    dateCreated: string,
+    status: string
+}
+interface AdminInfo{
+    userName: string,
+    email: string,
+    lastLogin: string
+}
 interface AuthState {
     userToken: string | null;
     idToken: string;
-    userInfo: any;
-    adminInfo: any;
+    userInfo?: UserInfo;
+    adminInfo?: AdminInfo;
     homeURL: string;
     status: "idle" | "signOut" | "signIn" | "signUp" | "signInAdmin",
     isDark: boolean,
@@ -36,8 +51,8 @@ interface AuthContextType extends AuthState, AuthContextAction { }
 const AuthContext = createContext<AuthContextType>({
     status: "idle",
     userToken: null,
-    userInfo: null,
-    adminInfo: null,
+    userInfo: undefined,
+    adminInfo: undefined,
     idToken: "",
     homeURL: "",
     isDark: false,
@@ -58,7 +73,7 @@ type AuthAction =
     {
         type: "SIGN_IN_ADMIN",
         userToken: string,
-        adminInfo: Record<string, any>,
+        adminInfo?: AdminInfo,
         status: 'signInAdmin'
     }
     |
@@ -85,8 +100,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(AuthReducer, {
         userToken: null,
         idToken: '',
-        userInfo: sessionStorage.getItem(USER_SESSION_NAME),
-        adminInfo: sessionStorage.getItem(ADMIN_SESSION_NAME),
+        userInfo: JSON.parse(sessionStorage.getItem(USER_SESSION_NAME) || '{}'),
+        adminInfo: JSON.parse(sessionStorage.getItem(ADMIN_SESSION_NAME) || '{}'),
         homeURL: window.location.pathname,
         status: 'idle',
         isDark: false,
@@ -109,7 +124,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 type: "SIGN_IN_ADMIN",
                 status: "signInAdmin",
                 adminInfo: {
-                    userName: username
+                    userName: username,
+                    email: '',
+                    lastLogin: ''
                 },
                 userToken: token
             });

@@ -72,7 +72,7 @@ class Users
         $username = $data['username'];
         $password = $data['password'];
         $result = $this->helper->ValidateEmail($username);
-        if($result["status"] !== 1)return $result;
+        if($result["status"] === 1)return $result;
         
         $this->helper->query = "SELECT * FROM users WHERE (email='$username' OR mobile='$username') AND password='$password'";
         if ($this->helper->total_row() === 0) {
@@ -111,7 +111,8 @@ function formatCustomerOutput($row)
         "email"         =>     $row['email'],
         "mobile"        =>     $row['mobile'],
         "kycStatus"     =>     $row['kyc_status'],
-        "dateCreated"   =>     $row['created_on']
+        "dateCreated"   =>     $row['created_on'],
+        "status"        =>     true
     );
 }
 
