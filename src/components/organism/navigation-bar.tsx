@@ -80,7 +80,7 @@ export const NavigationBar = () => {
                         <ul className="m-auto navbar-nav">
                             {
                                 Menus.filter(menu => {
-                                    if(userInfo){
+                                    if(userInfo?.name){
                                         return true;
                                     }else{
                                         return !UserMenus.includes(menu);
@@ -94,7 +94,7 @@ export const NavigationBar = () => {
                         </ul>
 
                         {
-                            userInfo &&
+                            userInfo?.name &&
                             <>
                                 <Box sx={{ flexGrow: 0 }}>
                                     <Tooltip title="Profile">
@@ -128,7 +128,7 @@ export const NavigationBar = () => {
                             </>
                         }
                         {
-                            !userInfo &&
+                            !userInfo?.name &&
                             <>
                                 <div className="d-flex d-none d-md-block">
                                     <a

@@ -26,9 +26,9 @@ export const AppRouting = ({
                             path={route.path}
                             element={
                                 route.to.indexOf('/admin') === 0 ?
-                                adminInfo ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <AdminLoginPage />
+                                adminInfo?.email ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <AdminLoginPage />
                                 : route.to.indexOf('/user') === 0 ?
-                                userInfo ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <Login />
+                                userInfo?.name ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <Login />
                                 : <route.component currentPath={route.to} subMenu={route.subMenu} />
                         }
                         />

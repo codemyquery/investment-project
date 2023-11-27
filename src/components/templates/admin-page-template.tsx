@@ -40,7 +40,7 @@ export const AdminPageTemplate = ({
     return (
         <Box sx={{ display: 'flex', height: '100%' }}>
             <CssBaseline />
-            {adminInfo && <AppBar position="fixed" color="inherit" sx={{ zIndex: (theme: any) => theme.zIndex.drawer + 1 }}>
+            {adminInfo?.email && <AppBar position="fixed" color="inherit" sx={{ zIndex: (theme: any) => theme.zIndex.drawer + 1 }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -87,7 +87,7 @@ export const AdminPageTemplate = ({
                     }
                 </Toolbar>
             </AppBar>}
-            {adminInfo && <AppDrawer routingServices={routingService} />}
+            {adminInfo?.email && <AppDrawer routingServices={routingService} />}
             <PageContent>
                 <Toolbar />
                 <AppRouting routingService={routingService} />
