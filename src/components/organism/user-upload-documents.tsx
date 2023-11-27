@@ -117,19 +117,19 @@ export const UserUploadDocuments = ({
 
     return <>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('aadharCard.frontUrl')}`} noDocUrl={noAadharCardFront} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={getValues('aadharCard.frontUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('aadharCard.frontUrl')}` : ''} noDocUrl={noAadharCardFront} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('aadharCard.backUrl')}`} noDocUrl={noAadharCardBank} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={getValues('aadharCard.backUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('aadharCard.backUrl')}` : ''} noDocUrl={noAadharCardBank} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('panCardUrl')}`} noDocUrl={noPanCard} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={getValues('panCardUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('panCardUrl')}` : ''} noDocUrl={noPanCard} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('signatureUrl')}`} noDocUrl={noSignature} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={getValues('signatureUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('signatureUrl')}` : ''} noDocUrl={noSignature} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('bankStatementUrl')}`} noDocUrl={noBankStatement} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={getValues('bankStatementUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('bankStatementUrl')}` : ''} noDocUrl={noBankStatement} />
         </Grid>
     </>
 }
