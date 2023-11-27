@@ -8,6 +8,7 @@ import { Users, useHookForm } from "../../../services";
 import { callFileUploadService } from "../../../utils/service";
 import { WS_BASE_URL } from "../../../utils";
 import { UserPersonalDetails, UserBankDetails, UserNomineeDetails, UserUploadDocuments } from "../../organism";
+import { Notifications } from "../../molecules";
 
 const defaultValues: UserKYCFormData = {
     id: "",
@@ -84,7 +85,7 @@ export const EditCustomers = () => {
                     panCardUrl: data.PannoUrl,
                     signatureUrl: data.SignatureUrl,
                     bankStatementUrl: data.Bank_Acc_no_url,
-                    aadharCard : {
+                    aadharCard: {
                         backUrl: data.AdhaarnoBackUrl,
                         frontUrl: data.AdhaarnoFrontUrl
                     }
@@ -98,24 +99,7 @@ export const EditCustomers = () => {
             }))
         };
         init();
-
-    }, []);
-
-    useEffect(() => {
-        if (formState.mode === 'edit' && formState.formSubmitted) {
-            const init = async () => {
-                /* const itemID = getValues('id');
-                const abortController = new AbortController();
-                const data = await Vendor.getVendor(itemID, abortController);
-                await InitVendorForm({ data, reset });
-                setFormState(prev => ({
-                    ...prev, 
-                    formSubmitted: false,
-                })) */
-            }
-            init();
-        }
-    }, [formState])
+    }, [formState.reload]);
 
     const onSubmitItem = async (data: UserKYCFormData) => {
         setFormState(prev => ({ ...prev, loading: true }))
@@ -132,6 +116,7 @@ export const EditCustomers = () => {
                     ...(response.status ? { notificationMessage: 'translation.successMessage' } : { notificationType: 'translation.errorMessage' }),
                     loading: false,
                     ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                    reload: new Date()
                 }
             });
         } catch (error) {
@@ -170,9 +155,15 @@ export const EditCustomers = () => {
                     <UserPersonalDetails control={control} />
                     <UserBankDetails control={control} />
                     <UserNomineeDetails control={control} />
-                    <UserUploadDocuments control={control} setValue={setValue} getValues={getValues}/>
+                    <UserUploadDocuments control={control} setValue={setValue} getValues={getValues} />
                 </Grid>
             </AdminEditPageTemplate >
+            <Notifications
+                open={formState.notificationOpen}
+                message={formState.notificationMessage}
+                onClose={() => { setFormState(prev => { return { ...prev, notificationOpen: false, notificationType: 'error', notificationMessage: '' } }) }}
+                severity={formState.notificationType}
+            />
         </>
     )
 }

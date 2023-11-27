@@ -48,7 +48,7 @@ export const UserUploadDocuments = ({
                 response = await callFileUploadService({
                     userToken: 'asdasdasd',
                     file: [getValues('aadharCard.front')!],
-                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
                 })
                 setValue('aadharCard.frontUrl', response.url);
                 break;
@@ -56,7 +56,7 @@ export const UserUploadDocuments = ({
                 response = await callFileUploadService({
                     userToken: 'asdasdasd',
                     file: [getValues('aadharCard.back')!],
-                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
                 })
                 setValue('aadharCard.backUrl', response.url);
                 break;
@@ -64,7 +64,7 @@ export const UserUploadDocuments = ({
                 response = await callFileUploadService({
                     userToken: 'asdasdasd',
                     file: [getValues('panCard')!],
-                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
                 })
                 setValue('panCardUrl', response.url);
                 break;
@@ -72,7 +72,7 @@ export const UserUploadDocuments = ({
                 response = await callFileUploadService({
                     userToken: 'asdasdasd',
                     file: [getValues('bankStatement')!],
-                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
                 })
                 setValue('bankStatementUrl', response.url);
                 break;
@@ -80,7 +80,7 @@ export const UserUploadDocuments = ({
                 response = await callFileUploadService({
                     userToken: 'asdasdasd',
                     file: [getValues('signature')!],
-                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                    url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
                 })
                 setValue('signatureUrl', response.url);
                 break;
@@ -89,19 +89,19 @@ export const UserUploadDocuments = ({
 
     return <>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={`${getValues('aadharCard.frontUrl')}`} noDocUrl={noAadharCardFront} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('aadharCard.frontUrl')}`} noDocUrl={noAadharCardFront} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={`${getValues('aadharCard.backUrl')}`} noDocUrl={noAadharCardBank} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('aadharCard.backUrl')}`} noDocUrl={noAadharCardBank} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={`${getValues('panCardUrl')}`} noDocUrl={noPanCard} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('panCardUrl')}`} noDocUrl={noPanCard} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={`${getValues('signatureUrl')}`} noDocUrl={noSignature} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('signatureUrl')}`} noDocUrl={noSignature} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={`${getValues('bankStatementUrl')}`} noDocUrl={noBankStatement} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={`${WS_BASE_URL}/virtual-property/${getValues('bankStatementUrl')}`} noDocUrl={noBankStatement} />
         </Grid>
     </>
 }

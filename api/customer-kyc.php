@@ -115,7 +115,7 @@ class CustomerKYC
         Nominee_relation=:Nominee_relation,
         Nominee_dob=:Nominee_dob,	
         Nominee_address=:Nominee_address";
-        $this->helper->execute_query();
+        return $this->helper->execute_query();
     }
 }
 
@@ -124,13 +124,13 @@ function formatKycOutput($row)
     return (object) array(
         "id" => $row['Customer_id'],
         "Adhaarno" => $row['Adhaar_no'],
-        "AdhaarnoFrontUrl" => strlen($row['Adhaar_no_front_url']) > 0 ? API_SERVER_PAGE . $row['Adhaar_no_front_url'] : "",
-        "AdhaarnoBackUrl" => strlen($row['Adhaar_no_back_url']) > 0 ? API_SERVER_PAGE . $row['Adhaar_no_back_url'] : "",
+        "AdhaarnoFrontUrl" => $row['Adhaar_no_front_url'],
+        "AdhaarnoBackUrl" => $row['Adhaar_no_back_url'],
         "Panno" => $row['Pan_no'],
-        "PannoUrl" => strlen($row['Pan_no_url']) > 0 ? API_SERVER_PAGE . $row['Pan_no_url'] : "",
+        "PannoUrl" => $row['Pan_no_url'],
         "Bank_Acc_no" => $row['Bank_Acc_no'],
-        "Bank_Acc_no_url" => strlen($row['Bank_Acc_no_url']) > 0 ? API_SERVER_PAGE . $row['Bank_Acc_no_url'] : '',
-        "SignatureUrl" => strlen($row['Signature_url']) > 0 ? API_SERVER_PAGE . $row['Signature_url'] : '',
+        "Bank_Acc_no_url" => $row['Bank_Acc_no_url'],
+        "SignatureUrl" => $row['Signature_url'],
         "Bank_name" => $row['Bank_name'],
         "Customer_dob" =>  $row['Customer_dob'],
         "Bank_ifsc" =>  $row['Bank_ifsc'],

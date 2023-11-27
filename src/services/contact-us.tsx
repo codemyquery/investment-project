@@ -2,7 +2,7 @@ import { ContactUsFormData, ContactusDataResponse, DisplayTableColumnDefinition 
 import { WS_BASE_URL, callService } from "../utils";
 
 export const createContactUs = async (data: ContactUsFormData) => {
-    const url = `${WS_BASE_URL}/routes.php`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
     return await callService({
         url: url,
         method: 'POST',
@@ -21,7 +21,7 @@ export const fetchContactusList = async (
     query: string = "",
     abortController?: AbortController
 ): Promise<ContactusDataResponse> => {
-    const url = `${WS_BASE_URL}/routes.php?&page=contactus&actions=getContactusList&${query}`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=contactus&actions=getContactusList&${query}`;
     return await callService({
         url: url,
         method: 'GET',

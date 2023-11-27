@@ -79,7 +79,7 @@ export const createPlanRecord = async (
     data: Array<PlanFormData>, 
     abortController?: AbortController
 ): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/routes.php`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
     return await callService({
         url: url,
         method: 'POST',
@@ -99,7 +99,7 @@ export const fetchPlanList = async (
     query: string = "",
     abortController?: AbortController
 ): Promise<PlanDataResponse> => {
-    const url = `${WS_BASE_URL}/routes.php?&page=plan&actions=getPlanList&${query}`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=plan&actions=getPlanList&${query}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -110,7 +110,7 @@ export const fetchPlanList = async (
 
 
 export const fetchPlan = async (itemID: string, abortController?: AbortController) : Promise<PlanServerData> => {
-    const url = `${WS_BASE_URL}/routes.php?&page=plan&actions=getPlan&itemID=${itemID}`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=plan&actions=getPlan&itemID=${itemID}`;
     return await callService({
         url: url,
         method: 'GET',
