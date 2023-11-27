@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 05:21 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Nov 27, 2023 at 08:27 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,7 +33,7 @@ CREATE TABLE `admin` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `last_login` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `admin`
@@ -55,9 +54,9 @@ CREATE TABLE `contact_us` (
   `mobile_no` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `message` text NOT NULL,
-  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT '0',
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `accepted_for_promotions` tinyint(1) NOT NULL DEFAULT 0,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `contact_us`
@@ -84,11 +83,11 @@ CREATE TABLE `employee` (
   `mobile` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `designation` varchar(100) NOT NULL,
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `employee`
@@ -122,14 +121,15 @@ CREATE TABLE `kyc_data` (
   `Nominee_relation` text NOT NULL,
   `Nominee_dob` date NOT NULL,
   `Nominee_address` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kyc_data`
 --
 
 INSERT INTO `kyc_data` (`Customer_id`, `Adhaar_no`, `Adhaar_no_front_url`, `Adhaar_no_back_url`, `Pan_no`, `Pan_no_url`, `Bank_Acc_no`, `Bank_Acc_no_url`, `Signature_url`, `Bank_name`, `Customer_dob`, `Bank_ifsc`, `Nominee_name`, `Nominee_relation`, `Nominee_dob`, `Nominee_address`) VALUES
-(1, 189573648392, 'upload/6564bffba7cda.jpg', 'upload/6564c00abd113.jpg', 'HYTPS0490A', 'upload/6564c0249b7ca.jpg', 558902010895610, 'upload/6564c048c31ef.jpg', 'upload/6564c0331af26.jpg', 'UNION BANK OF INDIA', '0000-00-00', 'UBIN0289A', 'Umesh Singh', 'Father', '0000-00-00', '');
+(1, 189573648392, 'upload/6564bffba7cda.jpg', 'upload/6564c00abd113.jpg', 'HYTPS0490A', 'upload/6564c0249b7ca.jpg', 558902010895610, 'upload/6564c048c31ef.jpg', 'upload/6564c0331af26.jpg', 'UNION BANK OF INDIA', '0000-00-00', 'UBIN0289A', 'Umesh Singh', 'Father', '0000-00-00', ''),
+(14, 457467575786, 'upload/6564d6d6168c5.jpg', 'upload/6564d6e5746d2.jpg', 'Dyapm1961h', 'upload/6564d6f41c696.jpg', 5648230231, 'upload/6564d71876545.jpg', 'upload/6564d70abdc96.jpg', 'pnb', '0000-00-00', 'pnb012345', 'svn', 'svn', '0000-00-00', 'raptinagar');
 
 -- --------------------------------------------------------
 
@@ -146,12 +146,12 @@ CREATE TABLE `plan_details` (
   `income_terms_options` varchar(11) NOT NULL,
   `maturity_value` varchar(100) NOT NULL,
   `income_frequency` tinyint(1) NOT NULL,
-  `plan_details` text NOT NULL,
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `plan_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`plan_details`)),
+  `created_on` datetime NOT NULL DEFAULT current_timestamp(),
   `created_by` int(11) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `plan_details`
@@ -177,15 +177,16 @@ CREATE TABLE `plan_sell_data` (
   `plan_id` varchar(100) NOT NULL,
   `customer_purchase_status` enum('YES','NO') NOT NULL,
   `purchase_amount` int(100) NOT NULL,
+  `purchase_plan_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`purchase_plan_details`)),
   `updated_on` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `plan_sell_data`
 --
 
-INSERT INTO `plan_sell_data` (`customer_id`, `plan_id`, `customer_purchase_status`, `purchase_amount`, `updated_on`) VALUES
-('1', '2', 'YES', 10, '2023-11-25');
+INSERT INTO `plan_sell_data` (`customer_id`, `plan_id`, `customer_purchase_status`, `purchase_amount`, `purchase_plan_details`, `updated_on`) VALUES
+('1', '2', 'YES', 10, '', '2023-11-25');
 
 -- --------------------------------------------------------
 
@@ -202,17 +203,17 @@ CREATE TABLE `users` (
   `lg_lc_code` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `accepted_for_promotions` tinyint(1) NOT NULL,
-  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL,
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `created_on` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `kyc_status`, `lg_lc_code`, `password`, `accepted_for_promotions`, `updated_on`, `updated_by`, `created_on`) VALUES
-(1, 'Ashutosh Singh', 'ashutoshsingh5192344@gmail.com', '+919794978416', 'NO', 'ashutoshsingh5192344', 'ashutoshsingh5192344@gmail.com', 0, '2023-11-25 23:41:37', NULL, '2023-11-16 21:29:01'),
+(1, 'Ashutosh Singh', 'ashutoshsingh5192344@gmail.com', '+919794978416', 'YES', 'ashutoshsingh5192344', 'ashutoshsingh5192344@gmail.com', 0, '2023-11-27 23:56:21', NULL, '2023-11-16 21:29:01'),
 (10, 'shubham maurya', 'a@b.com', '7894561230', 'NO', '123', '123456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 22:48:50'),
 (11, 'ssadasd', 'dasda54654@gmail.com', '54564564', 'NO', '54654564', '456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 23:03:32'),
 (12, 'ssadasd', 'dasda54654@gmail.com', '54564564', 'NO', '54654564', '456', 1, '0000-00-00 00:00:00', NULL, '2023-11-24 23:03:38'),

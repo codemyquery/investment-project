@@ -7,7 +7,7 @@ interface UserInfo {
     name: string,
     email: string,
     mobile: string,
-    kycStatus: string,
+    kycStatus: 'YES' | 'NO',
     dateCreated: string,
     status: string
 }

@@ -53,9 +53,9 @@ export const GetStarted = () => {
                 </div>
             </div>
             <div className="d-flex my-3 justify-content-center">
-                <a href="https://app.growpital.com/signup" className="">
+                {/* <a href="https://app.growpital.com/signup" className="">
                     <button className="main-btn maincolor mb-2">Invest Now</button>
-                </a>
+                </a> */}
             </div>
         </div>
     </section>

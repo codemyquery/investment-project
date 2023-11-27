@@ -54,7 +54,7 @@ export const Login = () => {
     }
 
     const onSubmit = () => handleSubmit(onSubmitItem)();
-
+    window.scrollTo(0, 0);
     return (<>
         <div className="contact-us">
             <section>

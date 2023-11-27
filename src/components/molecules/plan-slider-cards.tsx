@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { PlanServerData } from "../../types"
 import { formatNumber } from "../../utils";
+import { useAuth } from "../../providers";
 
 interface PlanSliderCardsProps {
     data: PlanServerData
@@ -9,6 +10,7 @@ export const PlanSliderCards = ({
     data
 }: PlanSliderCardsProps) => {
     const navigate = useNavigate();
+    const { userInfo } = useAuth();
     // finding the lowest plan amount
     let lockingPeriod = 0;
     const investmentAmounts = Object.keys(data.planDetails).sort((a,b) => Number(a) > Number(b) ? Number(a) : Number(b));
@@ -87,7 +89,17 @@ export const PlanSliderCards = ({
                     <button
                         type="button"
                         className="main-btn-service maincolor bg-transparent btn btn-primary"
-                        onClick={() => navigate(`/login`)}
+                        onClick={() => { 
+                            if(userInfo?.name){
+                                if(userInfo.kycStatus === "NO"){
+                                    navigate(`/user/profile`) 
+                                }else{
+                                    //TODO: Our agent will call you soon
+                                }
+                            }else{
+                                navigate(`/login`) 
+                            }
+                        }}
                     >
                         Invest Now
                     </button>

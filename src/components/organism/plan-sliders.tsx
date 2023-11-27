@@ -35,7 +35,7 @@ export const PlanSlider = ({
         return <Skeleton sx={{ width: '100%', height: '200px' }} />
     }
 
-    return <section className="py-3">
+    return <section className="py-3" id="invest-now-plans">
         <div className="container">
             <div className="d-flex justify-content-center align-items-center row">
                 <div

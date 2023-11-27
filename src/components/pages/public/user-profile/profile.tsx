@@ -108,6 +108,10 @@ export const Profile = () => {
                         {activeButton == 3 && <><br /><UserNomineeDetails control={control} /></>}
                         {activeButton == 4 && <><br /><UserUploadDocuments setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} /></>}
                     </Grid>
+                    <br />
+                    <Stack direction="row" spacing={2}>
+                        <Button variant="outlined" color="success">Save and Next</Button>
+                    </Stack>
                 </CardContent>
             </Card>
         </Grid>

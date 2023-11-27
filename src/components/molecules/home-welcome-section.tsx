@@ -127,7 +127,7 @@ export const HomeWelcomeSection = () => {
                         className="aos-init aos-animate"
                     >
                         <div className="d-inline-block">
-                            <a href="https://app.growpital.com/signup">
+                            <a href='#invest-now-plans'>
                                 <button
                                     className="main-btn maincolor mb-2"
                                 >

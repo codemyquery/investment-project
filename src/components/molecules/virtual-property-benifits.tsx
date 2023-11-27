@@ -71,9 +71,9 @@ export const VirtualPropertyBenifits = () => {
                     </div>
                     <div className="mb-2 aos-init aos-animate" data-aos="fade-up">
                         <div className="d-inline-block">
-                            <a href="https://app.growpital.com/signup">
+                            {/* <a href='#invest-now-plans'>
                                 <button className="main-btn maincolor mb-2">Invest Now</button>
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>
