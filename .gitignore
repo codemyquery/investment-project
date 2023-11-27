@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /build
+/api/upload
 
 # misc
 .DS_Store
