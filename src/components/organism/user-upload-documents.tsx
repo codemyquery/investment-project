@@ -1,68 +1,107 @@
-import { Grid } from "@mui/material"
-import { Control, UseFormSetValue } from "react-hook-form"
+import * as React from 'react';
+import { Button, Card, CardHeader, CardMedia, Grid, IconButton, Typography } from "@mui/material"
+import { Control, UseFormGetValues, UseFormSetValue } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
-
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { KYCCards } from '../molecules';
+import { noAadharCardBank, noAadharCardFront, noBankStatement, noPanCard, noSignature } from '../../assets';
+import { data } from 'jquery';
+import { WS_BASE_URL } from '../../utils';
+import { callFileUploadService } from '../../utils/service';
 interface UserUploadDocumentsProps {
     control: Control<UserKYCFormData, any>
     setValue: UseFormSetValue<UserKYCFormData>
+    getValues: UseFormGetValues<UserKYCFormData>
 }
 
 export const UserUploadDocuments = ({
     control,
-    setValue
+    setValue,
+    getValues
 }: UserUploadDocumentsProps) => {
+
+    const onChangeHandler = (file: File, option: string) => {
+        switch (option) {
+            case 'Aadhar Card Front':
+                setValue('aadharCard.front', file);
+                break;
+            case 'Aadhar Card Back':
+                setValue('aadharCard.back', file);
+                break;
+            case 'PAN Card ':
+                setValue('panCard', file);
+                break;
+            case 'Bank Statement ':
+                setValue('bankStatement', file);
+                break;
+            case 'Signature ':
+                setValue('signature', file);
+                break;
+        }
+    };
+
+    const onUploadHandler = async (option: string) => {
+        let response = null;
+        switch (option) {
+            case 'Aadhar Card Front':
+                response = await callFileUploadService({
+                    userToken: 'asdasdasd',
+                    file: [getValues('aadharCard.front')!],
+                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                })
+                setValue('aadharCard.frontUrl', response.url);
+                break;
+            case 'Aadhar Card Back':
+                response = await callFileUploadService({
+                    userToken: 'asdasdasd',
+                    file: [getValues('aadharCard.back')!],
+                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                })
+                setValue('aadharCard.backUrl', response.url);
+                break;
+            case 'PAN Card ':
+                response = await callFileUploadService({
+                    userToken: 'asdasdasd',
+                    file: [getValues('panCard')!],
+                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                })
+                setValue('panCardUrl', response.url);
+                break;
+            case 'Bank Statement ':
+                response = await callFileUploadService({
+                    userToken: 'asdasdasd',
+                    file: [getValues('bankStatement')!],
+                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                })
+                setValue('bankStatementUrl', response.url);
+                break;
+            case 'Signature ':
+                response = await callFileUploadService({
+                    userToken: 'asdasdasd',
+                    file: [getValues('signature')!],
+                    url: `${WS_BASE_URL}/routes.php?page=upload&actions=uploadKyc`
+                })
+                setValue('signatureUrl', response.url);
+                break;
+        }
+    }
+
     return <>
-        <Grid container spacing={3}>
-            <Grid item xs={6}>
-                <input type="file" onChange={(e) => {
-                    const files = (e.target as HTMLInputElement).files;
-                    if (files) {
-                        setValue('aadharCard.front', files[0]);
-                    }
-                }} />
-
-                <img src="https://www.fisdom.com/wp-content/uploads/2023/06/pvc-aadhaar-card-1.webp" width={'100%'} height={'400px'} alt="Aadhar Card Front" />
-            </Grid>
-            <Grid item xs={6}>
-                <input type="file" onChange={(e) => {
-                    const files = (e.target as HTMLInputElement).files;
-                    if (files) {
-                        setValue('aadharCard.back', files[0]);
-                    }
-                }} />
-
-                <img src="https://www.fisdom.com/wp-content/uploads/2023/06/pvc-aadhaar-card-1.webp" width={'100%'} height={'400px'} alt="Aadhar Card Bank" />
-            </Grid>
-            <Grid item xs={6}>
-                <input type="file" onChange={(e) => {
-                    const files = (e.target as HTMLInputElement).files;
-                    if (files) {
-                        setValue('panCard', files[0]);
-                    }
-                }} />
-
-                <img src="https://scontent.fknu1-1.fna.fbcdn.net/v/t1.6435-9/207056686_4175559985870132_121310395359847418_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=cWZVIfdZnE8AX9AxIsx&_nc_ht=scontent.fknu1-1.fna&oh=00_AfDT-_UT1X4b1VDQ-cEbu6_kmH4-7qoYpAJ_7owiqxUh0Q&oe=658A3C47" width={'100%'} height={'400px'} alt="PAN Card" />
-            </Grid>
-            <Grid item xs={6}>
-                <input type="file" onChange={(e) => {
-                    const files = (e.target as HTMLInputElement).files;
-                    if (files) {
-                        setValue('signature', files[0]);
-                    }
-                }} />
-
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Wonho-Signature.svg" width={'100%'} height={'400px'} alt="Signature Card" />
-            </Grid>
-            <Grid item xs={6}>
-                <input type="file" onChange={(e) => {
-                    const files = (e.target as HTMLInputElement).files;
-                    if (files) {
-                        setValue('BankStatement', files[0]);
-                    }
-                }} />
-
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/BankStatementChequing.png" width={'100%'} height={'400px'} alt="Bank Statement" />
-            </Grid>
+        <Grid item xs={6}>
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={`${getValues('aadharCard.frontUrl')}`} noDocUrl={noAadharCardFront} />
+        </Grid>
+        <Grid item xs={6}>
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={`${getValues('aadharCard.backUrl')}`} noDocUrl={noAadharCardBank} />
+        </Grid>
+        <Grid item xs={6}>
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={`${getValues('panCardUrl')}`} noDocUrl={noPanCard} />
+        </Grid>
+        <Grid item xs={6}>
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={`${getValues('signatureUrl')}`} noDocUrl={noSignature} />
+        </Grid>
+        <Grid item xs={6}>
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={`${getValues('bankStatementUrl')}`} noDocUrl={noBankStatement} />
         </Grid>
     </>
 }

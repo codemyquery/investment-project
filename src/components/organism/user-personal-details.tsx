@@ -10,7 +10,6 @@ export const UserPersonalDetails = ({
     control
 }: UserPersonalDetailsProps) => {
     return <>
-        <Grid container spacing={3}>
             <Grid item xs={12}>
                 <ControlText
                     control={control}
@@ -67,6 +66,5 @@ export const UserPersonalDetails = ({
                     helperText=""
                 />
             </Grid>
-        </Grid>
     </>
 }

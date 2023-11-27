@@ -24,11 +24,16 @@ const defaultValues: UserKYCFormData = {
     nomineeAddress: "",
     aadharCard: {
         back: null,
-        front: null
+        front: null,
+        backUrl: "",
+        frontUrl: ""
     },
     panCard: null,
     signature: null,
-    BankStatement: null
+    bankStatement: null,
+    panCardUrl: "",
+    signatureUrl: "",
+    bankStatementUrl: ""
 }
 
 export const Profile = () => {
@@ -42,7 +47,8 @@ export const Profile = () => {
         handleSubmit,
         formState: { errors, isDirty },
         setValue,
-        reset
+        reset,
+        getValues
     } = useHookForm<UserKYCFormData>({ defaultValues })
 
     return <Grid>
@@ -50,10 +56,12 @@ export const Profile = () => {
             <Card elevation={4} sx={{ margin: '1%', padding: '1%' }}>
                 <CardContent key={`card-content`}>
                     <UserProfileKycOptions activeButton={activeButton} onClickHandler={onClickHandler} />
-                    {activeButton == 1 && <UserPersonalDetails control={control} />}
-                    {activeButton == 2 && <><br /><UserBankDetails control={control} /></>}
-                    {activeButton == 3 && <><br /><UserNomineeDetails control={control} /></>}
-                    {activeButton == 4 && <><br /><UserUploadDocuments control={control} setValue={setValue} /></>}
+                    <Grid container spacing={3}>
+                        {activeButton == 1 && <UserPersonalDetails control={control} />}
+                        {activeButton == 2 && <><br /><UserBankDetails control={control} /></>}
+                        {activeButton == 3 && <><br /><UserNomineeDetails control={control} /></>}
+                        {activeButton == 4 && <><br /><UserUploadDocuments control={control} getValues={getValues} setValue={setValue} /></>}
+                    </Grid>
                 </CardContent>
             </Card>
         </Grid>

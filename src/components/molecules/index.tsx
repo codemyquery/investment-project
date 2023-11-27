@@ -10,6 +10,7 @@ import { ExpandableList } from "./expandable-list";
 import { GetStarted } from "./get-started";
 import { HaveQuestions } from "./have-questions";
 import { HomeWelcomeSection } from "./home-welcome-section";
+import { KYCCards } from "./kyc-cards";
 import { Logo } from "./logo";
 import { Notifications } from "./notification";
 import { PlanSliderCards } from "./plan-slider-cards";
@@ -37,5 +38,6 @@ export {
     VirtualPropertyBenifits,
     HaveQuestions,
     SocialSection,
-    ExpandableList
+    ExpandableList,
+    KYCCards
 }

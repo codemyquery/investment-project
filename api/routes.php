@@ -34,17 +34,15 @@ try {
 	echo `{ error: 'Invalid Data' }`;
 }
 
-if($_GET['page'] === "upload" && $_GET['actions'] === 'uploadKyc'){
-	//try {
-		//code...
-		echo 'hurrrrrr';
-		$new_name = uniqid() . '.' . "jpg";
-		$target_path = 'upload/' . $new_name;
-		move_uploaded_file($_FILES['fileseeeee']['tmp_name'], $target_path);
-		echo 'hiii';
-		// $helper->Upload_file($_FILES['fileseeeee']);
-	
-}else if ($page === 'login') {
+if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
+	$new_name = uniqid() . '.' . "jpg";
+	$target_path = 'upload/' . $new_name;
+	if (move_uploaded_file($_FILES['uploadedFile']['tmp_name'], "../".$target_path)) {
+		echo json_encode(array('url'    =>    $target_path));
+	} else {
+		echo json_encode(array('url'    =>    null));
+	}
+} else if ($page === 'login') {
 	$result = null;
 	$login = new Login($helper);
 	if ($method === 'POST') {
@@ -53,8 +51,8 @@ if($_GET['page'] === "upload" && $_GET['actions'] === 'uploadKyc'){
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode($result);
-	}else if($method === "GET"){
-		if ($action === "logout"){
+	} else if ($method === "GET") {
+		if ($action === "logout") {
 			$login->logout();
 			http_response_code(NO_CONTENT);
 		}
@@ -104,19 +102,19 @@ if($_GET['page'] === "upload" && $_GET['actions'] === 'uploadKyc'){
 	if ($method === 'GET') {
 		if ($action === 'getUsersList') {
 			$result = $user->get_user_list();
-		}else if($action === "getKYCData"){
+		} else if ($action === "getKYCData") {
 			$result = $userKyc->get_kycData($itemID);
 		}
 		echo json_encode($result);
 	} else if ($method === 'POST') {
 		if ($action === 'createUser') {
 			$result = $user->create_new_user($bodyRawData['data']);
-		} else if($action === 'loginUser'){
+		} else if ($action === 'loginUser') {
 			$result = $user->login_user($bodyRawData['data']);
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode($result);
-	} else if($method === "PUT"){
+	} else if ($method === "PUT") {
 		if ($action === 'updateKycData') {
 			$result = $userKyc->update_kyc_data($bodyRawData['data']);
 		}
@@ -136,15 +134,14 @@ if($_GET['page'] === "upload" && $_GET['actions'] === 'uploadKyc'){
 		}
 		echo json_encode($result);
 	}
-}else if ($page === 'sell') {
+} else if ($page === 'sell') {
 	$result = null;
 	$employee = new PlanSell($helper);
 	if ($method === 'GET') {
 		if ($action === 'getSellist') {
 			$result = $employee->get_plansell_list();
-		} 
+		}
 		echo json_encode($result);
-	
 	} else {
 		http_response_code(METHOD_NOT_ALLOWED);
 	}

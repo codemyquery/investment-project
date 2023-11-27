@@ -11,7 +11,6 @@ export const UserNomineeDetails = ({
     control
 }: UserNomineeDetailsProps) => {
     return <>
-        <Grid container spacing={3}>
             <Grid item xs={6}>
                 <ControlText
                     control={control}
@@ -44,6 +43,5 @@ export const UserNomineeDetails = ({
                     helperText=""
                 />
             </Grid>
-        </Grid>
     </>
 }

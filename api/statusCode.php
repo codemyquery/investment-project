@@ -16,4 +16,5 @@
     define("INTERNAL_SERVER_ERROR", 500);
     define("NOT_IMPLEMENTED", 501);
 
+    define("API_SERVER_PAGE", 'http://localhost/virtual-property/');
 ?>

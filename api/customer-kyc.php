@@ -1,4 +1,5 @@
 <?php
+require_once('./statusCode.php');
 class CustomerKYC
 {
     var $helper;
@@ -13,9 +14,14 @@ class CustomerKYC
 
         $this->helper->query = "SELECT 
         KD.Customer_id,
-        KD.Adhaar_no,	
+        KD.Adhaar_no,
+        KD.Adhaar_no_front_url,	
+        KD.Adhaar_no_back_url,	
         KD.Pan_no,	
+        KD.Pan_no_url,	
         KD.Bank_Acc_no,	
+        KD.Bank_Acc_no_url,	
+        KD.Signature_url,	
         KD.Bank_name,	
         KD.Customer_dob,	
         KD.Bank_ifsc,	
@@ -72,13 +78,18 @@ class CustomerKYC
         $pathName = $this->helper->Upload_file($data['aadharCard']['front']);
         echo $pathName;
         $this->helper->data = array(
-            ':id'               => $customer_id,
+            ':id'                  =>  $customer_id,
             ':Adhaar_no'           =>  $this->helper->clean_data($data['aadharCardNumber']),
-            ':Pan_no'          =>  $this->helper->clean_data($data['pancardNumber']),
+            ':Adhaar_no_front_url' =>  $this->helper->clean_data($data['aadharCard']['frontUrl']),
+            ':Adhaar_no_back_url'  =>  $this->helper->clean_data($data['aadharCard']['backUrl']),
+            ':Pan_no'              =>  $this->helper->clean_data($data['pancardNumber']),
+            ':Pan_no_url'          =>  $this->helper->clean_data($data['panCardUrl']),
             ':Bank_Acc_no'         =>  $this->helper->clean_data($data['bankAccNo']),
-            ':Bank_name'          =>  $this->helper->clean_data($data['bankName']),
-            ':Customer_dob'      =>  $this->helper->clean_data($data['dob']),
-            ':Bank_ifsc'          =>  $this->helper->clean_data($data['ifsc']),
+            ':Bank_Acc_no_url'     =>  $this->helper->clean_data($data['bankStatementUrl']),
+            ':Signature_url'       =>  $this->helper->clean_data($data['signatureUrl']),
+            ':Bank_name'           =>  $this->helper->clean_data($data['bankName']),
+            ':Customer_dob'        =>  $this->helper->clean_data($data['dob']),
+            ':Bank_ifsc'           =>  $this->helper->clean_data($data['ifsc']),
             ':Nominee_name'        =>  $this->helper->clean_data($data['nomineeName']),
             ':Nominee_relation'    =>  $this->helper->clean_data($data['nomineerelation']),
             ':Nominee_dob'         =>  $this->helper->clean_data($data['nomineeDob']),
@@ -86,14 +97,19 @@ class CustomerKYC
         );
 
         $this->helper->query = "
-        INSERT INTO kyc_data (Customer_id,Adhaar_no,Pan_no,Bank_Acc_no,Bank_name,Customer_dob,Bank_ifsc,Nominee_name,Nominee_relation,Nominee_dob,Nominee_address) 
-        VALUES(:id,:Adhaar_no, :Pan_no, :Bank_Acc_no, :Bank_name, :Customer_dob, :Bank_ifsc, :Nominee_name, :Nominee_relation, :Nominee_dob, :Nominee_address ) 
+        INSERT INTO kyc_data (Customer_id,Adhaar_no,Pan_no,Bank_Acc_no,Bank_name,Customer_dob,Bank_ifsc,Nominee_name,Nominee_relation,Nominee_dob,Nominee_address, Signature_url, Pan_no_url, Adhaar_no_front_url, Adhaar_no_back_url, Bank_Acc_no_url) 
+        VALUES(:id,:Adhaar_no, :Pan_no, :Bank_Acc_no, :Bank_name, :Customer_dob, :Bank_ifsc, :Nominee_name, :Nominee_relation, :Nominee_dob, :Nominee_address, :Signature_url, :Pan_no_url, :Adhaar_no_front_url, :Adhaar_no_back_url, :Bank_Acc_no_url ) 
         ON DUPLICATE KEY Update
         Adhaar_no = :Adhaar_no,
+        Adhaar_no_front_url = :Adhaar_no_front_url,
+        Adhaar_no_back_url = :Adhaar_no_back_url,
         Pan_no	=:Pan_no,
+        Pan_no_url	=:Pan_no_url,
         Bank_Acc_no =:Bank_Acc_no,	
+        Bank_Acc_no_url =:Bank_Acc_no_url,	
+        Signature_url =:Signature_url,
         Bank_name	=:Bank_name,
-        Customer_dob	=:Customer_dob,
+        Customer_dob =:Customer_dob,
         Bank_ifsc	=:Bank_ifsc,
         Nominee_name=:Nominee_name,
         Nominee_relation=:Nominee_relation,
@@ -108,8 +124,13 @@ function formatKycOutput($row)
     return (object) array(
         "id" => $row['Customer_id'],
         "Adhaarno" => $row['Adhaar_no'],
+        "AdhaarnoFrontUrl" => strlen($row['Adhaar_no_front_url']) > 0 ? API_SERVER_PAGE . $row['Adhaar_no_front_url'] : "",
+        "AdhaarnoBackUrl" => strlen($row['Adhaar_no_back_url']) > 0 ? API_SERVER_PAGE . $row['Adhaar_no_back_url'] : "",
         "Panno" => $row['Pan_no'],
+        "PannoUrl" => strlen($row['Pan_no_url']) > 0 ? API_SERVER_PAGE . $row['Pan_no_url'] : "",
         "Bank_Acc_no" => $row['Bank_Acc_no'],
+        "Bank_Acc_no_url" => strlen($row['Bank_Acc_no_url']) > 0 ? API_SERVER_PAGE . $row['Bank_Acc_no_url'] : '',
+        "SignatureUrl" => strlen($row['Signature_url']) > 0 ? API_SERVER_PAGE . $row['Signature_url'] : '',
         "Bank_name" => $row['Bank_name'],
         "Customer_dob" =>  $row['Customer_dob'],
         "Bank_ifsc" =>  $row['Bank_ifsc'],

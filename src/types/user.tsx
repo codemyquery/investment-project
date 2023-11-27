@@ -23,34 +23,44 @@ export interface UserKYCFormData {
     nomineeName: string,
     nomineerelation: string,
     nomineeDob: string,
-    nomineeAddress:string,
+    nomineeAddress: string,
     aadharCard: {
         back: File | null,
-        front: File | null
+        backUrl: string,
+        front: File | null,
+        frontUrl: string
     },
     panCard: File | null,
+    panCardUrl: string,
     signature: File | null,
-    BankStatement: File | null
+    signatureUrl: string,
+    bankStatement: File | null
+    bankStatementUrl: string
 }
 
 
 export interface UserKYCServerData {
-        id : string,
-        email : string,
-        mobile : string,
-        address : string,
-        Adhaarno : string,
-        Panno : string,
-        Bank_Acc_no : string,
-        Bank_name : string,
-        Customer_dob : string,
-        Bank_ifsc : string,
-        Nominee_name : string,
-        Nominee_relation : string,
-        Nominee_dob : string,
-        Nominee_address : string,
-        Customer_name: string,
-        confBankAccNo: string
+    id: string,
+    email: string,
+    mobile: string,
+    address: string,
+    Adhaarno: string,
+    AdhaarnoBackUrl: string,
+    AdhaarnoFrontUrl: string,
+    Panno: string,
+    PannoUrl: string,
+    Bank_Acc_no: string,
+    Bank_Acc_no_url: string,
+    Bank_name: string,
+    Customer_dob: string,
+    Bank_ifsc: string,
+    Nominee_name: string,
+    Nominee_relation: string,
+    Nominee_dob: string,
+    Nominee_address: string,
+    Customer_name: string,
+    confBankAccNo: string,
+    SignatureUrl: string
 }
 
 export interface LoginFormData {

@@ -113,7 +113,7 @@ export const callFileUploadService = async ({
     if (userToken) {
         let response: Response;
         const formData = new FormData();
-        formData.append("fileseeeee", file[0]);
+        formData.append("uploadedFile", file[0]);
         response = await fetch(url,
             {
                 method: 'POST',

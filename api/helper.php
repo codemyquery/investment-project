@@ -21,7 +21,6 @@ class Helper
 		$this->username = USER_NAME;
 		$this->password = PASSWORD;
 		$this->database = DATABASE_NAME;
-		$this->home_page = API_HOME_PAGE;
 		$this->connect = new PDO("mysql:host=$this->host; dbname=$this->database", "$this->username", "$this->password");
 		session_start();
 	}
