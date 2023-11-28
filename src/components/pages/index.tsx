@@ -6,7 +6,6 @@ import { EditPlanDetails } from "./admin/edit-plan-details";
 import { PageNotFound } from "./page-not-found";
 import { AboutUs } from "./public/about-us";
 import { ContactUs } from "./public/contact-us";
-import { Faqs } from "./public/faqs";
 import { HomePage } from "./public/home-page";
 import { Login } from "./public/login";
 import { SignUp } from "./public/sign-up";
@@ -23,7 +22,6 @@ export {
     DashboardContactus,
     HomePage,
     AboutUs,
-    Faqs,
     ContactUs,
     Login,
     SignUp,

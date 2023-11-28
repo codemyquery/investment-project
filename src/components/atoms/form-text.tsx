@@ -31,6 +31,7 @@ export const FormText = ({
     type = "text"
 }: FormTextProps) => {
     return <TextField
+        {...field}
         fullWidth={true}
         data-testid={`${field?.name || id}-text-input`}
         InputProps={{...InputProps}}
@@ -43,6 +44,5 @@ export const FormText = ({
         maxRows={maxRows}
         minRows={minRows}
         margin={margin}
-        {...field}
     />
 }

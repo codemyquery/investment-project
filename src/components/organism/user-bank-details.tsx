@@ -1,5 +1,5 @@
 import { Grid, TextField } from "@mui/material"
-import { ControlText, UserProfileKycOptions } from "../molecules"
+import { ControlNumber, ControlText, UserProfileKycOptions } from "../molecules"
 import { Control } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
 
@@ -17,6 +17,9 @@ export const UserBankDetails = ({
                     label="Bank Name"
                     name="bankName"
                     helperText=""
+                    rules={{
+                        required: true
+                    }}
                 />
             </Grid>
             <Grid item xs={6}>
@@ -25,22 +28,31 @@ export const UserBankDetails = ({
                     label="IFSC Code"
                     name="ifsc"
                     helperText=""
+                    rules={{
+                        required: true
+                    }}
                 />
             </Grid>
             <Grid item xs={6}>
-                <ControlText
+                <ControlNumber
                     control={control}
                     label="Bank Acc No."
                     name="bankAccNo"
                     helperText=""
+                    rules={{
+                        required: true
+                    }}
                 />
             </Grid>
             <Grid item xs={6}>
-                <ControlText
+                <ControlNumber
                     control={control}
                     label="Confirm Bank Acc No."
                     name="confBankAccNo"
                     helperText=""
+                    rules={{
+                        required: true
+                    }}
                 />
             </Grid>
     </>

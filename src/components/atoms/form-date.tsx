@@ -73,10 +73,10 @@ export const FormDate = ({
           }
           return <TextField
             {...params}
+            {...fieldProps}
             fullWidth={true}
             onKeyUp={handleDateSubmitOnKeyUp}
             data-testid={`${name}-text-input`}
-            {...fieldProps}
             error={error}
             helperText={helperText}
           />

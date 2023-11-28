@@ -1,10 +1,13 @@
-import { Grid, Card, CardContent, TextField, Stack, Button } from "@mui/material"
+import { Grid, Card, CardContent, TextField, Stack, Button, Box, Step, StepButton, Stepper, Typography } from "@mui/material"
 import { UserBankDetails, UserNomineeDetails, UserPersonalDetails, UserUploadDocuments } from "../../../organism"
-import { UserProfileKycOptions } from "../../../molecules"
+import { Notifications, UserProfileKycOptions } from "../../../molecules"
 import { useEffect, useState } from "react"
 import { Users, useHookForm } from "../../../../services"
-import { DefaultFormState, FormModes, FormState, UserKYCFormData } from "../../../../types"
+import { DefaultFormState, FormModes, FormState, UserKYCFormData, UserKYCServerData } from "../../../../types"
 import { useAuth } from "../../../../providers"
+import React from "react"
+import { UseFormReset } from "react-hook-form"
+import { t } from "../../../../utils"
 
 const defaultValues: UserKYCFormData = {
     id: "",
@@ -36,19 +39,58 @@ const defaultValues: UserKYCFormData = {
     signatureUrl: "",
     bankStatementUrl: ""
 }
-
+const steps = ['Personal Details', 'Bank Details', 'Nominee Details', 'Upload Documents'];
 export const Profile = () => {
+    window.scrollTo(0, 0);
     const { userInfo } = useAuth();
-    const [activeButton, setActiveButton] = useState<1 | 2 | 3 | 4>(1)
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
-    const onClickHandler = (activeButton: 1 | 2 | 3 | 4) => {
-        setActiveButton(activeButton)
-    }
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [completed, setCompleted] = React.useState<{ [k: number]: boolean; }>({});
+
+    const totalSteps = () => {
+        return steps.length;
+    };
+
+    const completedSteps = () => {
+        return Object.keys(completed).length;
+    };
+
+    const isLastStep = () => {
+        return activeStep === totalSteps() - 1;
+    };
+
+    const allStepsCompleted = () => {
+        return completedSteps() === totalSteps();
+    };
+
+    const handleNext = () => {
+        const newActiveStep =
+            isLastStep() && !allStepsCompleted() ? steps.findIndex((step, i) => !(i in completed)) : activeStep + 1;
+        setActiveStep(newActiveStep);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleStep = (step: number) => () => {
+        setActiveStep(step);
+    };
+
+    const handleComplete = () => {
+        const newCompleted = completed;
+        newCompleted[activeStep] = true;
+        setCompleted(newCompleted);
+        handleNext();
+        if (completedSteps() === totalSteps() - 1) {
+            onSubmit();
+        }
+    };
 
     const {
         control,
         handleSubmit,
-        formState: { errors, isDirty },
+        formState: { errors, isDirty, isValid },
         setValue,
         reset,
         getValues
@@ -61,31 +103,7 @@ export const Profile = () => {
                 mode = 'edit';
                 const abortController = new AbortController();
                 const data = await Users.fetchKycDetails(userInfo.id, abortController);
-                reset({
-                    id: userInfo.id,
-                    name: data.Customer_name,
-                    pancardNumber: data.Panno,
-                    aadharCardNumber: data.Adhaarno,
-                    email: data.email,
-                    mobile: data.mobile,
-                    dob: data.Customer_dob,
-                    address: data.address,
-                    bankName: data.Bank_name,
-                    ifsc: data.Bank_ifsc,
-                    bankAccNo: data.Bank_Acc_no,
-                    confBankAccNo: data.confBankAccNo,
-                    nomineeName: data.Nominee_name,
-                    nomineerelation: data.Nominee_relation,
-                    nomineeDob: data.Nominee_dob,
-                    nomineeAddress: data.Nominee_address,
-                    panCardUrl: data.PannoUrl,
-                    signatureUrl: data.SignatureUrl,
-                    bankStatementUrl: data.Bank_Acc_no_url,
-                    aadharCard: {
-                        backUrl: data.AdhaarnoBackUrl,
-                        frontUrl: data.AdhaarnoFrontUrl
-                    }
-                })
+                await initCKYCForm({ data: data, reset: reset, userId: userInfo.id })
             }
             setFormState(prev => ({
                 ...prev,
@@ -97,23 +115,141 @@ export const Profile = () => {
         init();
     }, [formState.reload]);
 
+    const onSubmitItem = async (data: UserKYCFormData) => {
+        setFormState(prev => ({ ...prev, loading: true }))
+        const abortController = new AbortController();
+        try {
+            const response = await Users.updateKYCDetails(data, abortController);
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    ...(response.status ? { mode: 'edit' } : {}),
+                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    loading: false,
+                    ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                    reload: new Date()
+                }
+            });
+        } catch (error) {
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    mode: 'edit',
+                    notificationMessage: t.errorMessage,
+                    reload: new Date(),
+                    loading: false,
+                    notificationType: 'error'
+                }
+            })
+        }
+    }
+    const onSubmitPreCheck = async (data: UserKYCFormData) => {
+        onSubmitItem(data);
+    }
+
+    const onSubmit = () => handleSubmit(onSubmitPreCheck)();
+
     return <Grid>
         <Grid item xs={12}>
-            <Card elevation={4} sx={{ margin: '1%', padding: '1%' }}>
+            <Card elevation={4} sx={{ padding: '1%' }}>
                 <CardContent key={`card-content`}>
-                    <UserProfileKycOptions activeButton={activeButton} onClickHandler={onClickHandler} />
-                    <Grid container spacing={3}>
-                        {activeButton == 1 && <UserPersonalDetails control={control} />}
-                        {activeButton == 2 && <><br /><UserBankDetails control={control} /></>}
-                        {activeButton == 3 && <><br /><UserNomineeDetails control={control} /></>}
-                        {activeButton == 4 && <><br /><UserUploadDocuments setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} /></>}
-                    </Grid>
-                    <br />
-                    <Stack direction="row" spacing={2}>
-                        <Button variant="outlined" color="success">Save and Next</Button>
-                    </Stack>
+                    <Box sx={{ width: '100%' }}>
+                        <Stepper activeStep={activeStep}>
+                            {steps.map((label, index) => (
+                                <Step key={label} completed={completed[index]}>
+                                    <StepButton color="inherit" onClick={handleStep(index)}>
+                                        {label}
+                                    </StepButton>
+                                </Step>
+                            ))}
+                        </Stepper>
+                        <div>
+                            {allStepsCompleted() ? (
+                                <React.Fragment>
+                                    <Typography sx={{ mt: 2, mb: 1 }}>
+                                        All steps completed - you&apos;re finished
+                                    </Typography>
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
+                                        <Grid container spacing={3}>
+                                            {activeStep + 1 === 1 && <UserPersonalDetails control={control} />}
+                                            {activeStep + 1 === 2 && <UserBankDetails control={control} />}
+                                            {activeStep + 1 === 3 && <UserNomineeDetails control={control} />}
+                                            {activeStep + 1 === 4 && <UserUploadDocuments setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} />}
+                                        </Grid>
+                                    </Typography>
+                                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                                        <Button
+                                            color="inherit"
+                                            disabled={activeStep === 0}
+                                            onClick={handleBack}
+                                            sx={{ mr: 1 }}
+                                        >
+                                            Back
+                                        </Button>
+                                        <Box sx={{ flex: '1 1 auto' }} />
+                                        {activeStep !== steps.length &&
+
+                                            <Button onClick={handleComplete} variant="outlined" color="success">
+                                                {completedSteps() === totalSteps() - 1 ? 'Finish' : 'Save & Next'}
+                                            </Button>
+                                        }
+                                    </Box>
+                                </React.Fragment>
+                            )}
+                        </div>
+                    </Box>
                 </CardContent>
             </Card>
+            <Notifications
+                open={formState.notificationOpen}
+                message={formState.notificationMessage}
+                onClose={() => { setFormState(prev => { return { ...prev, notificationOpen: false, notificationType: 'error', notificationMessage: '' } }) }}
+                severity={formState.notificationType}
+            />
         </Grid>
     </Grid>
+}
+
+interface initCKYCFormProps {
+    reset: UseFormReset<UserKYCFormData>
+    data: UserKYCServerData
+    userId: string
+}
+export const initCKYCForm = async ({
+    reset,
+    data,
+    userId
+}: initCKYCFormProps) => {
+    reset({
+        id: userId,
+        name: data.Customer_name,
+        pancardNumber: data.Panno,
+        aadharCardNumber: data.Adhaarno,
+        email: data.email,
+        mobile: data.mobile,
+        dob: data.Customer_dob,
+        address: data.address,
+        bankName: data.Bank_name,
+        ifsc: data.Bank_ifsc,
+        bankAccNo: data.Bank_Acc_no,
+        confBankAccNo: data.confBankAccNo,
+        nomineeName: data.Nominee_name,
+        nomineerelation: data.Nominee_relation,
+        nomineeDob: data.Nominee_dob,
+        nomineeAddress: data.Nominee_address,
+        panCardUrl: data.PannoUrl,
+        signatureUrl: data.SignatureUrl,
+        bankStatementUrl: data.Bank_Acc_no_url,
+        aadharCard: {
+            backUrl: data.AdhaarnoBackUrl,
+            frontUrl: data.AdhaarnoFrontUrl
+        }
+    })
 }

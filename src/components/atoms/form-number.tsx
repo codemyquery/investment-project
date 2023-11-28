@@ -21,6 +21,7 @@ export const FormNumber = ({
 }: FormTextProps) => {
     return (
         <TextField
+            {...field}
             fullWidth={true}
             type="number"
             data-testid={`${field.name}-number-input`}
@@ -28,7 +29,6 @@ export const FormNumber = ({
             label={label}
             error={error}
             InputProps={InputProps}
-            {...field}
             helperText={helperText}
             disabled={isDisabled}
         />

@@ -9,6 +9,8 @@ import { callFileUploadService } from "../../../utils/service";
 import { WS_BASE_URL, t } from "../../../utils";
 import { UserPersonalDetails, UserBankDetails, UserNomineeDetails, UserUploadDocuments } from "../../organism";
 import { Notifications } from "../../molecules";
+import { initCKYCForm } from "../public/user-profile/profile";
+import { useAuth } from "../../../providers";
 
 const defaultValues: UserKYCFormData = {
     id: "",
@@ -43,6 +45,7 @@ const defaultValues: UserKYCFormData = {
 
 export const EditCustomers = () => {
     const navigate = useNavigate();
+    const { userInfo } = useAuth();
     const [formState, setFormState] = React.useState<FormState>({ ...DefaultFormState });
     const { itemID } = useParams();
     const {
@@ -65,31 +68,7 @@ export const EditCustomers = () => {
                 mode = 'edit';
                 const abortController = new AbortController();
                 const data = await Users.fetchKycDetails(itemID, abortController);
-                reset({
-                    id: itemID,
-                    name: data.Customer_name,
-                    pancardNumber: data.Panno,
-                    aadharCardNumber: data.Adhaarno,
-                    email: data.email,
-                    mobile: data.mobile,
-                    dob: data.Customer_dob,
-                    address: data.address,
-                    bankName: data.Bank_name,
-                    ifsc: data.Bank_ifsc,
-                    bankAccNo: data.Bank_Acc_no,
-                    confBankAccNo: data.confBankAccNo,
-                    nomineeName: data.Nominee_name,
-                    nomineerelation: data.Nominee_relation,
-                    nomineeDob: data.Nominee_dob,
-                    nomineeAddress: data.Nominee_address,
-                    panCardUrl: data.PannoUrl,
-                    signatureUrl: data.SignatureUrl,
-                    bankStatementUrl: data.Bank_Acc_no_url,
-                    aadharCard: {
-                        backUrl: data.AdhaarnoBackUrl,
-                        frontUrl: data.AdhaarnoFrontUrl
-                    }
-                })
+                await initCKYCForm({ data: data, reset: reset, userId: userInfo!.id })
             }
             setFormState(prev => ({
                 ...prev,

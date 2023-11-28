@@ -36,12 +36,12 @@ export const FormSelect = ({ labelId, isDisabled, label, error, helperText, fiel
                 {label}
             </InputLabel>
             <Select
+                {...restField}
                 labelId={labelId}
                 onChange={(e) => {
                     onChange(preventUncontrolled(e.target.value));
                 }}
                 value={preventUncontrolled(value)}
-                {...restField}
                 label={label}
                 disabled={isDisabled}
                 SelectDisplayProps={{ /* "data-testid": `${labelId}` */ }}
