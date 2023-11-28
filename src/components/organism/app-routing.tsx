@@ -26,19 +26,19 @@ export const AppRouting = ({
                             path={route.path}
                             element={
                                 route.to.indexOf('/admin') === 0 ?
-                                adminInfo?.email ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <AdminLoginPage />
-                                : route.to.indexOf('/user') === 0 ?
-                                userInfo?.name ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <Login />
-                                : <route.component currentPath={route.to} subMenu={route.subMenu} />
-                        }
+                                    adminInfo?.email ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <AdminLoginPage />
+                                    : route.to.indexOf('/user') === 0 ?
+                                        userInfo?.name ? <route.component currentPath={route.to} subMenu={route.subMenu} /> : <Login />
+                                        : <route.component currentPath={route.to} subMenu={route.subMenu} />
+                            }
                         />
                     ))
                 }
                 {
-                        <Route
-                            path="*"
-                            element={<PageNotFound />}
-                        />
+                    <Route
+                        path="*"
+                        element={<PageNotFound />}
+                    />
                 }
             </Routes>
     }

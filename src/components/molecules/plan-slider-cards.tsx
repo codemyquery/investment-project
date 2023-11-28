@@ -2,7 +2,10 @@ import { useNavigate } from "react-router";
 import { PlanServerData } from "../../types"
 import { formatNumber } from "../../utils";
 import { useAuth } from "../../providers";
-
+import tenure from "../../assets/images/tenure.svg";
+import lockinPeriod from "../../assets/images/lockin-period.svg";
+import payout from "../../assets/images/layout.svg";
+import leaf from "../../assets/images/leafy.png";
 interface PlanSliderCardsProps {
     data: PlanServerData
     setDialog: React.Dispatch<React.SetStateAction<boolean>>
@@ -15,9 +18,9 @@ export const PlanSliderCards = ({
     const { userInfo } = useAuth();
     // finding the lowest plan amount
     let lockingPeriod = 0;
-    const investmentAmounts = Object.keys(data.planDetails).sort((a,b) => Number(a) > Number(b) ? Number(a) : Number(b));
+    const investmentAmounts = Object.keys(data.planDetails).sort((a, b) => Number(a) > Number(b) ? Number(a) : Number(b));
     const lowestInvestmentPlanWithHeader = data.planDetails[investmentAmounts[0]];
-    const lowestInvestmentPlan = [...lowestInvestmentPlanWithHeader].slice(1,lowestInvestmentPlanWithHeader.length);
+    const lowestInvestmentPlan = [...lowestInvestmentPlanWithHeader].slice(1, lowestInvestmentPlanWithHeader.length);
     lowestInvestmentPlan.every((row, index) => {
         return row[2] == '0' ? ++lockingPeriod : false; // It contains 3 element [yearlyIncome, Maturity, Surrender Value]
     })
@@ -25,7 +28,7 @@ export const PlanSliderCards = ({
         <div className="d-inline-flex align-items-center py-3 fw-bold fs-4 card-header">
             <p className="colan-icon text-center d-inline-block mb-0 d-flex justify-content-center align-items-center me-4 p-2">
                 <img
-                    src="https://cms.growpital.com/uploads/leafy_eleven_plan_fbfc42c562.png"
+                    src={leaf}
                     alt=""
                     className="img-fluid"
                     style={{ width: "1.5rem" }}
@@ -50,8 +53,8 @@ export const PlanSliderCards = ({
                 <div>
                     <p className="card-text">
                         <img
-                            src="https://cms.growpital.com/uploads/soil_Farming_1_a2e926fff4_588c230283.svg"
-                            alt=""
+                            src={tenure}
+                            alt="tenure"
                             className="mb-1"
                             style={{ width: "1rem" }}
                         />
@@ -59,7 +62,7 @@ export const PlanSliderCards = ({
                     </p>
                     <p className="card-text">
                         <img
-                            src="https://cms.growpital.com/uploads/locking_205dde42f1.svg"
+                            src={lockinPeriod}
                             alt="locking"
                             className="img-fluid mb-1"
                             style={{ width: "1rem" }}
@@ -68,7 +71,7 @@ export const PlanSliderCards = ({
                     </p>
                     <p className="card-text">
                         <img
-                            src="https://cms.growpital.com/uploads/uil_money_insert_f5b9a6c93a.svg"
+                            src={payout}
                             alt="locking"
                             className="img-fluid mb-1"
                             style={{ width: "1.2rem" }}
@@ -88,23 +91,23 @@ export const PlanSliderCards = ({
                 </div>
             </div>
             <div className="py-2">
-                    <button
-                        type="button"
-                        className="main-btn-service maincolor bg-transparent btn btn-primary"
-                        onClick={() => { 
-                            if(userInfo?.name){
-                                if(userInfo.kycStatus === "NO"){
-                                    navigate(`/user/profile`) 
-                                }else{
-                                    setDialog(true)
-                                }
-                            }else{
-                                navigate(`/login`) 
+                <button
+                    type="button"
+                    className="main-btn-service maincolor bg-transparent btn btn-primary"
+                    onClick={() => {
+                        if (userInfo?.name) {
+                            if (userInfo.kycStatus === "NO") {
+                                navigate(`/user/profile`)
+                            } else {
+                                setDialog(true)
                             }
-                        }}
-                    >
-                        Invest Now
-                    </button>
+                        } else {
+                            navigate(`/login`)
+                        }
+                    }}
+                >
+                    Invest Now
+                </button>
             </div>
             <div className="py-2">
                 <a

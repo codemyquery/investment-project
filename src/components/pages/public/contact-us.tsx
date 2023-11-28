@@ -211,6 +211,9 @@ export const ContactUs = () => {
                                                         className="form-control"
                                                     />
                                                 )}
+                                                rules={{
+                                                    required: true
+                                                }}
                                             />
                                         </div>
                                         <div className="mb-4 col-12">
@@ -224,6 +227,9 @@ export const ContactUs = () => {
                                                         className="form-control"
                                                     />
                                                 )}
+                                                rules={{
+                                                    required: true
+                                                }}
                                             />
                                         </div>
                                         <div className="mb-4 col-12">
@@ -237,6 +243,9 @@ export const ContactUs = () => {
                                                         className="form-control"
                                                     />
                                                 )}
+                                                rules={{
+                                                    required: true
+                                                }}
                                             />
                                         </div>
                                         <div className="mb-4">
@@ -252,6 +261,9 @@ export const ContactUs = () => {
                                                         className="form-control"
                                                     />
                                                 )}
+                                                rules={{
+                                                    required: true
+                                                }}
                                             />
                                         </div>
                                         <div className="mb-3">
