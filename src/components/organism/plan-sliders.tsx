@@ -4,6 +4,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
 import { PlanServerData } from "../../types";
 import { PlanSliderCards } from "../molecules";
+import { GenericDialog } from "./genique-dialog";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -15,6 +16,7 @@ export const PlanSlider = ({
     loader,
     planDetail
 }: PlanSliderProps) => {
+    const [dialog, setDialog] = useState(false)
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
@@ -33,6 +35,10 @@ export const PlanSlider = ({
 
     if (loader) {
         return <Skeleton sx={{ width: '100%', height: '200px' }} />
+    }
+
+    const closeDialog = () => {
+        setDialog(false)
     }
 
     return <section className="py-3" id="invest-now-plans">
@@ -64,9 +70,7 @@ export const PlanSlider = ({
                 </div>
             </div>
             <div className="/* d-flex justify-content-center px-md-5 align-items-center pt-2 row */">
-
                 <Box sx={{ flexGrow: 1 }}>
-
                     <AutoPlaySwipeableViews
                         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                         index={activeStep}
@@ -76,14 +80,14 @@ export const PlanSlider = ({
                         {
                             (() => {
                                 const planSlider = [];
-                                for (let i = 0; i < planDetail.length; isMobile ? i++ :i += 2) {
+                                for (let i = 0; i < planDetail.length; isMobile ? i++ : i += 2) {
                                     const plan1 = planDetail[i]
                                     const plan2 = planDetail[i + 1]
                                     planSlider.push(
                                         <div key={plan1.planCode} >
                                             <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
-                                                {plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
-                                                {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
+                                                {plan1 && <PlanSliderCards setDialog={setDialog} key={plan1.planCode} data={plan1} />}
+                                                {!isMobile && plan2 && <PlanSliderCards setDialog={setDialog} key={plan2.planCode} data={plan2} />}
                                             </div>
                                         </div>
                                     );
@@ -93,6 +97,16 @@ export const PlanSlider = ({
                         }
                     </AutoPlaySwipeableViews>
                 </Box>
+                <GenericDialog
+                    open={dialog}
+                    title={"Purchase Plan"}
+                    content={<>Are you sure you want to purchase this plan?</>}
+                    maxWidth='sm'
+                    onClose={closeDialog}
+                    onCloseText="No, Cancel"
+                    onSubmit={closeDialog}
+                    onSubmitText="Yes, Purchase"
+                />
             </div>
         </div>
     </section>

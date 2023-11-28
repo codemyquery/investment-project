@@ -42,9 +42,9 @@ export const MyPlans = () => {
                   <span /> KYC Has not been completed. Please complete KYC first.
                 </p>
                 <div className="py-2">
-                    <button type="button" onClick={() => navigate('/user/profile')} className="main-btn-service maincolor bg-transparent btn btn-primary">
-                      <b>Click for KYC</b>
-                    </button>
+                  <button type="button" onClick={() => navigate('/user/profile')} className="main-btn-service maincolor bg-transparent btn btn-primary">
+                    <b>Click for KYC</b>
+                  </button>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ export const MyPlans = () => {
         <PlanSlider loader={loader} planDetail={planDetail} />
     }
 
-     {/* <section className="py-3">
+    {/* <section className="py-3">
           <div className="container">
             <div className="d-flex justify-content-center align-items-center row">
               <div
@@ -124,5 +124,6 @@ export const MyPlans = () => {
             </div>
           </div>
         </section> */}
+
   </>
 }

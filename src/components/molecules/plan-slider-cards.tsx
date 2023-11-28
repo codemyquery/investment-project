@@ -5,9 +5,11 @@ import { useAuth } from "../../providers";
 
 interface PlanSliderCardsProps {
     data: PlanServerData
+    setDialog: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const PlanSliderCards = ({
-    data
+    data,
+    setDialog
 }: PlanSliderCardsProps) => {
     const navigate = useNavigate();
     const { userInfo } = useAuth();
@@ -94,7 +96,7 @@ export const PlanSliderCards = ({
                                 if(userInfo.kycStatus === "NO"){
                                     navigate(`/user/profile`) 
                                 }else{
-                                    //TODO: Our agent will call you soon
+                                    setDialog(true)
                                 }
                             }else{
                                 navigate(`/login`) 
