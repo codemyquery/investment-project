@@ -47,20 +47,16 @@ export const Profile = () => {
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState<{ [k: number]: boolean; }>({});
 
-    const totalSteps = () => {
-        return steps.length;
-    };
-
     const completedSteps = () => {
         return Object.keys(completed).length;
     };
 
     const isLastStep = () => {
-        return activeStep === totalSteps() - 1;
+        return activeStep === steps.length - 1;
     };
 
     const allStepsCompleted = () => {
-        return completedSteps() === totalSteps();
+        return completedSteps() === steps.length;
     };
 
     const handleNext = () => {
@@ -82,7 +78,7 @@ export const Profile = () => {
         newCompleted[activeStep] = true;
         setCompleted(newCompleted);
         handleNext();
-        if (completedSteps() === totalSteps() - 1) {
+        if (completedSteps() === steps.length - 1) {
             onSubmit();
         }
     };
@@ -168,14 +164,12 @@ export const Profile = () => {
                             ))}
                         </Stepper>
                         <div>
-                            {allStepsCompleted() ? (
-                                <React.Fragment>
-                                    <Typography sx={{ mt: 2, mb: 1 }}>
-                                        All steps completed - you&apos;re finished
-                                    </Typography>
-                                </React.Fragment>
+                            {allStepsCompleted() || userInfo?.kycStatus === 'YES' ? (
+                                <Typography sx={{ mt: 2, mb: 1 }}>
+                                    All steps completed - you&apos;re finished
+                                </Typography>
                             ) : (
-                                <React.Fragment>
+                                <>
                                     <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
                                         <Grid container spacing={3}>
                                             {activeStep + 1 === 1 && <UserPersonalDetails control={control} />}
@@ -197,11 +191,11 @@ export const Profile = () => {
                                         {activeStep !== steps.length &&
 
                                             <Button onClick={handleComplete} variant="outlined" color="success">
-                                                {completedSteps() === totalSteps() - 1 ? 'Finish' : 'Save & Next'}
+                                                {completedSteps() === steps.length - 1 ? 'Finish' : 'Save & Next'}
                                             </Button>
                                         }
                                     </Box>
-                                </React.Fragment>
+                                </>
                             )}
                         </div>
                     </Box>
