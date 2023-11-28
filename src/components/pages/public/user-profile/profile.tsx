@@ -40,12 +40,19 @@ const defaultValues: UserKYCFormData = {
     bankStatementUrl: ""
 }
 const steps = ['Personal Details', 'Bank Details', 'Nominee Details', 'Upload Documents'];
+
+const getCompletedObject = () => {
+    const obj: { [k: number]: boolean; } = {};
+    steps.forEach((step, i) => obj[i] = true)
+    return obj;
+}
+
 export const Profile = () => {
     window.scrollTo(0, 0);
     const { userInfo } = useAuth();
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
     const [activeStep, setActiveStep] = React.useState(0);
-    const [completed, setCompleted] = React.useState<{ [k: number]: boolean; }>({});
+    const [completed, setCompleted] = React.useState<{ [k: number]: boolean; }>(userInfo?.kycStatus === 'YES' ? getCompletedObject() : {});
 
     const completedSteps = () => {
         return Object.keys(completed).length;
@@ -164,7 +171,7 @@ export const Profile = () => {
                             ))}
                         </Stepper>
                         <div>
-                            {allStepsCompleted() || userInfo?.kycStatus === 'YES' ? (
+                            {allStepsCompleted() ? (
                                 <Typography sx={{ mt: 2, mb: 1 }}>
                                     All steps completed - you&apos;re finished
                                 </Typography>
