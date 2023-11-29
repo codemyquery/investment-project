@@ -45,6 +45,28 @@ class PlanSell
             "rows"  =>    $pages_array,
         );
     }
+    function Insert_into_plansell($data)
+    {
+        $customer_id = $this->helper->clean_data($data['customer_id']);
+        $this->helper->data = array(
+            ':customer_id'                  =>  $customer_id,
+            ':plan_id'           =>  $this->helper->clean_data($data['plan_id']),
+            ':customer_purchase_status'              =>  $this->helper->clean_data($data['customer_purchase_status']),
+            ':purchase_amount'          =>  $this->helper->clean_data($data['purchase_amount']),
+            ':updated_on'         =>  $this->helper->clean_data($data['updated_on']),
+            ':purchase_plan_details'     =>  $this->helper->clean_data($data['purchase_plan_details'])
+            
+        );
+        $this->helper->query = "
+        INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_amount,updated_on,purchase_plan_details) 
+        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_amount, :updated_on, :purchase_plan_details);"
+        
+        return $this->helper->execute_query();
+        
+        
+        
+    }
+   
 }
 
 function formatplanSellOutput($row)
