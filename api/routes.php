@@ -146,7 +146,12 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 			$result = $employee->get_plansell_list();
 		}
 		echo json_encode($result);
-	} else {
-		http_response_code(METHOD_NOT_ALLOWED);
+	}
+	else if ($method === 'POST') {
+		if ($action === 'selPlan') {
+			$result = $user->Insert_into_plansell($bodyRawData['data']);
+		} 
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode($result);
 	}
 }

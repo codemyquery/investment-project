@@ -1,4 +1,5 @@
 import { DisplayTableColumnDefinition, SellDataResponse, SellServerData } from "../types";
+import { SellFormData } from "../types/sell";
 import { WS_BASE_URL, callService } from "../utils";
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
@@ -88,4 +89,25 @@ export const fetchSaleData = async (itemID: string, abortController?: AbortContr
         userToken: 'sdasdasd',
         abortController: abortController
     })
+}
+
+export const InsertSellData = async (data: SellFormData, abortController?: AbortController): Promise<SellFormData> => {
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=InsertSale&itemID=${data}`;
+    return await callService({
+        url: url,
+        method: 'POST',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'sell',
+                actions: 'sellPlan'
+            },
+            data: data
+        }
+    })
+}
+
+export function insert_into_sell(data: SellFormData) {
+    throw new Error("Function not implemented.");
 }

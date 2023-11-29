@@ -59,12 +59,10 @@ class PlanSell
         );
         $this->helper->query = "
         INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_amount,updated_on,purchase_plan_details) 
-        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_amount, :updated_on, :purchase_plan_details);"
+        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_amount, :updated_on, :purchase_plan_details)";
         
-        return $this->helper->execute_query();
-        
-        
-        
+        $result =  $this->helper->execute_query();
+        return $result;
     }
    
 }

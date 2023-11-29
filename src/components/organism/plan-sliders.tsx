@@ -2,9 +2,14 @@ import { Box, useTheme, Skeleton, Grid } from "@mui/material"
 import { useState } from "react";
 import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
-import { PlanServerData } from "../../types";
+import { DefaultFormState, PlanServerData } from "../../types";
 import { PlanSliderCards } from "../molecules";
 import { GenericDialog } from "./genique-dialog";
+import { InsertSellData } from "../../services/sell";
+import { useNavigate } from "react-router-dom";
+import { SellFormData } from "../../types/sell";
+import { Sell, useHookForm } from "../../services";
+import { BASE_URL } from "../../utils";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -32,7 +37,30 @@ export const PlanSlider = ({
     const closeDialog = () => {
         setDialog(false)
     }
-
+    const YesPurchase = () => {
+        const navigate = useNavigate();
+        const [formState, setFormState] = useState<SellFormData>();
+    
+        const {
+            control,
+            handleSubmit,
+            formState: { },
+        } = useHookForm<SellFormData>({  });
+    
+        const onSubmitItem = async (data: SellFormData) => {
+            try {
+                const response = await Sell.InsertSellData(data);
+                
+                if (response) {
+                    window.location.href = `${BASE_URL}/user/my-plan`
+                } else {
+                    
+                }
+            } catch (error) {
+                
+            }
+        }
+    }
     return <section className="py-3" id="invest-now-plans">
         <div className="container">
             <div className="d-flex justify-content-center align-items-center row">
@@ -96,7 +124,7 @@ export const PlanSlider = ({
                     maxWidth='sm'
                     onClose={closeDialog}
                     onCloseText="No, Cancel"
-                    onSubmit={closeDialog}
+                    onSubmit={YesPurchase}
                     onSubmitText="Yes, Purchase"
                 />
             </div>

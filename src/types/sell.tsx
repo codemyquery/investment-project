@@ -16,3 +16,14 @@ export interface SellDataResponse {
     count: number,
     rows: Array<SellServerData>
 }
+
+export interface SellFormData {
+    
+    customer_id : string,
+    plan_id : string ,
+    customer_purchase_status : string ,
+    purchase_amount : string ,
+    purchase_plan_details : string ,
+    updated_on : string 
+    
+}
