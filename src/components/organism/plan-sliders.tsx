@@ -29,13 +29,6 @@ export const PlanSlider = ({
         return <Skeleton sx={{ width: '100%', height: '200px' }} />
     }
     
-    const yesPurchase = async (data: PlanServerData) => {
-        try {
-            const response = await Sell.InsertSellData({ plan_id: data.id, purchase_amount: 60});
-        } catch (error) {
-            console.log(error)
-        }
-    }
     return <section className="py-3" id="invest-now-plans">
         <div className="container">
             <div className="d-flex justify-content-center align-items-center row">

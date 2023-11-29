@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useState, useEffect, useRef } from "react";
-import { Plan } from "../../../services";
+import { Plan, Sell } from "../../../services";
 import { MonthsName, PlanServerData } from "../../../types";
 import "../../../styles/virtual.css";
 import { Autocomplete, TextField } from "@mui/material";
@@ -10,6 +10,7 @@ import { capitalize } from "../../../utils/helper";
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../providers";
+import { GenericDialog } from "../../organism";
 
 const defaultValue: PlanServerData = {
   id: "",
@@ -30,12 +31,14 @@ interface SelectOptions {
 }
 
 export const PlanOverview = () => {
+  const date = new Date();
+  const navigate = useNavigate();
   const { itemID, investmentAmount } = useParams();
   const { userInfo } = useAuth();
-  const date = new Date();
   const plan = useRef<PlanServerData>(defaultValue);
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
+  const [dialog, setDialog] = useState<boolean>(false);
   const [planAmount] = useState<SelectOptions>({ label: investmentAmount!, value: Number(investmentAmount) });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
   const currentYear = date.getFullYear();
@@ -81,6 +84,19 @@ export const PlanOverview = () => {
 
   const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
 
+  const closeDialog = () => {
+    setDialog(false)
+  }
+
+  const onSubmitDialog = async () => {
+    try {
+        const response = await Sell.InsertSellData({ plan_id: itemID!, purchase_amount: Number(investmentAmount), customer_id: userInfo?.id!});
+    } catch (error) {
+        console.log(error)
+    }
+    setDialog(false)
+  }
+
   return (
     <div className="app-root" style={{ height: "100%", backgroundColor: "white" }}>
       <div id="bond-details">
@@ -113,11 +129,19 @@ export const PlanOverview = () => {
               <div className="bond-details-header">
                 <div className="scrollmenu">
                   <a className="gtm-scroll-menu active">Overview</a>
-                  <div className="button-invest gtm-cb-invest-btn ">
-                    {" "}
-                    {
-                      !userInfo?.name && 'Invest'
+                  <div className="button-invest gtm-cb-invest-btn" onClick={() => {
+                    if (userInfo?.name) {
+                      if (userInfo.kycStatus === "NO") {
+                        navigate(`/user/profile`)
+                      } else {
+                        setDialog(true)
+                      }
+                    } else {
+                      navigate(`/login`)
                     }
+                  }}>
+                    {" "}
+                    Invest
                   </div>
                 </div>
               </div>
@@ -292,6 +316,16 @@ export const PlanOverview = () => {
           </div>
         </div>
       </div>
+      <GenericDialog
+        open={dialog}
+        title={"Purchase Plan"}
+        content={<>Are you sure you want to purchase this plan?</>}
+        maxWidth='sm'
+        onClose={closeDialog}
+        onCloseText="No, Cancel"
+        onSubmit={onSubmitDialog}
+        onSubmitText="Yes, Purchase"
+      />
     </div>
   );
 };

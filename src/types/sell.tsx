@@ -19,5 +19,6 @@ export interface SellDataResponse {
 
 export interface SellFormData {
     plan_id : string ,
-    purchase_amount : number
+    purchase_amount : number,
+    customer_id: string
 }

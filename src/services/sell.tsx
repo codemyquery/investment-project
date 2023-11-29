@@ -72,7 +72,7 @@ export const fetchSaleData = async (itemID: string, abortController?: AbortContr
 }
 
 export const InsertSellData = async (data: SellFormData, abortController?: AbortController): Promise<SellFormData> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=InsertSale&itemID=${data}`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
     return await callService({
         url: url,
         method: 'POST',

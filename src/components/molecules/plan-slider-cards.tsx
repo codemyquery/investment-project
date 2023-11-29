@@ -96,17 +96,6 @@ export const PlanSliderCards = ({
                     <button
                         type="button"
                         className="main-btn-service maincolor bg-transparent btn btn-primary"
-                        onClick={() => {
-                            if (userInfo?.name) {
-                                if (userInfo.kycStatus === "NO") {
-                                    navigate(`/user/profile`)
-                                } else {
-
-                                }
-                            } else {
-                                navigate(`/login`)
-                            }
-                        }}
                     >
                         Invest Now
                     </button>

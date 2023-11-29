@@ -140,18 +140,18 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	}
 } else if ($page === 'sell') {
 	$result = null;
-	$employee = new PlanSell($helper);
+	$planSell = new PlanSell($helper);
 	if ($method === 'GET') {
 		if ($action === 'getSellist') {
-			$result = $employee->get_plansell_list();
+			$result = $planSell->get_plansell_list();
 		}
 		echo json_encode($result);
 	}
 	else if ($method === 'POST') {
-		if ($action === 'selPlan') {
-			$result = $user->Insert_into_plansell($bodyRawData['data']);
+		if ($action === 'sellPlan') {
+			$result = $planSell->Insert_into_plansell($bodyRawData['data']);
 		} 
 		if (!$result) http_response_code(BAD_REQUEST);
-		echo json_encode($result);
+		echo json_encode(array('status'    =>    $result));
 	}
 }
