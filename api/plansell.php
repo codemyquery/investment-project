@@ -31,9 +31,9 @@ class PlanSell
         users.name as customer_name
         FROM plan_sell_data 
         INNER JOIN plan_details ON plan_sell_data.plan_id=plan_details.id 
-        INNER JOIN users ON plan_sell_data.customer_id=users.id"
-            . $this->helper->getSortingQuery('employee', t_plansell(@$_GET['orderBy']))
-            . $this->helper->getPaginationQuery();
+        INNER JOIN users ON plan_sell_data.customer_id=users.id";
+            // . $this->helper->getSortingQuery('employee', t_plansell(@$_GET['orderBy']))
+            // . $this->helper->getPaginationQuery();
         $total_rows = $this->helper->query_result();
         $this->helper->query = "SELECT COUNT(*) as count FROM plan_sell_data";
         $total_Count = $this->helper->query_result();
@@ -52,11 +52,12 @@ class PlanSell
             ':customer_id'                  =>  $this->helper->clean_data($data['customer_id']),
             ':plan_id'                      =>  $this->helper->clean_data($data['plan_id']),
             ':customer_purchase_status'     =>  'NO',
-            ':purchase_amount'              =>  $this->helper->clean_data($data['purchase_amount'])
+            ':purchase_amount'              =>  $this->helper->clean_data($data['purchase_amount']),
+            ':purchase_json'                => '{"name":"John", "age":30, "car":null}'
         );
         $this->helper->query = "
-        INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_amount) 
-        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_amount)";
+        INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_plan_details,purchase_amount) 
+        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_json,:purchase_amount)";
 
         return $this->helper->execute_query();
     }

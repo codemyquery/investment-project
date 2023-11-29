@@ -7,6 +7,7 @@ import noAadharCardBank from './images/no-aadhar-card-back.svg'
 import noPanCard from './images/no-pan-card.svg'
 import noBankStatement from './images/no-bank-statement.svg'
 import noSignature from './images/no-signature.svg'
+import footerlogo from './images/footer_logo.png'
 export {
     logo,
     virtualProperty,
@@ -16,5 +17,6 @@ export {
     noAadharCardBank,
     noPanCard,
     noBankStatement,
-    noSignature
+    noSignature,
+    footerlogo
 }

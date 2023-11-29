@@ -1,5 +1,7 @@
 //import logo from '../../assets/images/logo.png'
 
+
+
 export const Footer = () => {
     function setActive(undefined: undefined) {
         throw new Error("Function not implemented.");
@@ -10,6 +12,7 @@ export const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-6 col-12">
+                    
                         <h4 style={{color: 'white'}}>Virtual Property</h4>
                         <p className="text-white fs-18 fs-sm-22 fw-400 my-3">
                             We connect you to the world of better investment.
@@ -19,6 +22,7 @@ export const Footer = () => {
                         <h6 className="fs-22 fs-sm-24 mb-md-3 mt-4 mt-md-0 fw-600 text-white">
                             Virtual Property
                         </h6>
+                        
                         <div className="flex-column nav">
                             <a href="/about" data-rr-ui-event-key="/about" className="nav-link">
                                 About Us

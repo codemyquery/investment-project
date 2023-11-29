@@ -1,12 +1,13 @@
-import { logo } from "../../assets"
 
-interface Logo {
+import { footerlogo} from "../../assets"
+
+interface footerlogo {
     className: string
 }
-export const Logo = ({ className }: Logo) => {
+export const footerLogo = ({ className }: footerlogo) => {
     return <a href="/" className={className}>
         <img
-        src={logo}
+        src={footerlogo}
         alt="logo"
         className="img-fluid"
         style={{ width: "12rem" }}
