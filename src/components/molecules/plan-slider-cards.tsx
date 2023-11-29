@@ -8,11 +8,9 @@ import payout from "../../assets/images/layout.svg";
 import leaf from "../../assets/images/leafy.png";
 interface PlanSliderCardsProps {
     data: PlanServerData
-    setDialog: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const PlanSliderCards = ({
     data,
-    setDialog
 }: PlanSliderCardsProps) => {
     const navigate = useNavigate();
     const { userInfo } = useAuth();
@@ -91,30 +89,27 @@ export const PlanSliderCards = ({
                 </div>
             </div>
             <div className="py-2">
-                <button
-                    type="button"
-                    className="main-btn-service maincolor bg-transparent btn btn-primary"
-                    onClick={() => {
-                        if (userInfo?.name) {
-                            if (userInfo.kycStatus === "NO") {
-                                navigate(`/user/profile`)
-                            } else {
-                                setDialog(true)
-                            }
-                        } else {
-                            navigate(`/login`)
-                        }
-                    }}
-                >
-                    Invest Now
-                </button>
-            </div>
-            <div className="py-2">
                 <a
-                    href={`/plan-overview/${data.planCode}`}
+                    href={`/plan-overview/${data.planCode}/${investmentAmounts[0]}`}
                     className="fs-16 fw-700 text-white text-center py-2"
                 >
-                    Know more
+                    <button
+                        type="button"
+                        className="main-btn-service maincolor bg-transparent btn btn-primary"
+                        onClick={() => {
+                            if (userInfo?.name) {
+                                if (userInfo.kycStatus === "NO") {
+                                    navigate(`/user/profile`)
+                                } else {
+
+                                }
+                            } else {
+                                navigate(`/login`)
+                            }
+                        }}
+                    >
+                        Invest Now
+                    </button>
                 </a>
             </div>
         </div>

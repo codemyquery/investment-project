@@ -3,12 +3,12 @@ import { SellFormData } from "../types/sell";
 import { WS_BASE_URL, callService } from "../utils";
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
-interface useDisplayTableSellDataHeadersProps{
-    
+interface useDisplayTableSellDataHeadersProps {
+
 }
 
 export const useDisplayTableSellDataHeaders = ({
-    
+
 }: useDisplayTableSellDataHeadersProps) => {
     const sellDataTableHeader: Array<DisplayTableColumnDefinition> = [
         {
@@ -28,7 +28,7 @@ export const useDisplayTableSellDataHeaders = ({
             type: 'text',
             headerName: 'Plan Amount',
             filterable: true,
-            icon: <CurrencyRupeeIcon style={{fontSize: '15px'}} /> ,
+            icon: <CurrencyRupeeIcon style={{ fontSize: '15px' }} />,
             iconPosition: 'left'
         },
         {
@@ -47,26 +47,6 @@ export const useDisplayTableSellDataHeaders = ({
     return sellDataTableHeader;
 }
 
-/* export const createSaleRecord = async (
-    data: Array<PlanFormData>, 
-    abortController?: AbortController
-): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
-    return await callService({
-        url: url,
-        method: 'POST',
-        userToken: 'sdasdasd',
-        abortController: abortController,
-        body: {
-            route: {
-                page: 'sell',
-                actions: 'sellPlan'
-            },
-            data: data
-        }
-    })
-} */
-
 export const fetchSaleDataList = async (
     query: string = "",
     abortController?: AbortController
@@ -81,7 +61,7 @@ export const fetchSaleDataList = async (
 }
 
 
-export const fetchSaleData = async (itemID: string, abortController?: AbortController) : Promise<SellServerData> => {
+export const fetchSaleData = async (itemID: string, abortController?: AbortController): Promise<SellServerData> => {
     const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=getSale&itemID=${itemID}`;
     return await callService({
         url: url,
@@ -106,8 +86,4 @@ export const InsertSellData = async (data: SellFormData, abortController?: Abort
             data: data
         }
     })
-}
-
-export function insert_into_sell(data: SellFormData) {
-    throw new Error("Function not implemented.");
 }

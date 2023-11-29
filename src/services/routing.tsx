@@ -182,8 +182,8 @@ const AppMenus: NavigationMenu[] = [
         id: "plan-overview",
         i18nKey: "Plan Overview",
         visible: false,
-        to: '/plan-overview/:itemID',
-        path: '/plan-overview/:itemID',
+        to: '/plan-overview/:itemID/:investmentAmount',
+        path: '/plan-overview/:itemID/:investmentAmount',
         component: PlanOverview,
         allowedGroups: []
     }

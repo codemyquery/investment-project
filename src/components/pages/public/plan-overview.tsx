@@ -4,10 +4,12 @@ import { Plan } from "../../../services";
 import { MonthsName, PlanServerData } from "../../../types";
 import "../../../styles/virtual.css";
 import { Autocomplete, TextField } from "@mui/material";
-import { formatNumber } from "../../../utils";
+import { BASE_URL, formatNumber } from "../../../utils";
 import { ExpandableList } from "../../molecules";
 import { capitalize } from "../../../utils/helper";
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../providers";
 
 const defaultValue: PlanServerData = {
   id: "",
@@ -28,12 +30,13 @@ interface SelectOptions {
 }
 
 export const PlanOverview = () => {
-  const { itemID } = useParams();
+  const { itemID, investmentAmount } = useParams();
+  const { userInfo } = useAuth();
   const date = new Date();
   const plan = useRef<PlanServerData>(defaultValue);
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
-  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: 0 });
+  const [planAmount] = useState<SelectOptions>({ label: investmentAmount!, value: Number(investmentAmount) });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
@@ -44,17 +47,16 @@ export const PlanOverview = () => {
     const init = async () => {
       plan.current = await Plan.fetchPlan(itemID!, abortController);
       const options: SelectOptions[] = Object.keys(plan.current.planDetails).map((amount) => ({ value: Number(amount), label: `₹ ${formatNumber(Number(amount))}` }));
-      setOptions(options) 
-      setPlanAmount({label: options[0].label, value: options[0].value})
+      setOptions(options);
     };
     init();
   }, []);
 
   useEffect(() => {
-    const selectedInvestmentAmount = [...(plan.current.planDetails[planAmount.value] || [])];
+    const selectedInvestmentAmount = [...(plan.current.planDetails[investmentAmount as unknown as string] || [])];
     selectedInvestmentAmount.shift();
     setCashFlowYears(selectedInvestmentAmount);
-  }, [planAmount.value])
+  }, [plan.current.planDetails])
 
   useEffect(() => {
     const updatedPlanToPreview: Record<string, Record<string, any>> = {};
@@ -113,7 +115,9 @@ export const PlanOverview = () => {
                   <a className="gtm-scroll-menu active">Overview</a>
                   <div className="button-invest gtm-cb-invest-btn ">
                     {" "}
-                    Invest
+                    {
+                      !userInfo?.name && 'Invest'
+                    }
                   </div>
                 </div>
               </div>
@@ -199,7 +203,7 @@ export const PlanOverview = () => {
                           value={planAmount}
                           onChange={(event, newValue) => {
                             if (newValue) {
-                              setPlanAmount(newValue)
+                              window.location.href = `${BASE_URL}/plan-overview/${itemID}/${newValue.value}`
                             }
                           }}
                           isOptionEqualToValue={(o, v) => o.value === v.value}

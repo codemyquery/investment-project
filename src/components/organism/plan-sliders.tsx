@@ -1,15 +1,10 @@
-import { Box, useTheme, Skeleton, Grid } from "@mui/material"
+import { Box, useTheme, Skeleton } from "@mui/material"
 import { useState } from "react";
 import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
-import { DefaultFormState, PlanServerData } from "../../types";
+import { PlanServerData } from "../../types";
 import { PlanSliderCards } from "../molecules";
-import { GenericDialog } from "./genique-dialog";
-import { InsertSellData } from "../../services/sell";
-import { useNavigate } from "react-router-dom";
-import { SellFormData } from "../../types/sell";
-import { Sell, useHookForm } from "../../services";
-import { BASE_URL } from "../../utils";
+import { Sell } from "../../services";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -17,11 +12,11 @@ interface PlanSliderProps {
     planDetail: PlanServerData[],
     loader: boolean
 }
+
 export const PlanSlider = ({
     loader,
     planDetail
 }: PlanSliderProps) => {
-    const [dialog, setDialog] = useState(false)
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
@@ -33,32 +28,12 @@ export const PlanSlider = ({
     if (loader) {
         return <Skeleton sx={{ width: '100%', height: '200px' }} />
     }
-
-    const closeDialog = () => {
-        setDialog(false)
-    }
-    const YesPurchase = () => {
-        const navigate = useNavigate();
-        const [formState, setFormState] = useState<SellFormData>();
     
-        const {
-            control,
-            handleSubmit,
-            formState: { },
-        } = useHookForm<SellFormData>({  });
-    
-        const onSubmitItem = async (data: SellFormData) => {
-            try {
-                const response = await Sell.InsertSellData(data);
-                
-                if (response) {
-                    window.location.href = `${BASE_URL}/user/my-plan`
-                } else {
-                    
-                }
-            } catch (error) {
-                
-            }
+    const yesPurchase = async (data: PlanServerData) => {
+        try {
+            const response = await Sell.InsertSellData({ plan_id: data.id, purchase_amount: 60});
+        } catch (error) {
+            console.log(error)
         }
     }
     return <section className="py-3" id="invest-now-plans">
@@ -106,8 +81,8 @@ export const PlanSlider = ({
                                     planSlider.push(
                                         <div key={plan1.planCode} >
                                             <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
-                                                {plan1 && <PlanSliderCards setDialog={setDialog} key={plan1.planCode} data={plan1} />}
-                                                {!isMobile && plan2 && <PlanSliderCards setDialog={setDialog} key={plan2.planCode} data={plan2} />}
+                                                {plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
+                                                {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
                                             </div>
                                         </div>
                                     );
@@ -117,16 +92,6 @@ export const PlanSlider = ({
                         }
                     </AutoPlaySwipeableViews>
                 </Box>
-                <GenericDialog
-                    open={dialog}
-                    title={"Purchase Plan"}
-                    content={<>Are you sure you want to purchase this plan?</>}
-                    maxWidth='sm'
-                    onClose={closeDialog}
-                    onCloseText="No, Cancel"
-                    onSubmit={YesPurchase}
-                    onSubmitText="Yes, Purchase"
-                />
             </div>
         </div>
     </section>

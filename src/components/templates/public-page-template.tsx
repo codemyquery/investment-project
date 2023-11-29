@@ -10,7 +10,6 @@ interface HomeProps {
 export const PublicPageTemplate = ({
     routingService
 }: HomeProps) => {
-
     return (
         <div className="app">
             <NavigationBar />
