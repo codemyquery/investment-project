@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import { Plan, Sell } from "../../../services";
-import { MonthsName, PlanServerData } from "../../../types";
+import { DefaultFormState, FormState, MonthsName, PlanServerData } from "../../../types";
 import "../../../styles/virtual.css";
 import { Autocomplete, TextField } from "@mui/material";
-import { BASE_URL, formatNumber } from "../../../utils";
-import { ExpandableList } from "../../molecules";
+import { BASE_URL, formatNumber, t } from "../../../utils";
+import { ExpandableList, Notifications } from "../../molecules";
 import { capitalize } from "../../../utils/helper";
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import { useNavigate } from "react-router-dom";
@@ -32,18 +32,20 @@ interface SelectOptions {
 
 export const PlanOverview = () => {
   const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+  const currentDate = date.getDate();
   const navigate = useNavigate();
-  const { itemID, investmentAmount } = useParams();
-  const { userInfo } = useAuth();
   const plan = useRef<PlanServerData>(defaultValue);
+  const { userInfo } = useAuth();
+  const { itemID, investmentAmount } = useParams();
+  const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
   const [dialog, setDialog] = useState<boolean>(false);
   const [planAmount] = useState<SelectOptions>({ label: investmentAmount!, value: Number(investmentAmount) });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
-  const currentYear = date.getFullYear();
-  const currentMonth = date.getMonth();
-  const currentDate = date.getDate();
+  const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -82,19 +84,22 @@ export const PlanOverview = () => {
     setPataToPreview(updatedPlanToPreview)
   }, [cashFlowYears])
 
-  const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
-
   const closeDialog = () => {
     setDialog(false)
   }
 
   const onSubmitDialog = async () => {
     try {
-        const response = await Sell.InsertSellData({ plan_id: itemID!, purchase_amount: Number(investmentAmount), customer_id: userInfo?.id!});
+      const response = await Sell.InsertSellData({ plan_id: itemID!, purchase_amount: Number(investmentAmount), customer_id: userInfo?.id! });
+      if (response.status) {
+        setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'success', notificationMessage: t.successMessage }))
+      } else {
+        setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'error', notificationMessage: response.errMsg || t.errorMessage }))
+      }
+      setDialog(false)
     } catch (error) {
-        console.log(error)
+      setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'error', notificationMessage: t.errorMessage }))
     }
-    setDialog(false)
   }
 
   return (
@@ -129,7 +134,7 @@ export const PlanOverview = () => {
               <div className="bond-details-header">
                 <div className="scrollmenu">
                   <a className="gtm-scroll-menu active">Overview</a>
-                  <div className="button-invest gtm-cb-invest-btn" onClick={() => {
+                  <div className="button-invest gtm-cb-invest-btn" style={{ cursor: 'pointer' }} onClick={() => {
                     if (userInfo?.name) {
                       if (userInfo.kycStatus === "NO") {
                         navigate(`/user/profile`)
@@ -325,6 +330,12 @@ export const PlanOverview = () => {
         onCloseText="No, Cancel"
         onSubmit={onSubmitDialog}
         onSubmitText="Yes, Purchase"
+      />
+      <Notifications
+        open={formState.notificationOpen}
+        message={formState.notificationMessage}
+        onClose={() => { setFormState(prev => { return { ...prev, notificationOpen: false, notificationType: 'error', notificationMessage: '' } }) }}
+        severity={formState.notificationType}
       />
     </div>
   );

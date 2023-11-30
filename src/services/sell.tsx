@@ -1,4 +1,4 @@
-import { DisplayTableColumnDefinition, SellDataResponse, SellServerData } from "../types";
+import { DisplayTableColumnDefinition, SellDataResponse, SellServerData, ServerResponse } from "../types";
 import { SellFormData } from "../types/sell";
 import { WS_BASE_URL, callService } from "../utils";
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
@@ -71,7 +71,7 @@ export const fetchSaleData = async (itemID: string, abortController?: AbortContr
     })
 }
 
-export const InsertSellData = async (data: SellFormData, abortController?: AbortController): Promise<SellFormData> => {
+export const InsertSellData = async (data: SellFormData, abortController?: AbortController): Promise<ServerResponse> => {
     const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
     return await callService({
         url: url,

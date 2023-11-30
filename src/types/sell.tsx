@@ -1,15 +1,10 @@
 export interface SellServerData {
-    id: string,
-    planCode: string,
-    insuranceCompany: string,
+    id: string
+    customerName: string,
     planName: string,
-    ageBand: string,
-    incomeTermOptions: string,
-    maturityValueOptions: string,
-    incomeFrequency: string,
-    ppt: string,
-    planDetails: Record<string, Array<string>>,
-    isNewRecord?: boolean
+    planAmount: string,
+    purchaseStatus: string,
+    orderDate: string
 }
 
 export interface SellDataResponse {
@@ -18,7 +13,7 @@ export interface SellDataResponse {
 }
 
 export interface SellFormData {
-    plan_id : string ,
-    purchase_amount : number,
+    plan_id: string,
+    purchase_amount: number,
     customer_id: string
 }

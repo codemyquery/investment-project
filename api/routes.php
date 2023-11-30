@@ -149,7 +149,7 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	}
 	else if ($method === 'POST') {
 		if ($action === 'sellPlan') {
-			$result = $planSell->Insert_into_plansell($bodyRawData['data']);
+			$result = $planSell->insert_into_plansell($bodyRawData['data']);
 		} 
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
