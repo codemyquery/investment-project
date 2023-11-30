@@ -27,7 +27,7 @@ export const AdminLoginPage = () => {
     const defaultTheme = createTheme();
     const navigate = useNavigate();
     const { adminInfo } = useAuth();
-    if(adminInfo){
+    if(adminInfo?.email){
         navigate('/admin/plan-details')
     }
     const {

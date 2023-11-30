@@ -1,4 +1,5 @@
 <?php
+session_start();
 date_default_timezone_set('Asia/Kolkata');
 require_once('./helper.php');
 require_once('./class.phpmailer.php');
@@ -102,14 +103,13 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	$user = new Users($helper);
 	$userKyc = new CustomerKYC($helper);
 	$planSell = new PlanSell($helper);
-
 	if ($method === 'GET') {
 		if ($action === 'getUsersList') {
 			$result = $user->get_user_list();
 		} else if ($action === "getKYCData") {
 			$result = $userKyc->get_kycData($itemID);
 		} else if ($action = 'getActivePlans') {
-			$result = $planSell->get_active_plans();
+			$result = $planSell->get_active_plans($itemID);
 		}
 		echo json_encode($result);
 	} else if ($method === 'POST') {

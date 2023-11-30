@@ -89,7 +89,7 @@ class PlanSell
         return $this->helper->execute_query();
     }
 
-    function get_active_plans()
+    function get_active_plans($itemID)
     {
         $pages_array = array();
         $this->helper->query = "SELECT 
@@ -105,7 +105,7 @@ class PlanSell
         plan_details.plan_name as plan_name
         FROM plan_sell_data 
         INNER JOIN plan_details ON plan_sell_data.plan_id=plan_details.plan_code 
-        INNER JOIN users ON plan_sell_data.customer_id=users.id WHERE customer_id='1'";
+        INNER JOIN users ON plan_sell_data.customer_id=users.id WHERE customer_id='$itemID' AND customer_purchase_status='YES'";
         $total_rows = $this->helper->query_result();
         foreach ($total_rows as $row) {
             $pages_array[] = formatplanSellOutput($row);

@@ -22,7 +22,6 @@ class Helper
 		$this->password = PASSWORD;
 		$this->database = DATABASE_NAME;
 		$this->connect = new PDO("mysql:host=$this->host; dbname=$this->database", "$this->username", "$this->password");
-		session_start();
 	}
 
 	function print_error($print) {

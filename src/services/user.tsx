@@ -121,8 +121,8 @@ export const fetchKycDetails = async (userId: string, abortController?: AbortCon
     })
 }
 
-export const fetchUserActivePlans = async (abortController?: AbortController): Promise<UserActivePlanServerData[]> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getActivePlans`;
+export const fetchUserActivePlans = async (id: string, abortController?: AbortController): Promise<UserActivePlanServerData[]> => {
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getActivePlans&itemID=${id}`;
     return await callService({
         url: url,
         method: 'GET',
