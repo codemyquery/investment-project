@@ -706,13 +706,11 @@ timeline .content {
 
 
 
-@media (min-width: 992px) {
-    #bond-details .bond-details-header .scrollmenu .button-invest {
-        display:block;
-        align-self: center;
-        margin-left: auto;
-        z-index: 1
-    }
+#bond-details .bond-details-header .scrollmenu .button-invest {
+    display:block;
+    align-self: center;
+    margin-left: auto;
+    z-index: 1
 }
 
 @media (min-width: 992px) {
@@ -822,20 +820,18 @@ timeline .content {
 
 
 
-@media (min-width: 992px) {
-    #bond-details .button-invest {
-        font-size:13px;
-        color: #fff;
-        font-weight: 400;
-        letter-spacing: .8px;
-        border: 2px solid #3f6fa3;
-        border-radius: 6px;
-        background-color: #3f6fa3;
-        padding: 10px 40px;
-        float: right;
-        cursor: pointer;
-        text-transform: capitalize
-    }
+#bond-details .button-invest {
+    font-size:13px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: .8px;
+    border: 2px solid #3f6fa3;
+    border-radius: 6px;
+    background-color: #3f6fa3;
+    padding: 10px 40px;
+    float: right;
+    cursor: pointer;
+    text-transform: capitalize
 }
 
 @media (min-width: 992px) and (min-width: 992px) {
