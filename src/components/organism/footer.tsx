@@ -284,7 +284,7 @@ export const Footer = () => {
                     </div>
                     <div className="text-center text-lg-end pt-3 pt-lg-0 col-lg-3">
                         <p className="text-white fw-400 mb-3 mb-md-0 pt-0">
-                            Made with ❤ in India.
+                            Made with <b style={{ color: 'red'}}>❤</b> in India.
                         </p>
                     </div>
                 </div>
