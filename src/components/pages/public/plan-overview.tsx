@@ -11,7 +11,7 @@ import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../providers";
 import { GenericDialog } from "../../organism";
-import { info } from "../../../assets";
+import { bonds, info, investmentTime, kyc } from "../../../assets";
 
 const defaultValue: PlanServerData = {
   id: "",
@@ -291,7 +291,7 @@ export const PlanOverview = () => {
                       <div>
                         <img
                           className="step-icons"
-                          src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/customer-icon.svg"
+                          src={kyc}
                         />
                         <div className="steps-text">Complete KYC</div>
                       </div>
@@ -300,7 +300,7 @@ export const PlanOverview = () => {
                         <div>
                           <img
                             className="step-icons"
-                            src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/certificate-icon.svg"
+                            src={bonds}
                           />
                           <div className="steps-text">Choose Bonds</div>
                         </div>
@@ -310,7 +310,7 @@ export const PlanOverview = () => {
                         <div>
                           <img
                             className="step-icons"
-                            src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/make-payment-icon.svg"
+                            src={investmentTime}
                           />
                           <div className="steps-text">Make Investment</div>
                         </div>

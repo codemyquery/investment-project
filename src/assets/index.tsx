@@ -16,6 +16,9 @@ import money from './images/money.svg'
 import moneycoin from './images/money-coin.svg'
 import moneygraph from './images/money-graph.svg'
 import info from './images/info.svg'
+import kyc from './images/kyc.svg'
+import bonds from './images/bonds.svg'
+import investmentTime from './images/investment-time.svg'
 
 export {
     logo,
@@ -35,5 +38,8 @@ export {
     money,
     moneycoin,
     moneygraph,
-    info
+    info,
+    kyc,
+    bonds,
+    investmentTime
 }
