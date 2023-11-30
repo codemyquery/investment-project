@@ -1,6 +1,6 @@
 import { AdminLogin } from "./admin-login";
 import { ContactUsFormData, ContactUsServerData, ContactusDataResponse } from "./contact-us";
-import { UserDataResponse, UserServerData, SignUpFormData, LoginFormData, UserKYCFormData, UserKYCServerData } from "./user";
+import { UserDataResponse, UserServerData, SignUpFormData, LoginFormData, UserKYCFormData, UserKYCServerData, UserActivePlanServerData } from "./user";
 import { EmployeeFormData, EmployeeServerData } from "./employee";
 import { DefaultFormState, FormDialog, FormModes, FormState, Severity } from "./forms";
 import { MonthsName, PlanDataResponse, PlanFormData, PlanServerData } from "./plan";
@@ -55,7 +55,8 @@ export type {
     SellDataResponse,
     SellServerData,
     UserKYCFormData,
-    UserKYCServerData
+    UserKYCServerData,
+    UserActivePlanServerData
 }
 
 export {

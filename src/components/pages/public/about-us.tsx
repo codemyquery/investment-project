@@ -1,5 +1,6 @@
 export const AboutUs = () => {
     window.scrollTo(0, 0);
+
     return (<>
         <div className="about">
             <section className="mb-md-5 mb-3 " id="how_it_works">

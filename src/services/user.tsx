@@ -6,7 +6,8 @@ import {
     SignUpFormData,
     LoginFormData,
     UserKYCServerData,
-    UserKYCFormData
+    UserKYCFormData,
+    UserActivePlanServerData
 } from "../types";
 import {
     WS_BASE_URL,
@@ -112,6 +113,16 @@ export const loginUser = async (data: LoginFormData, abortController?: AbortCont
 
 export const fetchKycDetails = async (userId: string, abortController?: AbortController): Promise<UserKYCServerData> => {
     const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getKYCData&itemID=${userId}`;
+    return await callService({
+        url: url,
+        method: 'GET',
+        userToken: 'sdasdasd',
+        abortController: abortController
+    })
+}
+
+export const fetchUserActivePlans = async (abortController?: AbortController): Promise<UserActivePlanServerData[]> => {
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getActivePlans`;
     return await callService({
         url: url,
         method: 'GET',

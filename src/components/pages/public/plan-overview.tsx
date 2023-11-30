@@ -31,6 +31,7 @@ interface SelectOptions {
 }
 
 export const PlanOverview = () => {
+  window.scrollTo(0, 0);
   const date = new Date();
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
@@ -90,7 +91,7 @@ export const PlanOverview = () => {
 
   const onSubmitDialog = async () => {
     try {
-      const response = await Sell.InsertSellData({ plan_id: itemID!, purchase_amount: Number(investmentAmount), customer_id: userInfo?.id! });
+      const response = await Sell.InsertSellData({ planId: itemID!, purchaseAmount: Number(investmentAmount), customerId: userInfo?.id!, purchaseStatus: 'NO' });
       if (response.status) {
         setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'success', notificationMessage: t.successMessage }))
       } else {
@@ -105,7 +106,7 @@ export const PlanOverview = () => {
   return (
     <div className="app-root" style={{ height: "100%", backgroundColor: "white" }}>
       <div id="bond-details">
-        <div className="">
+        <div>
           <div className="bond-details-content ">
             <div className="details-container sticky-popup">
               <div className="bond-banner-bg">

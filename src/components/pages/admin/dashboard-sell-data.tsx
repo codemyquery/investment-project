@@ -6,11 +6,6 @@ import { Sell } from "../../../services";
 import { formatNumber, request } from "../../../utils";
 import { Notifications } from "../../molecules/notification";
 
-interface Dialog {
-    data?: PlanServerData,
-    open: boolean
-}
-
 export const DashboardSellData = () => {
     const abortController = new AbortController();
     const [loader, setLoader] = useState(false);

@@ -22,7 +22,8 @@ export interface SellDataResponse {
 }
 
 export interface SellFormData {
-    plan_id: string,
-    purchase_amount: number,
-    customer_id: string
+    planId: string,
+    purchaseAmount: number,
+    customerId: string,
+    purchaseStatus: "YES" | "NO"
 }

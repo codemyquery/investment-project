@@ -5,7 +5,9 @@ import { PlanSlider } from '../../organism'
 import { Plan } from '../../../services'
 import { PlanServerData } from '../../../types'
 import { GetStarted, HaveQuestions, HomeWelcomeSection, ProudAbout, SocialSection, VirtualPropertyBenifits } from '../../molecules'
+
 export const HomePage = () => {
+  window.scrollTo(0, 0);
   const [loader, setLoader] = useState<boolean>(true)
   const [planDetail, setPlanDetail] = useState<PlanServerData[]>([])
   useEffect(() => {

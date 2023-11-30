@@ -1,3 +1,5 @@
+import { PlanServerData } from "./plan"
+
 export interface UserServerData {
     id: string,
     name: string,
@@ -81,4 +83,14 @@ export interface SignUpFormData {
 export interface UserDataResponse {
     count: number,
     rows: Array<UserServerData>
+}
+
+export interface UserActivePlanServerData {
+    customer_id: string,
+    plan_id: string,
+    customer_purchase_status: "YES" | "NO"
+    planAmount: string,
+    purchase_plan_details: PlanServerData,
+    updated_on: Date,
+    orderDate: Date
 }

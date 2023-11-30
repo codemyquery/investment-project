@@ -11,11 +11,11 @@ class Users
     function create_new_user($data)
     {
         $result = $this->helper->ValidateEmail($data['email']);
-        if($result["status"] !== true)return $result;
+        if ($result["status"] !== true) return $result;
         $result = $this->helper->ValidatePhoneNumber($data['mobile']);
-        if($result["status"] !== true)return $result;
+        if ($result["status"] !== true) return $result;
         $result = $this->helper->checkPasswordStrength($data['password']);
-        if($result["status"] !== true)return $result;
+        if ($result["status"] !== true) return $result;
         $this->helper->data = array(
             ':name'                    =>    $this->helper->clean_data($data['name']),
             ':email'                   =>    $this->helper->clean_data($data['email']),
@@ -65,23 +65,25 @@ class Users
             return null;
         }
         $customer = $this->helper->query_result()[0];
-        return formatCustomerOutput($customer);
+        return formatUserOutput($customer);
     }
 
-    function login_user($data) {
+    function login_user($data)
+    {
         $username = $data['username'];
         $password = $data['password'];
         $result = $this->helper->ValidateEmail($username);
-        if($result["status"] === 1)return $result;
-        
+        if ($result["status"] === 1) return $result;
+
         $this->helper->query = "SELECT * FROM users WHERE (email='$username' OR mobile='$username') AND password='$password'";
         if ($this->helper->total_row() === 0) {
             return null;
         }
         $username = $this->helper->query_result()[0];
-        $_SESSION["username_email"] = $username['email'];
-        $_SESSION["username_mobile"] = $username['mobile'];
-        return formatCustomerOutput($username);
+        $_SESSION["user_mobile"] = $username['mobile'];
+        $_SESSION["user_email"] = $username['email'];
+        $_SESSION["user_id"] = $username['id'];
+        return formatUserOutput($username);
     }
 
     function get_user_list()
@@ -94,7 +96,7 @@ class Users
         $this->helper->query = "SELECT COUNT(*) as count FROM users";
         $total_Count = $this->helper->query_result();
         foreach ($total_rows as $row) {
-            $pages_array[] = formatCustomerOutput($row);
+            $pages_array[] = formatUserOutput($row);
         }
         return array(
             "count" =>    (int)$total_Count[0]['count'],
@@ -103,7 +105,7 @@ class Users
     }
 }
 
-function formatCustomerOutput($row)
+function formatUserOutput($row)
 {
     return (object) array(
         "id"            =>     $row['id'],

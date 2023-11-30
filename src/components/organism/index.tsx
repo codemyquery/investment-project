@@ -1,3 +1,4 @@
+import { ActivePlanCard } from "./active-plan-card";
 import { AppDrawer } from "./app-drawer";
 import { AppRouting } from "./app-routing";
 import { Footer } from "./footer";
@@ -19,5 +20,6 @@ export {
     UserNomineeDetails,
     UserUploadDocuments,
     GenericDialog,
-    PlanSlider
+    PlanSlider,
+    ActivePlanCard
 }

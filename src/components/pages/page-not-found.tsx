@@ -1,6 +1,8 @@
 import '../../styles/pageNotFound.css'
 
 export const PageNotFound = () => {
+    window.scrollTo(0, 0);
+
     return <div className="wrapper">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
             <title>404</title>

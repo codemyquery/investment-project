@@ -18,7 +18,7 @@ interface Plan {
 
 interface SellPlan {
     page: 'sell',
-    actions: 'sellPlan'
+    actions: 'createSellPlan' | 'updateSellPlan'
 }
 
 interface ContactUs {

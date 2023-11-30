@@ -1,15 +1,15 @@
 <?php
 date_default_timezone_set('Asia/Kolkata');
+require_once('./helper.php');
 require_once('./class.phpmailer.php');
 require_once('./statusCode.php');
-require_once('./helper.php');
 require_once('./employee.php');
 require_once('./plan.php');
 require_once('./login.php');
 require_once('./user.php');
 require_once('./contactus.php');
-require_once('./plansell.php');
-require_once('./Customer-kyc.php');
+require_once('./plan-sell-data.php');
+require_once('./customer-kyc.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $helper = new Helper();
 //*****************Allow cross origion******************** */
@@ -101,11 +101,15 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	$result = null;
 	$user = new Users($helper);
 	$userKyc = new CustomerKYC($helper);
+	$planSell = new PlanSell($helper);
+
 	if ($method === 'GET') {
 		if ($action === 'getUsersList') {
 			$result = $user->get_user_list();
 		} else if ($action === "getKYCData") {
 			$result = $userKyc->get_kycData($itemID);
+		} else if ($action = 'getActivePlans') {
+			$result = $planSell->get_active_plans();
 		}
 		echo json_encode($result);
 	} else if ($method === 'POST') {
@@ -142,17 +146,22 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	$result = null;
 	$planSell = new PlanSell($helper);
 	if ($method === 'GET') {
-		if ($action === 'getSellist') {
+		if ($action === 'getSellList') {
 			$result = $planSell->get_plansell_list();
-		}else if ($action === 'getSale') {
+		} else if ($action === 'getSell') {
 			$result = $planSell->get_plan_sell($itemID);
 		}
 		echo json_encode($result);
-	}
-	else if ($method === 'POST') {
-		if ($action === 'sellPlan') {
-			$result = $planSell->insert_into_plansell($bodyRawData['data']);
-		} 
+	} else if ($method === 'POST') {
+		if ($action === 'createSellPlan') {
+			$result = $planSell->create_plan_sell_data($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
+	} else if ($method === 'PUT') {
+		if ($action === 'updateSellPlan') {
+			$result = $planSell->update_planSellData($bodyRawData['data']);
+		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
 	}

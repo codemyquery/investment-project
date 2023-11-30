@@ -14,8 +14,9 @@ const defaultValues: ContactUsFormData = {
 }
 
 export const ContactUs = () => {
-    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
     window.scrollTo(0, 0);
+    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
+
     const {
         control,
         handleSubmit,

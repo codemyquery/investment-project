@@ -15,7 +15,7 @@ class Login
         if ($this->helper->total_row() === 1) {
             $userDetails = $this->helper->query_result()[0];
             $_SESSION["admin_username"] = $userDetails['username'];
-            return formatUserOutput($userDetails);
+            return formatAdminUserOutput($userDetails);
         } else {
             return null;
         }
@@ -26,7 +26,7 @@ class Login
     }
 }
 
-function formatUserOutput($row)
+function formatAdminUserOutput($row)
 {
     return (object) array(
         "userName" => $row['username'],

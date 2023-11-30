@@ -69,7 +69,7 @@ export const fetchSaleDataList = async (
     query: string = "",
     abortController?: AbortController
 ): Promise<SellDataResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=getSellist&${query}`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=getSellList&${query}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -80,7 +80,7 @@ export const fetchSaleDataList = async (
 
 
 export const fetchSaleData = async (itemID: string, abortController?: AbortController): Promise<SellServerData> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=getSale&itemID=${itemID}`;
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=sell&actions=getSell&itemID=${itemID}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -99,7 +99,7 @@ export const InsertSellData = async (data: SellFormData, abortController?: Abort
         body: {
             route: {
                 page: 'sell',
-                actions: 'sellPlan'
+                actions: 'createSellPlan'
             },
             data: data
         }
@@ -109,13 +109,13 @@ export const updateSellData = async (data: SellFormDataAdmin, abortController?: 
     const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
     return await callService({
         url: url,
-        method: 'POST',
+        method: 'PUT',
         userToken: 'sdasdasd',
         abortController: abortController,
         body: {
             route: {
                 page: 'sell',
-                actions: 'sellPlan'
+                actions: 'updateSellPlan'
             },
             data: data
         }

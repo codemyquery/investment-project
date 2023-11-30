@@ -14,7 +14,7 @@ const defaultValues: LoginFormData = {
 };
 
 export const Login = () => {
-    const navigate = useNavigate();
+    window.scrollTo(0, 0);
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
 
     const {
@@ -54,7 +54,7 @@ export const Login = () => {
     }
 
     const onSubmit = () => handleSubmit(onSubmitItem)();
-    window.scrollTo(0, 0);
+    
     return (<>
         <div className="contact-us">
             <section>
