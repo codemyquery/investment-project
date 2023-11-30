@@ -719,6 +719,7 @@ select:disabled {
 [type="submit"],
 button {
   -webkit-appearance: button;
+  appearance: button;
 }
 
 [type="button"]:not(:disabled),
@@ -779,6 +780,7 @@ legend + * {
 
 [type="search"] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -797,6 +799,7 @@ legend + * {
 
 ::file-selector-button {
   -webkit-appearance: button;
+  appearance: button;
   font: inherit;
 }
 
@@ -13294,6 +13297,7 @@ html {
     #faa49e 91%
   );
   -webkit-background-clip: text;
+  background-clip: text;
   font-family: Poppins;
   font-size: 22.731px;
   font-style: normal;
@@ -13671,7 +13675,7 @@ a:hover {
 }
 
 .navbar .main-btn-nav {
-  moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   background-size: 200% 100%;
   border: none;
   border-radius: 5px;
@@ -13766,7 +13770,7 @@ a:hover {
 
 .navbar .main-btn-nav:focus,
 .navbar .main-btn-nav:hover {
-  moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   background-position: 100% 0;
   color: #2a2d3c;
   color: var(--color-charade);
@@ -13795,7 +13799,7 @@ a:hover {
 .main-btn,
 .main-btn:focus,
 .main-btn:hover {
-  moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   color: #2a2d3c;
   color: var(--color-charade);
   transition: all 0.4s ease-in-out;
@@ -13847,7 +13851,7 @@ a:hover {
 .signup-page .main-btn-sign,
 .signup-page .main-btn-sign:focus,
 .signup-page .main-btn-sign:hover {
-  moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   color: #2a2d3c;
   color: var(--color-charade);
   transition: all 0.4s ease-in-out;
@@ -13892,7 +13896,7 @@ a:hover {
 .login-page .main-btn-login,
 .login-page .main-btn-login:focus,
 .login-page .main-btn-login:hover {
-  moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   color: #2a2d3c;
   color: var(--color-charade);
   transition: all 0.4s ease-in-out;
@@ -13965,7 +13969,6 @@ a:hover {
 }
 
 .Service-Card .main-btn-service {
-  moz-transition: all 0.4s ease-in-out;
   background-size: 200% 100%;
   border: none;
   border-radius: 5px;
@@ -13982,7 +13985,7 @@ a:hover {
 
 .Service-Card .main-btn-service:focus,
 .Service-Card .main-btn-service:hover {
-  moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   background-position: 100% 0;
   color: #2a2d3c;
   color: var(--color-charade);
@@ -15370,22 +15373,22 @@ footer .nav .foot-icon .nav-link:hover {
   margin-inline-start: var(--swiper-centered-offset-before);
 }
 
-.swiper-centered.swiper-horizontal>.swiper-wrapper: before {
+/* .swiper-centered.swiper-horizontal>.swiper-wrapper: before {
   height: 100%;
   min-height: 1px;
   width: var(--swiper-centered-offset-after);
-}
+} */
 
 .swiper-centered.swiper-vertical > .swiper-wrapper > .swiper-slide:first-child {
   -webkit-margin-before: var(--swiper-centered-offset-before);
   margin-block-start: var(--swiper-centered-offset-before);
 }
 
-.swiper-centered.swiper-vertical>.swiper-wrapper: before {
+/* .swiper-centered.swiper-vertical>.swiper-wrapper: before {
   height: var(--swiper-centered-offset-after);
   min-width: 1px;
   width: 100%;
-}
+} */
 
 .swiper-centered > .swiper-wrapper > .swiper-slide {
   scroll-snap-align: center center;
@@ -17317,29 +17320,5 @@ button.swiper-pagination-bullet {
   to {
     -webkit-transform: rotate(1turn);
     transform: rotate(1turn);
-  }
-}
-
-@media all and (min-width:569px) and (max-width: 768px) {
-  .mobileview2{
-    display: none;
-  }
-}
-
-@media all and (min-width:481px) and (max-width: 568px) {
-  .mobileview2{
-    display: none;
-  }
-}
-
-@media all and (min-width:321px) and (max-width: 480px) {
-  .mobileview2{
-    display: none;
-  }
-}
-
-@media all and (min-width:0px) and (max-width: 320px) {
-  .mobileview2{
-    display: none;
   }
 }

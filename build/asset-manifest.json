@@ -1,12 +1,26 @@
 {
   "files": {
-    "main.css": "./static/css/main.31d6cfe0.css",
-    "main.js": "./static/js/main.3acf3b8a.js",
+    "main.css": "./static/css/main.16cc5f7f.css",
+    "main.js": "./static/js/main.3335ac67.js",
+    "static/media/signup.jpg": "./static/media/signup.b0ed204ce6b745e741c0.jpg",
+    "static/media/login.jpg": "./static/media/login.b11396c98375b66d8e4e.jpg",
+    "static/media/VirtualProperty.jpg": "./static/media/VirtualProperty.07d69469c8ec583d2c17.jpg",
+    "static/media/logo.png": "./static/media/logo.0fdb8cdccf89fa5a0191.png",
+    "static/media/footer_logo.png": "./static/media/footer_logo.20c02be489160722fa4d.png",
+    "static/media/tenure.svg": "./static/media/tenure.38a101b04fcb7307f289d9861b9bbc9a.svg",
+    "static/media/layout.svg": "./static/media/layout.586f0792fe8f6fa0cc4d66ff4d669869.svg",
+    "static/media/no-bank-statement.svg": "./static/media/no-bank-statement.be794d5f4bbf533b3774162a31647582.svg",
+    "static/media/no-signature.svg": "./static/media/no-signature.ebd14b6a96b9ad3b8da255dcdd0e9573.svg",
+    "static/media/no-pan-card.svg": "./static/media/no-pan-card.ca316d10c2432579b6278e0619c96a5b.svg",
+    "static/media/no-aadhar-front.svg": "./static/media/no-aadhar-front.dcb0d693dc8fa87144ed863c07799fc4.svg",
+    "static/media/no-aadhar-card-back.svg": "./static/media/no-aadhar-card-back.c2d5cea1d7a5ec7509bf6d0846d0c401.svg",
+    "static/media/lockin-period.svg": "./static/media/lockin-period.a8cce99eb67c4b83cfdbb5fe1b2be307.svg",
     "index.html": "./index.html",
-    "main.3acf3b8a.js.map": "./static/js/main.3acf3b8a.js.map"
+    "main.16cc5f7f.css.map": "./static/css/main.16cc5f7f.css.map",
+    "main.3335ac67.js.map": "./static/js/main.3335ac67.js.map"
   },
   "entrypoints": [
-    "static/css/main.31d6cfe0.css",
-    "static/js/main.3acf3b8a.js"
+    "static/css/main.16cc5f7f.css",
+    "static/js/main.3335ac67.js"
   ]
 }
