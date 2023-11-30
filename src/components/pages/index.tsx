@@ -12,6 +12,7 @@ import { SignUp } from "./public/sign-up";
 import { PlanOverview } from "./public/plan-overview";
 import { MyPlans } from "./public/user-profile/my-plan";
 import { DashboardSellData } from "./admin/dashboard-sell-data";
+import { EditPlanSell } from "./admin/edit-sell-data";
 
 export {
     PageNotFound,
@@ -27,5 +28,6 @@ export {
     SignUp,
     PlanOverview,
     MyPlans,
-    DashboardSellData
+    DashboardSellData,
+    EditPlanSell
 }

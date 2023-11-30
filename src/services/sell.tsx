@@ -1,5 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { DisplayTableColumnDefinition, SellDataResponse, SellServerData, ServerResponse } from "../types";
-import { SellFormData } from "../types/sell";
+import { SellFormData, SellFormDataAdmin } from "../types/sell";
 import { WS_BASE_URL, callService } from "../utils";
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
@@ -10,6 +11,7 @@ interface useDisplayTableSellDataHeadersProps {
 export const useDisplayTableSellDataHeaders = ({
 
 }: useDisplayTableSellDataHeadersProps) => {
+    const navigate = useNavigate();
     const sellDataTableHeader: Array<DisplayTableColumnDefinition> = [
         {
             field: 'customerName',
@@ -42,6 +44,22 @@ export const useDisplayTableSellDataHeaders = ({
             type: 'text',
             sortable: true,
             headerName: 'Order Date'
+        },
+        {
+            field: 'actions',
+            type: 'action',
+            sortable: false,
+            headerName: 'Actions',
+            cellAlignment: 'center',
+            headerAlign: 'center',
+            actionsList: [
+                {
+                    type: 'edit',
+                    callback: (params) => {
+                        navigate(`/admin/edit-plan-sell/${params.id}`)
+                    }
+                }
+            ]
         }
     ]
     return sellDataTableHeader;
@@ -72,6 +90,22 @@ export const fetchSaleData = async (itemID: string, abortController?: AbortContr
 }
 
 export const InsertSellData = async (data: SellFormData, abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    return await callService({
+        url: url,
+        method: 'POST',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'sell',
+                actions: 'sellPlan'
+            },
+            data: data
+        }
+    })
+}
+export const updateSellData = async (data: SellFormDataAdmin, abortController?: AbortController): Promise<ServerResponse> => {
     const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
     return await callService({
         url: url,

@@ -144,6 +144,8 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 	if ($method === 'GET') {
 		if ($action === 'getSellist') {
 			$result = $planSell->get_plansell_list();
+		}else if ($action === 'getSale') {
+			$result = $planSell->get_plan_sell($itemID);
 		}
 		echo json_encode($result);
 	}

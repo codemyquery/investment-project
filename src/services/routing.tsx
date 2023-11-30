@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AboutUs, HomePage, ContactUs, Login, SignUp, PlanOverview, MyPlans } from "../components/pages";
+import { AboutUs, HomePage, ContactUs, Login, SignUp, PlanOverview, MyPlans, EditPlanSell } from "../components/pages";
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
@@ -105,11 +105,21 @@ const AppMenus: NavigationMenu[] = [
     },
     {
         id: "plansell",
-        i18nKey: "plan s",
+        i18nKey: "",
         visible: true,
         to: '/admin/plan-sell',
         path: '/admin/plan-sell',
         component: DashboardSellData,
+        Icon: SellIcon,
+        allowedGroups: []
+    },
+    {
+        id: "planselledit",
+        i18nKey: "",
+        visible: false,
+        to: '/admin/edit-plan-sell/:itemID',
+        path: '/admin/edit-plan-sell/:itemID',
+        component: EditPlanSell,
         Icon: SellIcon,
         allowedGroups: []
     },

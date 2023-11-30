@@ -29,7 +29,7 @@ export const ExpandableCard = ({
     return <div className="home-accordian accordion">
         {
             content.map((c, i) => {
-                return <div className="mb-3 bg-transparent accordion-item">
+                return <div key={`${i}-${c.heading}`} className="mb-3 bg-transparent accordion-item">
                     <h2 className="text-white fw-600 fs-22 accordion-header">
                         <button onClick={onExpandHandler} type="button" aria-expanded="true" className="accordion-button collapsed">
                             <span className="pe-2">{`0${++i}`} </span>

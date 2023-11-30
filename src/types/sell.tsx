@@ -7,6 +7,15 @@ export interface SellServerData {
     orderDate: string
 }
 
+export interface SellFormDataAdmin {
+    id: string
+    customerName: string,
+    planName: string,
+    planAmount: string,
+    purchaseStatus: string,
+    orderDate: string
+}
+
 export interface SellDataResponse {
     count: number,
     rows: Array<SellServerData>

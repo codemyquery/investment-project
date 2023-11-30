@@ -48,7 +48,7 @@ export const GetStarted = () => {
                         </div>
                     </div>
                     <div className="text-center text-md-end col-lg-6 col-md-12 col-12">
-                        <ExpandableCard content={content} />
+                        <ExpandableCard content={content}/>
                     </div>
                 </div>
             </div>

@@ -8,9 +8,20 @@ class PlanSell
     }
 
 
-    function get_plan($itemID)
+    function get_plan_sell($itemID)
     {
-        $this->helper->query = "SELECT * FROM plan_details WHERE plan_code='$itemID'";
+        $this->helper->query = "SELECT 
+        plan_sell_data.id,
+        plan_sell_data.plan_id,
+        plan_sell_data.customer_purchase_status,
+        plan_sell_data.purchase_amount,
+        plan_sell_data.updated_on,
+        plan_details.plan_name as plan_name,
+        users.name as customer_name
+        FROM plan_sell_data 
+        INNER JOIN plan_details ON plan_sell_data.plan_id=plan_details.plan_code 
+        INNER JOIN users ON plan_sell_data.customer_id=users.id WHERE plan_sell_data.id = $itemID";
+        
         if ($this->helper->total_row() === 0) {
             return null;
         }
@@ -58,7 +69,6 @@ class PlanSell
         $this->helper->query = "
         INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_plan_details,purchase_amount) 
         VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_plan_details,:purchase_amount)";
-
         return $this->helper->execute_query();
     }
 }

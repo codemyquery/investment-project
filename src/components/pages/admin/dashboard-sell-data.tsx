@@ -41,7 +41,7 @@ export const DashboardSellData = () => {
             setLoader(true)
             const response = await Sell.fetchSaleDataList(query, abortController);
             setPayloadPlanData({
-                rows: response.rows.map((row, i) => ({ ...row, id: i.toString(), planAmount: formatNumber(Number(row.planAmount)) })),
+                rows: response.rows.map((row, i) => ({ ...row, planAmount: formatNumber(Number(row.planAmount)) })),
                 totalDataCount: response.count
             });
             setLoader(false);
