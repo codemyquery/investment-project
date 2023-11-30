@@ -16,7 +16,7 @@ const settings = ['Logout'];
 export const AdminPageTemplate = ({
     routingService
 }: HomeProps) => {
-    const { openDrawer, changeDrawer, adminInfo } = useAuth();
+    const { openDrawer, changeDrawer, adminInfo, signOutAdmin } = useAuth();
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const handleDrawerOpenClose = () => {
         changeDrawer(!openDrawer);
@@ -25,8 +25,9 @@ export const AdminPageTemplate = ({
         const currentTarget = evt.currentTarget;
         if (currentTarget.innerText === 'Logout') {
             const logout = async () => {
-                await Admin.signOut();
                 sessionStorage.removeItem(ADMIN_SESSION_NAME);
+                signOutAdmin();
+                await Admin.signOut();
                 window.location.href = `${BASE_URL}/admin`
             }
             logout();

@@ -18,7 +18,7 @@ export const MyPlans = () => {
     const init = async () => {
       const response = await Plan.fetchPlanList('', abortController);
       setPlanDetail(response.rows);
-      if(userInfo?.id){
+      if (userInfo?.id) {
         const activePlan = await Users.fetchUserActivePlans(userInfo?.id);
         setActivePlanDetail(activePlan);
       }

@@ -1,3 +1,5 @@
+import { moneycoin, moneygraph } from "../../assets"
+
 export const ProudAbout = () => {
     return <section className="py-5 d-flex justify-content-center align-items-center bg-charade">
         <div className="container">
@@ -34,7 +36,7 @@ export const ProudAbout = () => {
                     <div className="mt-4 mb-md-4 p-0 border-0 text-start bg-transparent card">
                         <div className="d-flex justify-content-start align-items-center px-0 card-body">
                             <img
-                                src="https://cms.growpital.com/uploads/Total_Investments_e2952f6ea8.svg"
+                                src={moneycoin}
                                 alt=""
                                 className="img-fluid me-3"
                             />
@@ -59,7 +61,7 @@ export const ProudAbout = () => {
                     <div className="mt-4 mb-md-4 p-0 border-0 text-start bg-transparent card">
                         <div className="d-flex justify-content-start align-items-center px-0 card-body">
                             <img
-                                src="https://cms.growpital.com/uploads/Returns_d6d7c7cb46.svg"
+                                src={moneygraph}
                                 alt=""
                                 className="img-fluid me-3"
                             />

@@ -3,7 +3,7 @@ import React, { createContext, useContext, useMemo, useReducer } from "react"
 import { ADMIN_SESSION_NAME, USER_SESSION_NAME } from "../utils/constants";
 
 interface UserInfo {
-    id:  string,
+    id: string,
     name: string,
     email: string,
     mobile: string,
@@ -11,7 +11,7 @@ interface UserInfo {
     dateCreated: string,
     status: string
 }
-interface AdminInfo{
+interface AdminInfo {
     userName: string,
     email: string,
     lastLogin: string
@@ -22,7 +22,7 @@ interface AuthState {
     userInfo?: UserInfo;
     adminInfo?: AdminInfo;
     homeURL: string;
-    status: "idle" | "signOut" | "signIn" | "signUp" | "signInAdmin",
+    status: "idle" | "signInAdmin" | "signOutAdmin" | "signOutUser" | "signIn" | "signUp",
     isDark: boolean,
     openDrawer: boolean;
 }
@@ -41,7 +41,8 @@ interface AuthContextAction {
         password: string,
         mobile: number
     ) => void;
-    signOut: () => void;
+    signOutUser: () => void;
+    signOutAdmin: () => void;
     changeTheme: (isDark: boolean) => void;
     changeDrawer: (openDrawer: boolean) => void;
 }
@@ -60,9 +61,10 @@ const AuthContext = createContext<AuthContextType>({
     changeTheme: () => { },
     changeDrawer: () => { },
     signInAdmin: () => { },
+    signOutAdmin: () => { },
+    signUp: () => { },
     signIn: () => { },
-    signOut: () => { },
-    signUp: () => { }
+    signOutUser: () => { }
 });
 
 type AuthAction =
@@ -78,7 +80,16 @@ type AuthAction =
     }
     |
     {
-        type: "SIGN_OUT"
+        type: "SIGN_OUT_ADMIN",
+        userToken: string,
+        adminInfo?: undefined,
+        status: 'signOutAdmin'
+    } |
+    {
+        type: "SIGN_OUT_USER",
+        userToken: string,
+        unserInfo?: undefined,
+        status: 'signOutUser'
     }
     |
     {
@@ -131,9 +142,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 userToken: token
             });
         },
-        signOut: () => {
+        signOutAdmin: () => {
             dispatch({
-                type: "SIGN_OUT"
+                type: "SIGN_OUT_ADMIN",
+                status: 'signOutAdmin',
+                userToken: '',
+                adminInfo: undefined
+            });
+        },
+        signOutUser: () => {
+            dispatch({
+                type: "SIGN_OUT_USER",
+                status: 'signOutUser',
+                userToken: '',
+                unserInfo: undefined
             });
         },
         changeTheme: (isDark: boolean) => {
@@ -184,7 +206,12 @@ const AuthReducer = (prevState: AuthState, action: AuthAction): AuthState => {
                 ...prevState,
                 ...action
             }
-        case 'SIGN_OUT':
+        case 'SIGN_OUT_ADMIN':
+            return {
+                ...prevState,
+                ...action
+            }
+        case 'SIGN_OUT_USER':
             return {
                 ...prevState,
                 ...action

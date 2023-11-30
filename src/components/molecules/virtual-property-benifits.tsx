@@ -1,3 +1,4 @@
+import { arrowUp, money } from "../../assets"
 import { AutoWriting } from "../atoms"
 
 export const VirtualPropertyBenifits = () => {
@@ -85,7 +86,7 @@ export const VirtualPropertyBenifits = () => {
                                     <div className="m-1 bg-dark-gradient rounded p-4 card-body">
                                         <div className="darkcard-icon p-3 mx-auto mb-4">
                                             <img
-                                                src="https://cms.growpital.com/uploads/4_8fbdec3b01.svg"
+                                                src={arrowUp}
                                                 alt=""
                                                 className="img-fluid"
                                             />
@@ -104,7 +105,7 @@ export const VirtualPropertyBenifits = () => {
                                     <div className="m-1 bg-dark-gradient rounded p-4 card-body">
                                         <div className="darkcard-icon p-3 mx-auto mb-4">
                                             <img
-                                                src="https://cms.growpital.com/uploads/9_5e897da85d.svg"
+                                                src={money}
                                                 alt=""
                                                 className="img-fluid"
                                             />
@@ -124,7 +125,7 @@ export const VirtualPropertyBenifits = () => {
                                 <div className="m-1 bg-dark-gradient rounded p-4 card-body">
                                     <div className="darkcard-icon p-3 mx-auto mb-4">
                                         <img
-                                            src="https://cms.growpital.com/uploads/5_9c2e76a67a.svg"
+                                            src={money}
                                             alt=""
                                             className="img-fluid"
                                         />

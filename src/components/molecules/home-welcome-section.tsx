@@ -1,4 +1,4 @@
-import { virtualProperty } from "../../assets"
+import { growth, percent, plant, virtualProperty } from "../../assets"
 import { AutoWriting } from "../atoms"
 
 export const HomeWelcomeSection = () => {
@@ -64,7 +64,7 @@ export const HomeWelcomeSection = () => {
                                     <div className="m-1 bg-dark-gradient rounded px-4 py-5 py-md-4 card-body">
                                         <div className="darkcard-icon p-3 mx-auto mb-4 mb-md-2 d-flex justify-content-center align-items-center">
                                             <img
-                                                src="https://cms.growpital.com/uploads/2_cc14b85f6f.svg"
+                                                src={percent}
                                                 alt=""
                                                 className="img-fluid"
                                             />
@@ -84,7 +84,7 @@ export const HomeWelcomeSection = () => {
                                     <div className="m-1 bg-dark-gradient rounded px-4 py-5 py-md-4 card-body">
                                         <div className="darkcard-icon p-3 mx-auto mb-4 mb-md-2 d-flex justify-content-center align-items-center">
                                             <img
-                                                src="https://cms.growpital.com/uploads/1_79f6fc0e8e.svg"
+                                                src={growth}
                                                 alt=""
                                                 className="img-fluid"
                                             />
@@ -106,7 +106,7 @@ export const HomeWelcomeSection = () => {
                                     <div className="m-1 bg-dark-gradient rounded px-4 py-5 py-md-4 card-body">
                                         <div className="darkcard-icon px-3 py-1 mx-auto mb-4 mb-md-2 d-flex justify-content-center align-items-center">
                                             <img
-                                                src="https://cms.growpital.com/uploads/3_b6a6d12167.svg"
+                                                src={plant}
                                                 alt=""
                                                 className="img-fluid"
                                             />

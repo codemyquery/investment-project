@@ -14,7 +14,7 @@ const settings = ['Logout'];
 
 export const NavigationBar = () => {
     const navigate = useNavigate();
-    const { homeURL, userInfo } = useAuth();
+    const { homeURL, userInfo, signOutAdmin } = useAuth();
     const [active, setActive] = useState<MenusType>(undefined)
     const [showHeader, setShowHeader] = useState('')
     const navBarClick = (navbar: MenusType) => {
@@ -48,8 +48,9 @@ export const NavigationBar = () => {
         const currentTarget = evt.currentTarget;
         if (currentTarget.innerText === 'Logout') {
             const logout = async () => {
-                await Admin.signOut();
                 sessionStorage.clear();
+                signOutAdmin();
+                await Admin.signOut();
                 window.location.href = `${BASE_URL}`
             }
             logout();
@@ -80,9 +81,9 @@ export const NavigationBar = () => {
                         <ul className="m-auto navbar-nav">
                             {
                                 Menus.filter(menu => {
-                                    if(userInfo?.name){
+                                    if (userInfo?.name) {
                                         return true;
-                                    }else{
+                                    } else {
                                         return !UserMenus.includes(menu);
                                     }
                                 }).map((menu, index) => {
