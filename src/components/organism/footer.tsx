@@ -1,11 +1,8 @@
-//import logo from '../../assets/images/logo.png'
-
-
+import { useNavigate } from "react-router-dom"
+import { BASE_URL } from "../../utils";
 
 export const Footer = () => {
-    function setActive(undefined: undefined) {
-        throw new Error("Function not implemented.");
-    }
+    const navigate = useNavigate();
 
     return (
         <footer className="py-4 margin-top">
@@ -72,8 +69,7 @@ export const Footer = () => {
                         </div> */}
                         <div className="flex-column nav">
                             <a
-                                href="https://app.growpital.com/signup?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA."
-                                data-rr-ui-event-key="https://app.growpital.com/signup?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA."
+                                href={`${BASE_URL}/login`}
                                 className="nav-link"
                             >
                                 Sign up
@@ -81,8 +77,7 @@ export const Footer = () => {
                         </div>
                         <div className="flex-column nav">
                             <a
-                                href="https://app.growpital.com/login?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA"
-                                data-rr-ui-event-key="https://app.growpital.com/login?_gl=1*jb0rsu*_ga*MTM4OTAyNDk1Ny4xNjY1Mzg2MTc4*_ga_YFL1QCKH2V*MTY2NjI3NTU3Ny4xOC4xLjE2NjYyNzU1NzcuMC4wLjA"
+                                href={`${BASE_URL}/sign-up`}
                                 className="nav-link"
                                 
                             >
