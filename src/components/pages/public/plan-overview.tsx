@@ -11,6 +11,7 @@ import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../providers";
 import { GenericDialog } from "../../organism";
+import { info } from "../../../assets";
 
 const defaultValue: PlanServerData = {
   id: "",
@@ -167,7 +168,7 @@ export const PlanOverview = () => {
                           <div id="tooltip-component" className="">
                             <img
                               alt="tooltip"
-                              src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
+                              src={info}
                             />
                           </div>
                           <p />
@@ -200,7 +201,7 @@ export const PlanOverview = () => {
                           <div id="tooltip-component">
                             <img
                               alt="tooltip"
-                              src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
+                              src={info}
                             />
                           </div>
                           <p />
@@ -211,7 +212,7 @@ export const PlanOverview = () => {
                           <div id="tooltip-component">
                             <img
                               alt="tooltip"
-                              src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
+                              src={info}
                             />
                           </div>
                           <p />

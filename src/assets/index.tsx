@@ -15,6 +15,7 @@ import arrowUp from './images/arrow-up.svg'
 import money from './images/money.svg'
 import moneycoin from './images/money-coin.svg'
 import moneygraph from './images/money-graph.svg'
+import info from './images/info.svg'
 
 export {
     logo,
@@ -33,5 +34,6 @@ export {
     arrowUp,
     money,
     moneycoin,
-    moneygraph
+    moneygraph,
+    info
 }
