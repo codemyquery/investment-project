@@ -30,32 +30,10 @@ class Users
         return $this->helper->execute_query();
     }
 
-    function update_user($data)
+    function update_user_kyc($itemID)
     {
-        /* $this->helper->data = array(
-            ':customer_id'              =>    $this->helper->clean_data($data['customer_id']),
-            ':name'            =>    $this->helper->clean_data($data['name']),
-            ':address'                =>    $this->helper->clean_data($data['address']),
-            ':pan_card_no'               =>    $this->helper->clean_data($data['panNumber']),
-            ':mobile'                 =>    $this->helper->clean_data($data['mobile']),
-            ':email'                  =>    $this->helper->clean_data($data['email']),
-            ':is_kyc_verified'             =>   $this->helper->clean_data($data['is_kyc_verified']),
-            ':aadhar_no'               =>    $this->helper->clean_data($data['aadharCardNo']),
-            ':created_dt'             =>     $this->helper->clean_data($data['created_dt']),
-            ':date_updated'           =>    $this->helper->get_current_datetimestamp()
-        );
-        $this->helper->query = "UPDATE customer SET 
-        name = :name, 
-        address = :address, 
-        mobile = :mobile, 
-        email = :email, 
-        pan_card_no = :pan_card_no,
-        is_kyc_verified= :is_kyc_verified,
-        aadhar_no= :aadhar_no,
-        created_dt = :created_dt,
-        date_updated = :date_updated
-        WHERE customer_id = :customer_id";
-        return $this->helper->execute_query(); */
+        $this->helper->query = "UPDATE users SET kyc_status = 'YES' WHERE id=$itemID";
+        return $this->helper->execute_query();
     }
 
     function get_user($mobileNo)

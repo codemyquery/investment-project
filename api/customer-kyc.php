@@ -1,5 +1,6 @@
 <?php
 require_once('./statusCode.php');
+require_once('./user.php');
 class CustomerKYC
 {
     var $helper;
@@ -46,6 +47,7 @@ class CustomerKYC
 
     function update_kyc_data($data)
     {
+        $user = new Users($this->helper);
         $customer_id = $this->helper->clean_data($data['id']);
         $this->helper->data = array(
             ':id'                  =>  $customer_id,
@@ -65,7 +67,7 @@ class CustomerKYC
             ':Nominee_dob'         =>  $this->helper->clean_data($data['nomineeDob']),
             ':Nominee_address'     =>  $this->helper->clean_data($data['nomineeAddress']),
             ':address'             =>  $this->helper->clean_data($data['address']),
-            ':dob'             =>  $this->helper->clean_data($data['dob'])
+            ':dob'                 =>  $this->helper->clean_data($data['dob'])
         );
 
         $this->helper->query = "
@@ -89,7 +91,10 @@ class CustomerKYC
         Nominee_relation=:Nominee_relation,
         Nominee_dob=:Nominee_dob,	
         Nominee_address=:Nominee_address";
-        return $this->helper->execute_query();
+        if ($this->helper->execute_query()) {
+            return $user->update_user_kyc($customer_id);
+        }
+        return false;
     }
 }
 

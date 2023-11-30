@@ -85,7 +85,7 @@ export const Profile = () => {
         newCompleted[activeStep] = true;
         setCompleted(newCompleted);
         handleNext();
-        if (completedSteps() === steps.length - 1) {
+        if (completedSteps() === steps.length) {
             onSubmit();
         }
     };
