@@ -52,12 +52,12 @@ class PlanSell
             ':customer_id'                  =>  $this->helper->clean_data($data['customer_id']),
             ':plan_id'                      =>  $this->helper->clean_data($data['plan_id']),
             ':customer_purchase_status'     =>  'NO',
-            ':purchase_amount'              =>  $this->helper->clean_data($data['purchase_amount']),
-            ':purchase_json'                => '{"name":"John", "age":30, "car":null}'
+            ':purchase_plan_details'        => '{"name":"John", "age":30, "car":null}',
+            ':purchase_amount'              =>  $this->helper->clean_data($data['purchase_amount'])
         );
         $this->helper->query = "
         INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_plan_details,purchase_amount) 
-        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_json,:purchase_amount)";
+        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_plan_details,:purchase_amount)";
 
         return $this->helper->execute_query();
     }
