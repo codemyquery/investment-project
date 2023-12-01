@@ -124,7 +124,7 @@ export const PlanOverview = () => {
                   <div className="side-icons-top">
                     <span className="help-text">Need Help ?</span>
                     <div className="button-phone gtm-cb-talk-expert">
-                      <a href="tel:+91-7231844488">
+                      <a href="tel:+91-9793909000">
                         <span><WifiCalling3Icon style={{ color: "brown", marginRight: '8px' }} />Talk to Expert</span>
                       </a>
                     </div>
@@ -173,7 +173,7 @@ export const PlanOverview = () => {
                               formatNumber(planAmount.value)
                             }
                           </p>
-                          <p className="text-title">Investment</p>
+                          <p className="text-title">Min. Investment</p>
                           <div id="tooltip-component" className="">
                             <img
                               alt="tooltip"
@@ -234,7 +234,7 @@ export const PlanOverview = () => {
                   <div className="return-section">
                     <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Cash Flow ₹{formatNumber(income)}</h2>
+                        <h2 className="heading">Approx Net Benefits :        ₹{formatNumber(income+planAmount.value)}</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
                         <Autocomplete
@@ -248,7 +248,7 @@ export const PlanOverview = () => {
                           }}
                           isOptionEqualToValue={(o, v) => o.value === v.value}
                           options={options}
-                          renderInput={(params) => <TextField {...params} variant="outlined" label="₹ Amount" />}
+                          renderInput={(params) => <TextField {...params} variant="outlined" label="₹ Invested Amount" />}
                         />
                       </div>
                       <div>
@@ -265,7 +265,7 @@ export const PlanOverview = () => {
                 </div>
                 {/* end old cash flow */}
                 {/* Key Highlight Section */}
-                <div className="keyhighlight-parent">
+                {/* <div className="keyhighlight-parent">
                   <div className="keyhighlight-section">
                     <div className="container">
                       <h2 className="key-highlight-heading common-padding-class details-section-header">
@@ -290,7 +290,7 @@ export const PlanOverview = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* Key Highlight Section End */}
                 {/* Invest Steps */}
                 <div className="common-container">
@@ -311,7 +311,7 @@ export const PlanOverview = () => {
                             className="step-icons"
                             src={bonds}
                           />
-                          <div className="steps-text">Choose Bonds</div>
+                          <div className="steps-text">Choose Amount</div>
                         </div>
                       </div>
                       <div className="next-steps">

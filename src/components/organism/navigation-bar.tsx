@@ -133,7 +133,7 @@ export const NavigationBar = () => {
                             <>
                                 <div className="d-flex d-none d-md-block">
                                     <a
-                                        href="https://growpital.zohobookings.in/#/customer/growpital"
+                                        href="#"
                                         target="#"
                                     >
                                         <button
