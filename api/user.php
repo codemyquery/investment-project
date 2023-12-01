@@ -68,7 +68,7 @@ class Users
     {
         $pages_array = array();
         $this->helper->query = "SELECT * FROM users "
-            . $this->helper->getSortingQuery('users', t_customer(@$_GET['orderBy']))
+            . $this->helper->getSortingQuery('users', t_user(@$_GET['orderBy']))
             . $this->helper->getPaginationQuery();
         $total_rows = $this->helper->query_result();
         $this->helper->query = "SELECT COUNT(*) as count FROM users";
@@ -96,7 +96,7 @@ function formatUserOutput($row)
     );
 }
 
-function t_customer($fieldName)
+function t_user($fieldName)
 {
     switch ($fieldName) {
         case 'dateUpdated':

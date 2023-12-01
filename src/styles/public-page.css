@@ -3443,7 +3443,6 @@ textarea.form-control.is-valid {
 
 .invalid-feedback {
   color: #dc3545;
-  display: none;
   font-size: 0.875em;
   margin-top: 0.25rem;
   width: 100%;
