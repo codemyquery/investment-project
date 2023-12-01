@@ -12,14 +12,14 @@ export const ExpandableCard = ({
 }: ExpandableCardProps) => {
     const onExpandHandler = (evt: React.MouseEvent<HTMLButtonElement>) => {
         const currentTarget = evt.currentTarget;
-        const parent  = currentTarget?.parentElement?.parentElement;
-        if(parent && currentTarget){
+        const parent = currentTarget?.parentElement?.parentElement;
+        if (parent && currentTarget) {
             const desc = parent.querySelector('.accordion-collapse.collapse')
-            if(desc){
-                if(desc.classList.contains('show')){
+            if (desc) {
+                if (desc.classList.contains('show')) {
                     desc.classList.remove('show');
                     currentTarget.classList.add('collapsed')
-                }else{
+                } else {
                     desc.classList.add('show')
                     currentTarget.classList.remove('collapsed')
                 }
@@ -38,7 +38,7 @@ export const ExpandableCard = ({
                     </h2>
                     <div className="accordion-collapse collapse" style={{}}>
                         <div className="accordion-body">
-                            {c.description.map(desc => <p>{desc}</p>)}
+                            {c.description.map((desc, i) => <p key={`${desc}-${i}`}>{desc}</p>)}
                         </div>
                     </div>
                 </div>
