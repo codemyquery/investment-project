@@ -1,5 +1,5 @@
 import { Grid, TextField } from "@mui/material"
-import { ControlNumber, ControlText, UserProfileKycOptions } from "../molecules"
+import { ControlNumber, ControlText } from "../molecules"
 import { Control } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
 

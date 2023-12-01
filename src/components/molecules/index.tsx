@@ -16,12 +16,10 @@ import { Notifications } from "./notification";
 import { PlanSliderCards } from "./plan-slider-cards";
 import { ProudAbout } from "./proud-about";
 import { SocialSection } from "./social-sections";
-import { UserProfileKycOptions } from "./user-profile-kyc-options";
 import { VirtualPropertyBenifits } from "./virtual-property-benifits";
 
 export { 
     Logo,
-    UserProfileKycOptions,
     ControlSelect,
     ControlText,
     Notifications,

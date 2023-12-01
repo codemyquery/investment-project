@@ -174,7 +174,7 @@ export const PlanOverview = () => {
                           <p />
                         </div>
                         <div className="flex-column ">
-                          <p className="text-value">{currentDate}-{capitalize(MonthsName[currentMonth + 1].slice(0, 3))}-{currentYear + cashFlowYears.length}</p>
+                          <p className="text-value">{currentDate}-{capitalize(MonthsName[currentMonth].slice(0, 3))}-{currentYear + cashFlowYears.length}</p>
                           <p className="text-title ">Maturity Date</p>
                           <p className="text-value">
                             <span className="rupee-symbol">₹</span>

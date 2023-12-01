@@ -1,6 +1,6 @@
 import { Grid, Card, CardContent, TextField, Stack, Button, Box, Step, StepButton, Stepper, Typography } from "@mui/material"
 import { UserBankDetails, UserNomineeDetails, UserPersonalDetails, UserUploadDocuments } from "../../../organism"
-import { Notifications, UserProfileKycOptions } from "../../../molecules"
+import { Notifications } from "../../../molecules"
 import { useEffect, useState } from "react"
 import { Users, useHookForm } from "../../../../services"
 import { DefaultFormState, FormModes, FormState, UserKYCFormData, UserKYCServerData } from "../../../../types"
@@ -81,19 +81,49 @@ export const Profile = () => {
     };
 
     const handleComplete = () => {
+        if(activeStep === 0){
+            if(!getValues('name') 
+            || !getValues('mobile') 
+            || !getValues('email')  
+            || !getValues('pancardNumber')
+            || !getValues('aadharCardNumber')
+            || !getValues('dob')
+            || !getValues('address')
+            )
+            return false;
+        }else if(activeStep === 1) {
+            if(!getValues('bankName') 
+            || !getValues('ifsc') 
+            || !getValues('bankAccNo')  
+            || !getValues('confBankAccNo')
+            )
+            return false;
+        }else if(activeStep === 2){
+            if(!getValues('nomineeName') 
+            || !getValues('nomineerelation') 
+            || !getValues('nomineeDob')  
+            || !getValues('nomineeAddress')
+            )
+            return false;
+        }else{
+            if(!getValues('aadharCard.frontUrl') 
+            || !getValues('aadharCard.backUrl') 
+            || !getValues('panCardUrl')  
+            || !getValues('signatureUrl')
+            || !getValues('bankStatementUrl')
+            )
+            return false;
+        }
         const newCompleted = completed;
         newCompleted[activeStep] = true;
         setCompleted(newCompleted);
         handleNext();
-        if (completedSteps() === steps.length) {
-            onSubmit();
-        }
     };
 
     const {
         control,
         handleSubmit,
-        formState: { errors, isDirty, isValid },
+        formState: {  },
         setValue,
         reset,
         getValues
@@ -197,7 +227,7 @@ export const Profile = () => {
                                         <Box sx={{ flex: '1 1 auto' }} />
                                         {activeStep !== steps.length &&
 
-                                            <Button onClick={handleComplete} variant="outlined" color="success">
+                                            <Button onClick={completedSteps() === steps.length - 1 ? onSubmit : handleComplete} variant="outlined" color="success">
                                                 {completedSteps() === steps.length - 1 ? 'Finish' : 'Save & Next'}
                                             </Button>
                                         }
