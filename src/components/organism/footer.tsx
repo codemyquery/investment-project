@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../utils";
 
 export const Footer = () => {
@@ -21,7 +21,7 @@ export const Footer = () => {
                         </h6>
                         
                         <div className="flex-column nav">
-                            <a href="/about" data-rr-ui-event-key="/about" className="nav-link">
+                            <a href="/about-us" data-rr-ui-event-key="/about" className="nav-link">
                                 About Us
                             </a>
                         </div>
@@ -45,7 +45,7 @@ export const Footer = () => {
                         </div> */}
                         <div className="flex-column nav">
                             <a
-                                href="/contact-us.html"
+                                href="/contact-us"
                                 data-rr-ui-event-key="/contact"
                                 className="nav-link"
                             >

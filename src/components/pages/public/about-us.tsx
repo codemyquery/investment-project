@@ -964,7 +964,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo5_1b642e31e7.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -985,7 +985,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo4_19a3820c5d.png"
+                                                        src=""
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1006,7 +1006,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo1_14f74feab3.png"
+                                                        src=""
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1027,7 +1027,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo3_686fd9faa9.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1048,7 +1048,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo2_1c08a42553.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1069,7 +1069,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo6_a475f59f99.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1090,7 +1090,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo5_1b642e31e7.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1111,7 +1111,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo4_19a3820c5d.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1132,7 +1132,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo1_14f74feab3.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1153,7 +1153,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo3_686fd9faa9.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1174,7 +1174,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo2_1c08a42553.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1195,7 +1195,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo6_a475f59f99.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1216,7 +1216,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo5_1b642e31e7.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1237,7 +1237,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo4_19a3820c5d.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1258,7 +1258,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo1_14f74feab3.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
@@ -1279,7 +1279,7 @@ export const AboutUs = () => {
                                                     style={{ width: "100%", display: "inline-block" }}
                                                 >
                                                     <img
-                                                        src="https://cms.growpital.com/uploads/logo3_686fd9faa9.png"
+                                                        src="../../../src/assets/images/AdityaBirlaGroup.jpg"
                                                         alt=""
                                                         className=" me-4"
                                                     />
