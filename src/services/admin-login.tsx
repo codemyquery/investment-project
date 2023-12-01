@@ -4,7 +4,7 @@ import { WS_BASE_URL, callService } from "../utils";
 export const signIn = async (
     credentials: AdminLogin
 ): Promise<any> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
         method: 'POST',
@@ -20,7 +20,7 @@ export const signIn = async (
 }
 
 export const signOut = async () => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=login&actions=logout`;
+    const url = `${WS_BASE_URL}?&page=login&actions=logout`;
     return await callService({
         url: url,
         method: 'GET',

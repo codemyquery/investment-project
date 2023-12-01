@@ -49,7 +49,7 @@ export const fetchEmployeesList = async (
     query: string = "",
     abortController?: AbortController
 ): Promise<EmployeeDataResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=employee&actions=getEmployeeList&${query}`;
+    const url = `${WS_BASE_URL}?&page=employee&actions=getEmployeeList&${query}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -62,7 +62,7 @@ export const fetchEmployee = async (
     query: string = "",
     abortController?: AbortController
 ): Promise<EmployeeServerData> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=employee&actions=getEmployee&itemID=${query}`;
+    const url = `${WS_BASE_URL}?&page=employee&actions=getEmployee&itemID=${query}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -72,7 +72,7 @@ export const fetchEmployee = async (
 }
 
 export const createEmployeeRecord = async (data: EmployeeFormData, abortController?: AbortController): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
         method: 'POST',
@@ -89,7 +89,7 @@ export const createEmployeeRecord = async (data: EmployeeFormData, abortControll
 }
 
 export const updateEmployeeRecord = async (data: EmployeeFormData, abortController?: AbortController): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
         method: 'PUT',

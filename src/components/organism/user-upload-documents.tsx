@@ -54,7 +54,7 @@ export const UserUploadDocuments = ({
                     response = await callFileUploadService({
                         userToken: 'asdasdasd',
                         file: [getValues('aadharCard.front')!],
-                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                        url: `${WS_BASE_URL}?page=upload&actions=uploadKyc`
                     })
                     setValue('aadharCard.frontUrl', response.url);
                     break;
@@ -62,7 +62,7 @@ export const UserUploadDocuments = ({
                     response = await callFileUploadService({
                         userToken: 'asdasdasd',
                         file: [getValues('aadharCard.back')!],
-                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                        url: `${WS_BASE_URL}?page=upload&actions=uploadKyc`
                     })
                     setValue('aadharCard.backUrl', response.url);
                     break;
@@ -70,7 +70,7 @@ export const UserUploadDocuments = ({
                     response = await callFileUploadService({
                         userToken: 'asdasdasd',
                         file: [getValues('panCard')!],
-                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                        url: `${WS_BASE_URL}?page=upload&actions=uploadKyc`
                     })
                     setValue('panCardUrl', response.url);
                     break;
@@ -78,7 +78,7 @@ export const UserUploadDocuments = ({
                     response = await callFileUploadService({
                         userToken: 'asdasdasd',
                         file: [getValues('bankStatement')!],
-                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                        url: `${WS_BASE_URL}?page=upload&actions=uploadKyc`
                     })
                     setValue('bankStatementUrl', response.url);
                     break;
@@ -86,7 +86,7 @@ export const UserUploadDocuments = ({
                     response = await callFileUploadService({
                         userToken: 'asdasdasd',
                         file: [getValues('signature')!],
-                        url: `${WS_BASE_URL}/virtual-property/api/routes.php?page=upload&actions=uploadKyc`
+                        url: `${WS_BASE_URL}?page=upload&actions=uploadKyc`
                     })
                     setValue('signatureUrl', response.url);
                     break;

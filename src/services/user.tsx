@@ -68,7 +68,7 @@ export const fetchUserList = async (
     query: string = "",
     abortController?: AbortController
 ): Promise<UserDataResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getUsersList&${query}`;
+    const url = `${WS_BASE_URL}?&page=user&actions=getUsersList&${query}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -78,7 +78,7 @@ export const fetchUserList = async (
 }
 
 export const createUser = async (data: SignUpFormData, abortController?: AbortController): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
         method: 'POST',
@@ -95,7 +95,7 @@ export const createUser = async (data: SignUpFormData, abortController?: AbortCo
 }
 
 export const loginUser = async (data: LoginFormData, abortController?: AbortController): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
         method: 'POST',
@@ -112,7 +112,7 @@ export const loginUser = async (data: LoginFormData, abortController?: AbortCont
 }
 
 export const fetchKycDetails = async (userId: string, abortController?: AbortController): Promise<UserKYCServerData> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getKYCData&itemID=${userId}`;
+    const url = `${WS_BASE_URL}?&page=user&actions=getKYCData&itemID=${userId}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -122,7 +122,7 @@ export const fetchKycDetails = async (userId: string, abortController?: AbortCon
 }
 
 export const fetchUserActivePlans = async (id: string, abortController?: AbortController): Promise<UserActivePlanServerData[]> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php?&page=user&actions=getActivePlans&itemID=${id}`;
+    const url = `${WS_BASE_URL}?&page=user&actions=getActivePlans&itemID=${id}`;
     return await callService({
         url: url,
         method: 'GET',
@@ -132,7 +132,7 @@ export const fetchUserActivePlans = async (id: string, abortController?: AbortCo
 }
 
 export const updateKYCDetails = async (data: UserKYCFormData, abortController?: AbortController): Promise<ServerResponse> => {
-    const url = `${WS_BASE_URL}/virtual-property/api/routes.php`;
+    const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
         method: 'PUT',
