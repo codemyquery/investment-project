@@ -25,8 +25,9 @@ export const SignUp = () => {
     const {
         control,
         handleSubmit,
-        formState: { },
+        formState: { errors },
         setValue,
+        getValues,
         reset,
     } = useHookForm<SignUpFormData>({ defaultValues });
 
@@ -99,28 +100,33 @@ export const SignUp = () => {
                                                         placeholder="Name"
                                                         name="name"
                                                         type="text"
-                                                        id="validationCustom03"
                                                         className="form-control"
                                                     />
                                                 )}
                                             />
+                                            {errors.name && <div className="invalid-feedback">{t.required}</div>}
                                         </div>
                                         <div className="mb-4 col-12">
                                             <Controller
                                                 name={"mobile"}
                                                 control={control}
+                                                rules={{
+                                                    required: true,
+                                                    minLength: 10,
+                                                    maxLength: 10
+                                                }}
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}
                                                         placeholder="Phone Number"
-                                                        name="phone"
-                                                        pattern="[0-9]*"
-                                                        type="tel"
-                                                        id="validationCustom04"
+                                                        type="number"
                                                         className="form-control"
                                                     />
                                                 )}
                                             />
+                                            {errors.mobile?.type === 'required' && <div className="invalid-feedback">{t.required}</div>}
+                                            {errors.mobile?.type === 'minLength' && <div className="invalid-feedback">{t.maxLength}</div>}
+                                            {errors.mobile?.type === 'maxLength' && <div className="invalid-feedback">{t.minLength}</div>}
                                         </div>
                                         <div className="mb-4 col-12">
                                             <Controller
@@ -136,11 +142,12 @@ export const SignUp = () => {
                                                         placeholder="Email"
                                                         name="email"
                                                         type="email"
-                                                        id="validationCustom05"
                                                         className="form-control"
                                                     />
                                                 )}
                                             />
+                                            {errors.email?.type === "required" && <div className="invalid-feedback">{t.required}</div>}
+                                            {errors.email?.type === "pattern" && <div className="invalid-feedback">{t.emailError}</div>}
                                         </div>
                                         <div className="mb-4">
                                             <Controller
@@ -173,6 +180,7 @@ export const SignUp = () => {
                                                     />
                                                 )}
                                             />
+                                            {errors.password && <div className="invalid-feedback">{t.required}</div>}
                                         </div>
                                         <div className="mb-4 col-12">
                                             <Controller
@@ -191,21 +199,21 @@ export const SignUp = () => {
                                                     />
                                                 )}
                                             />
+                                            {errors.confirmPassword && <div className="invalid-feedback">{t.required}</div>}
                                         </div>
                                         <div className="mb-3">
                                             <div className="form-check">
                                                 <Controller
                                                     name={"acceptedPromotionMails"}
                                                     control={control}
+                                                    rules={{
+                                                        onChange: (evt) => {
+                                                            setValue("acceptedPromotionMails",evt.target.value ? 1 : 0);
+                                                        },
+                                                    }}
                                                     render={({ field }) => (
                                                         <input
                                                             {...field}
-                                                            onClick={(evt) =>
-                                                                setValue(
-                                                                    "acceptedPromotionMails",
-                                                                    evt.currentTarget.checked ? 1 : 0
-                                                                )
-                                                            }
                                                             type="checkbox"
                                                             checked={!!field.value}
                                                             className="form-check-input"

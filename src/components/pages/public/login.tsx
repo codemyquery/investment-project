@@ -20,7 +20,7 @@ export const Login = () => {
     const {
         control,
         handleSubmit,
-        formState: { },
+        formState: { errors },
     } = useHookForm<LoginFormData>({ defaultValues });
 
     const onSubmitItem = async (data: LoginFormData) => {
@@ -54,7 +54,7 @@ export const Login = () => {
     }
 
     const onSubmit = () => handleSubmit(onSubmitItem)();
-    
+
     return (<>
         <div className="contact-us">
             <section>
@@ -83,8 +83,6 @@ export const Login = () => {
                             </div>
                             <div className="contact-from text-white">
                                 <div className="mb-3 row">
-
-
                                     <div className="mb-4 col-12">
                                         <Controller
                                             name={"username"}
@@ -102,9 +100,7 @@ export const Login = () => {
                                                 />
                                             )}
                                         />
-                                        <div className="invalid-feedback">
-                                            Please provide a valid Email.
-                                        </div>
+                                        {errors.username?.type === "required" && <div className="invalid-feedback">{t.required}</div>}
                                     </div>
                                     <div className="mb-4 col-12">
 
@@ -124,6 +120,7 @@ export const Login = () => {
                                                 />
                                             )}
                                         />
+                                        {errors.password?.type === "required" && <div className="invalid-feedback">{t.required}</div>}
                                     </div>
 
                                 </div>
