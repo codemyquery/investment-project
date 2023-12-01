@@ -152,7 +152,7 @@ export const ContactUs = () => {
                                     </a>
                                 </div>
                                 <div className=" p-0 col-2">
-                                    <a href="https://t.me/growpitalofficial">
+                                    <a href="#">
                                         <svg
                                             stroke="currentColor"
                                             fill="currentColor"
@@ -168,7 +168,7 @@ export const ContactUs = () => {
                                     </a>
                                 </div>
                                 <div className=" p-0 col-2">
-                                    <a href="https://wa.me/917231844488?text=Hi%20I%20want%20to%20learn%20more%20about%20growpital.%20">
+                                    <a href="https://wa.me/9793909000?text=Hi%20I%20want%20to%20learn%20more%20about%20VirtualProperty.%20">
                                         <svg
                                             stroke="currentColor"
                                             fill="currentColor"

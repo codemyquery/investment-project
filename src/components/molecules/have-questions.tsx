@@ -93,7 +93,7 @@ export const HaveQuestions = () => {
                             className="d-grid gap-4 col-12 aos-init aos-animate"
                         >
                             <div>
-                                <a href="https://growpital.zohobookings.in/#/customer/growpital">
+                                <a href="#">
                                     <button
                                         type="button"
                                         className="px-3 px-md-5 py-3 w-100 btn btn-dark btn-lg"
@@ -108,7 +108,7 @@ export const HaveQuestions = () => {
                                     </button>
                                 </a>
                             </div>
-                            <div>
+                            {/* <div>
                                 <button
                                     type="button"
                                     className="px-3 px-md-5 py-3 w-100 btn btn-dark btn-lg"
@@ -121,9 +121,9 @@ export const HaveQuestions = () => {
                                     />
                                     Chat
                                 </button>
-                            </div>
+                            </div> */}
                             <div>
-                                <a href="https://t.me/growpitalofficial">
+                                <a href="#">
                                     <button
                                         type="button"
                                         className="px-3 px-md-5 py-3 btn btn-dark btn-lg"

@@ -33,7 +33,7 @@ export const SocialSection = () => {
                         promotions and more.
                     </p>
                     <div data-aos="fade-up" className="aos-init aos-animate">
-                        <a href="https://t.me/growpitalofficial">
+                        <a href="#">
                             <button
                                 type="button"
                                 className="px-3 px-md-5 py-3 btn btn-dark btn-lg"
