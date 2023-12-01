@@ -56,7 +56,7 @@ class Helper
 		}
 		return array(
 			"status" =>    $emailStatus,
-			"errMsg"  =>    $emailStatus==false?"Please enter valid email-id": "",
+			"errMsg"  =>    $emailStatus==false?"Please enter valid email-id": ""
 		);
 	}
 

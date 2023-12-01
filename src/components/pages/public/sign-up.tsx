@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Users, useHookForm } from "../../../services";
 import { DefaultFormState, FormState, SignUpFormData } from "../../../types";
 import { Controller } from "react-hook-form";
@@ -16,9 +16,12 @@ const defaultValues: SignUpFormData = {
 };
 
 export const SignUp = () => {
-    window.scrollTo(0, 0);
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     const {
         control,
         handleSubmit,
@@ -31,8 +34,10 @@ export const SignUp = () => {
         if (data.confirmPassword !== data.password) return;
         try {
             const response = await Users.createUser(data);
-            setFormState(prev => {
+            if (response.status) {
                 reset(defaultValues)
+            }
+            setFormState(prev => {
                 return {
                     ...prev,
                     loading: false,
@@ -141,9 +146,6 @@ export const SignUp = () => {
                                             <Controller
                                                 name={"lgLcCode"}
                                                 control={control}
-                                                rules={{
-                                                    required: true
-                                                }}
                                                 render={({ field }) => (
                                                     <textarea
                                                         {...field}
@@ -215,9 +217,6 @@ export const SignUp = () => {
                                                     promotions and other commercial messages that are
                                                     relevant to you
                                                 </label>
-                                                <div className="invalid-feedback">
-                                                    You must agree before submitting.
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

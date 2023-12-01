@@ -27,7 +27,12 @@ class Users
         );
         $this->helper->query = "INSERT INTO users (name, email, mobile, lg_lc_code, kyc_status, password, accepted_for_promotions) 
          VALUES (:name,:email,:mobile,:lg_lc_code, :kyc_status, :password, :accepted_for_promotions)";
-        return $this->helper->execute_query();
+        
+        $result = $this->helper->execute_query();
+        return array(
+			"status" =>  $result,
+			"errMsg" =>  $result === true ? "" : "Unknown error occured"
+		);
     }
 
     function update_user_kyc($itemID)
