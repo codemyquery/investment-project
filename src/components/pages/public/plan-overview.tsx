@@ -94,9 +94,18 @@ export const PlanOverview = () => {
     try {
       const response = await Sell.InsertSellData({ planId: itemID!, purchaseAmount: Number(investmentAmount), customerId: userInfo?.id!, purchaseStatus: 'NO' });
       if (response.status) {
-        setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'success', notificationMessage: t.successMessage }))
+        setFormState(prev => ({ 
+          ...prev, 
+          notificationOpen: true, 
+          notificationType: 'success', 
+          notificationMessage: t.successMessage 
+        }))
       } else {
-        setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'error', notificationMessage: response.errMsg || t.errorMessage }))
+        setFormState(prev => ({ 
+          ...prev, 
+          notificationOpen: true, 
+          notificationType: 'error', 
+          notificationMessage: response.errMsg || t.errorMessage }))
       }
       setDialog(false)
     } catch (error) {
@@ -326,8 +335,8 @@ export const PlanOverview = () => {
       <GenericDialog
         open={dialog}
         title={"Purchase Plan"}
-        content={<>Are you sure you want to purchase this plan?</>}
-        maxWidth='sm'
+        content={<>Our team will reach you for further process! <br /><br />Please confirm?</>}
+        maxWidth='xs'
         onClose={closeDialog}
         onCloseText="No, Cancel"
         onSubmit={onSubmitDialog}
