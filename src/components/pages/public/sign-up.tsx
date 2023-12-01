@@ -17,7 +17,7 @@ const defaultValues: SignUpFormData = {
 
 export const SignUp = () => {
     window.scrollTo(0, 0);
-    const [formState, setFormState] = useState<FormState>({...DefaultFormState});
+    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
 
     const {
         control,
@@ -28,7 +28,7 @@ export const SignUp = () => {
     } = useHookForm<SignUpFormData>({ defaultValues });
 
     const onSubmitItem = async (data: SignUpFormData) => {
-        if(data.confirmPassword !== data.password) return;
+        if (data.confirmPassword !== data.password) return;
         try {
             const response = await Users.createUser(data);
             setFormState(prev => {
@@ -38,8 +38,8 @@ export const SignUp = () => {
                     loading: false,
                     notificationOpen: true,
                     formSubmitted: true,
-                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
-                    ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                    notificationMessage: response.status ? t.successMessage : response.errMsg,
+                    notificationType: response.status ? 'success' : 'error'
                 }
             });
         } catch (error) {

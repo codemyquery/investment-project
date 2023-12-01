@@ -96,6 +96,7 @@ export const Profile = () => {
             || !getValues('ifsc') 
             || !getValues('bankAccNo')  
             || !getValues('confBankAccNo')
+            || getValues('bankAccNo') !== getValues('confBankAccNo')
             )
             return false;
         }else if(activeStep === 2){
@@ -123,7 +124,7 @@ export const Profile = () => {
     const {
         control,
         handleSubmit,
-        formState: {  },
+        formState: { errors },
         setValue,
         reset,
         getValues
@@ -158,10 +159,10 @@ export const Profile = () => {
                     ...prev,
                     notificationOpen: true,
                     formSubmitted: true,
-                    ...(response.status ? { mode: 'edit' } : {}),
-                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    mode: response.status ? "edit" : prev.mode,
+                    notificationMessage: response.status ? t.successMessage : response.errMsg,
+                    notificationType: response.status ? 'success' : 'error',
                     loading: false,
-                    ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
                     reload: new Date()
                 }
             });
@@ -209,10 +210,10 @@ export const Profile = () => {
                                 <>
                                     <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
                                         <Grid container spacing={3}>
-                                            {activeStep + 1 === 1 && <UserPersonalDetails control={control} />}
-                                            {activeStep + 1 === 2 && <UserBankDetails control={control} />}
-                                            {activeStep + 1 === 3 && <UserNomineeDetails control={control} />}
-                                            {activeStep + 1 === 4 && <UserUploadDocuments setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} />}
+                                            {activeStep + 1 === 1 && <UserPersonalDetails errors={errors} control={control} />}
+                                            {activeStep + 1 === 2 && <UserBankDetails errors={errors} control={control} />}
+                                            {activeStep + 1 === 3 && <UserNomineeDetails errors={errors} control={control} />}
+                                            {activeStep + 1 === 4 && <UserUploadDocuments errors={errors} setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} />}
                                         </Grid>
                                     </Typography>
                                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>

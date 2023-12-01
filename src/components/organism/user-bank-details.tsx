@@ -1,14 +1,16 @@
 import { Grid, TextField } from "@mui/material"
 import { ControlNumber, ControlText } from "../molecules"
-import { Control } from "react-hook-form"
+import { Control, FieldErrors } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
 
 interface UserBankDetailsProps {
     control: Control<UserKYCFormData, any>
+    errors: FieldErrors<UserKYCFormData>
 }
 
 export const UserBankDetails = ({
-    control
+    control,
+    errors
 }: UserBankDetailsProps) => {
     return <>
             <Grid item xs={6}>
@@ -18,7 +20,8 @@ export const UserBankDetails = ({
                     name="bankName"
                     helperText=""
                     rules={{
-                        required: true
+                        required: true,
+                        maxLength: 10
                     }}
                 />
             </Grid>

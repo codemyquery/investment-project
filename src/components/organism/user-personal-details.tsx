@@ -1,14 +1,19 @@
 import { Grid, TextField } from "@mui/material"
 import { ControlText, ControlNumber, ControlDate } from "../molecules"
-import { Control } from "react-hook-form"
+import { Control, FieldErrors, useFormState } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
+import { t } from "../../utils"
+import { useState } from "react"
 
 interface UserPersonalDetailsProps {
     control: Control<UserKYCFormData, any>
+    errors: FieldErrors<UserKYCFormData>
 }
 export const UserPersonalDetails = ({
-    control
+    control,
+    errors
 }: UserPersonalDetailsProps) => {
+    const [isPanError,setIsPanError] = useState(false)
     return <>
         <Grid item xs={12}>
             <ControlText
@@ -42,9 +47,11 @@ export const UserPersonalDetails = ({
                 control={control}
                 label="Pan Card No"
                 name="pancardNumber"
-                helperText=""
+                error={errors.pancardNumber}
+                helperText={isPanError ? t.maxLength : ""}
                 rules={{
-                    required: true
+                    required: true,
+                    maxLength: 10
                 }}
             />
         </Grid>

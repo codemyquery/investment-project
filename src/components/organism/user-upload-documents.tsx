@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Card, CardHeader, CardMedia, Grid, IconButton, Typography } from "@mui/material"
-import { Control, UseFormGetValues, UseFormSetValue } from "react-hook-form"
+import { Control, FieldErrors, UseFormGetValues, UseFormSetValue } from "react-hook-form"
 import { FormState, UserKYCFormData } from "../../types"
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -14,14 +14,16 @@ interface UserUploadDocumentsProps {
     control: Control<UserKYCFormData, any>
     setValue: UseFormSetValue<UserKYCFormData>
     getValues: UseFormGetValues<UserKYCFormData>
-    setFormState: (value: SetStateAction<FormState>) => void
+    setFormState: (value: SetStateAction<FormState>) => void,
+    errors: FieldErrors<UserKYCFormData>
 }
 
 export const UserUploadDocuments = ({
     control,
     setValue,
     getValues,
-    setFormState
+    setFormState,
+    errors
 }: UserUploadDocumentsProps) => {
 
     const onChangeHandler = (file: File, option: string) => {

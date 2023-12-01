@@ -43,10 +43,8 @@ export const FormDate = ({
         inputFormat="yyyy-MM-dd"
         value={value}
         onChange={(event: any) => {
-          if (event) {
             onChange(event);
             selectedDate = event;
-          }
         }}
         onClose={() => onDateSubmit && onDateSubmit(selectedDate)}
         maxDate={new Date("2121-11-22")}

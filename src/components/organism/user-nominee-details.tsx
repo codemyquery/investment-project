@@ -1,14 +1,16 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material"
 import { ControlDate, ControlText } from "../molecules"
-import { Control } from "react-hook-form"
+import { Control, FieldErrors } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
 
 interface UserNomineeDetailsProps {
     control: Control<UserKYCFormData, any>
+    errors: FieldErrors<UserKYCFormData>
 }
 
 export const UserNomineeDetails = ({
-    control
+    control,
+    errors
 }: UserNomineeDetailsProps) => {
     return <>
             <Grid item xs={6}>

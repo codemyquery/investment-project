@@ -131,10 +131,10 @@ export const EditCustomers = () => {
                 title={"Edit: 21312"}
             >
                 <Grid container spacing={3}>
-                    <UserPersonalDetails control={control} />
-                    <UserBankDetails control={control} />
-                    <UserNomineeDetails control={control} />
-                    <UserUploadDocuments setFormState={setFormState} control={control} setValue={setValue} getValues={getValues} />
+                    <UserPersonalDetails errors={errors} control={control} />
+                    <UserBankDetails errors={errors} control={control} />
+                    <UserNomineeDetails errors={errors} control={control} />
+                    <UserUploadDocuments errors={errors} setFormState={setFormState} control={control} setValue={setValue} getValues={getValues} />
                 </Grid>
             </AdminEditPageTemplate >
             <Notifications
