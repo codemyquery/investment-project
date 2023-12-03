@@ -45,7 +45,7 @@ export const PlanOverview = () => {
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
   const [dialog, setDialog] = useState<boolean>(false);
-  const [planAmount] = useState<SelectOptions>({ label: investmentAmount!, value: Number(investmentAmount) });
+  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: investmentAmount!, value: Number(investmentAmount) });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
   const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
 
@@ -63,7 +63,7 @@ export const PlanOverview = () => {
     const selectedInvestmentAmount = [...(plan.current.planDetails[investmentAmount as unknown as string] || [])];
     selectedInvestmentAmount.shift();
     setCashFlowYears(selectedInvestmentAmount);
-  }, [plan.current.planDetails])
+  }, [options, planAmount.value])
 
   useEffect(() => {
     const updatedPlanToPreview: Record<string, Record<string, any>> = {};
@@ -178,18 +178,19 @@ export const PlanOverview = () => {
                             }
                           </p> */}
                           <Autocomplete
-                          fullWidth
-                          id="combo-box-demo"
-                          value={planAmount}
-                          onChange={(event, newValue) => {
-                            if (newValue) {
-                              window.location.href = `${BASE_URL}/plan-overview/${itemID}/${newValue.value}`
-                            }
-                          }}
-                          isOptionEqualToValue={(o, v) => o.value === v.value}
-                          options={options}
-                          renderInput={(params) => <TextField {...params} variant="outlined" />}
-                        />
+                            fullWidth
+                            id="combo-box-demo"
+                            value={planAmount}
+                            onChange={(event, newValue) => {
+                              if (newValue) {
+                                setPlanAmount(newValue)
+                                navigate(`/plan-overview/${itemID}/${newValue.value}`)
+                              }
+                            }}
+                            isOptionEqualToValue={(o, v) => o.value === v.value}
+                            options={options}
+                            renderInput={(params) => <TextField {...params} variant="outlined" />}
+                          />
                           <p className="text-title">Choose Initial Investment</p>
                           <p className="text-value">
                             {plan.current.ppt} Years
