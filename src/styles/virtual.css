@@ -468,7 +468,7 @@ timeline .content {
 }
 
 #bond-details .bond-details-header .scrollmenu a.active {
-  color: #222;
+  color: #0dcaf0;
   border-bottom: 3px solid #e6a127;
   font-weight: 500;
 }
@@ -483,7 +483,8 @@ timeline .content {
 }
 
 #bond-details .bond-details-content .common-container {
-  background-color: #fff;
+
+  background: linear-gradient(90deg, #262c30, #1e2226);
 }
 
 #bond-details .bond-details-content .details-container .bond-banner-bg {
@@ -559,6 +560,8 @@ timeline .content {
 
 #bond-details .sticky-section .returns-parent {
   padding: 25px;
+  background-color: rgb(42, 45, 60);
+    color: white;
 }
 
 #bond-details .details-section-header,
@@ -827,7 +830,7 @@ timeline .content {
     span {
     margin-left: 10px;
     font-size: 18px;
-    color: #222;
+    color: white;
     font-weight: 500;
     line-height: 1.28;
   }
@@ -1115,7 +1118,7 @@ timeline .content {
 
 #overview-section .main-container .text-value {
   font-size: 18px;
-  color: #00334e;
+  color: white;
   font-weight: 300;
   line-height: 1.4;
   margin: 0;
