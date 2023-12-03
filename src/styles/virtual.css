@@ -976,6 +976,7 @@ timeline .content {
     display: flex;
     flex-direction: column;
     background-color: rgb(42, 45, 60);
+    color: white;
   }
 
   #bond-details
@@ -1285,12 +1286,17 @@ timeline .content {
     font-size: calc(14px + 0.007 * (100vw - 1400px));
   }
 }
-
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1kkal6p-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding-right: 65px;
+  background-color: white;
+  margin-top: -19px;
+  font-family: cursive;
+}
 .return-section {
   display: block;
   border-radius: 10px;
-  box-shadow: 0 0 4px #0000001a;
-  border: solid 1px #ddd;
+  box-shadow: 0 0 4px rgb(7, 229, 125);
+  border: solid 1px rgb(7, 229, 125);
 }
 
 .return-section .cont-padding {
@@ -1304,6 +1310,9 @@ timeline .content {
   border-bottom: 1px solid #cbcbcb;
   margin-bottom: 31px;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .return-section .header .heading {

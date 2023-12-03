@@ -171,13 +171,26 @@ export const PlanOverview = () => {
                     <div className="info-main-container">
                       <div className="info-container">
                         <div className="flex-column">
-                          <p className="text-value ">
+                          {/* <p className="text-value ">
                             <span className="rupee-symbol">₹</span>
                             {
                               formatNumber(planAmount.value/plan.current.ppt)
                             }
-                          </p>
-                          <p className="text-title">Min. Investment</p>
+                          </p> */}
+                          <Autocomplete
+                          fullWidth
+                          id="combo-box-demo"
+                          value={planAmount}
+                          onChange={(event, newValue) => {
+                            if (newValue) {
+                              window.location.href = `${BASE_URL}/plan-overview/${itemID}/${newValue.value}`
+                            }
+                          }}
+                          isOptionEqualToValue={(o, v) => o.value === v.value}
+                          options={options}
+                          renderInput={(params) => <TextField {...params} variant="outlined" />}
+                        />
+                          <p className="text-title">Choose Initial Investment</p>
                           <p className="text-value">
                             {plan.current.ppt} Years
                           </p>
@@ -205,15 +218,15 @@ export const PlanOverview = () => {
                         <div className="flex-column">
                           
                           <p className="text-value">
-                            {formatNumber((((parseInt(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100)} %
+                            {formatNumber((((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100)} %
                           </p>
                           <p className="text-title">ROI</p>
                           <p className="text-value">
                             <span className="rupee-symbol">₹</span>
-                            {formatNumber(parseInt(plan.current.maturityValueOptions)*planAmount.value)}
+                            {formatNumber(parseFloat(plan.current.maturityValueOptions)*planAmount.value)}
                           </p>
                           <p className="text-title ">Maturity Value</p>
-                          <p className="text-value">{ formatNumber(((((parseInt(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100) * planAmount.value)}</p>
+                          <p className="text-value">{ formatNumber(((((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100) * planAmount.value)}</p>
                           <p className="text-title">Total Benefit</p>
                         </div>
                         <div className="flex-column">
@@ -236,24 +249,10 @@ export const PlanOverview = () => {
                 <div className="returns-parent">
                   <div className="return-section">
                     <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
-                      <div className="header">
-                        <h2 className="heading">Monthly Income CashFlow</h2>
+                      <div className="header" style={{backgroundColor:'#07e57d'}}>
+                        <h2 className="heading" style={{color:'white'}}>Monthly Income CashFlow</h2>
                       </div>
-                      <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
-                        <Autocomplete
-                          fullWidth
-                          id="combo-box-demo"
-                          value={planAmount}
-                          onChange={(event, newValue) => {
-                            if (newValue) {
-                              window.location.href = `${BASE_URL}/plan-overview/${itemID}/${newValue.value}`
-                            }
-                          }}
-                          isOptionEqualToValue={(o, v) => o.value === v.value}
-                          options={options}
-                          renderInput={(params) => <TextField {...params} variant="outlined" label="₹ Invested Amount" />}
-                        />
-                      </div>
+                      
                       <div>
                         <div className="square">
                           {
