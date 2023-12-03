@@ -299,7 +299,7 @@ export const PlanOverview = () => {
                           className="step-icons"
                           src={kyc}
                         />
-                        <div className="steps-text">Complete KYC</div>
+                        <div className="steps-text" style={{color:'#fff'}}>Complete KYC</div>
                       </div>
                       <div className="next-steps">
                         <hr />
@@ -308,7 +308,7 @@ export const PlanOverview = () => {
                             className="step-icons"
                             src={bonds}
                           />
-                          <div className="steps-text">Choose Amount</div>
+                          <div className="steps-text" style={{color:'#fff'}}>Choose Amount</div>
                         </div>
                       </div>
                       <div className="next-steps">
@@ -318,7 +318,7 @@ export const PlanOverview = () => {
                             className="step-icons"
                             src={investmentTime}
                           />
-                          <div className="steps-text">Make Investment</div>
+                          <div className="steps-text" style={{color:'#fff'}}>Make Investment</div>
                         </div>
                       </div>
                     </div>
