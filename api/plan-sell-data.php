@@ -8,6 +8,35 @@ class PlanSell
         $this->helper = $helper;
     }
 
+    function create_plan_sell_data($data)
+    {
+        $planId = $this->helper->clean_data($data['planId']);
+        $plan = new Plan($this->helper);
+        $plan_details = $plan->get_plan($planId);
+
+        $this->helper->data = array(
+            ':customer_id'                  =>  $this->helper->clean_data($data['customerId']),
+            ':plan_id'                      =>  $this->helper->clean_data($planId),
+            ':customer_purchase_status'     =>  $this->helper->clean_data($data['purchaseStatus']),
+            ':purchase_plan_details'        => json_encode($plan_details),
+            ':purchase_amount'              =>  $this->helper->clean_data($data['purchaseAmount'])
+        );
+        $this->helper->query = "INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_plan_details,purchase_amount) 
+        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_plan_details,:purchase_amount)";
+        return $this->helper->execute_query();
+    }
+
+    function update_planSellData($data)
+    {
+        $this->helper->data = array(
+            ':id'                           =>  $this->helper->clean_data($data['id']),
+            ':customer_purchase_status'     =>  $this->helper->clean_data($data['purchaseStatus'])
+        );
+        $this->helper->query = "UPDATE plan_sell_data 
+        SET customer_purchase_status = :customer_purchase_status WHERE id = :id";
+        return $this->helper->execute_query();
+    }
+
     function get_plan_sell($itemID)
     {
         $this->helper->query = "SELECT 
@@ -58,35 +87,6 @@ class PlanSell
             "count" =>    (int)$total_Count[0]['count'],
             "rows"  =>    $pages_array,
         );
-    }
-
-    function create_plan_sell_data($data)
-    {
-        $planId = $this->helper->clean_data($data['planId']);
-        $plan = new Plan($this->helper);
-        $plan_details = $plan->get_plan($planId);
-
-        $this->helper->data = array(
-            ':customer_id'                  =>  $this->helper->clean_data($data['customerId']),
-            ':plan_id'                      =>  $this->helper->clean_data($planId),
-            ':customer_purchase_status'     =>  $this->helper->clean_data($data['purchaseStatus']),
-            ':purchase_plan_details'        => json_encode($plan_details),
-            ':purchase_amount'              =>  $this->helper->clean_data($data['purchaseAmount'])
-        );
-        $this->helper->query = "INSERT INTO plan_sell_data (customer_id,plan_id,customer_purchase_status,purchase_plan_details,purchase_amount) 
-        VALUES(:customer_id,:plan_id, :customer_purchase_status,:purchase_plan_details,:purchase_amount)";
-        return $this->helper->execute_query();
-    }
-
-    function update_planSellData($data)
-    {
-        $this->helper->data = array(
-            ':id'                           =>  $this->helper->clean_data($data['id']),
-            ':customer_purchase_status'     =>  $this->helper->clean_data($data['purchaseStatus'])
-        );
-        $this->helper->query = "UPDATE plan_sell_data 
-        SET customer_purchase_status = :customer_purchase_status WHERE id = :id";
-        return $this->helper->execute_query();
     }
 
     function get_active_plans($itemID)

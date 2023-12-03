@@ -9,6 +9,8 @@ import {
     ListItemIcon
 } from "@mui/material"
 import { useState } from "react"
+import { previousDay } from "date-fns/fp";
+import { formatNumber } from "../../utils";
 
 interface ExpandableListProps {
     items: Record<string, any>
@@ -22,12 +24,22 @@ export const ExpandableList = ({
     icons
 }: ExpandableListProps) => {
     const [open, setOpen] = useState(false);
+    let totalYearIncome = 0;
+    Object.keys(items).forEach((monthName) => totalYearIncome+= items[monthName] )
+    debugger
     const handleClick = () => {
         setOpen(!open);
     };
     return <>
         <ListItemButton onClick={handleClick}>
-            <ListItemText primary={label} />
+            <ListItemText 
+                primary={
+                    <div style={{ display: 'inline' }}>
+                        <div>{label}</div>
+                        <div style={{ textAlign: 'right' }}>Total {`₹ ${formatNumber(totalYearIncome, 0)}`}</div>
+                    </div>
+                } 
+            />
             {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
@@ -41,7 +53,14 @@ export const ExpandableList = ({
                                     {icons}
                                 </ListItemIcon>
                             }
-                            <ListItemText primary={`${item} (${items[item]})`} />
+                            <ListItemText 
+                                primary={
+                                    <div style={{ display: 'inline' }}>
+                                        <div>{item}</div>
+                                        <div style={{ textAlign: 'right' }}>{`(₹ ${formatNumber(items[item], 0)})`}</div>
+                                    </div>
+                                } 
+                            />
                         </ListItemButton>
                     })
                 }

@@ -44,8 +44,9 @@ export const PlanOverview = () => {
   const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
   const [options, setOptions] = useState<SelectOptions[]>([]);
+  const [averageMonthlyIncome, setAverageMonthlyIncome] = useState<number>(0);
   const [dialog, setDialog] = useState<boolean>(false);
-  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: investmentAmount!, value: Number(investmentAmount) });
+  const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: -1 });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
   const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
 
@@ -53,8 +54,9 @@ export const PlanOverview = () => {
     const abortController = new AbortController();
     const init = async () => {
       plan.current = await Plan.fetchPlan(itemID!, abortController);
-      const options: SelectOptions[] = Object.keys(plan.current.planDetails).map((amount) => ({ value: Number(amount), label: `₹ ${formatNumber(Number(amount))}` }));
+      const options: SelectOptions[] = Object.keys(plan.current.planDetails).map((amount) => ({ value: Number(amount), label: `₹ ${formatNumber(Number(amount)/(plan.current.ppt || 1))}` }));
       setOptions(options);
+      setPlanAmount({label: `₹ ${(formatNumber(Number(investmentAmount)/plan.current.ppt)).toString()}`, value : Number(investmentAmount)})
     };
     init();
   }, []);
@@ -68,21 +70,26 @@ export const PlanOverview = () => {
   useEffect(() => {
     const updatedPlanToPreview: Record<string, Record<string, any>> = {};
     const dateForCashFlow = new Date();
+    let totalMonths = 0;
+    let totalIncome = 0;
     for (let i = 0; i < cashFlowYears.length; i++) {
       const [income] = cashFlowYears[i];
+      totalIncome+= Number(income);
       for (let i = 0; i < 12; i++) {
+        totalMonths+= 1;
         const currentMonth = dateForCashFlow.getMonth()
         dateForCashFlow.setMonth(currentMonth + 1);
         const year = dateForCashFlow.getFullYear().toString();
         const month = dateForCashFlow.getMonth();
         if (updatedPlanToPreview.hasOwnProperty(year)) {
-          updatedPlanToPreview[year][MonthsName[month]] = `₹${formatNumber(Number(income) / 12, 0)}`;
+          updatedPlanToPreview[year][MonthsName[month]] = Number(income) / 12;
         } else {
           updatedPlanToPreview[year] = {}
-          updatedPlanToPreview[year][MonthsName[month]] = `₹${formatNumber(Number(income) / 12, 0)}`;
+          updatedPlanToPreview[year][MonthsName[month]] = Number(income) / 12;
         }
       }
     }
+    setAverageMonthlyIncome(totalIncome/totalMonths);
     setPataToPreview(updatedPlanToPreview)
   }, [cashFlowYears])
 
@@ -111,10 +118,6 @@ export const PlanOverview = () => {
     } catch (error) {
       setFormState(prev => ({ ...prev, notificationOpen: true, notificationType: 'error', notificationMessage: t.errorMessage }))
     }
-  }
-
-  function gradient(arg0: number, deg: any, arg2: any, arg3: number, c30: any, arg5: any, arg6: number) {
-    throw new Error("Function not implemented.");
   }
 
   return (
@@ -203,10 +206,9 @@ export const PlanOverview = () => {
                           
                         <p className="text-value">
                             <span className="rupee-symbol">₹</span>
-                            15000 
-                            {/* todo monthly income */}
+                            { formatNumber(averageMonthlyIncome) }
                           </p>
-                          <p className="text-title ">Monthly Income</p>
+                          <p className="text-title ">Avg Monthly Income</p>
                           
                           <p className="text-value">
                             {plan.current.incomeTermOptions} Years
