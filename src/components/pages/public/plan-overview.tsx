@@ -22,7 +22,7 @@ const defaultValue: PlanServerData = {
   incomeTermOptions: "",
   maturityValueOptions: "",
   incomeFrequency: "",
-  ppt: "",
+  ppt: 0,
   planDetails: {}
 }
 
@@ -113,8 +113,12 @@ export const PlanOverview = () => {
     }
   }
 
+  function gradient(arg0: number, deg: any, arg2: any, arg3: number, c30: any, arg5: any, arg6: number) {
+    throw new Error("Function not implemented.");
+  }
+
   return (
-    <div className="app-root" style={{ height: "100%", backgroundColor: "white" }}>
+    <div className="app-root" style={{ height: "100%"}}>
       <div id="bond-details">
         <div>
           <div className="bond-details-content ">
@@ -122,20 +126,20 @@ export const PlanOverview = () => {
               <div className="bond-banner-bg">
                 <div className="side-icons">
                   <div className="side-icons-top">
-                    <span className="help-text">Need Help ?</span>
+                    <span className="help-text" style={{ color:'#dc3545'}}>Need Help ?</span>
                     <div className="button-phone gtm-cb-talk-expert">
                       <a href="tel:+91-9793909000">
-                        <span><WifiCalling3Icon style={{ color: "brown", marginRight: '8px' }} />Talk to Expert</span>
+                        <span><WifiCalling3Icon style={{ color: "#d63384", marginRight: '8px' }} />Talk to Expert</span>
                       </a>
                     </div>
                   </div>
                   <div className="side-icons-bottom" />
                 </div>
                 <div className="bond-banner">
-                  <h4 style={{ color: "brown" }}>{`${plan.current?.planName} (${plan.current?.planCode})`}</h4>
+                  <h4 style={{ color: "#07e57d" }}>{`${plan.current?.planName} (${plan.current?.planCode})`}</h4>
                   <div className="bond-name-container">
                     <div className="bond-name-div">
-                      <h1 className="bond-name">
+                      <h1 className="bond-name" style={{color:"#a0ed8d"}}>
                         {plan.current?.insuranceCompany}
                       </h1>
                     </div>
@@ -163,57 +167,50 @@ export const PlanOverview = () => {
               </div>
               <div className="sticky-section stick-cashflow">
                 <div id="overview-section">
-                  <div className="main-container">
+                  <div className="main-container" style={{ backgroundColor: '#2a2d3c'}}>
                     <div className="info-main-container">
                       <div className="info-container">
                         <div className="flex-column">
                           <p className="text-value ">
                             <span className="rupee-symbol">₹</span>
                             {
-                              formatNumber(planAmount.value)
+                              formatNumber(planAmount.value/10)
                             }
                           </p>
                           <p className="text-title">Min. Investment</p>
-                          <div id="tooltip-component" className="">
-                            <img
-                              alt="tooltip"
-                              src={info}
-                            />
-                          </div>
-                          <p />
+                          <p className="text-value">
+                            10 Years
+                            {/* //todo Payment Term */}
+                          </p>
+                          <p className="text-title">Payment Term</p>
+                          <p className="text-value">{formatNumber(planAmount.value)}</p>
+                          <p className="text-title">Total Value</p>
                         </div>
                         <div className="flex-column ">
-                          <p className="text-value">{currentDate}-{capitalize(MonthsName[currentMonth].slice(0, 3))}-{currentYear + cashFlowYears.length}</p>
-                          <p className="text-title ">Maturity Date</p>
+                        <p className="text-value">
+                            <span className="rupee-symbol">₹</span>
+                            15000 
+                            {/* todo monthly income */}
+                          </p>
+                          <p className="text-title ">Monthly Income</p>
+                          
+                          <p className="text-value">
+                            {cashFlowYears.length} Years
+                            </p>
+                          <p className="text-title ">Income Term</p>
                           <p className="text-value">
                             <span className="rupee-symbol">₹</span>
-                            {formatNumber(planAmount.value + income)}
+                            {formatNumber(planAmount.value)}
                           </p>
                           <p className="text-title ">Maturity Value</p>
-                          {/* <div id="tooltip-component">
-                            <img
-                              alt="tooltip"
-                              src="https://d2tfvseypdp8pf.cloudfront.net/assets/img/info.svg"
-                            />
-                          </div>
-                          <p />
-                          <p className="text-subtitle ">
-                            <span className="">5 Yr</span>
-                            <span className="">5 Mo </span>
-                            <span className="">12 Days</span>
-                            <br /> to maturity
-                          </p> */}
+                          
                         </div>
                         <div className="flex-column">
-                          <p className="text-value">Monthly</p>
-                          <p className="text-title">Payment Term</p>
-                          <div id="tooltip-component">
-                            <img
-                              alt="tooltip"
-                              src={info}
-                            />
-                          </div>
-                          <p />
+                          <p className="text-value">Assured</p>
+                          <p className="text-title">Income Type</p>
+                          <p className="text-value">{formatNumber((planAmount.value + income))}</p>
+                          <p className="text-title">ROI</p>
+                          
                         </div>
                         <div className="flex-column">
                           <p className="text-value">{plan.current?.ageBand}</p>
@@ -295,7 +292,7 @@ export const PlanOverview = () => {
                 {/* Invest Steps */}
                 <div className="common-container">
                   <div id="three-steps" className="">
-                    <h2 className="heading">Invest in 3 easy steps</h2>
+                    <h2 className="heading" style={{color:'#0dcaf0'}}>Invest in 3 easy steps</h2>
                     <div className="step-images">
                       <div>
                         <img

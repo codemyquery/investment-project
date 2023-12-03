@@ -110,7 +110,7 @@ export const DashboardPlanDetails = () => {
                             incomeTermOptions: row['Income Term Option (yrs)'] as string,
                             maturityValueOptions: row['Maturity Value Option (percentage of total premium paid)'] as string,
                             incomeFrequency: row['Income Frequency (Monthly/Yearly)'] as string,
-                            ppt: row['PPT (10,12)'] as string,
+                            ppt: row['PPT (10,12)'] as number,
                             planDetails: {},
                             isNewRecord: true,
                             dateUpdated: new Date()

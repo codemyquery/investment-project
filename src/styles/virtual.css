@@ -286,7 +286,7 @@ timeline .content {
   box-shadow: 0 0 4px #0000001a;
   border: solid 1px #ddd;
   width: 100%;
-  background-color: #fff;
+  
   display: block;
 }
 
@@ -429,7 +429,7 @@ timeline .content {
   color: #929292;
   font-weight: 400;
   line-height: 1.43;
-  background-color: #fff;
+  background-color: #616161;
   display: flex;
   overflow-x: scroll;
   scrollbar-width: none;
@@ -491,7 +491,7 @@ timeline .content {
   padding: 20px 0 20px 25px;
   width: 100%;
   min-height: 170px;
-  background-color: #fff;
+  background: linear-gradient(90deg, #262c30, #1e2226);
 }
 
 #bond-details
@@ -660,7 +660,7 @@ timeline .content {
     color: #585858;
     font-weight: 400;
     line-height: 20px;
-    background-color: #fff;
+    background: linear-gradient(90deg, #262c30, #1e2226);
     display: flex;
     overflow-x: scroll;
     box-shadow: 0 1px 2px #d4d4d4;
@@ -705,7 +705,7 @@ timeline .content {
 
 @media (min-width: 992px) {
   #bond-details .bond-details-header .scrollmenu a.active {
-    color: #00334e;
+    color: #0dcaf0;
     border-bottom: 3px solid #e6a127;
     font-weight: 600;
   }
@@ -726,7 +726,7 @@ timeline .content {
 
   #bond-details .bond-details-content .common-container {
     padding: 40px 6%;
-    background-color: #fff;
+    background: linear-gradient(90deg, #262c30, #1e2226);
   }
 
   #bond-details .bond-details-content .details-container .bond-banner-bg {
@@ -734,7 +734,7 @@ timeline .content {
     padding: 25px 6%;
     width: 100%;
     min-height: 160px;
-    background-color: #fff;
+    background: linear-gradient(90deg, #262c30, #1e2226);
   }
 
   #bond-details
@@ -1020,12 +1020,15 @@ timeline .content {
 }
 
 #overview-section .main-container {
-  background-color: #fff;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+#overview-section {
+  background: linear-gradient(90deg, #262c30, #1e2226);
+}
 #overview-section .main-container .info-main-container {
   padding: 20px 25px;
 }
@@ -1034,7 +1037,7 @@ timeline .content {
   display: flex;
   flex-wrap: wrap;
   border-radius: 20px;
-  background-color: #f4f9ff;
+  background-color: #2a2d3c;
   padding: 5px 20px;
 }
 
@@ -1076,7 +1079,7 @@ timeline .content {
 #overview-section .main-container .text-title {
   font-family: Inter;
   font-size: 10px;
-  color: #222;
+  color: #fcd01c;
   font-weight: 600;
   line-height: 1.16;
   margin: 12px 0 5px;
@@ -1244,8 +1247,11 @@ timeline .content {
   #overview-section .main-container .text-value {
     font-size: 24px;
     margin: 0;
+    color:#fff;
   }
 }
+
+
 
 @media (min-width: 992px) and (min-width: 992px) {
   #overview-section .main-container .text-value {

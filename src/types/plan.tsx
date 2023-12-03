@@ -7,7 +7,7 @@ export interface PlanFormData {
     incomeTermOptions: string,
     maturityValueOptions: string,
     incomeFrequency: string,
-    ppt: string,
+    ppt: number,
     planDetails: Record<string, Array<string>>,
     isNewRecord?: boolean
 }
@@ -21,7 +21,7 @@ export interface PlanServerData {
     incomeTermOptions: string,
     maturityValueOptions: string,
     incomeFrequency: string,
-    ppt: string,
+    ppt: number,
     planDetails: Record<string, Array<string>>,
     isNewRecord?: boolean
 }

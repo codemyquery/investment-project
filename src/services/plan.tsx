@@ -36,6 +36,12 @@ export const useDisplayTablePlanHeaders = ({
             headerName: 'Age Band'
         },
         {
+            field: 'ppt',
+            type: 'text',
+            sortable: true,
+            headerName: 'Paying Term'
+        },
+        {
             field: 'incomeTermOptions',
             type: 'text',
             sortable: true,

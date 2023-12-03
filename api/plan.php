@@ -18,6 +18,7 @@ class Plan
                     ':insurance_company'      =>    $this->helper->clean_data($row['insuranceCompany']),
                     ':plan_name'              =>    $this->helper->clean_data($row['planName']),
                     ':age_band'               =>    $this->helper->clean_data($row['ageBand']),
+                    ':plan_ppt'               =>    $this->helper->clean_data($row['ppt']),      
                     ':income_terms_options'   =>    $this->helper->clean_data($row['incomeTermOptions']),
                     ':maturity_value'         =>    $this->helper->clean_data($row['maturityValueOptions']),
                     ':income_frequency'       =>    $this->helper->clean_data($row['incomeFrequency']),
@@ -25,9 +26,9 @@ class Plan
                     ':created_by'             =>    1,
                     ':updated_by'             =>    1
                 );
-                $this->helper->query = "INSERT INTO plan_details (plan_code,  insurance_company, plan_name, age_band, income_terms_options,
+                $this->helper->query = "INSERT INTO plan_details (plan_code,  insurance_company, plan_name, age_band,ppt, income_terms_options,
             maturity_value,income_frequency,plan_details,created_by,updated_by) VALUES 
-            (:plan_code,:insurance_company,:plan_name,:age_band,:income_terms_options,:maturity_value,:income_frequency,
+            (:plan_code,:insurance_company,:plan_name,:age_band,:plan_ppt,:income_terms_options,:maturity_value,:income_frequency,
             :plan_details,:created_by,:updated_by)";
                 $this->helper->execute_query();
             }
