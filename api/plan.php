@@ -107,7 +107,8 @@ function formatPlanOutput($row)
         "planDetails"               => json_decode($row['plan_details']),
         "createdBy"                 => $row['created_by'],
         "updatedBy"                 => $row['updated_by'],
-        "dateUpdated"               => $row['updated_on']
+        "dateUpdated"               => $row['updated_on'],
+        "ppt"                       => $row['ppt']
     );
 }
 

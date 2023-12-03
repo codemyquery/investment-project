@@ -975,6 +975,7 @@ timeline .content {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    background-color: rgb(42, 45, 60);
   }
 
   #bond-details
@@ -1027,7 +1028,7 @@ timeline .content {
 }
 
 #overview-section {
-  background: linear-gradient(90deg, #262c30, #1e2226);
+  background-color: rgb(42, 45, 60);
 }
 #overview-section .main-container .info-main-container {
   padding: 20px 25px;

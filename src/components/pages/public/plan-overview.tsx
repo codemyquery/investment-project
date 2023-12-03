@@ -174,19 +174,19 @@ export const PlanOverview = () => {
                           <p className="text-value ">
                             <span className="rupee-symbol">₹</span>
                             {
-                              formatNumber(planAmount.value/10)
+                              formatNumber(planAmount.value/plan.current.ppt)
                             }
                           </p>
                           <p className="text-title">Min. Investment</p>
                           <p className="text-value">
-                            10 Years
-                            {/* //todo Payment Term */}
+                            {plan.current.ppt} Years
                           </p>
                           <p className="text-title">Payment Term</p>
                           <p className="text-value">{formatNumber(planAmount.value)}</p>
                           <p className="text-title">Total Value</p>
                         </div>
                         <div className="flex-column ">
+                          
                         <p className="text-value">
                             <span className="rupee-symbol">₹</span>
                             15000 
@@ -195,26 +195,32 @@ export const PlanOverview = () => {
                           <p className="text-title ">Monthly Income</p>
                           
                           <p className="text-value">
-                            {cashFlowYears.length} Years
+                            {plan.current.incomeTermOptions} Years
                             </p>
                           <p className="text-title ">Income Term</p>
-                          <p className="text-value">
-                            <span className="rupee-symbol">₹</span>
-                            {formatNumber(planAmount.value)}
-                          </p>
-                          <p className="text-title ">Maturity Value</p>
                           
-                        </div>
-                        <div className="flex-column">
                           <p className="text-value">Assured</p>
                           <p className="text-title">Income Type</p>
-                          <p className="text-value">{formatNumber((planAmount.value + income))}</p>
-                          <p className="text-title">ROI</p>
+                        </div>
+                        <div className="flex-column">
                           
+                          <p className="text-value">
+                            {formatNumber((((parseInt(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100)} %
+                          </p>
+                          <p className="text-title">ROI</p>
+                          <p className="text-value">
+                            <span className="rupee-symbol">₹</span>
+                            {formatNumber(parseInt(plan.current.maturityValueOptions)*planAmount.value)}
+                          </p>
+                          <p className="text-title ">Maturity Value</p>
+                          <p className="text-value">{ formatNumber(((((parseInt(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100) * planAmount.value)}</p>
+                          <p className="text-title">Total Benefit</p>
                         </div>
                         <div className="flex-column">
                           <p className="text-value">{plan.current?.ageBand}</p>
                           <p className="text-title">Age Band</p>
+                          <p className="text-value">Monthly</p>
+                          <p className="text-title">Income Frequency</p>
                           <div id="tooltip-component">
                             <img
                               alt="tooltip"
@@ -231,7 +237,7 @@ export const PlanOverview = () => {
                   <div className="return-section">
                     <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header">
-                        <h2 className="heading">Approx Net Benefits :        ₹{formatNumber(income+planAmount.value)}</h2>
+                        <h2 className="heading">Monthly Income CashFlow</h2>
                       </div>
                       <div className="header" style={{ paddingTop: '0px', marginTop: '-15px' }}>
                         <Autocomplete
