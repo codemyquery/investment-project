@@ -16,8 +16,15 @@ export const PlanSliderCards = ({
     const { userInfo } = useAuth();
     // finding the lowest plan amount
     let lockingPeriod = 0;
+    let income = 0;
     const investmentAmounts = Object.keys(data.planDetails).sort((a, b) => Number(a) > Number(b) ? Number(a) : Number(b));
     const lowestInvestmentPlanWithHeader = data.planDetails[investmentAmounts[0]];
+    const _plandetails = data.planDetails[investmentAmounts[4]];
+    _plandetails.forEach( (element,index) => {
+        if(index == 0) index++;
+        income = income + parseInt(_plandetails[index]['0']);
+        
+   });
     const lowestInvestmentPlan = [...lowestInvestmentPlanWithHeader].slice(1, lowestInvestmentPlanWithHeader.length);
     lowestInvestmentPlan.every((row, index) => {
         return row[2] == '0' ? ++lockingPeriod : false; // It contains 3 element [yearlyIncome, Maturity, Surrender Value]
@@ -37,15 +44,18 @@ export const PlanSliderCards = ({
         <div className="d-flex align-items-center justify-content-between py-3 card-header">
             <div>
                 <div className="text-main-green card-title h5">
-                    ₹ {formatNumber(Number(investmentAmounts[0]))}
+                    {/* ₹ {formatNumber(Number(investmentAmounts[0]))} */}
+                    ₹ 1 Lac
                 </div>
-                <p className="card-text">Min. Investment</p>
+                <p className="card-text">Initial Min. Investment</p>
             </div>
+            
             <div>
-                <div className="text-main-green card-title h5">{Number(data.maturityValueOptions) * 100}%</div>
+                <div className="text-main-green card-title h5">{formatNumber((((parseFloat(data.maturityValueOptions)*5000000)+ income)/5000000)*100)}%</div>
                 <p className="card-text">ROI</p>
             </div>
         </div>
+        <div className="text-main-green card-title h5" style={{textAlign:'center'}}>What You Invest?</div>
         <div className="text-center card-body">
             <div className="d-flex align-items-center justify-content-between mb-3 text-start">
                 <div>
@@ -56,7 +66,7 @@ export const PlanSliderCards = ({
                             className="mb-1"
                             style={{ width: "1rem" }}
                         />
-                        Tenure
+                        Initial Investment
                     </p>
                     <p className="card-text">
                         <img
@@ -65,7 +75,49 @@ export const PlanSliderCards = ({
                             className="img-fluid mb-1"
                             style={{ width: "1rem" }}
                         />
-                        Lockin period
+                        Payment Term
+                    </p>
+                    {/* <p className="card-text">
+                        <img
+                            src={payout}
+                            alt="locking"
+                            className="img-fluid mb-1"
+                            style={{ width: "1.2rem" }}
+                        />
+                        Total Investment
+                    </p> */}
+                </div>
+                <div>
+                    <p className="card-text">:</p>
+                    <p className="card-text">:</p>
+                    <p className="card-text">:</p>
+                </div>
+                <div>
+                    <p className="card-text">₹ {formatNumber(Number(investmentAmounts[4])/data.ppt)} </p>
+                    <p className="card-text">{data.ppt} Years</p>
+                    {/* <p className="card-text">₹{formatNumber((Number(investmentAmounts[4])))}</p> */}
+                </div>
+            </div>
+            <div className="text-main-green card-title h5" style={{textAlign:'center'}}>What You Get?</div>
+            <div className="d-flex align-items-center justify-content-between mb-3 text-start">
+                <div>
+                    {/* <p className="card-text">
+                        <img
+                            src={tenure}
+                            alt="tenure"
+                            className="mb-1"
+                            style={{ width: "1rem" }}
+                        />
+                        Income Started
+                    </p> */}
+                    <p className="card-text">
+                        <img
+                            src={lockinPeriod}
+                            alt="locking"
+                            className="img-fluid mb-1"
+                            style={{ width: "1rem" }}
+                        />
+                        Assured Monthly Income
                     </p>
                     <p className="card-text">
                         <img
@@ -74,18 +126,51 @@ export const PlanSliderCards = ({
                             className="img-fluid mb-1"
                             style={{ width: "1.2rem" }}
                         />
-                        Payout
+                        Yearly Assured Income
+                    </p>
+                    <p className="card-text">
+                        <img
+                            src={payout}
+                            alt="locking"
+                            className="img-fluid mb-1"
+                            style={{ width: "1.2rem" }}
+                        />
+                        Income Term
+                    </p>
+                    {/* <p className="card-text">
+                        <img
+                            src={payout}
+                            alt="locking"
+                            className="img-fluid mb-1"
+                            style={{ width: "1.2rem" }}
+                        />
+                        Matuarity Value
+                    </p> */}
+                    <p className="card-text">
+                        <img
+                            src={payout}
+                            alt="locking"
+                            className="img-fluid mb-1"
+                            style={{ width: "1.2rem" }}
+                        />
+                        Total Assured Benefit
                     </p>
                 </div>
                 <div>
                     <p className="card-text">:</p>
                     <p className="card-text">:</p>
                     <p className="card-text">:</p>
+                    <p className="card-text">:</p>
+                    {/* <p className="card-text">:</p>
+                    <p className="card-text">:</p> */}
                 </div>
                 <div>
-                    <p className="card-text">{lowestInvestmentPlan.length} Years</p>
-                    <p className="card-text">{lockingPeriod} Years</p>
-                    <p className="card-text">Monthly</p>
+                    {/* <p className="card-text">1st Year </p> */}
+                    <p className="card-text">₹ {formatNumber(Math.round(income/(parseInt(data.incomeTermOptions)*12)))} </p>
+                    <p className="card-text">₹ {formatNumber(Math.round(income/parseInt(data.incomeTermOptions)))}</p>
+                    <p className="card-text"> {data.incomeTermOptions}</p>
+                    {/* <p className="card-text">₹ {formatNumber(((Number(investmentAmounts[4]))) * parseFloat(data.maturityValueOptions))}</p> */}
+                    <p className="card-text">₹ {formatNumber((((Number(investmentAmounts[4]))) * parseFloat(data.maturityValueOptions))+income)}</p>
                 </div>
             </div>
             <div className="py-2">

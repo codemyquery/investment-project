@@ -26,7 +26,7 @@ export const ExpandableList = ({
     const [open, setOpen] = useState(false);
     let totalYearIncome = 0;
     Object.keys(items).forEach((monthName) => totalYearIncome+= items[monthName] )
-    debugger
+    
     const handleClick = () => {
         setOpen(!open);
     };
@@ -34,9 +34,9 @@ export const ExpandableList = ({
         <ListItemButton onClick={handleClick}>
             <ListItemText 
                 primary={
-                    <div style={{ display: 'inline' }}>
-                        <div>{label}</div>
-                        <div style={{ textAlign: 'right' }}>Total {`₹ ${formatNumber(totalYearIncome, 0)}`}</div>
+                    <div>
+                        <div style={{ display: 'inline-block'}}>{label}</div>
+                        <div style={{ display: 'inline-block', paddingLeft:'50%',textAlignLast:'right'}}>Income {`₹ ${formatNumber(totalYearIncome, 0)}`}</div>
                     </div>
                 } 
             />
@@ -55,9 +55,9 @@ export const ExpandableList = ({
                             }
                             <ListItemText 
                                 primary={
-                                    <div style={{ display: 'inline' }}>
-                                        <div>{item}</div>
-                                        <div style={{ textAlign: 'right' }}>{`(₹ ${formatNumber(items[item], 0)})`}</div>
+                                    <div>
+                                        <div style={{ display: 'inline-block', textAlign:'center'}}>{item}</div>
+                                        <div style={{ display: 'inline-block',marginLeft:'50%'}}>{`(₹ ${formatNumber(items[item], 0)})`}</div>
                                     </div>
                                 } 
                             />

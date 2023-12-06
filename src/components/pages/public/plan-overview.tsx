@@ -229,7 +229,7 @@ export const PlanOverview = () => {
                             {formatNumber(parseFloat(plan.current.maturityValueOptions)*planAmount.value)}
                           </p>
                           <p className="text-title ">Maturity Value</p>
-                          <p className="text-value">{ formatNumber(((((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100) * planAmount.value)}</p>
+                          <p className="text-value">{ formatNumber(((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)) }</p>
                           <p className="text-title">Total Benefit</p>
                         </div>
                         <div className="flex-column">
