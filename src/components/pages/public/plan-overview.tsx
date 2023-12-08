@@ -206,9 +206,9 @@ export const PlanOverview = () => {
                           
                         <p className="text-value">
                             <span className="rupee-symbol">₹</span>
-                            { formatNumber(averageMonthlyIncome) }
+                            { formatNumber(parseInt(averageMonthlyIncome.toString())) }
                           </p>
-                          <p className="text-title ">Avg Monthly Income</p>
+                          <p className="text-title ">Monthly Income</p>
                           
                           <p className="text-value">
                             {plan.current.incomeTermOptions} Years
@@ -221,7 +221,7 @@ export const PlanOverview = () => {
                         <div className="flex-column">
                           
                           <p className="text-value">
-                            {formatNumber((((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value)*100)} %
+                            {(((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value).toFixed(2)}x
                           </p>
                           <p className="text-title">ROI</p>
                           <p className="text-value">
@@ -233,8 +233,8 @@ export const PlanOverview = () => {
                           <p className="text-title">Total Benefit</p>
                         </div>
                         <div className="flex-column">
-                          <p className="text-value">{plan.current?.ageBand}</p>
-                          <p className="text-title">Age Band</p>
+                          {/* <p className="text-value">{plan.current?.ageBand}</p>
+                          <p className="text-title">Age Band</p> */}
                           <p className="text-value">Monthly</p>
                           <p className="text-title">Income Frequency</p>
                           <div id="tooltip-component">
@@ -243,6 +243,7 @@ export const PlanOverview = () => {
                               src={info}
                             />
                           </div>
+                          
                           <p />
                         </div>
                       </div>
@@ -253,14 +254,14 @@ export const PlanOverview = () => {
                   <div className="return-section">
                     <div className="returns-container concise" style={{ overflowY: 'scroll' }}>
                       <div className="header" style={{backgroundColor:'#07e57d'}}>
-                        <h2 className="heading" style={{color:'white'}}>Monthly Income CashFlow</h2>
+                        <h2 className="heading" style={{color:'white'}}>Income CashFlow</h2>
                       </div>
                       
                       <div>
                         <div className="square">
                           {
                             Object.keys(dataToPreview).map((year, i) => {
-                              return <ExpandableList key={`${year}-${i}`} label={year} items={dataToPreview[year]} />
+                              return <ExpandableList key={`${year}-${i}`} label={"Jan'" + year.slice(2,4) + " - Dec'" + year.slice(2,4)} items={dataToPreview[year]} />
                             })
                           }
                         </div>

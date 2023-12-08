@@ -36,7 +36,7 @@ export const ExpandableList = ({
                 primary={
                     <div>
                         <div style={{ display: 'inline-block'}}>{label}</div>
-                        <div style={{ display: 'inline-block', paddingLeft:'50%',textAlignLast:'right'}}>Income {`₹ ${formatNumber(totalYearIncome, 0)}`}</div>
+                        <div style={{ display: 'inline-block', paddingLeft:'30%',textAlignLast:'right'}}>Income {`₹ ${formatNumber(totalYearIncome, 0)}`}</div>
                     </div>
                 } 
             />
@@ -57,7 +57,7 @@ export const ExpandableList = ({
                                 primary={
                                     <div>
                                         <div style={{ display: 'inline-block', textAlign:'center'}}>{item}</div>
-                                        <div style={{ display: 'inline-block',marginLeft:'50%'}}>{`(₹ ${formatNumber(items[item], 0)})`}</div>
+                                        <div style={{ display: 'inline-block',float:'right'}}>{`₹ ${formatNumber(items[item], 0)}`}</div>
                                     </div>
                                 } 
                             />
