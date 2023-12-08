@@ -91,11 +91,12 @@ export const VirtualPropertyBenifits = () => {
                                                 className="img-fluid"
                                             />
                                         </div>
-                                        <div className="fw-600 fs-24 mb-3 pt-2 card-title h5">
+                                        <div className="fw-600 fs-24 mb-3 pt-2 card-title h5" style={{textAlign:'center'}}>
                                             Second Income
                                         </div>
                                         <p className="fw-400 fs-17 lh-24 card-text">
-                                            We provide Second Income with safety and high returns.
+                                            Let your investment work &
+                                            Get Passive Income on time
                                         </p>
                                     </div>
                                 </div>
@@ -110,11 +111,11 @@ export const VirtualPropertyBenifits = () => {
                                                 className="img-fluid"
                                             />
                                         </div>
-                                        <div className="fw-600 fs-24 mb-3 pt-2 card-title h5">
+                                        <div className="fw-600 fs-24 mb-3 pt-2 card-title h5" style={{textAlign:'center'}}>
                                             Safe &amp; Secure
                                         </div>
                                         <p className="fw-400 fs-17 lh-24 card-text">
-                                            This scheme is secured by RBI Investment. Hence, No worry!!
+                                            Returns are Guaranteed. Hence, No worry!!
                                         </p>
                                     </div>
                                 </div>
@@ -130,7 +131,7 @@ export const VirtualPropertyBenifits = () => {
                                             className="img-fluid"
                                         />
                                     </div>
-                                    <div className="fw-600 fs-24 mb-3 pt-2 card-title h5">
+                                    <div className="fw-600 fs-24 mb-3 pt-2 card-title h5" style={{textAlign:'center'}}>
                                         Consistent Returns
                                     </div>
                                     <p className="fw-400 fs-17 lh-24 card-text">

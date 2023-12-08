@@ -21,15 +21,29 @@ export const ProudAbout = () => {
                         >
                             <circle cx={8} cy={8} r={8} />
                         </svg>
-                        WHAT ARE WE PROUD ABOUT?
+                        Must Have in your Portfolio
                     </p>
-                    <p className="text-white fw-600 fs-24 mb-4 mb-md-4">
-                        We are growing rapidly. Join us soon
+                    <p className="fw-600 fs-24 mb-4 mb-md-4" style={{color:'red'}}>
+                        Search the Passive Income which suits your need
                     </p>
                 </div>
             </div>
-            <div className="d-flex justify-content-center align-items-center row">
-                <div
+            <div className="text-white d-flex justify-content-center align-items-center row">
+                <ul style={{listStyleType: 'circle'}}>
+                    <li>Must have if you seek Guaranteed Monthly Income</li>
+                    <li>Must have if you wish to lock FD rates for long term</li>
+                    <li>Must have if you want to have a clean succession plan</li>
+                    <li>Must have if you don't want to hustle of finding good tenants</li>
+                    <li>Must have if you don't want property disputes</li>
+                    <li>Must have if you want to manage taxes efficiently</li>
+                </ul>
+            
+            
+            
+            
+            
+            
+                {/* <div
                     data-aos="fade-up"
                     className="d-flex justify-content-start justify-content-lg-center ps-5 ps-md-5 ps-lg-3 col-lg-4 col-md-12 col-12 aos-init aos-animate"
                 >
@@ -103,7 +117,7 @@ export const ProudAbout = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div
                     data-aos="fade-up"
                     className="text-center mt-5 mt-md-0 col-md-12 aos-init aos-animate"

@@ -51,7 +51,7 @@ export const HomeWelcomeSection = () => {
                             </span>
                         </h1>
                         <p className="text-white fw-400 fs-24 my-3 mb-md-4 py-2">
-                            Diversify your portfolio with guaranteed from RBI governed Investment.
+                            Diversify your portfolio with guaranteed income | superior to Fixed Deposits & Property
                         </p>
                     </div>
                     <div className="px-5 px-lg-0">
@@ -71,7 +71,7 @@ export const HomeWelcomeSection = () => {
                                         </div>
                                         <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
                                             Guaranteed
-                                            <span className="fw-600 text-main-gold"> Monthly Income from Day 1</span>
+                                            <span className="fw-600 text-main-gold"> Monthly Income from 1st Month</span>
                                         </div>
                                     </div>
                                 </div>
@@ -111,10 +111,10 @@ export const HomeWelcomeSection = () => {
                                                 className="img-fluid"
                                             />
                                         </div>
-                                        <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5"><br />
-                                            Assured<br />
-                                            <span className="fw-600 text-main-gold"> Buy</span>
-                                            Back<br />
+                                        <div className="fw-400 text-center fs-20 mb-0 pt-2 card-title h5">
+                                            Assured<br /><br />
+                                            <span className="fw-600 text-main-gold"> Maturity</span>
+                                            
                                         </div>
                                     </div>
                                 </div>

@@ -51,7 +51,7 @@ export const PlanSliderCards = ({
             </div>
             
             <div>
-                <div className="text-main-green card-title h5">{formatNumber((((parseFloat(data.maturityValueOptions)*5000000)+ income)/5000000)*100)}%</div>
+                <div className="text-main-green card-title h5">{(((parseFloat(data.maturityValueOptions)*5000000)+ income)/5000000).toFixed(2)}x</div>
                 <p className="card-text">ROI</p>
             </div>
         </div>
@@ -168,7 +168,7 @@ export const PlanSliderCards = ({
                     {/* <p className="card-text">1st Year </p> */}
                     <p className="card-text">₹ {formatNumber(Math.round(income/(parseInt(data.incomeTermOptions)*12)))} </p>
                     <p className="card-text">₹ {formatNumber(Math.round(income/parseInt(data.incomeTermOptions)))}</p>
-                    <p className="card-text"> {data.incomeTermOptions}</p>
+                    <p className="card-text"> {data.incomeTermOptions} Years</p>
                     {/* <p className="card-text">₹ {formatNumber(((Number(investmentAmounts[4]))) * parseFloat(data.maturityValueOptions))}</p> */}
                     <p className="card-text">₹ {formatNumber((((Number(investmentAmounts[4]))) * parseFloat(data.maturityValueOptions))+income)}</p>
                 </div>

@@ -20,11 +20,11 @@ export const content = [
 export const content1 = [
   {
     heading: 'What is Virtual Property?',
-    description: ['Virtual Property is way to explain how you can have a better passive income over a general rental income which may or may not come from buying a property.']
+    description: ['Virtual Property is a superior solution for having a better efficient passive income over traditional rental income which may or may not come after buying a property.']
   },
   {
-    heading: 'What is the lock-in period after I invest via MultiSphere?',
-    description: ['To make your investment experience hassle-free, the project entities just put a minimum Lock-in period. Each Plan have thier own lock-in period. You can check the lock-in period in the plan detail page. Minimum Lock-in Period is 3 Years only.']
+    heading: 'Who will you pay to?',
+    description: ['You will pay directly to reputed financial institutions like Birla,TATA,HDFC & ICICI etc and receive income from them in your bank account.']
   },
   {
     heading: 'Are the returns guaranteed?',

@@ -167,7 +167,7 @@ export const AboutUs = () => {
                     </section>
                 </div>
             </section>
-            <section className="pt-5 mb-md-4 mb-3" id="team">
+            {/* <section className="pt-5 mb-md-4 mb-3" id="team">
                 <div className="container">
                     <div className="superstarsAbout">
                         <div className="row">
@@ -869,7 +869,7 @@ export const AboutUs = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             {/* <section className=" mb-md-5 mb-3">
                 <div className="container">
                     <div className="d-flex justify-content-center align-items-center row">
@@ -911,7 +911,7 @@ export const AboutUs = () => {
                     </div>
                 </div>
             </section> */}
-            <section className="bg-charade py-5 mb-md-5 mb-3">
+            {/* <section className="bg-charade py-5 mb-md-5 mb-3">
                 <div className="py-0 py-md-0 container">
                     <div className="d-flex justify-content-center align-items-center row">
                         <div data-aos="fade-up" className="text-center col aos-init">
@@ -1292,7 +1292,7 @@ export const AboutUs = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </div>
     </>)
 }

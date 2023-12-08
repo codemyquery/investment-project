@@ -93,7 +93,7 @@ export const HaveQuestions = () => {
                             className="d-grid gap-4 col-12 aos-init aos-animate"
                         >
                             <div>
-                                <a href="#">
+                                <a href="\contact-us">
                                     <button
                                         type="button"
                                         className="px-3 px-md-5 py-3 w-100 btn btn-dark btn-lg"
