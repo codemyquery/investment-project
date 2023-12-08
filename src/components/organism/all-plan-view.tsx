@@ -7,17 +7,17 @@ import { PlanSliderCards } from "../molecules";
 import { Sell } from "../../services";
 import { green } from "@mui/material/colors";
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-interface PlanSliderProps {
+
+interface AllPlanProps {
     planDetail: PlanServerData[],
     loader: boolean
 }
 
-export const PlanSlider = ({
+export const AllPlanView = ({
     loader,
     planDetail
-}: PlanSliderProps) => {
+}: AllPlanProps) => {
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
@@ -52,10 +52,7 @@ export const PlanSlider = ({
                         </svg>
                         WHICH PLAN WHOULD YOU LIKE TO INVEST IN ?
                     </p>
-                    <h2 className="text-white fw-600 display-6 mb-3 mb-md-4">
-                        Invest in our
-                        <span className="text-main-green"> high return </span> plans
-                    </h2>
+                    
                 </div>
             </div>
             <div className="/* d-flex justify-content-center px-md-5 align-items-center pt-2 row */">
@@ -69,7 +66,7 @@ export const PlanSlider = ({
                         {
                             (() => {
                                 const planSlider = [];
-                                for (let i = 0; i < 6; isMobile ? i++ : i += 3) {
+                                for (let i = 0; i < planDetail.length; isMobile ? i++ : i += 3) {
                                     const plan1 = planDetail[i]
                                     const plan2 = planDetail[i + 1]
                                     const plan3 = planDetail[i + 2]
@@ -84,7 +81,7 @@ export const PlanSlider = ({
                                     );
                                 }
                                 
-                                planSlider.push(<div style={{color:'green',textAlign:'right'}}><a href='/all-plan'>View More Plans</a></div>);
+                               
                                 return planSlider;
                             })()
                         }

@@ -16,12 +16,13 @@ export const MyPlans = () => {
   useEffect(() => {
     const abortController = new AbortController();
     const init = async () => {
-      const response = await Plan.fetchPlanList('', abortController);
-      setPlanDetail(response.rows);
+      
       if (userInfo?.id) {
         const activePlan = await Users.fetchUserActivePlans(userInfo?.id);
         setActivePlanDetail(activePlan);
       }
+      const response = await Plan.fetchPlanList('', abortController);
+      setPlanDetail(response.rows);
       setLoader(false)
     }
     init();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../providers"
 import { NavigationMenu, Service, ServiceStatus } from "../types";
-import { AboutUs, HomePage, ContactUs, Login, SignUp, PlanOverview, MyPlans, EditPlanSell } from "../components/pages";
+import { AboutUs, HomePage, ContactUs, Login, SignUp, PlanOverview, MyPlans, EditPlanSell, AllPlan } from "../components/pages";
 import HomeIcon from '@mui/icons-material/Home';
 import { AdminLoginPage } from "../components/pages/admin/login";
 import GroupIcon from '@mui/icons-material/Group';
@@ -195,6 +195,15 @@ const AppMenus: NavigationMenu[] = [
         to: '/plan-overview/:itemID/:investmentAmount',
         path: '/plan-overview/:itemID/:investmentAmount',
         component: PlanOverview,
+        allowedGroups: []
+    },
+    {
+        id: "all-plan",
+        i18nKey: "All Plan",
+        visible: false,
+        to: '/all-plan',
+        path: '/all-plan',
+        component: AllPlan,
         allowedGroups: []
     }
 ]

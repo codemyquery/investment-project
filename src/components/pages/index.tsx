@@ -13,7 +13,7 @@ import { PlanOverview } from "./public/plan-overview";
 import { MyPlans } from "./public/user-profile/my-plan";
 import { DashboardSellData } from "./admin/dashboard-sell-data";
 import { EditPlanSell } from "./admin/edit-sell-data";
-
+import { AllPlan } from "./public/all-plan";
 export {
     PageNotFound,
     DashboardPlanDetails,
@@ -29,5 +29,6 @@ export {
     PlanOverview,
     MyPlans,
     DashboardSellData,
-    EditPlanSell
+    EditPlanSell,
+    AllPlan
 }

@@ -175,7 +175,7 @@ export const PlanSliderCards = ({
             </div>
             <div className="py-2">
                 <a
-                    href={`/plan-overview/${data.planCode}/${investmentAmounts[0]}`}
+                    href={`/plan-overview/${data.planCode}/${investmentAmounts[4]}`}
                     className="fs-16 fw-700 text-white text-center py-2"
                 >
                     <button
