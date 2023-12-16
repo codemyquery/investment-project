@@ -25,7 +25,7 @@ export const HaveQuestions = () => {
                         Connect with us &amp; get your answers
                     </h2>
                 </div>
-                3
+                
             </div>
             <div className="d-flex justify-content-center align-items-strech pt-5 row">
                 <div

@@ -174,17 +174,21 @@ export const PlanSliderCards = ({
                 </div>
             </div>
             <div className="py-2">
-                <a
+                {/* <a
                     href={`/plan-overview/${data.planCode}/${investmentAmounts[4]}`}
                     className="fs-16 fw-700 text-white text-center py-2"
-                >
+                > */}
                     <button
                         type="button"
                         className="main-btn-service maincolor bg-transparent btn btn-primary"
+                        onClick={() => {
+                                            
+                            navigate(`/plan-overview/${data.planCode}/${investmentAmounts[4]}`);
+                        }}
                     >
                         Invest Now
                     </button>
-                </a>
+                {/* </a> */}
             </div>
         </div>
     </div>

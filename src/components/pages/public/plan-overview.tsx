@@ -240,7 +240,7 @@ export const PlanOverview = () => {
                           <div id="tooltip-component">
                             <img
                               alt="tooltip"
-                              src={info}
+                              src="https://virtual-property.in/static/media/info.549b062c6f71acfb7fc8c9292febec2a.svg"
                             />
                           </div>
                           
@@ -306,7 +306,8 @@ export const PlanOverview = () => {
                       <div>
                         <img
                           className="step-icons"
-                          src={kyc}
+                          src="https://virtual-property.in/static/media/kyc.1c0fefdf14a4563ba172f0a857084168.svg"
+                          
                         />
                         <div className="steps-text" style={{color:'#fff'}}>Complete KYC</div>
                       </div>
@@ -315,7 +316,7 @@ export const PlanOverview = () => {
                         <div>
                           <img
                             className="step-icons"
-                            src={bonds}
+                            src="https://virtual-property.in/static/media/bonds.5c0de1f01b17682af71837bb90a740c2.svg"
                           />
                           <div className="steps-text" style={{color:'#fff'}}>Choose Amount</div>
                         </div>
@@ -325,7 +326,7 @@ export const PlanOverview = () => {
                         <div>
                           <img
                             className="step-icons"
-                            src={investmentTime}
+                            src="https://virtual-property.in/static/media/bonds.5c0de1f01b17682af71837bb90a740c2.svg"
                           />
                           <div className="steps-text" style={{color:'#fff'}}>Make Investment</div>
                         </div>

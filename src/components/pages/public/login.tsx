@@ -15,6 +15,7 @@ const defaultValues: LoginFormData = {
 
 export const Login = () => {
     window.scrollTo(0, 0);
+    const navigate = useNavigate();
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
 
     const {
@@ -29,6 +30,7 @@ export const Login = () => {
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
             if (response.status) {
                 window.location.href = `${BASE_URL}/user/my-plan`
+            
             } else {
                 setFormState(prev => {
                     return {
