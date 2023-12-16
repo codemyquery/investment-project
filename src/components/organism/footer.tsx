@@ -69,7 +69,7 @@ export const Footer = () => {
                         </div> */}
                         <div className="flex-column nav">
                             <a
-                                href={`${BASE_URL}/login`}
+                                href={`${BASE_URL}/sign-up`}
                                 className="nav-link"
                             >
                                 Sign up
@@ -77,7 +77,7 @@ export const Footer = () => {
                         </div>
                         <div className="flex-column nav">
                             <a
-                                href={`${BASE_URL}/sign-up`}
+                                href={`${BASE_URL}/login`}
                                 className="nav-link"
                                 
                             >
@@ -109,8 +109,8 @@ export const Footer = () => {
                         </h6>
                         <div className="flex-column nav">
                             <a
-                                href="tel:+91-7231844488"
-                                data-rr-ui-event-key="tel:+91-7231844488"
+                                href="tel:+91-9793909000"
+                                data-rr-ui-event-key="tel:+91-9793909000"
                                 className="nav-link"
                             >
                                 +91-9793909000
@@ -118,8 +118,8 @@ export const Footer = () => {
                         </div>
                         <div className="flex-column nav">
                             <a
-                                href="mailto:info@growpital.com"
-                                data-rr-ui-event-key="mailto:info@growpital.com"
+                                href="mailto:contact@multisphere.in"
+                                data-rr-ui-event-key="mailto:contact@multisphere.in"
                                 className="nav-link"
                             >
                                 contact@multisphere.in
@@ -127,8 +127,9 @@ export const Footer = () => {
                         </div>
                         <div className="flex-column nav">
                             <a
-                                href="https://maps.google.com/?q=Industrial Area, Sector 32, Gurgaon, Haryana, 122022"
-                                data-rr-ui-event-key="https://maps.google.com/?q=Industrial Area, Sector 32, Gurgaon, Haryana, 122022"
+                            
+                                href="https://maps.google.com/?q=MultiSphere+Consultancy"
+                                data-rr-ui-event-key="https://maps.google.com/?q=MultiSphere+Consultancy"
                                 className="nav-link"
                             >
                                 MultiSphere Enterprises, LLP, Mughlaha, 

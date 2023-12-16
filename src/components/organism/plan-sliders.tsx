@@ -6,7 +6,7 @@ import { PlanServerData } from "../../types";
 import { PlanSliderCards } from "../molecules";
 import { Sell } from "../../services";
 import { green } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/constants";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -16,11 +16,9 @@ interface PlanSliderProps {
 }
 
 export const PlanSlider = ({
-    
     loader,
     planDetail
 }: PlanSliderProps) => {
-    const navigate = useNavigate();
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
@@ -71,7 +69,6 @@ export const PlanSlider = ({
                     > */}
                         {
                             (() => {
-                               
                                 const planSlider = [];
                                 for (let i = 0; i < 6; isMobile ? i++ : i += 3) {
                                     const plan1 = planDetail[i]
@@ -88,11 +85,7 @@ export const PlanSlider = ({
                                     );
                                 }
                                 
-                                planSlider.push(<div style={{color:'green',textAlign:'right'}}>
-                                    <button onClick={() => {
-                                            
-                                            navigate('./all-plan');
-                                        }}>View More Plans</button></div>);
+                                planSlider.push(<div style={{color:'green',textAlign:'right'}}><a href={`${BASE_URL}/all-plan`}>View More Plans</a></div>);
                                 return planSlider;
                             })()
                         }
