@@ -90,7 +90,8 @@ export const Login = () => {
                                             name={"username"}
                                             control={control}
                                             rules={{
-                                                required: true
+                                                required: true,
+                                                pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
                                             }}
                                             render={({ field }) => (
                                                 <input
@@ -103,6 +104,7 @@ export const Login = () => {
                                             )}
                                         />
                                         {errors.username?.type === "required" && <div className="invalid-feedback">{t.required}</div>}
+                                        {errors.username?.type === "pattern" && <div className="invalid-feedback">{t.emailError}</div>}
                                     </div>
                                     <div className="mb-4 col-12">
 

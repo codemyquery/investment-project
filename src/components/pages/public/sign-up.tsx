@@ -101,6 +101,7 @@ export const SignUp = () => {
                                                         name="name"
                                                         type="text"
                                                         className="form-control"
+                                                        
                                                     />
                                                 )}
                                             />
@@ -125,8 +126,8 @@ export const SignUp = () => {
                                                 )}
                                             />
                                             {errors.mobile?.type === 'required' && <div className="invalid-feedback">{t.required}</div>}
-                                            {errors.mobile?.type === 'minLength' && <div className="invalid-feedback">{t.maxLength}</div>}
-                                            {errors.mobile?.type === 'maxLength' && <div className="invalid-feedback">{t.minLength}</div>}
+                                            {errors.mobile?.type === 'minLength' && <div className="invalid-feedback">{t.minLength}</div>}
+                                            {errors.mobile?.type === 'maxLength' && <div className="invalid-feedback">{t.maxLength}</div>}
                                         </div>
                                         <div className="mb-4 col-12">
                                             <Controller
@@ -192,7 +193,7 @@ export const SignUp = () => {
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}
-                                                        placeholder="Re-Enter Same Password"
+                                                        placeholder="Re-Enter Password"
                                                         name="reenterpassword"
                                                         type="password"
                                                         className="form-control"

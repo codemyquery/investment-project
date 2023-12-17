@@ -54,7 +54,7 @@ export const VirtualPropertyBenifits = () => {
                                 Stamp Duty
                             </p>
                             <p className="fs-24 fs-sm-18 fw-400 text-white">
-                                &nbsp;&nbsp;Registration Charges EMI
+                                &nbsp;&nbsp;Registration Charges
                             </p>
                             <p className="fs-24 fs-sm-18 fw-400 text-white">
                                 &nbsp;&nbsp;&nbsp;&nbsp;Maintenance Cost
