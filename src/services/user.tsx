@@ -13,6 +13,7 @@ import {
     WS_BASE_URL,
     callService
 } from "../utils";
+import { ForgetPasswordFormDate } from "../types/user";
 
 export const useDisplayTableUsersHeaders = () => {
     const navigate = useNavigate();
@@ -94,6 +95,22 @@ export const createUser = async (data: SignUpFormData, abortController?: AbortCo
     })
 }
 
+export const forgetPassword = async (data: ForgetPasswordFormDate, abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}`;
+    return await callService({
+        url: url,
+        method: 'POST',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'user',
+                actions: 'forgetPassword'
+            },
+            data: data
+        }
+    })
+}
 export const loginUser = async (data: LoginFormData, abortController?: AbortController): Promise<ServerResponse> => {
     const url = `${WS_BASE_URL}`;
     return await callService({

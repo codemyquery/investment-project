@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Users, useHookForm } from "../../../services";
-import { DefaultFormState, FormState, SignUpFormData } from "../../../types";
+import { DefaultFormState, FormState, ServerResponse, SignUpFormData } from "../../../types";
 import { Controller } from "react-hook-form";
 import { t } from "../../../utils";
 import { Notifications } from "../../molecules";
@@ -32,12 +32,10 @@ export const SignUp = () => {
     } = useHookForm<SignUpFormData>({ defaultValues });
 
     const onSubmitItem = async (data: SignUpFormData) => {
+        let response: ServerResponse;
         if (data.confirmPassword !== data.password) return;
         try {
-            const response = await Users.createUser(data);
-            if (response.status) {
-                reset(defaultValues)
-            }
+            response = await Users.createUser(data);
             setFormState(prev => {
                 return {
                     ...prev,
@@ -54,8 +52,8 @@ export const SignUp = () => {
                     ...prev,
                     loading: false,
                     notificationOpen: true,
-                    notificationType: 'error',
-                    notificationMessage: t.errorMessage
+                    notificationMessage: response?.errMsg || t.errorMessage,
+                    notificationType: 'error'
                 }
             })
         }

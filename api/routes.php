@@ -117,8 +117,10 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 			$result = $user->create_new_user($bodyRawData['data']);
 		} else if ($action === 'loginUser') {
 			$result = $user->login_user($bodyRawData['data']);
+		}else if($action === 'forgetPassword'){
+			$result = $user->forget_password($bodyRawData['data']);
 		}
-		if (!$result) http_response_code(BAD_REQUEST);
+		//if (!$result['status']) http_response_code(BAD_REQUEST);
 		echo json_encode($result);
 	} else if ($method === "PUT") {
 		if ($action === 'updateKycData') {

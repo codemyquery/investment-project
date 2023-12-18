@@ -2344,6 +2344,11 @@ timeline .content {
   margin-bottom: 25px;
 }
 
+#IntialAmoutCombo{
+  min-width: -webkit-fill-available;
+    color: white;
+    background-color: currentcolor;
+}
 /* .keyhighlight-section .container .summary-container .exctv-summary-class ul li:before {
     content: url(/assets/img/green-tik.svg);
     position: absolute;

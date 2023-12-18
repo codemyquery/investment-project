@@ -12,6 +12,7 @@ import ContactMailIcon from '@mui/icons-material/ContactMail';
 import { Profile } from "../components/pages/public/user-profile/profile";
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import SellIcon from '@mui/icons-material/Sell';
+import { ForgetPassword } from "../components/pages/public/forget-password";
 
 const AppMenus: NavigationMenu[] = [
     {
@@ -204,6 +205,15 @@ const AppMenus: NavigationMenu[] = [
         to: '/all-plan',
         path: '/all-plan',
         component: AllPlan,
+        allowedGroups: []
+    },
+    {
+        id: "forget-password",
+        i18nKey: "Forget Password",
+        visible: false,
+        to: '/forget-password',
+        path: '/forget-password',
+        component: ForgetPassword,
         allowedGroups: []
     }
 ]

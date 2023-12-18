@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHookForm, Users } from "../../../services";
-import { DefaultFormState, FormState, LoginFormData } from "../../../types";
+import { DefaultFormState, FormState, LoginFormData, ServerResponse } from "../../../types";
 import { t } from "../../../utils";
 import { Controller } from "react-hook-form";
 import { Notifications } from "../../molecules";
@@ -25,8 +25,9 @@ export const Login = () => {
     } = useHookForm<LoginFormData>({ defaultValues });
 
     const onSubmitItem = async (data: LoginFormData) => {
+        let response: ServerResponse;
         try {
-            const response = await Users.loginUser(data);
+            response = await Users.loginUser(data);
             sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify(response))
             if (response.status) {
                 window.location.href = `${BASE_URL}/user/my-plan`
@@ -38,7 +39,7 @@ export const Login = () => {
                         loading: false,
                         notificationOpen: true,
                         notificationType: 'error',
-                        notificationMessage: response.errMsg || t.errorMessage
+                        notificationMessage: response?.errMsg || t.errorMessage
                     }
                 })
             }
@@ -48,8 +49,9 @@ export const Login = () => {
                     ...prev,
                     loading: false,
                     notificationOpen: true,
-                    notificationType: 'error',
-                    notificationMessage: t.errorMessage
+                    
+                    notificationMessage: response?.errMsg || t.errorMessage,
+                    notificationType: 'error'
                 }
             })
         }
@@ -135,6 +137,7 @@ export const Login = () => {
                                 >
                                     Login
                                 </button>
+                                <p>Forget UserId/Password? <a href={`${BASE_URL}/forget-password`}>click here </a></p>
                             </div>
                         </div>
                     </div>

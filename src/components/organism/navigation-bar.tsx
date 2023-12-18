@@ -139,6 +139,11 @@ export const NavigationBar = () => {
                                         <button
                                             type="button"
                                             className="main-btn-nav mb-2 fs-11 register_AMA btn btn-primary"
+                                            onClick={() => {
+                                                setActive(undefined)
+                                                navigate('/contact-us');
+                                            }}
+                                            
                                         >
                                             Get a Callback
                                         </button>

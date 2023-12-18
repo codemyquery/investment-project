@@ -180,6 +180,7 @@ export const PlanOverview = () => {
                               formatNumber(planAmount.value/plan.current.ppt)
                             }
                           </p> */}
+                          <div id='IntialAmoutCombo'>
                           <Autocomplete
                             fullWidth
                             id="combo-box-demo"
@@ -194,6 +195,8 @@ export const PlanOverview = () => {
                             options={options}
                             renderInput={(params) => <TextField {...params} variant="outlined" />}
                           />
+                          </div>
+                          
                           <p className="text-title">Choose Initial Investment</p>
                           <p className="text-value">
                             {plan.current.ppt} Years

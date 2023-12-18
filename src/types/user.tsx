@@ -79,7 +79,13 @@ export interface SignUpFormData {
     confirmPassword: string,
     acceptedPromotionMails: number
 }
-
+export interface ForgetPasswordFormDate {
+    
+    
+    username: string
+   
+    
+}
 export interface UserDataResponse {
     count: number,
     rows: Array<UserServerData>

@@ -122,7 +122,7 @@ export const HaveQuestions = () => {
                                     Chat
                                 </button>
                             </div> */}
-                            <div>
+                            {/* <div>
                                 <a href="#">
                                     <button
                                         type="button"
@@ -137,7 +137,7 @@ export const HaveQuestions = () => {
                                         Community
                                     </button>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

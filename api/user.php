@@ -10,12 +10,21 @@ class Users
 
     function create_new_user($data)
     {
-        $result = $this->helper->ValidateEmail($data['email']);
+        $email = $this->helper->clean_data($data['email']);
+        $result = $this->helper->ValidateEmail($email);
         if ($result["status"] !== true) return $result;
         $result = $this->helper->ValidatePhoneNumber($data['mobile']);
         if ($result["status"] !== true) return $result;
         $result = $this->helper->checkPasswordStrength($data['password']);
         if ($result["status"] !== true) return $result;
+        $this->helper->query = "SELECT * FROM users WHERE email='$email'";
+        if($this->helper->total_row() > 0){
+            return array(
+                "status" => false,
+                "errMsg" =>  'User Already exists'
+            );    
+        }
+
         $this->helper->data = array(
             ':name'                    =>    $this->helper->clean_data($data['name']),
             ':email'                   =>    $this->helper->clean_data($data['email']),
@@ -28,11 +37,9 @@ class Users
         $this->helper->query = "INSERT INTO users (name, email, mobile, lg_lc_code, kyc_status, password, accepted_for_promotions) 
          VALUES (:name,:email,:mobile,:lg_lc_code, :kyc_status, :password, :accepted_for_promotions)";
         
-        $result = $this->helper->execute_query();
         return array(
-			"status" =>  $result,
-			"errMsg" =>  $result === true ? "" : "Unknown error occured"
-		);
+            "status" => $this->helper->execute_query()
+        ); 
     }
 
     function update_user_kyc($itemID)
@@ -60,7 +67,11 @@ class Users
 
         $this->helper->query = "SELECT * FROM users WHERE (email='$username' OR mobile='$username') AND password='$password'";
         if ($this->helper->total_row() === 0) {
-            return null;
+            // return null;
+            return array(
+                "status" => false,
+                "errMsg" =>  'Incorrect credentials / User not registered'
+            ); 
         }
         $username = $this->helper->query_result()[0];
         $_SESSION["user_mobile"] = $username['mobile'];
@@ -68,7 +79,37 @@ class Users
         $_SESSION["user_id"] = $username['id'];
         return formatUserOutput($username);
     }
+    function forget_password($data)
+    {
+        $username = $data['username'];
+        
+        $result = $this->helper->ValidateEmail($username);
+        if ($result["status"] === 1) return $result;
 
+        $this->helper->query = "SELECT * FROM users WHERE email='$username'";
+        if ($this->helper->total_row() === 0) {
+           
+            return array(
+                "status" => false,
+                "errMsg" =>  'User not registered!!'
+            ); 
+        }
+        $result = $this->helper->query_result()[0];
+        $password = $result['password'];
+       
+        
+
+
+        $headers = 'From: <no-reply@virtual-property.in>' . "\r\n";
+        $headers .= 'Cc: no-reply@virtual-property.in' . "\r\n";
+        $subject = "Password Recovery: Virtual Property";
+        $message = "Your Virtual-Property passoword is: '$password'" ;
+        
+        $result = mail($username,$subject,$message,$headers);
+
+        return $result;
+    }
+    
     function get_user_list()
     {
         $pages_array = array();

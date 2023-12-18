@@ -20,7 +20,7 @@ export const ContactUs = () => {
     const {
         control,
         handleSubmit,
-        formState: { },
+        formState: { errors },
         setValue,
         reset
     } = useHookForm<ContactUsFormData>({ defaultValues })
@@ -119,7 +119,7 @@ export const ContactUs = () => {
                                 </div>
                             </div>
                             <div className="me-5 px-2 mb-5 row">
-                                <div className=" p-0 col-2">
+                                {/* <div className=" p-0 col-2">
                                     <a href="https://www.facebook.com/growpital">
                                         <img
                                             src="/static/media/fb.f8d25e0c39b5d81274e5bb5323da78f7.svg"
@@ -150,8 +150,8 @@ export const ContactUs = () => {
                                             alt=""
                                         />
                                     </a>
-                                </div>
-                                <div className=" p-0 col-2">
+                                </div> */}
+                                {/* <div className=" p-0 col-2">
                                     <a href="#">
                                         <svg
                                             stroke="currentColor"
@@ -166,7 +166,7 @@ export const ContactUs = () => {
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
                                         </svg>
                                     </a>
-                                </div>
+                                </div> */}
                                 <div className=" p-0 col-2">
                                     <a href="https://wa.me/9793909000?text=Hi%20I%20want%20to%20learn%20more%20about%20VirtualProperty.%20">
                                         <svg
@@ -221,22 +221,33 @@ export const ContactUs = () => {
                                             <Controller
                                                 name={'mobile'}
                                                 control={control}
+                                                rules={{
+                                                    required: true,
+                                                    minLength: 10,
+                                                    maxLength: 10
+                                                }}
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}
                                                         placeholder="Mobile"
+                                                        type="number"
                                                         className="form-control"
                                                     />
                                                 )}
-                                                rules={{
-                                                    required: true
-                                                }}
+                                                
                                             />
+                                            {errors.mobile?.type === 'required' && <div className="invalid-feedback">{t.required}</div>}
+                                            {errors.mobile?.type === 'minLength' && <div className="invalid-feedback">{t.minLength}</div>}
+                                            {errors.mobile?.type === 'maxLength' && <div className="invalid-feedback">{t.maxLength}</div>}
                                         </div>
                                         <div className="mb-4 col-12">
                                             <Controller
                                                 name={'email'}
                                                 control={control}
+                                                rules={{
+                                                    required: true,
+                                                    pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+                                                }}
                                                 render={({ field }) => (
                                                     <input
                                                         {...field}
@@ -244,10 +255,11 @@ export const ContactUs = () => {
                                                         className="form-control"
                                                     />
                                                 )}
-                                                rules={{
-                                                    required: true
-                                                }}
+                                               
                                             />
+                                            {errors.email?.type === "required" && <div className="invalid-feedback">{t.required}</div>}
+                                            {errors.email?.type === "pattern" && <div className="invalid-feedback">{t.emailError}</div>}
+                                       
                                         </div>
                                         <div className="mb-4">
                                             <Controller
@@ -283,7 +295,7 @@ export const ContactUs = () => {
                                                     )}
                                                 />
                                                 <label title="" className="form-check-label">
-                                                    You are signing up to receive transaction , promotions and
+                                                    You are contacting us to receive transaction , promotions and
                                                     other commercial messages that are relevant to you
                                                 </label>
                                                 <div className="invalid-feedback">

@@ -22,7 +22,8 @@ export const SocialSection = () => {
                         >
                             <circle cx={8} cy={8} r={8} />
                         </svg>
-                        JOIN US ON OUR TELEGRAM CHANNEL
+                        JOIN US
+                         {/* ON OUR TELEGRAM CHANNEL */}
                     </p>
                     <h2 className="text-white fw-600 display-6 mb-3 mb-md-4">
                         Be part of our community!
@@ -32,7 +33,7 @@ export const SocialSection = () => {
                         new features and product updates. What is going on in Virtual Property,
                         promotions and more.
                     </p>
-                    <div data-aos="fade-up" className="aos-init aos-animate">
+                    {/* <div data-aos="fade-up" className="aos-init aos-animate">
                         <a href="#">
                             <button
                                 type="button"
@@ -47,7 +48,7 @@ export const SocialSection = () => {
                                 Join Telegram Channel
                             </button>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="mt-5 mt-lg-0 col-lg-6 col-md-12 col-12">
                     <div
