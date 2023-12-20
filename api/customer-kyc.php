@@ -92,7 +92,28 @@ class CustomerKYC
         Nominee_dob=:Nominee_dob,	
         Nominee_address=:Nominee_address";
         if ($this->helper->execute_query()) {
-            return $user->update_user_kyc($customer_id);
+            if(strlen($data['aadharCardNumber'])<1 || 
+                strlen($data['aadharCard']['frontUrl']) < 1||
+                strlen($data['aadharCard']['backUrl']) < 1||
+                strlen($data['pancardNumber']) < 1||
+                strlen($data['panCardUrl']) < 1||
+                strlen($data['bankAccNo']) < 1||
+                strlen($data['bankStatementUrl']) < 1||
+                strlen($data['signatureUrl']) < 1||
+                strlen($data['bankName']) < 1||
+                strlen($data['dob']) < 1||
+                strlen($data['ifsc']) < 1||
+                strlen($data['nomineeName']) < 1||
+                strlen($data['nomineerelation']) < 1||
+                strlen($data['nomineeDob']) < 1||
+                strlen($data['nomineeAddress']) < 1||
+                strlen($data['address']) < 1||
+                strlen($data['dob']) < 1
+            ){
+                return true;
+            }else{
+                return $user->update_user_kyc($customer_id);
+            }
         }
         return false;
     }
