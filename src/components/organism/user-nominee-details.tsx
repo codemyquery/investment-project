@@ -2,6 +2,7 @@ import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui
 import { ControlDate, ControlText } from "../molecules"
 import { Control, FieldErrors } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
+import { t } from "../../utils"
 
 interface UserNomineeDetailsProps {
     control: Control<UserKYCFormData, any>
@@ -18,7 +19,13 @@ export const UserNomineeDetails = ({
                     control={control}
                     label="Nominee Name"
                     name="nomineeName"
-                    helperText=""
+                    error={errors.nomineeName}
+                    helperText={(()=> {
+                        if(errors.nomineeName?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}
@@ -29,7 +36,13 @@ export const UserNomineeDetails = ({
                     control={control}
                     label="Nominee Relation"
                     name="nomineerelation"
-                    helperText=""
+                    error={errors.nomineerelation}
+                    helperText={(()=> {
+                        if(errors.nomineerelation?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}
@@ -40,7 +53,13 @@ export const UserNomineeDetails = ({
                     control={control}
                     label="Nominee DOB"
                     name="nomineeDob"
-                    helperText=""
+                    error={errors.nomineeDob}
+                    helperText={(()=> {
+                        if(errors.nomineeDob?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}
@@ -51,7 +70,13 @@ export const UserNomineeDetails = ({
                     control={control}
                     label="Nominee Address"
                     name="nomineeAddress"
-                    helperText=""
+                    error={errors.nomineeAddress}
+                    helperText={(()=> {
+                        if(errors.nomineeAddress?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}

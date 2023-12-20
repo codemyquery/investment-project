@@ -1,14 +1,7 @@
-import { Box, useTheme, Skeleton, colors } from "@mui/material"
-import { useState } from "react";
-import { autoPlay } from 'react-swipeable-views-utils';
-import SwipeableViews from 'react-swipeable-views';
+import { Box, Skeleton } from "@mui/material"
 import { PlanServerData } from "../../types";
 import { PlanSliderCards } from "../molecules";
-import { Sell } from "../../services";
-import { green } from "@mui/material/colors";
 import { BASE_URL } from "../../utils/constants";
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 interface PlanSliderProps {
     planDetail: PlanServerData[],
@@ -19,13 +12,7 @@ export const PlanSlider = ({
     loader,
     planDetail
 }: PlanSliderProps) => {
-    const theme = useTheme();
-    const [activeStep, setActiveStep] = useState(0);
     const isMobile = window.matchMedia("(max-width: 600px)").matches;
-
-    const handleStepChange = (step: number) => {
-        setActiveStep(step);
-    };
 
     if (loader) {
         return <Skeleton sx={{ width: '100%', height: '200px' }} />
@@ -75,7 +62,7 @@ export const PlanSlider = ({
                                     const plan2 = planDetail[i + 1]
                                     const plan3 = planDetail[i + 2]
                                     planSlider.push(
-                                        <div key={plan1.planCode} >
+                                        <div key={plan1.planCode+i} >
                                             <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
                                                 {plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
                                                 {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}

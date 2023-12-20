@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@mui/material"
+import { Grid } from "@mui/material"
 import { ControlText, ControlNumber, ControlDate } from "../molecules"
 import { Control, FieldErrors, useFormState } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
@@ -13,7 +13,6 @@ export const UserPersonalDetails = ({
     control,
     errors
 }: UserPersonalDetailsProps) => {
-    const [isPanError,setIsPanError] = useState(false)
     return <>
         <Grid item xs={12}>
             <ControlText
@@ -48,7 +47,14 @@ export const UserPersonalDetails = ({
                 label="Pan Card No"
                 name="pancardNumber"
                 error={errors.pancardNumber}
-                helperText={isPanError ? t.maxLength : ""}
+                helperText={(()=> {
+                    if(errors.pancardNumber?.type === "required"){
+                        return t.required;
+                    }else if(errors.pancardNumber?.type === "maxLength"){
+                        return "Invalid PANCARD length";
+                    }
+                    return "";
+                })()}
                 rules={{
                     required: true,
                     maxLength: 10
@@ -60,7 +66,13 @@ export const UserPersonalDetails = ({
                 control={control}
                 label="Aadhar Card No"
                 name="aadharCardNumber"
-                helperText=""
+                error={errors.aadharCardNumber}
+                helperText={(()=> {
+                    if(errors.aadharCardNumber?.type === "required"){
+                        return t.required;
+                    }
+                    return "";
+                })()}
                 rules={{
                     required: true
                 }}
@@ -71,7 +83,13 @@ export const UserPersonalDetails = ({
                 control={control}
                 label="Date Of Birth"
                 name="dob"
-                helperText=""
+                error={errors.dob}
+                helperText={(()=> {
+                    if(errors.dob?.type === "required"){
+                        return t.required;
+                    }
+                    return "";
+                })()}
                 rules={{
                     required: true
                 }}
@@ -82,7 +100,13 @@ export const UserPersonalDetails = ({
                 control={control}
                 label="Address"
                 name="address"
-                helperText=""
+                error={errors.address}
+                helperText={(()=> {
+                    if(errors.address?.type === "required"){
+                        return t.required;
+                    }
+                    return "";
+                })()}
                 rules={{
                     required: true
                 }}

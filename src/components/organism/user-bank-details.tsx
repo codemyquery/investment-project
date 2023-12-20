@@ -2,6 +2,7 @@ import { Grid, TextField } from "@mui/material"
 import { ControlNumber, ControlText } from "../molecules"
 import { Control, FieldErrors } from "react-hook-form"
 import { UserKYCFormData } from "../../types"
+import { t } from "../../utils/translation"
 
 interface UserBankDetailsProps {
     control: Control<UserKYCFormData, any>
@@ -18,10 +19,15 @@ export const UserBankDetails = ({
                     control={control}
                     label="Bank Name"
                     name="bankName"
-                    helperText=""
+                    error={errors.bankName}
+                    helperText={(()=> {
+                        if(errors.bankName?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
-                        required: true,
-                        maxLength: 10
+                        required: true
                     }}
                 />
             </Grid>
@@ -30,7 +36,13 @@ export const UserBankDetails = ({
                     control={control}
                     label="IFSC Code"
                     name="ifsc"
-                    helperText=""
+                    error={errors.ifsc}
+                    helperText={(()=> {
+                        if(errors.ifsc?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}
@@ -41,7 +53,13 @@ export const UserBankDetails = ({
                     control={control}
                     label="Bank Acc No."
                     name="bankAccNo"
-                    helperText=""
+                    error={errors.bankAccNo}
+                    helperText={(()=> {
+                        if(errors.bankAccNo?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}
@@ -52,7 +70,13 @@ export const UserBankDetails = ({
                     control={control}
                     label="Confirm Bank Acc No."
                     name="confBankAccNo"
-                    helperText=""
+                    error={errors.confBankAccNo}
+                    helperText={(()=> {
+                        if(errors.confBankAccNo?.type === "required"){
+                            return t.required;
+                        }
+                        return "";
+                    })()}
                     rules={{
                         required: true
                     }}

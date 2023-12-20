@@ -89,31 +89,39 @@ export const Profile = () => {
             || !getValues('aadharCardNumber')
             || !getValues('dob')
             || !getValues('address')
-            )
-            return false;
+            ){
+                onSubmit();
+                return false;
+            }
         }else if(activeStep === 1) {
             if(!getValues('bankName') 
             || !getValues('ifsc') 
             || !getValues('bankAccNo')  
             || !getValues('confBankAccNo')
             || getValues('bankAccNo') !== getValues('confBankAccNo')
-            )
-            return false;
+            ){
+                onSubmit();
+                return false;
+            }
         }else if(activeStep === 2){
             if(!getValues('nomineeName') 
             || !getValues('nomineerelation') 
             || !getValues('nomineeDob')  
             || !getValues('nomineeAddress')
-            )
-            return false;
-        }else{
+            ){
+                onSubmit();
+                return false;
+            }
+        }else if(activeStep === 3){
             if(!getValues('aadharCard.frontUrl') 
             || !getValues('aadharCard.backUrl') 
             || !getValues('panCardUrl')  
             || !getValues('signatureUrl')
             || !getValues('bankStatementUrl')
-            )
-            return false;
+            ){
+                onSubmit();
+                return false;
+            }
         }
         const newCompleted = completed;
         newCompleted[activeStep] = true;
