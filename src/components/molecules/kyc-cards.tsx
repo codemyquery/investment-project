@@ -8,7 +8,6 @@ interface KYCCardsProps {
     subTitle?: string,
     docUrl: string,
     noDocUrl: string,
-    onUploadHandler: (options: string) => void,
     onChangeHandler: (file: File, option: string) => void;
 }
 
@@ -17,7 +16,6 @@ export const KYCCards = ({
     subTitle = "",
     docUrl,
     noDocUrl,
-    onUploadHandler,
     onChangeHandler
 }: KYCCardsProps) => {
     const [image, setImage] = useState('');
@@ -30,15 +28,11 @@ export const KYCCards = ({
         }
     }
 
-    const onUploadClickHandler = () => {
-        onUploadHandler(`${title} ${subTitle}`);
-    }
-
     return <>
         <Card >
             <CardHeader
                 action={
-                    image && <IconButton aria-label="settings" onClick={onUploadClickHandler}>
+                    image && <IconButton aria-label="settings">
                         <FileUploadIcon style={{ color: 'blue' }} />
                     </IconButton>
                 }
