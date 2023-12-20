@@ -2,14 +2,13 @@ import * as React from 'react';
 import { Button, Card, CardHeader, CardMedia, Grid, IconButton, Typography } from "@mui/material"
 import { Control, FieldErrors, UseFormGetValues, UseFormSetValue } from "react-hook-form"
 import { FormState, UserKYCFormData } from "../../types"
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { KYCCards } from '../molecules';
 import { noAadharCardBank, noAadharCardFront, noBankStatement, noPanCard, noSignature } from '../../assets';
 import { data } from 'jquery';
 import { WS_BASE_URL, t } from '../../utils';
 import { callFileUploadService } from '../../utils/service';
 import { SetStateAction } from 'react';
+import { BASE_IMG_URL } from '../../utils/constants';
 interface UserUploadDocumentsProps {
     control: Control<UserKYCFormData, any>
     setValue: UseFormSetValue<UserKYCFormData>
@@ -119,19 +118,19 @@ export const UserUploadDocuments = ({
 
     return <>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={getValues('aadharCard.frontUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('aadharCard.frontUrl')}` : ''} noDocUrl={noAadharCardFront} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Front' docUrl={getValues('aadharCard.frontUrl') ? `${BASE_IMG_URL}/${getValues('aadharCard.frontUrl')}` : ''} noDocUrl={noAadharCardFront} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={getValues('aadharCard.backUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('aadharCard.backUrl')}` : ''} noDocUrl={noAadharCardBank} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Aadhar Card' subTitle='Back' docUrl={getValues('aadharCard.backUrl') ? `${BASE_IMG_URL}/${getValues('aadharCard.backUrl')}` : ''} noDocUrl={noAadharCardBank} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={getValues('panCardUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('panCardUrl')}` : ''} noDocUrl={noPanCard} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='PAN Card' docUrl={getValues('panCardUrl') ? `${BASE_IMG_URL}/${getValues('panCardUrl')}` : ''} noDocUrl={noPanCard} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={getValues('signatureUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('signatureUrl')}` : ''} noDocUrl={noSignature} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Signature' docUrl={getValues('signatureUrl') ? `${BASE_IMG_URL}/${getValues('signatureUrl')}` : ''} noDocUrl={noSignature} />
         </Grid>
         <Grid item xs={6}>
-            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={getValues('bankStatementUrl') ? `${WS_BASE_URL}/virtual-property/${getValues('bankStatementUrl')}` : ''} noDocUrl={noBankStatement} />
+            <KYCCards onChangeHandler={onChangeHandler} onUploadHandler={onUploadHandler} title='Bank Statement' docUrl={getValues('bankStatementUrl') ? `${BASE_IMG_URL}/${getValues('bankStatementUrl')}` : ''} noDocUrl={noBankStatement} />
         </Grid>
     </>
 }
