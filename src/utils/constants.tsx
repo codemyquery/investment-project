@@ -1,5 +1,5 @@
-export const WS_BASE_URL = "https://virtual-property.in/api/routes.php";
-export const BASE_URL = "https://virtual-property.in";
+export const WS_BASE_URL = "http://localhost/api/routes.php";
+export const BASE_URL = "http://localhost:3000";
 export const DRAWER_WIDTH = 250;
 export const ADMIN_SESSION_NAME = "admin-data";
 export const USER_SESSION_NAME = "user-data";

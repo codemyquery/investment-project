@@ -79,7 +79,7 @@ export const MyPlans = () => {
           <div className="d-flex justify-content-center px-md-5 align-items-center pt-2 row">
             <div className="d-flex justify-content-center align-items-center row">
               {
-                activePlanDetail.map(activePlan => <ActivePlanCard data={activePlan} key={activePlan.plan_id} />)
+                activePlanDetail.map((activePlan, i) => <ActivePlanCard data={activePlan} key={`${activePlan.plan_id}-${i}`} />)
               }
             </div>
           </div>
