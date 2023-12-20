@@ -8,6 +8,7 @@ import { useAuth } from "../../../../providers"
 import React from "react"
 import { UseFormReset } from "react-hook-form"
 import { t } from "../../../../utils"
+import { BASE_URL, USER_SESSION_NAME } from "../../../../utils/constants"
 
 const defaultValues: UserKYCFormData = {
     id: "",
@@ -174,6 +175,11 @@ export const Profile = () => {
                     reload: new Date()
                 }
             });
+            if(response.kycStatus) {
+                const user_session_name = JSON.parse(sessionStorage.getItem(USER_SESSION_NAME) || '{}');
+                sessionStorage.setItem(USER_SESSION_NAME, JSON.stringify({...user_session_name, kycStatus: "YES",}))
+                window.location.href = `${BASE_URL}/user/profile`
+            } 
         } catch (error) {
             setFormState(prev => {
                 return {
@@ -190,7 +196,7 @@ export const Profile = () => {
         }
     }
     const onSubmitPreCheck = async (data: UserKYCFormData) => {
-        onSubmitItem(data);
+        await onSubmitItem(data);
     }
 
     const onSubmit = () => handleSubmit(onSubmitPreCheck)();

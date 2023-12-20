@@ -37,5 +37,6 @@ export type Service<T> =
 
 export interface ServerResponse {
     status : boolean,
-    errMsg?: string
+    errMsg?: string,
+    [x: string]: any
 }

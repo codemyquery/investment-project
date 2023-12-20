@@ -47,17 +47,19 @@ export const UserPersonalDetails = ({
                 label="Pan Card No"
                 name="pancardNumber"
                 error={errors.pancardNumber}
-                helperText={(()=> {
-                    if(errors.pancardNumber?.type === "required"){
+                helperText={(() => {
+                    if (errors.pancardNumber?.type === "required") {
                         return t.required;
-                    }else if(errors.pancardNumber?.type === "maxLength"){
-                        return "Invalid PANCARD length";
+                    } else if (errors.pancardNumber?.type === "validate") {
+                        return "Invalid PANCARD";
                     }
                     return "";
                 })()}
                 rules={{
                     required: true,
-                    maxLength: 10
+                    validate: (value) => {
+                        return /[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value);
+                    }
                 }}
             />
         </Grid>
@@ -67,14 +69,17 @@ export const UserPersonalDetails = ({
                 label="Aadhar Card No"
                 name="aadharCardNumber"
                 error={errors.aadharCardNumber}
-                helperText={(()=> {
-                    if(errors.aadharCardNumber?.type === "required"){
+                helperText={(() => {
+                    if (errors.aadharCardNumber?.type === "required") {
                         return t.required;
+                    }else if(errors.aadharCardNumber?.type === "maxLength"){
+                        return 'Invalid Aadhar Card length';
                     }
                     return "";
                 })()}
                 rules={{
-                    required: true
+                    required: true,
+                    maxLength: 12
                 }}
             />
         </Grid>
@@ -84,15 +89,15 @@ export const UserPersonalDetails = ({
                 label="Date Of Birth"
                 name="dob"
                 error={errors.dob}
-                helperText={(()=> {
-                    if(errors.dob?.type === "required"){
+                helperText={(() => {
+                    if (errors.dob?.type === "required") {
                         return t.required;
                     }
                     return "";
                 })()}
                 rules={{
                     required: true
-                }}
+                }} 
             />
         </Grid>
         <Grid item xs={6}>
@@ -101,8 +106,8 @@ export const UserPersonalDetails = ({
                 label="Address"
                 name="address"
                 error={errors.address}
-                helperText={(()=> {
-                    if(errors.address?.type === "required"){
+                helperText={(() => {
+                    if (errors.address?.type === "required") {
                         return t.required;
                     }
                     return "";

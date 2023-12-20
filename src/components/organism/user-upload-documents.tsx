@@ -124,7 +124,7 @@ export const UserUploadDocuments = ({
                     notificationOpen: true,
                     formSubmitted: true,
                     ...(response.url ? { mode: 'edit' } : {}),
-                    ...(response.url ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    ...(response.url ? { notificationMessage: t.imageUploaded } : { notificationType: t.errorMessage }),
                     loading: false,
                     ...(response.url ? { notificationType: 'success' } : { notificationType: 'error' })
                 }

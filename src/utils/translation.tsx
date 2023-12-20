@@ -10,5 +10,6 @@ export const t = {
     "minLength": "Minimum length is 10",
     "edit": "Edit",
     "warning": "Warning",
-    "print": "Print"
+    "print": "Print",
+    "imageUploaded": "Image Uploaded successfully"
 }

@@ -110,9 +110,9 @@ class CustomerKYC
                 strlen($data['address']) < 1||
                 strlen($data['dob']) < 1
             ){
-                return true;
+                return array('status'    =>    true );
             }else{
-                return $user->update_user_kyc($customer_id);
+                return array('status'    =>  true, 'kycStatus' =>  $user->update_user_kyc($customer_id) );
             }
         }
         return false;
