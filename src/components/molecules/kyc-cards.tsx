@@ -28,13 +28,13 @@ export const KYCCards = ({
         if (files) {
             switch (files[0].type) {
                 case "application/pdf":
-                case "application/apng":
-                case "application/avif":
-                case "application/gif":
-                case "application/jpeg":
-                case "application/png":
-                case "application/svg+xml":
-                case "application/webp":
+                case "image/apng":
+                case "image/avif":
+                case "image/gif":
+                case "image/jpeg":
+                case "image/png":
+                case "image/svg+xml":
+                case "image/webp":
                     setImage(URL.createObjectURL(files[0]))
                     onChangeHandler(files[0], `${title} ${subTitle}`)    
                 break;

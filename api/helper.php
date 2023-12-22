@@ -172,7 +172,7 @@ class Helper
 			$new_name = uniqid() . '.' . $extension;
 			$target_path = $target_dir . $new_name;
 			move_uploaded_file($_FILES[$fieldName]["tmp_name"], $target_path);
-			return $new_name;
+			return $target_path;
 		}
 	}
 
