@@ -1,5 +1,6 @@
 <?php
 require_once('./dbconfig.php');
+require_once('./class.phpmailer.php');
 class Helper
 {
 	var $host;
@@ -56,7 +57,7 @@ class Helper
 		}
 		return array(
 			"status" =>    $emailStatus,
-			"errMsg"  =>    $emailStatus==false?"Please enter valid email-id": ""
+			"errMsg"  =>   $emailStatus==false ? "Please enter valid email-id" : ""
 		);
 	}
 
@@ -93,49 +94,42 @@ class Helper
 
 		return array(
 			"status" =>    $PasswordStatus,
-			"errMsg"  =>    $PasswordStatus==false?"Password should be 8 character long with atleast a uppercase letter,a lowercase letter, a numeric value & an special character": "",
+			"errMsg" =>   $PasswordStatus === false ? "Password should be 8 character long with atleast a uppercase letter,a lowercase letter, a numeric value & an special character": "",
 		);
 	}
 
 
-	function send_email($receiver_email, $subject, $body)
+	function send_email($receiver_email, $subject, $body, $headers)
 	{
 		$mail = new PHPMailer;
 
 		$mail->IsSMTP();
 
-		$mail->Host = '';
+		$mail->Host = 'mail.virtual-property.in';
 
-		$mail->Port = '';
+		$mail->Port = '465';
 
 		$mail->SMTPAuth = true;
 
-		$mail->Username = '';
+		$mail->Username = 'no-reply@virtual-property.in';
 
-		$mail->Password = '';
+		$mail->Password = 'W$)2lFEUcfw';
 
 		$mail->SMTPSecure = 'tls';
 
-		$mail->From = '';
+		$mail->From = 'no-reply@virtual-property.in';
 
-		$mail->FromName = 'Ashutosh Singh';
+		$mail->FromName = 'Virtual Property';
 
 		$mail->AddAddress($receiver_email, '');
 
-		$mail->IsHTML(true);
+		$mail->IsHTML(false);
 
 		$mail->Subject = $subject;
 
 		$mail->Body = $body;
 
 		$mail->Send();
-
-		$headers = 'From: Verification@beytech.in' . "\r\n" .
-			'Reply-To: ' . $receiver_email . "\r\n" .
-			'Content-type:text/html;charset=UTF-8' . "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
-
-		mail($receiver_email, $subject, $body, $headers);
 	}
 
 	function start() {

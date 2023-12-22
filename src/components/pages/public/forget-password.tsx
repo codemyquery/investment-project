@@ -75,11 +75,9 @@ export const ForgetPassword = () => {
                                 className="px-4 px-md-5 col-md-7 aos-init aos-animate"
                             >
                                 <div>
-                                    <h1 className="fs-md-48 fs-40 fw-bold mb-4">Sign Up</h1>
+                                    <h1 className="fs-md-48 fs-40 fw-bold mb-4">Forget Password</h1>
                                     <p className="mb-4">
-                                        You are one step closer to start your better financial
-                                        Journey. Just enter your details and create your account.
-                                        we’ll be in touch shortly.
+                                    You are one step closer to start your better financial Journey. Just enter your email/username to retieve your account. You will shortly recieve an email with the password.
                                     </p>
                                 </div>
                                 <div className="contact-from text-white">

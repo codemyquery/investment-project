@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Button, Card, CardHeader, CardMedia, Grid, IconButton, Typography } from "@mui/material"
+import { Grid } from "@mui/material"
 import { Control, FieldErrors, UseFormGetValues, UseFormSetValue } from "react-hook-form"
 import { FormState, UserKYCFormData } from "../../types"
 import { KYCCards } from '../molecules';
 import { noAadharCardBank, noAadharCardFront, noBankStatement, noPanCard, noSignature } from '../../assets';
-import { data } from 'jquery';
 import { WS_BASE_URL, t } from '../../utils';
 import { callFileUploadService } from '../../utils/service';
 import { SetStateAction } from 'react';

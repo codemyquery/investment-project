@@ -26,8 +26,23 @@ export const KYCCards = ({
     const onInputChangeHandler = (e: any) => {
         const files = (e.target as HTMLInputElement).files;
         if (files) {
-            setImage(URL.createObjectURL(files[0]))
-            onChangeHandler(files[0], `${title} ${subTitle}`)
+            switch (files[0].type) {
+                case "application/pdf":
+                case "application/apng":
+                case "application/avif":
+                case "application/gif":
+                case "application/jpeg":
+                case "application/png":
+                case "application/svg+xml":
+                case "application/webp":
+                    setImage(URL.createObjectURL(files[0]))
+                    onChangeHandler(files[0], `${title} ${subTitle}`)    
+                break;
+                default:
+                    (e.target as HTMLInputElement).value = "";
+                    console.log('Invalid file')    
+                    break;
+            }
         }
     }
 

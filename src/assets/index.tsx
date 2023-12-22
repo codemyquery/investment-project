@@ -19,6 +19,7 @@ import info from './images/info.svg'
 import kyc from './images/kyc.svg'
 import bonds from './images/bonds.svg'
 import investmentTime from './images/investment-time.svg'
+import pdf from './images/pdf-thumbnail.svg'
 
 export {
     logo,
@@ -41,5 +42,6 @@ export {
     info,
     kyc,
     bonds,
-    investmentTime
+    investmentTime,
+    pdf
 }

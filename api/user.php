@@ -105,9 +105,7 @@ class Users
         $subject = "Password Recovery: Virtual Property";
         $message = "Your Virtual-Property passoword is: '$password'" ;
         
-        $result = mail($username,$subject,$message,$headers);
-
-        return $result;
+        return $this->helper->send_email($username,$subject, $message, $headers);
     }
     
     function get_user_list()
