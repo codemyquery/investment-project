@@ -58,6 +58,7 @@ export const PlanSlider = ({
                             (() => {
                                 const planSlider = [];
                                 for (let i = 0; i < 6; isMobile ? i++ : i += 3) {
+                                    if(!planDetail.length) continue;
                                     const plan1 = planDetail[i]
                                     const plan2 = planDetail[i + 1]
                                     const plan3 = planDetail[i + 2]

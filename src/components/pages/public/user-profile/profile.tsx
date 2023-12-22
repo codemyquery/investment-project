@@ -227,7 +227,7 @@ export const Profile = () => {
                                             {activeStep + 1 === 1 && <UserPersonalDetails errors={errors} control={control} />}
                                             {activeStep + 1 === 2 && <UserBankDetails errors={errors} control={control} />}
                                             {activeStep + 1 === 3 && <UserNomineeDetails errors={errors} control={control} />}
-                                            {activeStep + 1 === 4 && <UserUploadDocuments errors={errors} setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} />}
+                                            {activeStep + 1 === 4 && <UserUploadDocuments showDownloadoptions={false} errors={errors} setFormState={setFormState} control={control} getValues={getValues} setValue={setValue} />}
                                         </Grid>
                                     </Typography>
                                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>

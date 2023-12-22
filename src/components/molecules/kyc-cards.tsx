@@ -2,6 +2,7 @@ import { Card, CardHeader, IconButton, CardMedia } from "@mui/material"
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useState } from "react";
+import DownloadIcon from '@mui/icons-material/Download';
 
 interface KYCCardsProps {
     title: string,
@@ -9,6 +10,7 @@ interface KYCCardsProps {
     docUrl: string,
     noDocUrl: string,
     onChangeHandler: (file: File, option: string) => void;
+    showDownloadIcon?: boolean
 }
 
 export const KYCCards = ({
@@ -16,7 +18,8 @@ export const KYCCards = ({
     subTitle = "",
     docUrl,
     noDocUrl,
-    onChangeHandler
+    onChangeHandler,
+    showDownloadIcon = false
 }: KYCCardsProps) => {
     const [image, setImage] = useState('');
 
@@ -32,15 +35,15 @@ export const KYCCards = ({
         <Card >
             <CardHeader
                 action={
-                    image && <IconButton aria-label="settings">
-                        <FileUploadIcon style={{ color: 'blue' }} />
+                    showDownloadIcon && docUrl && <IconButton aria-label="settings" href={docUrl} download={docUrl}>
+                        <DownloadIcon style={{ color: 'blue' }} />
                     </IconButton>
                 }
                 title={<>
                     {title}
                     <IconButton component="label">
                         <ExitToAppIcon style={{ color: 'blue' }} />
-                        <input type="file" hidden accept="image/*" onChange={onInputChangeHandler} />
+                        <input type="file" hidden onChange={onInputChangeHandler} />
                     </IconButton>
                 </>
                 }

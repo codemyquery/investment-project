@@ -4,6 +4,7 @@ import { ContactUsFormData, DefaultFormState, FormState } from "../../../types"
 import { useState } from "react"
 import { Notifications } from "../../molecules"
 import { t } from "../../../utils"
+import { getValue } from "@mui/system"
 
 const defaultValues: ContactUsFormData = {
     name: "",
@@ -22,10 +23,14 @@ export const ContactUs = () => {
         handleSubmit,
         formState: { errors },
         setValue,
+        watch,
         reset
     } = useHookForm<ContactUsFormData>({ defaultValues })
 
+    const acceptedPromotionMails = watch('acceptedPromotionMails');
+
     const onSubmitItem = async (data: ContactUsFormData) => {
+        if(!data.acceptedPromotionMails) return;
         try {
             const response = await ContactForm.createContactUs(data);
             setFormState(prev => {
@@ -216,6 +221,7 @@ export const ContactUs = () => {
                                                     required: true
                                                 }}
                                             />
+                                        {errors.name?.type === 'required' && <div className="invalid-feedback">{t.required}</div>}
                                         </div>
                                         <div className="mb-4 col-12">
                                             <Controller
@@ -299,7 +305,7 @@ export const ContactUs = () => {
                                                     other commercial messages that are relevant to you
                                                 </label>
                                                 <div className="invalid-feedback">
-                                                    You must agree before submitting.
+                                                    {!acceptedPromotionMails && 'You must agree before submitting.'}
                                                 </div>
                                             </div>
                                         </div>

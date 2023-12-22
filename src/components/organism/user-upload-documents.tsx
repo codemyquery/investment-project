@@ -16,6 +16,7 @@ interface UserUploadDocumentsProps {
     getValues: UseFormGetValues<UserKYCFormData>
     setFormState: (value: SetStateAction<FormState>) => void,
     errors: FieldErrors<UserKYCFormData>
+    showDownloadoptions?: boolean
 }
 
 interface ImageLoadinStatus {
@@ -39,7 +40,7 @@ export const UserUploadDocuments = ({
     setValue,
     getValues,
     setFormState,
-    errors
+    showDownloadoptions = false
 }: UserUploadDocumentsProps) => {
     const [loading, setLoading] = React.useState<ImageLoadinStatus>(defaultLoadingValues)
     const onChangeHandler = (file: File, option: string) => {
@@ -150,7 +151,7 @@ export const UserUploadDocuments = ({
                 loading.aadharCardFront && <SkeletonLoader rowCount={1} height='100%' />
             }
             {
-                !loading.aadharCardFront && <KYCCards onChangeHandler={onChangeHandler} title='Aadhar Card' subTitle='Front' docUrl={getValues('aadharCard.frontUrl') ? `${BASE_IMG_URL}/${getValues('aadharCard.frontUrl')}` : ''} noDocUrl={noAadharCardFront} />
+                !loading.aadharCardFront && <KYCCards showDownloadIcon={showDownloadoptions} onChangeHandler={onChangeHandler} title='Aadhar Card' subTitle='Front' docUrl={getValues('aadharCard.frontUrl') ? `${BASE_IMG_URL}/${getValues('aadharCard.frontUrl')}` : ''} noDocUrl={noAadharCardFront} />
             }
         </Grid>
         <Grid item xs={6}>
@@ -158,7 +159,7 @@ export const UserUploadDocuments = ({
                 loading.aadharCardBack && <SkeletonLoader rowCount={1} height='100%' />
             }
             {
-                !loading.aadharCardBack && <KYCCards onChangeHandler={onChangeHandler} title='Aadhar Card' subTitle='Back' docUrl={getValues('aadharCard.backUrl') ? `${BASE_IMG_URL}/${getValues('aadharCard.backUrl')}` : ''} noDocUrl={noAadharCardBank} />
+                !loading.aadharCardBack && <KYCCards showDownloadIcon={showDownloadoptions} onChangeHandler={onChangeHandler} title='Aadhar Card' subTitle='Back' docUrl={getValues('aadharCard.backUrl') ? `${BASE_IMG_URL}/${getValues('aadharCard.backUrl')}` : ''} noDocUrl={noAadharCardBank} />
             }
         </Grid>
         <Grid item xs={6}>
@@ -166,7 +167,7 @@ export const UserUploadDocuments = ({
                 loading.pan && <SkeletonLoader rowCount={1} height='100%' />
             }
             {
-                !loading.pan && <KYCCards onChangeHandler={onChangeHandler} title='PAN Card' docUrl={getValues('panCardUrl') ? `${BASE_IMG_URL}/${getValues('panCardUrl')}` : ''} noDocUrl={noPanCard} />
+                !loading.pan && <KYCCards showDownloadIcon={showDownloadoptions} onChangeHandler={onChangeHandler} title='PAN Card' docUrl={getValues('panCardUrl') ? `${BASE_IMG_URL}/${getValues('panCardUrl')}` : ''} noDocUrl={noPanCard} />
             }
         </Grid>
         <Grid item xs={6}>
@@ -174,7 +175,7 @@ export const UserUploadDocuments = ({
                 loading.signature && <SkeletonLoader rowCount={1} height='100%' />
             }
             {
-                !loading.signature && <KYCCards onChangeHandler={onChangeHandler} title='Signature' docUrl={getValues('signatureUrl') ? `${BASE_IMG_URL}/${getValues('signatureUrl')}` : ''} noDocUrl={noSignature} />
+                !loading.signature && <KYCCards showDownloadIcon={showDownloadoptions} onChangeHandler={onChangeHandler} title='Signature' docUrl={getValues('signatureUrl') ? `${BASE_IMG_URL}/${getValues('signatureUrl')}` : ''} noDocUrl={noSignature} />
             }
         </Grid>
         <Grid item xs={6}>
@@ -182,7 +183,7 @@ export const UserUploadDocuments = ({
                 loading.bankStatement && <SkeletonLoader rowCount={1} height='100%' />
             }
             {
-                !loading.bankStatement && <KYCCards onChangeHandler={onChangeHandler} title='Bank Statement' docUrl={getValues('bankStatementUrl') ? `${BASE_IMG_URL}/${getValues('bankStatementUrl')}` : ''} noDocUrl={noBankStatement} />
+                !loading.bankStatement && <KYCCards showDownloadIcon={showDownloadoptions} onChangeHandler={onChangeHandler} title='Bank Statement' docUrl={getValues('bankStatementUrl') ? `${BASE_IMG_URL}/${getValues('bankStatementUrl')}` : ''} noDocUrl={noBankStatement} />
             }
         </Grid>
     </>

@@ -134,7 +134,7 @@ export const EditCustomers = () => {
                     <UserPersonalDetails errors={errors} control={control} />
                     <UserBankDetails errors={errors} control={control} />
                     <UserNomineeDetails errors={errors} control={control} />
-                    <UserUploadDocuments errors={errors} setFormState={setFormState} control={control} setValue={setValue} getValues={getValues} />
+                    <UserUploadDocuments showDownloadoptions={true} errors={errors} setFormState={setFormState} control={control} setValue={setValue} getValues={getValues} />
                 </Grid>
             </AdminEditPageTemplate >
             <Notifications
