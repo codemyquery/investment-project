@@ -95,6 +95,12 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
+	} else if($method === 'DELETE'){
+		if ($action === 'deletePlan') {
+			$result = $plan->delete_plan($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
 	} else {
 		http_response_code(METHOD_NOT_ALLOWED);
 	}

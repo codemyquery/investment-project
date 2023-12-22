@@ -12,6 +12,10 @@ export const useDisplayTablePlanHeaders = ({
 }: useDisplayTablePlanHeadersProps) => {
     const planTableHeader: Array<DisplayTableColumnDefinition> = [
         {
+            type: 'checkbox',
+            field: ''
+        },
+        {
             field: 'planCode',
             type: 'text',
             headerName: 'Plan Code',
@@ -122,5 +126,22 @@ export const fetchPlan = async (itemID: string, abortController?: AbortControlle
         method: 'GET',
         userToken: 'sdasdasd',
         abortController: abortController
+    })
+}
+
+export const deletePlans = async ( ids: any[], abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}`;
+    return await callService({
+        url: url,
+        method: 'DELETE',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'plan',
+                actions: 'deletePlan'
+            },
+            data: ids
+        }
     })
 }

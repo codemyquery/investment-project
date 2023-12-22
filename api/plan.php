@@ -91,6 +91,12 @@ class Plan
             "rows"  =>    @$pages_array,
         );
     }
+
+    function delete_plan($ids){
+        $this->helper->query = "DELETE FROM plan_details WHERE plan_code in " . $this->helper->delete_query_from_array($ids);
+        $this->helper->data = $ids;
+        return $this->helper->execute_query();
+    }
 }
 
 function formatPlanOutput($row)

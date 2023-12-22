@@ -12,7 +12,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import { Grid, MenuItem, TableContainer, Table, TableBody, TableRow, TableCell } from "@mui/material";
 import { useFieldArray } from "react-hook-form";
 import { Notifications } from "../../molecules/notification";
-import { useAuth } from "../../../providers";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface Dialog {
     data?: PlanServerData,
@@ -25,15 +25,24 @@ const dialogDefaultValue: Dialog = {
 interface ExcelPlanDetails {
     rows: Array<PlanFormData>
 }
+
+interface DeletePlanState {
+    rows: any[]
+    open: boolean
+}
+
+const deleteDefaultValue: DeletePlanState  = { rows: [],open: false }
+
 export const DashboardPlanDetails = () => {
     const [dialog, setDialog] = useState(dialogDefaultValue);
     const [loader, setLoader] = useState(false);
+    const [deletePlan, setDeletePlan] = useState<DeletePlanState>(deleteDefaultValue);
     const abortController = new AbortController();
     const [investmentAmount, setInvestmentAmount] = useState<string>('1000000');
     const [payloadPlanData, setPayloadPlanData] = useState<DisplayTablePayload<PlanServerData>>({ rows: [], totalDataCount: 0 });
     const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
     const { control, handleSubmit } = useHookForm<ExcelPlanDetails>({ defaultValues: { rows: [] } });
-    const { fields, append } = useFieldArray<ExcelPlanDetails>({
+    const { fields, append, replace } = useFieldArray<ExcelPlanDetails>({
         control,
         name: "rows",
     });
@@ -85,7 +94,7 @@ export const DashboardPlanDetails = () => {
             setLoader(false);
         }
         init();
-    }, [query]);
+    }, [query, formState.reload]);
 
     const readExcel = async (file: any) => {
         const fileReader = await new FileReader()
@@ -154,8 +163,44 @@ export const DashboardPlanDetails = () => {
                     ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
                     loading: false,
                     ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                    reload: new Date()
                 }
             });
+        } catch (error) {
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    mode: 'edit',
+                    notificationMessage: t.errorMessage,
+                    reload: new Date(),
+                    loading: false,
+                    notificationType: 'error'
+                }
+            })
+        }
+        replace([]);
+    }
+
+    const onDeletePlanHandler = async (planIds: any[]) => {
+        setFormState(prev => ({ ...prev, loading: true }));
+        try {
+            const response = await Plan.deletePlans(planIds, abortController);
+            setFormState(prev => {
+                return {
+                    ...prev,
+                    notificationOpen: true,
+                    formSubmitted: true,
+                    ...(response.status ? { mode: 'edit' } : {}),
+                    ...(response.status ? { notificationMessage: t.successMessage } : { notificationType: t.errorMessage }),
+                    loading: false,
+                    ...(response.status ? { notificationType: 'success' } : { notificationType: 'error' }),
+                    reload: new Date()
+                }
+            });
+            columnController.setSelectedRows([]);
+            columnController.setSelectionModel([]);
         } catch (error) {
             setFormState(prev => {
                 return {
@@ -209,6 +254,14 @@ export const DashboardPlanDetails = () => {
                             },
                             {
                                 type: 'column'
+                            },
+                            {
+                                type: 'customSelectionAction',
+                                icon: <DeleteIcon />,
+                                onClick: (selectedRows: any[]) => {
+                                    setDeletePlan({rows: selectedRows,  open: true})
+                                },
+                                title: t.delete
                             }
                         ]
                     }
@@ -218,6 +271,19 @@ export const DashboardPlanDetails = () => {
                             height: '55vh'
                         }
                     }}
+                />
+                <GenericDialog
+                    open={deletePlan.open}
+                    title={"Warning"}
+                    content={<>Are you sure you want to delete <b>{deletePlan.rows.map(row=> row.id).join(',')}</b> ?<br />Please confirm?</>}
+                    maxWidth='xs'
+                    onClose={() => { setDeletePlan(deleteDefaultValue) }}
+                    onCloseText={t.cancel}
+                    onSubmit={async () => { 
+                        await onDeletePlanHandler(deletePlan.rows.map(row => row.id));
+                        setDeletePlan(deleteDefaultValue);
+                    }}
+                    onSubmitText={t.confirm}
                 />
                 <GenericDialog
                     open={dialog.open}

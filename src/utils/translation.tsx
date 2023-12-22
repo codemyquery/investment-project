@@ -11,5 +11,6 @@ export const t = {
     "edit": "Edit",
     "warning": "Warning",
     "print": "Print",
-    "imageUploaded": "Image Uploaded successfully"
+    "imageUploaded": "Image Uploaded successfully",
+    "delete": "Delete"
 }
