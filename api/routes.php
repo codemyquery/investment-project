@@ -36,12 +36,11 @@ try {
 }
 
 if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
-	$new_name = uniqid() . '.' . "jpg";
-	$target_path = 'upload/' . $new_name;
-	if (move_uploaded_file($_FILES['uploadedFile']['tmp_name'], "../" . $target_path)) {
+	$fileName = $helper->Upload_file('uploadedFile');
+	if(strlen($fileName) > 0){
 		http_response_code(OK);
-		echo json_encode(array('url'    =>    $target_path));
-	} else {
+		echo json_encode(array('url'    =>    $fileName));
+	}else{
 		echo json_encode(array('url'    =>    null));
 		http_response_code(BAD_REQUEST);
 	}

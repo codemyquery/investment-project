@@ -164,19 +164,14 @@ class Helper
 		return $data;
 	}
 
-	function Upload_file($file)
+	function Upload_file($fieldName)
 	{
-		if (!empty($file)) {
-			$extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-
+		if (!empty($_FILES[$fieldName])) {
+			$target_dir = '../upload/';
+			$extension = strtolower(pathinfo(basename($_FILES[$fieldName]["name"]),PATHINFO_EXTENSION));
 			$new_name = uniqid() . '.' . $extension;
-
-			$_source_path = $file['name']['tmp_name'];
-
-			$target_path = 'upload/' . $new_name;
-			
-			move_uploaded_file($_source_path, $target_path);
-
+			$target_path = $target_dir . $new_name;
+			move_uploaded_file($_FILES[$fieldName]["tmp_name"], $target_path);
 			return $new_name;
 		}
 	}
