@@ -9,7 +9,8 @@ export interface PlanFormData {
     incomeFrequency: string,
     ppt: number,
     planDetails: Record<string, Array<string>>,
-    isNewRecord?: boolean
+    isNewRecord?: boolean,
+    serialnumber : number
 }
 
 export interface PlanServerData {
@@ -23,7 +24,8 @@ export interface PlanServerData {
     incomeFrequency: string,
     ppt: number,
     planDetails: Record<string, Array<string>>,
-    isNewRecord?: boolean
+    isNewRecord?: boolean,
+    serialnumber : number
 }
 
 export interface PlanDataResponse {

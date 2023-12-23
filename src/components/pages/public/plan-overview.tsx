@@ -23,6 +23,7 @@ const defaultValue: PlanServerData = {
   maturityValueOptions: "",
   incomeFrequency: "",
   ppt: 0,
+  serialnumber : 0,
   planDetails: {}
 }
 

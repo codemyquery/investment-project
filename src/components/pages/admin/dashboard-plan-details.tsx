@@ -122,7 +122,8 @@ export const DashboardPlanDetails = () => {
                             ppt: row['PPT (10,12)'] as number,
                             planDetails: {},
                             isNewRecord: true,
-                            dateUpdated: new Date()
+                            dateUpdated: new Date(),
+                            serialnumber: 0
                         };
                     }));
                     continue;

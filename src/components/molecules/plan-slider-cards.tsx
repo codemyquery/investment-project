@@ -17,12 +17,15 @@ export const PlanSliderCards = ({
     // finding the lowest plan amount
     let lockingPeriod = 0;
     let income = 0;
+    let maturityValue = 0;
     const investmentAmounts = Object.keys(data.planDetails).sort((a, b) => Number(a) > Number(b) ? Number(a) : Number(b));
     const lowestInvestmentPlanWithHeader = data.planDetails[investmentAmounts[0]];
     const _plandetails = data.planDetails[investmentAmounts[4]];
     _plandetails.forEach( (element,index) => {
-        if(index == 0) index++;
-        income = income + parseInt(_plandetails[index]['0']);
+        if(index !== 0){
+            income = income + parseInt(_plandetails[index]['0']);
+            maturityValue = maturityValue + parseInt(_plandetails[index]['1']);
+        }
         
    });
     const lowestInvestmentPlan = [...lowestInvestmentPlanWithHeader].slice(1, lowestInvestmentPlanWithHeader.length);
@@ -51,7 +54,7 @@ export const PlanSliderCards = ({
             </div>
             
             <div>
-                <div className="text-main-green card-title h5">{(((parseFloat(data.maturityValueOptions)*5000000)+ income)/5000000).toFixed(2)}x</div>
+                <div className="text-main-green card-title h5">{((maturityValue+ income)/5000000).toFixed(2)}x</div>
                 <p className="card-text">ROI</p>
             </div>
         </div>
@@ -90,7 +93,7 @@ export const PlanSliderCards = ({
                 <div>
                     <p className="card-text">:</p>
                     <p className="card-text">:</p>
-                    <p className="card-text">:</p>
+                    {/* <p className="card-text">:</p> */}
                 </div>
                 <div>
                     <p className="card-text">₹ {formatNumber(Number(investmentAmounts[4])/data.ppt)} </p>
@@ -170,7 +173,7 @@ export const PlanSliderCards = ({
                     <p className="card-text">₹ {formatNumber(Math.round(income/parseInt(data.incomeTermOptions)))}</p>
                     <p className="card-text"> {data.incomeTermOptions} Years</p>
                     {/* <p className="card-text">₹ {formatNumber(((Number(investmentAmounts[4]))) * parseFloat(data.maturityValueOptions))}</p> */}
-                    <p className="card-text">₹ {formatNumber((((Number(investmentAmounts[4]))) * parseFloat(data.maturityValueOptions))+income)}</p>
+                    <p className="card-text">₹ {formatNumber((maturityValue)+income)}</p>
                 </div>
             </div>
             <div className="py-2">

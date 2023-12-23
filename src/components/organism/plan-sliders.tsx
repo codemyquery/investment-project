@@ -57,7 +57,9 @@ export const PlanSlider = ({
                         {
                             (() => {
                                 const planSlider = [];
-                                for (let i = 0; i < 6; isMobile ? i++ : i += 3) {
+                                
+                        
+                                for (let i = 0; i < planDetail.length; isMobile ? i++ : i += 3) {
                                     if(!planDetail.length) continue;
                                     const plan1 = planDetail[i]
                                     const plan2 = planDetail[i + 1]
@@ -65,7 +67,7 @@ export const PlanSlider = ({
                                     planSlider.push(
                                         <div key={plan1.planCode+i} >
                                             <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
-                                                {plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
+                                                { plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
                                                 {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
                                                 {!isMobile && plan3 && <PlanSliderCards key={plan3.planCode} data={plan3} />}
                                             </div>

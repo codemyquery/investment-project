@@ -29,8 +29,20 @@ class Plan
                 $this->helper->query = "INSERT INTO plan_details (plan_code,  insurance_company, plan_name, age_band,ppt, income_terms_options,
             maturity_value,income_frequency,plan_details,created_by,updated_by) VALUES 
             (:plan_code,:insurance_company,:plan_name,:age_band,:plan_ppt,:income_terms_options,:maturity_value,:income_frequency,
-            :plan_details,:created_by,:updated_by)";
-                $this->helper->execute_query();
+            :plan_details,:created_by,:updated_by)
+            ON DUPLICATE KEY UPDATE 
+            insurance_company = :insurance_company,
+            plan_name = :plan_name,
+            age_band = :age_band,
+            ppt = :plan_ppt,
+            income_terms_options = :income_terms_options,
+            maturity_value = :maturity_value,
+            income_frequency = :income_frequency,
+            plan_details = :plan_details,
+            created_by = :created_by,
+            updated_by = :updated_by
+            ";
+            $this->helper->execute_query();
             }
             $this->helper->connect->commit();
             return true;
@@ -114,7 +126,8 @@ function formatPlanOutput($row)
         "createdBy"                 => $row['created_by'],
         "updatedBy"                 => $row['updated_by'],
         "dateUpdated"               => $row['updated_on'],
-        "ppt"                       => $row['ppt']
+        "ppt"                       => $row['ppt'],
+        "serialNumber"              => $row['Serial_Number']
     );
 }
 
