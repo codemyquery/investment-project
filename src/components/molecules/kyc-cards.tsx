@@ -3,6 +3,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useState } from "react";
 import DownloadIcon from '@mui/icons-material/Download';
+import { pdf } from "../../assets";
 
 interface KYCCardsProps {
     title: string,
@@ -67,7 +68,7 @@ export const KYCCards = ({
             <CardMedia
                 component={"img"}
                 height="300"
-                image={image || docUrl || noDocUrl}
+                image={image || docUrl.toLowerCase().indexOf("pdf") > -1 ? pdf : docUrl || noDocUrl}
                 alt={title}
                 style={{ padding: '10px', width: '100%', pointerEvents: 'none' }}
             />
