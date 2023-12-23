@@ -6,7 +6,7 @@ import { BrowseFile } from "../../atoms";
 import { Plan, useHookForm } from "../../../services";
 import * as XLSX from "xlsx";
 import { constant, formatNumber, request, t } from "../../../utils";
-import { GridRenderCellParams } from "@mui/x-data-grid";
+import { GridRenderCellParams, GridValueSetterParams } from "@mui/x-data-grid";
 import { GenericDialog } from "../../organism";
 import SaveIcon from '@mui/icons-material/Save';
 import { Grid, MenuItem, TableContainer, Table, TableBody, TableRow, TableCell } from "@mui/material";
@@ -55,9 +55,20 @@ export const DashboardPlanDetails = () => {
         }
     }
 
+    const onSerialOrderChange = async (params: GridValueSetterParams<any, any>) => {
+        const response = await Plan.updatePlanSerialOrder(params.row.planCode, params.value)
+        if(response.status){
+            setFormState(prev => ({...prev, reload: new Date()}));
+        }
+        return { ...params.row, serialnumber: params.value}
+    }
+
     const paginationController = useDisplayTablePageController({});
     const columnController = useDisplayTableColumnController<PlanServerData>({
-        columns: Plan.useDisplayTablePlanHeaders({ dialogHandler: dialogHandler })
+        columns: Plan.useDisplayTablePlanHeaders({ 
+            dialogHandler: dialogHandler,
+            onSerialOrderChange: onSerialOrderChange
+        })
     });
 
     const onBrowseFileHandler = async (evt: ChangeEvent<HTMLInputElement>) => {
@@ -270,7 +281,8 @@ export const DashboardPlanDetails = () => {
                         autoHeight: false,
                         style: {
                             height: '55vh'
-                        }
+                        },
+                        editMode: "cell"
                     }}
                 />
                 <GenericDialog

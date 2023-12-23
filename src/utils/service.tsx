@@ -13,7 +13,7 @@ interface Employee {
 
 interface Plan {
     page: 'plan',
-    actions: 'addPlan' | 'deletePlan'
+    actions: 'addPlan' | 'deletePlan' | 'updatePlanSerialOrder'
 }
 
 interface SellPlan {

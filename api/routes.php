@@ -94,6 +94,12 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 		}
 		if (!$result) http_response_code(BAD_REQUEST);
 		echo json_encode(array('status'    =>    $result));
+	} else if($method === 'PUT'){
+		if ($action === 'updatePlanSerialOrder') {
+			$result = $plan->update_plan_order($bodyRawData['data']);
+		}
+		if (!$result) http_response_code(BAD_REQUEST);
+		echo json_encode(array('status'    =>    $result));
 	} else if($method === 'DELETE'){
 		if ($action === 'deletePlan') {
 			$result = $plan->delete_plan($bodyRawData['data']);

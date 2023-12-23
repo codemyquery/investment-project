@@ -13,7 +13,7 @@ export const HomePage = () => {
   useEffect(() => {
     const abortController = new AbortController();
     const init = async () => {
-      const response = await Plan.fetchPlanList('', abortController);
+      const response = await Plan.fetchPlanList('orderBy=serialNumber&order=desc', abortController);
       setPlanDetail(response.rows);
       setLoader(false)
     }

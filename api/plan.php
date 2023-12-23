@@ -18,7 +18,7 @@ class Plan
                     ':insurance_company'      =>    $this->helper->clean_data($row['insuranceCompany']),
                     ':plan_name'              =>    $this->helper->clean_data($row['planName']),
                     ':age_band'               =>    $this->helper->clean_data($row['ageBand']),
-                    ':plan_ppt'               =>    $this->helper->clean_data($row['ppt']),      
+                    ':plan_ppt'               =>    $this->helper->clean_data($row['ppt']),
                     ':income_terms_options'   =>    $this->helper->clean_data($row['incomeTermOptions']),
                     ':maturity_value'         =>    $this->helper->clean_data($row['maturityValueOptions']),
                     ':income_frequency'       =>    $this->helper->clean_data($row['incomeFrequency']),
@@ -42,7 +42,7 @@ class Plan
             created_by = :created_by,
             updated_by = :updated_by
             ";
-            $this->helper->execute_query();
+                $this->helper->execute_query();
             }
             $this->helper->connect->commit();
             return true;
@@ -52,28 +52,12 @@ class Plan
         }
     }
 
-    function update_plan($data)
+    function update_plan_order($data)
     {
-        /* $this->helper->data = array(
-            ':employee_id'      =>    $this->helper->clean_data($data['id']),
-            ':name'             =>    $this->helper->clean_data($data['name']),
-            ':employee_code'    =>    $this->helper->clean_data($data['employee_code']),
-            ':mobile'           =>    $this->helper->clean_data($data['mobile']),
-            ':email'            =>    $this->helper->clean_data($data['email']),
-            ':designation'      =>    $this->helper->clean_data($data['designation']),
-            ':created_on'       =>    $this->helper->clean_data($data['created_on']),
-            ':date_updated'     =>    $this->helper->get_current_datetimestamp()
-        );
-        $this->helper->query = "UPDATE employee SET 
-        name = :name, 
-        designation = :designation, 
-        mobile = :mobile, 
-        email = :email, 
-        updated_by = :updated_by,
-        created_on = :created_on
-        date_updated = :date_updated
-        WHERE employee_id = :id";
-        return $this->helper->execute_query(); */
+        $planId = $this->helper->clean_data($data['planCode']);
+        $id = $this->helper->clean_data($data['serialNumber']);
+        $this->helper->query = "UPDATE plan_details SET serial_number='$id' WHERE plan_code='$planId'";
+        return $this->helper->execute_query();
     }
 
     function get_plan($itemID)
@@ -104,7 +88,8 @@ class Plan
         );
     }
 
-    function delete_plan($ids){
+    function delete_plan($ids)
+    {
         $this->helper->query = "DELETE FROM plan_details WHERE plan_code in " . $this->helper->delete_query_from_array($ids);
         $this->helper->data = $ids;
         return $this->helper->execute_query();
@@ -127,7 +112,7 @@ function formatPlanOutput($row)
         "updatedBy"                 => $row['updated_by'],
         "dateUpdated"               => $row['updated_on'],
         "ppt"                       => $row['ppt'],
-        "serialNumber"              => $row['Serial_Number']
+        "serialNumber"              => $row['serial_number']
     );
 }
 
@@ -138,6 +123,8 @@ function t_plans($fieldName)
             return 'updated_on';
         case 'planName':
             return 'plan_name';
+        case 'serialNumber':
+            return 'serial_number';
         default:
             return '';
     }

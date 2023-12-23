@@ -20,7 +20,7 @@ export const PlanSlider = ({
     
     return <section className="py-3" id="invest-now-plans">
         <div className="container">
-            <div className="d-flex justify-content-center align-items-center row">
+            <div id={'plan-section'} className="d-flex justify-content-center align-items-center row">
                 <div
                     data-aos="fade-up"
                     className="text-center col aos-init aos-animate"
@@ -46,8 +46,8 @@ export const PlanSlider = ({
                     </h2>
                 </div>
             </div>
-            <div className="/* d-flex justify-content-center px-md-5 align-items-center pt-2 row */">
-                <Box sx={{ flexGrow: 1 }}>
+            <div id={'plan-section-description'}>
+                <Box sx={{ flexGrow: 1 }} id="planDescription1">
                     {/* <AutoPlaySwipeableViews
                         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                         index={activeStep}
@@ -66,16 +66,16 @@ export const PlanSlider = ({
                                     const plan3 = planDetail[i + 2]
                                     planSlider.push(
                                         <div key={plan1.planCode+i} >
-                                            <div data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
-                                                { plan1 && <PlanSliderCards key={plan1.planCode} data={plan1} />}
-                                                {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode} data={plan2} />}
-                                                {!isMobile && plan3 && <PlanSliderCards key={plan3.planCode} data={plan3} />}
+                                            <div key={plan1.planCode+i} data-aos="fade-up" className="d-flex justify-content-center align-items-center aos-init aos-animate">
+                                                { plan1 && <PlanSliderCards key={plan1.planCode + plan1.id} data={plan1} />}
+                                                {!isMobile && plan2 && <PlanSliderCards key={plan2.planCode + plan1.id} data={plan2} />}
+                                                {!isMobile && plan3 && <PlanSliderCards key={plan3.planCode + plan1.id} data={plan3} />}
                                             </div>
                                         </div>
                                     );
                                 }
                                 
-                                planSlider.push(<div style={{color:'green',textAlign:'right'}}><a href={`${BASE_URL}/all-plan`}>View More Plans</a></div>);
+                                planSlider.push(<div key={"view-more-plan-btn"} style={{color:'green',textAlign:'right'}}><a href={`${BASE_URL}/all-plan`}>View More Plans</a></div>);
                                 return planSlider;
                             })()
                         }

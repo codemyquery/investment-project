@@ -1,19 +1,33 @@
 import { useNavigate } from "react-router-dom";
 import { DisplayTableColumnDefinition, PlanDataResponse, PlanFormData, PlanServerData, ServerResponse } from "../types";
-import { GridRenderCellParams } from "@mui/x-data-grid";
+import { GridRenderCellParams, GridValueSetterParams } from "@mui/x-data-grid";
 import { WS_BASE_URL, callService } from "../utils";
 
-interface useDisplayTablePlanHeadersProps{
+interface useDisplayTablePlanHeadersProps {
     dialogHandler: (params: GridRenderCellParams<any, any, any>) => void
+    onSerialOrderChange: (params: GridValueSetterParams<any, any>) => void
 }
 
 export const useDisplayTablePlanHeaders = ({
-    dialogHandler
+    dialogHandler,
+    onSerialOrderChange
 }: useDisplayTablePlanHeadersProps) => {
     const planTableHeader: Array<DisplayTableColumnDefinition> = [
         {
             type: 'checkbox',
             field: ''
+        },
+        {
+            field: 'serialNumber',
+            type: 'text',
+            headerName: 'Serial Number',
+            filterable: true,
+            sortable: true,
+            otherProps: {
+                editable: true,
+                type: 'number',
+                valueSetter: onSerialOrderChange
+            }
         },
         {
             field: 'planCode',
@@ -86,7 +100,7 @@ export const useDisplayTablePlanHeaders = ({
 }
 
 export const createPlanRecord = async (
-    data: Array<PlanFormData>, 
+    data: Array<PlanFormData>,
     abortController?: AbortController
 ): Promise<ServerResponse> => {
     const url = `${WS_BASE_URL}`;
@@ -119,7 +133,7 @@ export const fetchPlanList = async (
 }
 
 
-export const fetchPlan = async (itemID: string, abortController?: AbortController) : Promise<PlanServerData> => {
+export const fetchPlan = async (itemID: string, abortController?: AbortController): Promise<PlanServerData> => {
     const url = `${WS_BASE_URL}?&page=plan&actions=getPlan&itemID=${itemID}`;
     return await callService({
         url: url,
@@ -129,7 +143,7 @@ export const fetchPlan = async (itemID: string, abortController?: AbortControlle
     })
 }
 
-export const deletePlans = async ( ids: any[], abortController?: AbortController): Promise<ServerResponse> => {
+export const deletePlans = async (ids: any[], abortController?: AbortController): Promise<ServerResponse> => {
     const url = `${WS_BASE_URL}`;
     return await callService({
         url: url,
@@ -142,6 +156,26 @@ export const deletePlans = async ( ids: any[], abortController?: AbortController
                 actions: 'deletePlan'
             },
             data: ids
+        }
+    })
+}
+
+export const updatePlanSerialOrder = async (planCode: any, order: any, abortController?: AbortController): Promise<ServerResponse> => {
+    const url = `${WS_BASE_URL}`;
+    return await callService({
+        url: url,
+        method: 'PUT',
+        userToken: 'sdasdasd',
+        abortController: abortController,
+        body: {
+            route: {
+                page: 'plan',
+                actions: 'updatePlanSerialOrder'
+            },
+            data: {
+                planCode: planCode,
+                serialNumber: order
+            }
         }
     })
 }

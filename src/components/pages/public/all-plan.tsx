@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react'
-import { content1 } from '../../../utils/content'
-import { ExpandableCard } from '../../atoms'
-import { PlanSlider } from '../../organism'
 import { Plan } from '../../../services'
 import { PlanServerData } from '../../../types'
-import { GetStarted, HaveQuestions, HomeWelcomeSection, ProudAbout, SocialSection, VirtualPropertyBenifits } from '../../molecules'
 import { AllPlanView } from '../../organism/all-plan-view'
 
 export const AllPlan = () => {
@@ -14,7 +10,7 @@ export const AllPlan = () => {
   useEffect(() => {
     const abortController = new AbortController();
     const init = async () => {
-      const response = await Plan.fetchPlanList('', abortController);
+      const response = await Plan.fetchPlanList('orderBy=serialNumber&order=desc', abortController);
       setPlanDetail(response.rows);
       setLoader(false)
     }
