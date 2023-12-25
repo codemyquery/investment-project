@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Users, useHookForm } from "../../../services";
 import { DefaultFormState, FormState, ServerResponse, SignUpFormData } from "../../../types";
 import { Controller } from "react-hook-form";
-import { t } from "../../../utils";
+import { BASE_URL, t } from "../../../utils";
 import { Notifications } from "../../molecules";
 
 const defaultValues: SignUpFormData = {
@@ -36,16 +36,21 @@ export const SignUp = () => {
         if (data.confirmPassword !== data.password) return;
         try {
             response = await Users.createUser(data);
-            setFormState(prev => {
-                return {
-                    ...prev,
-                    loading: false,
-                    notificationOpen: true,
-                    formSubmitted: true,
-                    notificationMessage: response.status ? t.successMessage : response.errMsg,
-                    notificationType: response.status ? 'success' : 'error'
+           
+                setFormState(prev => {
+                    return {
+                        ...prev,
+                        loading: false,
+                        notificationOpen: true,
+                        formSubmitted: true,
+                        notificationMessage: response.status ? t.successMessage : response.errMsg,
+                        notificationType: response.status ? 'success' : 'error'
+                    }
+                });
+            
+                if(response.status){
+                    window.location.href = `${BASE_URL}/login`
                 }
-            });
         } catch (error) {
             setFormState(prev => {
                 return {

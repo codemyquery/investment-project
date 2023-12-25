@@ -50,7 +50,7 @@ export const AllPlanView = ({
                         >
                             <circle cx={8} cy={8} r={8} />
                         </svg>
-                        WHICH PLAN WHOULD YOU LIKE TO INVEST IN ?
+                        WHICH PLAN WOULD YOU LIKE TO INVEST IN ?
                     </p>
                     
                 </div>

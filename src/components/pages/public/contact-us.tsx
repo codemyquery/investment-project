@@ -77,7 +77,7 @@ export const ContactUs = () => {
                                         className="img-fluid me-3 mb-4"
                                     />
                                     <p className="ms-1">
-                                        MultiSphere Enterprises, LLP, Mughlaha, Medical Road, Gorakhpur,
+                                        Mughlaha, Medical Road, Gorakhpur,
                                         273013
                                     </p>
                                 </div>
@@ -88,14 +88,14 @@ export const ContactUs = () => {
                                         className="img-fluid me-3 mb-4"
                                     />
                                     <a
-                                        href="tel:+91-9193909000"
+                                        href="tel:+91-9140636400"
                                         style={{
                                             color: "rgb(7, 229, 125)",
                                             textDecorationColor: "rgb(23, 23, 26)"
                                         }}
                                     >
                                         {" "}
-                                        +91-9793909000
+                                        +91-9140636400
                                     </a>
                                 </div>
                                 <div className="d-inline-flex mb-4 d-flex">
@@ -111,7 +111,7 @@ export const ContactUs = () => {
                                             textDecorationColor: "rgb(23, 23, 26)"
                                         }}
                                     >
-                                        contact@multisphere.in
+                                        contact@virtual-property.in
                                     </a>
                                 </div>
                                 <div className="d-inline-flex mb-4">
@@ -173,7 +173,7 @@ export const ContactUs = () => {
                                     </a>
                                 </div> */}
                                 <div className=" p-0 col-2">
-                                    <a href="https://wa.me/9793909000?text=Hi%20I%20want%20to%20learn%20more%20about%20VirtualProperty.%20">
+                                    <a href="https://wa.me/9140636400?text=Hi%20I%20want%20to%20learn%20more%20about%20VirtualProperty.%20">
                                         <svg
                                             stroke="currentColor"
                                             fill="currentColor"

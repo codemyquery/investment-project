@@ -41,6 +41,7 @@ export const PlanOverview = () => {
   const navigate = useNavigate();
   const plan = useRef<PlanServerData>(defaultValue);
   const { userInfo } = useAuth();
+  let maturityValue = 0;
   const { itemID, investmentAmount } = useParams();
   const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
   const [cashFlowYears, setCashFlowYears] = useState<string[]>([]);
@@ -50,6 +51,7 @@ export const PlanOverview = () => {
   const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: -1 });
   const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
   const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
+  const Totalincome = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])+ Number(current[1])), 0);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -225,15 +227,18 @@ export const PlanOverview = () => {
                         <div className="flex-column">
                           
                           <p className="text-value">
-                            {(((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value).toFixed(2)}x
+                           
+                            {(Totalincome/planAmount.value).toFixed(2)}x
+                            
+                            {/* {(((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)/planAmount.value).toFixed(2)}x */}
                           </p>
                           <p className="text-title">ROI</p>
                           <p className="text-value">
                             <span className="rupee-symbol">₹</span>
-                            {formatNumber(parseFloat(plan.current.maturityValueOptions)*planAmount.value)}
+                            {formatNumber(Totalincome - income)}
                           </p>
                           <p className="text-title ">Maturity Value</p>
-                          <p className="text-value">{ formatNumber(((parseFloat(plan.current.maturityValueOptions)*planAmount.value)+ income)) }</p>
+                          <p className="text-value">{ formatNumber(Totalincome) }</p>
                           <p className="text-title">Total Benefit</p>
                         </div>
                         <div className="flex-column">

@@ -135,7 +135,7 @@ export const VirtualPropertyBenifits = () => {
                                         Consistent Returns
                                     </div>
                                     <p className="fw-400 fs-17 lh-24 card-text">
-                                        Free from any volatality. Monthly payouts in your
+                                        Free from any volatility. Monthly payouts in your
                                         Bank Account.
                                     </p>
                                 </div>
