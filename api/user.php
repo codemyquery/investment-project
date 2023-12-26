@@ -88,7 +88,6 @@ class Users
 
         $this->helper->query = "SELECT * FROM users WHERE email='$username'";
         if ($this->helper->total_row() === 0) {
-           
             return array(
                 "status" => false,
                 "errMsg" =>  'User not registered!!'
@@ -96,16 +95,19 @@ class Users
         }
         $result = $this->helper->query_result()[0];
         $password = $result['password'];
-       
-        
-
-
         $headers = 'From: <no-reply@virtual-property.in>' . "\r\n";
         $headers .= 'Cc: no-reply@virtual-property.in' . "\r\n";
         $subject = "Password Recovery: Virtual Property";
         $message = "Your Virtual-Property passoword is: '$password'" ;
-        
-        return $this->helper->send_email($username,$subject, $message, $headers);
+        $emailStatus = $this->helper->send_email($username, $subject, $message, $headers);
+        if($emailStatus){
+            return array('status' => true);
+        }else{
+            return array(
+                'status' => false,
+                'errMsg' => 'Unable to send password to the registered email.'
+            );
+        };
     }
     
     function get_user_list()

@@ -1,5 +1,6 @@
 export const t = {
     "successMessage": "Successfully saved !",
+    "passwordResetNotification": "Successfully sent the password to registered email !",
     "errorMessage": "Error Occured !",
     "cancel": "Cancel",
     "confirm": "Confirm",

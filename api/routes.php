@@ -131,7 +131,6 @@ if (@$_GET['page'] === "upload" && @$_GET['actions'] === 'uploadKyc') {
 		}else if($action === 'forgetPassword'){
 			$result = $user->forget_password($bodyRawData['data']);
 		}
-		//if (!$result['status']) http_response_code(BAD_REQUEST);
 		echo json_encode($result);
 	} else if ($method === "PUT") {
 		if ($action === 'updateKycData') {

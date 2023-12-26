@@ -101,35 +101,7 @@ class Helper
 
 	function send_email($receiver_email, $subject, $body, $headers)
 	{
-		$mail = new PHPMailer;
-
-		$mail->IsSMTP();
-
-		$mail->Host = 'mail.virtual-property.in';
-
-		$mail->Port = '465';
-
-		$mail->SMTPAuth = true;
-
-		$mail->Username = 'no-reply@virtual-property.in';
-
-		$mail->Password = 'W$)2lFEUcfw';
-
-		$mail->SMTPSecure = 'tls';
-
-		$mail->From = 'no-reply@virtual-property.in';
-
-		$mail->FromName = 'Virtual Property';
-
-		$mail->AddAddress($receiver_email, '');
-
-		$mail->IsHTML(false);
-
-		$mail->Subject = $subject;
-
-		$mail->Body = $body;
-
-		$mail->Send();
+		return mail($receiver_email,$subject, $body, $headers);
 	}
 
 	function start() {

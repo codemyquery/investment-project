@@ -5,35 +5,33 @@ import { Controller } from "react-hook-form";
 import { t } from "../../../utils";
 import { Notifications } from "../../molecules";
 import { ForgetPasswordFormDate } from "../../../types/user";
+import { CircularProgress } from "@mui/material";
 
 const defaultValues: ForgetPasswordFormDate = {
-    
-    
+
+
     username: ""
-   
-   
+
+
 };
 
 export const ForgetPassword = () => {
-    const [formState, setFormState] = useState<FormState>({ ...DefaultFormState });
+    const [formState, setFormState] = useState<FormState>(DefaultFormState);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    
+
     const {
         control,
         handleSubmit,
-        formState: { errors },
-        setValue,
-        getValues,
-        reset,
+        formState: { errors }
     } = useHookForm<ForgetPasswordFormDate>({ defaultValues });
 
     const onSubmitItem = async (data: ForgetPasswordFormDate) => {
         let response: ServerResponse;
-        
         try {
+            setFormState(prev => ({ ...prev, loading: true }))
             response = await Users.forgetPassword(data);
             setFormState(prev => {
                 return {
@@ -41,7 +39,7 @@ export const ForgetPassword = () => {
                     loading: false,
                     notificationOpen: true,
                     formSubmitted: true,
-                    notificationMessage: response.status ? t.successMessage : response.errMsg,
+                    notificationMessage: response.status ? t.passwordResetNotification : response.errMsg,
                     notificationType: response.status ? 'success' : 'error'
                 }
             });
@@ -77,13 +75,13 @@ export const ForgetPassword = () => {
                                 <div>
                                     <h1 className="fs-md-48 fs-40 fw-bold mb-4">Forget Password</h1>
                                     <p className="mb-4">
-                                    You are one step closer to start your better financial Journey. Just enter your email/username to retieve your account. You will shortly recieve an email with the password.
+                                        You are one step closer to start your better financial Journey. Just enter your email/username to retieve your account. You will shortly recieve an email with the password.
                                     </p>
                                 </div>
                                 <div className="contact-from text-white">
                                     <div className="mb-3 row">
-                                        
-                                        
+
+
                                         <div className="mb-4 col-12">
                                             <Controller
                                                 name={"username"}
@@ -105,15 +103,19 @@ export const ForgetPassword = () => {
                                             {errors.username?.type === "required" && <div className="invalid-feedback">{t.required}</div>}
                                             {errors.username?.type === "pattern" && <div className="invalid-feedback">{t.emailError}</div>}
                                         </div>
-                                        
-                                        
+
+
                                     </div>
                                     <button
                                         type="submit"
                                         onClick={onSubmit}
-                                        className="main-btn maincolor mb-2 btn btn-primary"
+                                        className="main-btn maincolor btn btn-primary"
+                                        disabled={formState.loading}
                                     >
-                                        Retrieve Password
+                                        Retrieve Password &nbsp;&nbsp;&nbsp;&nbsp;
+                                        {
+                                            formState.loading && <CircularProgress style={{ width: '20px', height: '20px', color: 'green' }} /> 
+                                        }
                                     </button>
                                 </div>
                             </div>
