@@ -109,20 +109,20 @@ export const Footer = () => {
                         </h6>
                         <div className="flex-column nav">
                             <a
-                                href="tel:+91-9793909000"
-                                data-rr-ui-event-key="tel:+91-9793909000"
+                                href="tel:+91-9140636400"
+                                data-rr-ui-event-key="tel:+91-9140636400"
                                 className="nav-link"
                             >
-                                +91-9793909000
+                                +91-9140636400
                             </a>
                         </div>
                         <div className="flex-column nav">
                             <a
-                                href="mailto:contact@multisphere.in"
-                                data-rr-ui-event-key="mailto:contact@multisphere.in"
+                                href="mailto:contact@virtual-property.in"
+                                data-rr-ui-event-key="mailto:contact@virtual-property.in"
                                 className="nav-link"
                             >
-                                contact@multisphere.in
+                                contact@virtual-property.in
                             </a>
                         </div>
                         <div className="flex-column nav">
@@ -132,8 +132,8 @@ export const Footer = () => {
                                 data-rr-ui-event-key="https://maps.google.com/?q=MultiSphere+Consultancy"
                                 className="nav-link"
                             >
-                                MultiSphere Enterprises, LLP, Mughlaha, 
-                                Medical Road, Gorakhpur, 273013
+                                Mughlaha, Medical Road, 
+                                Gorakhpur, 273013
                             </a>
                         </div>
                         <div className="justify-content-start nav">
