@@ -19,8 +19,8 @@ import { ADMIN_SESSION_NAME } from '../../../utils/constants';
 import { useNavigate } from 'react-router';
 
 const defaultValues: AdminLogin = {
-    password: 'Waves@125',
-    username: 'ashutoshsingh5192344@gmail.com'
+    password: '',
+    username: ''
 }
 
 export const AdminLoginPage = () => {

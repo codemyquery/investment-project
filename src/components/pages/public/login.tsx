@@ -9,8 +9,8 @@ import { BASE_URL, USER_SESSION_NAME } from "../../../utils/constants";
 import { loginProperty } from "../../../assets";
 
 const defaultValues: LoginFormData = {
-    username: "ashutoshsingh5192344@gmail.com",
-    password: "ashutoshsingh5192344@gmail.com"
+    username: "",
+    password: ""
 };
 
 export const Login = () => {
