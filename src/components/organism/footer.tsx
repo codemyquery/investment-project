@@ -265,7 +265,7 @@ export const Footer = () => {
                 <div className="d-flex justify-content-between text-center text-lg-start pt-5 row">
                     <div className="col-lg-9">
                         <p className="text-white fw-400 mb-3 mb-md-0 pt-0">
-                            © Copyright 2021-2024
+                            © Copyright 2021-{(new Date()).getFullYear()}
                             <a
                                 href="/"
                                 style={{
