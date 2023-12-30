@@ -49,7 +49,7 @@ export const PlanOverview = () => {
   const [averageMonthlyIncome, setAverageMonthlyIncome] = useState<number>(0);
   const [dialog, setDialog] = useState<boolean>(false);
   const [planAmount, setPlanAmount] = useState<SelectOptions>({ label: '', value: -1 });
-  const [dataToPreview, setPataToPreview] = useState<Record<string, Record<string, any>>>({});
+  const [dataToPreview, setDataToPreview] = useState<Record<string, Record<string, any>>>({});
   const income = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])), 0);
   const Totalincome = cashFlowYears.reduce((prev, current) => (prev + Number(current[0])+ Number(current[1])), 0);
 
@@ -75,25 +75,41 @@ export const PlanOverview = () => {
     const dateForCashFlow = new Date();
     let totalMonths = 0;
     let totalIncome = 0;
+    let totalMaturity = 0;
+    let isLast = false;
+    let finalLast = false;
     for (let i = 0; i < cashFlowYears.length; i++) {
-      const [income] = cashFlowYears[i];
+      isLast = cashFlowYears.length-1 === i;
+      const [income, maturity] = cashFlowYears[i];
       totalIncome+= Number(income);
-      for (let i = 0; i < 12; i++) {
+      totalMaturity+= Number(maturity);
+      for (let j = 0; j < 12; j++) {
+        finalLast = isLast && j===11;
         totalMonths+= 1;
         const currentMonth = dateForCashFlow.getMonth()
         dateForCashFlow.setMonth(currentMonth + 1);
         const year = dateForCashFlow.getFullYear().toString();
         const month = dateForCashFlow.getMonth();
         if (updatedPlanToPreview.hasOwnProperty(year)) {
-          updatedPlanToPreview[year][MonthsName[month]] = Number(income) / 12;
+          if(finalLast){
+            updatedPlanToPreview[year][MonthsName[month]] = (Number(income)/12 + totalMaturity)
+          }else{
+            updatedPlanToPreview[year][MonthsName[month]] = Number(income) / 12;
+          }
         } else {
-          updatedPlanToPreview[year] = {}
-          updatedPlanToPreview[year][MonthsName[month]] = Number(income) / 12;
+          if(finalLast){
+            updatedPlanToPreview[year] = {}
+            updatedPlanToPreview[year][MonthsName[month]] = (Number(income) / 12 + totalMaturity)
+          }else{
+            updatedPlanToPreview[year] = {}
+            updatedPlanToPreview[year][MonthsName[month]] = Number(income) / 12;
+          }
         }
       }
     }
+    // Jo tum bol rhe last me add karne ke liye wo logicwa nahi kam kr rha hai.. isLast wala karke lag jata to tension hi khatm tha
     setAverageMonthlyIncome(totalIncome/totalMonths);
-    setPataToPreview(updatedPlanToPreview)
+    setDataToPreview(updatedPlanToPreview)
   }, [cashFlowYears])
 
   const closeDialog = () => {
