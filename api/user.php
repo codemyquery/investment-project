@@ -36,10 +36,23 @@ class Users
         );
         $this->helper->query = "INSERT INTO users (name, email, mobile, lg_lc_code, kyc_status, password, accepted_for_promotions) 
          VALUES (:name,:email,:mobile,:lg_lc_code, :kyc_status, :password, :accepted_for_promotions)";
-        
-        return array(
-            "status" => $this->helper->execute_query()
-        ); 
+
+        if($this->helper->execute_query()){
+            $headers = 'From: <no-reply@virtual-property.in>' . "\r\n";
+            $headers .= 'Cc: no-reply@virtual-property.in' . "\r\n";
+            $subject = "Alert: New Sign up";
+            $message  = "Dear Admin," ."\r\n";
+            $message .= "A new user has just created an account. Please visit admin panel for more details." ."\r\n";
+            $message .= "NAME: " . $data['name'] ."\r\n";
+            $message .= "EMAIL: " . $data['email'] ."\r\n";
+            $message .= "MOBILE: " . $data['mobile'] ."\r\n";
+            $message .= "LGLC CODE: " . $data['lgLcCode'] ."\r\n";
+            $message .= "SIGN UP TIME: " . $this->helper->get_current_datetimestamp() ."\r\n";
+            $emailStatus = $this->helper->send_email('bachatkar@gmail.com', $subject, $message, $headers);
+            return array( "status" => true ); 
+        }else{
+            return array( "status" => false ); 
+        }
     }
 
     function update_user_kyc($itemID)
